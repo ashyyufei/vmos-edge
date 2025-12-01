@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QNetworkInterface>
 #include <QSet>
+#include <QElapsedTimer>
 
 class DeviceScanner : public QObject
 {
@@ -36,16 +37,20 @@ signals:
 private slots:
     void onReadyRead();
     void onScanTimeout();
+    void onCheckPendingDatagrams(); // 定期检查待处理的数据包
 
 private:
     QList<QHostAddress> getTargetHosts();
 
     QUdpSocket *m_udpSocket;
     QTimer *m_scanTimer;
+    QTimer *m_checkTimer; // 用于定期检查待处理的数据包
     bool m_scanning;
     QVariantList m_discoveredDevices;
     QSet<QString> m_foundDeviceIds; // 用于设备去重
     QSet<QString> m_pendingIps;     // 用于追踪待响应的IP
+    QElapsedTimer m_scanElapsedTimer; // 用于记录扫描耗时
+    qint64 m_lastDeviceFoundTime;   // 最后一次发现设备的时间（毫秒）
 };
 
 #endif // DEVICESCANNER_H

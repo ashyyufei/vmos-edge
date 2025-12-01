@@ -113,7 +113,15 @@ QVariantList DeviceProxyModel::getPadList() const
             padInfo.insert(this->roleNames().value(DeviceRoles::HostIdRole), this->data(index, DeviceRoles::HostIdRole).toString());
             padInfo.insert(this->roleNames().value(DeviceRoles::StateRole), this->data(index, DeviceRoles::StateRole).toString());
             padInfo.insert(this->roleNames().value(DeviceRoles::GroupIdRole), this->data(index, DeviceRoles::GroupIdRole).toInt());
+            padInfo.insert(this->roleNames().value(DeviceRoles::IpRole), this->data(index, DeviceRoles::IpRole).toString());
             padInfo.insert(this->roleNames().value(DeviceRoles::AdbRole), this->data(index, DeviceRoles::AdbRole).toInt());
+            padInfo.insert(this->roleNames().value(DeviceRoles::TcpVideoPortRole), this->data(index, DeviceRoles::TcpVideoPortRole).toInt());
+            padInfo.insert(this->roleNames().value(DeviceRoles::TcpAudioPortRole), this->data(index, DeviceRoles::TcpAudioPortRole).toInt());
+            padInfo.insert(this->roleNames().value(DeviceRoles::TcpControlPortRole), this->data(index, DeviceRoles::TcpControlPortRole).toInt());
+            padInfo.insert(this->roleNames().value(DeviceRoles::NetworkModeRole), this->data(index, DeviceRoles::NetworkModeRole).toString());
+            padInfo.insert(this->roleNames().value(DeviceRoles::LocaleRole), this->data(index, DeviceRoles::LocaleRole).toString());
+            padInfo.insert(this->roleNames().value(DeviceRoles::TimeZoneRole), this->data(index, DeviceRoles::TimeZoneRole).toString());
+
             jsonArray.append(padInfo);
         }
     }

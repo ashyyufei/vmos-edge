@@ -13,11 +13,17 @@ FluPopup {
     property var modelData: null
     property string deviceBrand: ""  // 品牌
     property string deviceModel: ""   // 机型
+    property bool isEditingMacvlan: false // 是否正在编辑局域网络
+    property string tempMacvlanIp: "" // 临时存储编辑中的局域网络IP
 
     onOpened: {
         // 重置品牌和机型
         root.deviceBrand = ""
         root.deviceModel = ""
+        
+        // 重置编辑状态
+        root.isEditingMacvlan = false
+        root.tempMacvlanIp = modelData?.macvlanIp || ""
         
         // 如果有 hostIp 和 dbId，获取品牌和机型
         if (modelData && modelData.hostIp && (modelData.dbId || modelData.id || modelData.name)) {
@@ -114,6 +120,44 @@ FluPopup {
         .go(getDeviceBrandModel)
     }
 
+    // 修改局域网络
+    function reqUpdateMacvlan() {
+        if (!modelData) {
+            console.warn("[云机详情] 修改局域网络: modelData 为空")
+            return
+        }
+        
+        var hostIp = modelData.hostIp
+        var dbId = modelData.dbId || modelData.id || modelData.name
+        
+        if (!hostIp || !dbId) {
+            console.warn("[云机详情] 修改局域网络: hostIp 或 dbId 为空")
+            showError(qsTr("缺少必要参数"))
+            return
+        }
+        
+        if (!root.tempMacvlanIp.trim()) {
+            showError(qsTr("请输入局域网络IP地址"))
+            return
+        }
+        
+        // IP地址格式验证（简单验证）
+        var ipPattern = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        if (!ipPattern.test(root.tempMacvlanIp.trim())) {
+            showError(qsTr("请输入有效的IP地址格式"))
+            return
+        }
+        
+        console.log("[云机详情] 请求修改局域网络:", hostIp, dbId, root.tempMacvlanIp)
+        
+        // 发送修改请求
+        Network.postJson(`http://${hostIp}:18182/container_api/v1/set_ip`)
+        .add("db_id", dbId)
+        .add("ip", root.tempMacvlanIp.trim())
+        .bind(root)
+        .go(updateMacvlanCallback)
+    }
+
     // 获取品牌和机型回调
     NetworkCallable {
         id: getDeviceBrandModel
@@ -158,6 +202,52 @@ FluPopup {
                     }
                 } catch (e) {
                     console.error("[云机详情] 解析品牌机型数据失败:", e)
+                }
+            }
+    }
+
+    // 修改局域网络回调
+    NetworkCallable {
+        id: updateMacvlanCallback
+        onStart: {
+            showLoading(qsTr("正在修改IP"))
+        }
+        onFinish: {
+            hideLoading()
+        }
+        onError:
+            (status, errorString, result, userData) => {
+                console.error("[云机详情] 修改局域网络失败:", status, errorString, result)
+                showError(qsTr("修改局域网络失败: ") + errorString)
+            }
+        onSuccess:
+            (result, userData) => {
+                try {
+                    var res = JSON.parse(result)
+                    if(res.code === 200){
+                        console.log("[云机详情] 修改局域网络成功")
+                        showSuccess(qsTr("修改局域网络成功"))
+                        // 更新本地数据
+                        if (modelData) {
+                            modelData.ip = root.tempMacvlanIp.trim()
+                        }
+                        
+                        // 退出编辑模式
+                        root.isEditingMacvlan = false
+                    } else {
+                        console.error("[云机详情] 修改局域网络返回错误:", res.msg || res.message)
+                        // 根据错误代码显示对应的错误信息
+                        if (res.code === 1001) {
+                            showError(qsTr("修改局域网络失败: 实例不存在"))
+                        } else if (res.code === 1002) {
+                            showError(qsTr("修改局域网络失败: IP被占用"))
+                        } else {
+                            showError(qsTr("修改局域网络失败: 未知错误"))
+                        }
+                    }
+                } catch (e) {
+                    console.error("[云机详情] 解析修改局域网络返回数据失败:", e)
+                    showError(qsTr("解析返回数据失败"))
                 }
             }
     }
@@ -368,14 +458,14 @@ FluPopup {
                     horizontalAlignment: Text.AlignRight
                 }
                 FluText {
-                    text: modelData?.adb ? `${modelData.hostIp ?? ""}:${modelData.adb}` : ""
+                    text: modelData?.networkMode === "macvlan" ? `${modelData?.ip ?? ""}:5555` : `${modelData?.hostIp ?? ""}:${modelData?.adb ?? ""}`
                     Layout.fillWidth: true
-                    
+
                     MouseArea {
                         anchors.fill: parent
                         cursorShape: Qt.PointingHandCursor
                         onClicked: {
-                            var textToCopy = modelData?.adb ? `${modelData.hostIp ?? ""}:${modelData.adb}` : ""
+                            var textToCopy = modelData?.networkMode === "macvlan" ? `${modelData?.ip ?? ""}:5555` : `${modelData?.hostIp ?? ""}:${modelData?.adb ?? ""}`
                             if (textToCopy) {
                                 FluTools.clipText(textToCopy)
                                 showSuccess(qsTr("复制成功"))
@@ -386,34 +476,34 @@ FluPopup {
             }
 
             // 容器网络
-            RowLayout {
-                Layout.fillWidth: true
-                spacing: 10
-                FluText {
-                    text: qsTr("容器网络：")
-                    color: "#666"
-                    Layout.preferredWidth: 120
-                    horizontalAlignment: Text.AlignRight
-                }
-                FluText {
-                    text: modelData?.ip ?? modelData?.containerNetwork ?? ""
-                    Layout.fillWidth: true
+            //RowLayout {
+            //    Layout.fillWidth: true
+            //    spacing: 10
+            //    FluText {
+            //        text: qsTr("容器网络：")
+            //        color: "#666"
+            //        Layout.preferredWidth: 120
+            //        horizontalAlignment: Text.AlignRight
+            //    }
+            //    FluText {
+            //        text: modelData?.ip ?? modelData?.containerNetwork ?? ""
+            //        Layout.fillWidth: true
                     
-                    MouseArea {
-                        anchors.fill: parent
-                        cursorShape: Qt.PointingHandCursor
-                        onClicked: {
-                            var textToCopy = modelData?.ip ?? modelData?.containerNetwork ?? ""
-                            if (textToCopy) {
-                                FluTools.clipText(textToCopy)
-                                showSuccess(qsTr("复制成功"))
-                            }
-                        }
-                    }
-                }
-            }
+            //        MouseArea {
+            //           anchors.fill: parent
+            //            cursorShape: Qt.PointingHandCursor
+            //            onClicked: {
+            //                var textToCopy = modelData?.ip ?? modelData?.containerNetwork ?? ""
+            //                if (textToCopy) {
+            //                    FluTools.clipText(textToCopy)
+            //                    showSuccess(qsTr("复制成功"))
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
 
-            // 局域网络
+            // 局域网络 - 修改为可编辑模式
             RowLayout {
                 Layout.fillWidth: true
                 spacing: 10
@@ -423,22 +513,99 @@ FluPopup {
                     Layout.preferredWidth: 120
                     horizontalAlignment: Text.AlignRight
                 }
+
+                // 显示/编辑 两种模式的紧凑元素，使用 visible 控制切换
                 FluText {
-                    text: modelData?.macvlanIp || "-"
-                    Layout.fillWidth: true
-                    
+                    id: macvlanText
+                    text: modelData?.networkMode === "macvlan" ? (modelData?.ip || "") : "-"
+                    elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
+                    visible: !root.isEditingMacvlan
+                }
+
+                Image {
+                    id: btnEditLanIP_detail
+                    width: 20
+                    height: 20
+                    source: "qrc:/res/pad/yunji_edit.svg"
+                    visible: !root.isEditingMacvlan && modelData?.networkMode === "macvlan"
                     MouseArea {
+                        id: mouseArea
                         anchors.fill: parent
                         cursorShape: Qt.PointingHandCursor
+                        hoverEnabled: true
                         onClicked: {
-                            var textToCopy = modelData?.macvlanIp ?? ""
-                            if (textToCopy) {
-                                FluTools.clipText(textToCopy)
-                                showSuccess(qsTr("复制成功"))
+                            // 检查是否有该设备的窗口已打开
+                            var dbId = modelData?.dbId || modelData?.id || modelData?.name || ""
+                            if (dbId && FluRouter.hasWindowByFingerprint(dbId)) {
+                                console.log("[云机详情] 检测到设备窗口已打开，询问用户是否关闭，dbId:", dbId)
+                                // 显示确认对话框
+                                closeWindowDialog.title = qsTr("操作确认")
+                                closeWindowDialog.message = qsTr("当前云机正在投屏，修改网络 IP 会导致投屏中断并退出。是否继续？")
+                                closeWindowDialog.positiveText = qsTr("确定")
+                                closeWindowDialog.negativeText = qsTr("取消")
+                                closeWindowDialog.onNegativeClickListener = function(){
+                                    closeWindowDialog.close()
+                                }
+                                closeWindowDialog.buttonFlags = FluContentDialogType.PositiveButton | FluContentDialogType.NegativeButton
+                                closeWindowDialog.onPositiveClickListener = function(){
+                                    var dbId = modelData?.dbId || modelData?.id || modelData?.name || ""
+                                    if (dbId) {
+                                        console.log("[云机详情] 用户确认关闭窗口，dbId:", dbId)
+                                        FluRouter.closeWindowByFingerprint(dbId)
+                                        // 等待窗口关闭完成
+                                        Qt.callLater(function() {
+                                            root.tempMacvlanIp = modelData?.macvlanIp || ""
+                                            root.isEditingMacvlan = true
+                                        })
+                                    }
+                                    closeWindowDialog.close()
+                                }
+                                closeWindowDialog.open()
+                            } else {
+                                // 没有窗口打开，直接进入编辑模式
+                                root.tempMacvlanIp = modelData?.macvlanIp || ""
+                                root.isEditingMacvlan = true
                             }
                         }
                     }
                 }
+
+                // 编辑模式的紧凑控件
+                FluTextBox {
+                    id: macvlanInput
+                    Layout.preferredWidth: 220
+                    Layout.maximumWidth: 360
+                    cleanEnabled: false
+                    placeholderText: qsTr("请输入局域网络IP")
+                    text: root.tempMacvlanIp
+                    visible: root.isEditingMacvlan
+                    onTextChanged: root.tempMacvlanIp = text
+                    Keys.onReturnPressed: reqUpdateMacvlan()
+                    Keys.onEscapePressed: root.isEditingMacvlan = false
+                }
+                FluFilledButton {
+                    text: qsTr("确定")
+                    visible: root.isEditingMacvlan
+                    onClicked: {
+                        closeWindowDialog.title = qsTr("操作确认")
+                        closeWindowDialog.message = qsTr("修改IP需要重启云机，是否继续操作")
+                        closeWindowDialog.positiveText = qsTr("确定")
+                        closeWindowDialog.negativeText = qsTr("取消")
+                        closeWindowDialog.onNegativeClickListener = function(){
+                            closeWindowDialog.close()
+                        }
+                        closeWindowDialog.buttonFlags = FluContentDialogType.PositiveButton | FluContentDialogType.NegativeButton
+                        closeWindowDialog.onPositiveClickListener = function(){
+                            reqUpdateMacvlan()
+                            closeWindowDialog.close()
+                        }
+                        closeWindowDialog.open()
+                    }
+                }
+
+                // 填充剩余空间，确保上面的元素靠左紧凑显示
+                Item { Layout.fillWidth: true }
             }
         }
 
@@ -452,6 +619,33 @@ FluPopup {
                 text: qsTr("关闭")
                 onClicked: root.close()
             }
+        }
+    }
+
+    // 确认关闭窗口对话框
+    GenericDialog {
+        id: closeWindowDialog
+        title: qsTr("操作确认")
+        message: qsTr("检测到该设备的窗口已打开，编辑IP前需要先关闭窗口。是否继续？")
+        positiveText: qsTr("确定")
+        negativeText: qsTr("取消")
+        buttonFlags: FluContentDialogType.PositiveButton | FluContentDialogType.NegativeButton
+        onPositiveClickListener: function() {
+            var dbId = modelData?.dbId || modelData?.id || modelData?.name || ""
+            if (dbId) {
+                console.log("[云机详情] 用户确认关闭窗口，dbId:", dbId)
+                FluRouter.closeWindowByFingerprint(dbId)
+                // 等待窗口关闭完成
+                Qt.callLater(function() {
+                    root.tempMacvlanIp = modelData?.macvlanIp || ""
+                    root.isEditingMacvlan = true
+                })
+            }
+            closeWindowDialog.close()
+        }
+        onNegativeClickListener: function() {
+            console.log("[云机详情] 用户取消关闭窗口")
+            closeWindowDialog.close()
         }
     }
 }

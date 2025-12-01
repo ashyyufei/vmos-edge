@@ -21,7 +21,13 @@ qint32 VideoSocket::subThreadRecvData(quint8 *buf, qint32 bufSize)
     Q_ASSERT(QCoreApplication::instance()->thread() != QThread::currentThread());
 
     while (bytesAvailable() < bufSize) {
-        if (!waitForReadyRead(-1)) {
+        if (QThread::currentThread()->isInterruptionRequested()) {
+            return 0;
+        }
+        if (!waitForReadyRead(100)) {
+            if (error() == QAbstractSocket::SocketTimeoutError) {
+                continue;
+            }
             return 0;
         }
     }

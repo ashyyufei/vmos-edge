@@ -114,6 +114,10 @@ FluPopup {
         accountInput.text = ""
         passwordInput.text = ""
         
+        // 重置开关状态
+        udpDisabledSwitch.checked = true
+        dnsOverProxyDisabledSwitch.checked = true
+        
         // 重置到设置页面
         root.currentPage = 0
 
@@ -255,6 +259,90 @@ FluPopup {
                         }
                     }
 
+                    // 是否禁用DNS走代理
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        spacing: 8
+
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: 8
+
+                            FluText {
+                                text: qsTr("代理DNS")
+                                font.bold: true
+                            }
+
+                            Image {
+                                id: macvlanIcon
+                                source: "qrc:/res/pad/help.svg"
+                                scale: 0.8
+
+                                FluTooltip {
+                                    parent: macvlanIcon
+                                    visible: macvlanMouseArea.containsMouse
+                                    text: qsTr("开启代理DNS需要确保您的代理IP支持DNS解析，\n否则云手机将无法联网；关闭代理DNS可能会导致DNS泄露。")
+                                    delay: 500
+                                    timeout: 3000
+                                }
+
+                                MouseArea {
+                                    id: macvlanMouseArea
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                }
+                            }
+
+                            FluToggleSwitch{
+                                id: dnsOverProxyDisabledSwitch
+                                checkColor: ThemeUI.primaryColor
+                            }
+
+                            FluText{
+                                text: qsTr("注意：如果开启后云手机无网络，请关闭代理DNS。")
+                                color: ThemeUI.primaryColor
+                                font.pixelSize: 10
+                            }
+                        }
+
+                    }
+
+                    // 是否禁用UDP
+                    RowLayout {
+                        Layout.fillWidth: true
+                        spacing: 8
+
+                        FluText {
+                            text: qsTr("开启UDP")
+                            font.bold: true
+                        }
+
+                        Image {
+                            id: udpIcon
+                            source: "qrc:/res/pad/help.svg"
+                            scale: 0.8
+
+                            FluTooltip {
+                                parent: udpIcon
+                                visible: udpMouseArea.containsMouse
+                                text: qsTr("启用 UDP 通道传输")
+                                delay: 500
+                                timeout: 3000
+                            }
+
+                            MouseArea {
+                                id: udpMouseArea
+                                anchors.fill: parent
+                                hoverEnabled: true
+                            }
+                        }
+
+                        FluToggleSwitch{
+                            id: udpDisabledSwitch
+                            checkColor: ThemeUI.primaryColor
+                        }
+                    }
+
                     Item { Layout.preferredHeight: 10 }
 
                     // 网络检测链接
@@ -322,10 +410,12 @@ FluPopup {
                                     serverAddress: serverAddressInput.text.trim(),
                                     port: parseInt(portInput.text),
                                     account: accountInput.text.trim(),
-                                    password: passwordInput.text.trim()
+                                    password: passwordInput.text.trim(),
+                                    udpDisabled: !udpDisabledSwitch.checked,
+                                    dnsOverProxyDisabled: !dnsOverProxyDisabledSwitch.checked
                                 }
 
-                                reqSetDeviceProxy(root.modelData.hostIp, root.modelData.dbId, settings.serverAddress, settings.port, settings.account, settings.password, "", settings.protocol, "")
+                                reqSetDeviceProxy(root.modelData.hostIp, root.modelData.dbId, settings.serverAddress, settings.port, settings.account, settings.password, "", settings.protocol, "", settings.dnsOverProxyDisabled, settings.udpDisabled)
                             }
                         }
                     }
@@ -499,6 +589,20 @@ FluPopup {
                             // 填充输入框（用于编辑）
                             serverAddressInput.text = proxyConfig.ip
                             portInput.text = proxyConfig.port
+                            if(proxyConfig.account) {
+                                accountInput.text = proxyConfig.account
+                            }
+                            if(proxyConfig.password) {
+                                passwordInput.text = proxyConfig.password
+                            }
+                            
+                            // 设置开关状态
+                            // if(proxyConfig.udpDisabled !== undefined) {
+                            //     udpDisabledSwitch.checked = proxyConfig.udpDisabled
+                            // }
+                            // if(proxyConfig.dnsOverProxyDisabled !== undefined) {
+                            //     dnsOverProxyDisabledSwitch.checked = proxyConfig.dnsOverProxyDisabled
+                            // }
                             
                             // 切换到代理信息页面
                             root.currentPage = 1
@@ -558,16 +662,17 @@ FluPopup {
     }
 
     // 设置代理
-    function reqSetDeviceProxy(hostIp, dbId, ip, port, account, password, bypassDomainList = "", proxyName = "", proxyType = ""){
-        const args = `?ip=${ip}&port=${port}&account=${account}&password=${password}&bypassDomainList=${bypassDomainList}&proxyName=${proxyName}&proxyType=${proxyType}`
-        Network.postJson(`http://${hostIp}:18182/android_api/v1` + "/proxy_set/" + dbId + args)
-        // .add("ip", ip)
-        // .add("port", port)
-        // .add("account", account)
-        // .add("password", password)
-        // .add("bypassDomainList", bypassDomainList)
-        // .add("proxyName", "")
-        // .add("proxyType", "")
+    function reqSetDeviceProxy(hostIp, dbId, ip, port, account, password, bypassDomainList = "", proxyName = "", proxyType = "", dnsOverProxyDisabled = false, udpDisabled = false){
+        Network.postJson(`http://${hostIp}:18182/android_api/v1` + "/proxy_set/" + dbId)
+        .add("ip", ip)
+        .add("port", port)
+        .add("account", account)
+        .add("password", password)
+        .addList("bypassDomainList", [])
+        .add("proxyName", proxyName)
+        .add("proxyType", proxyType)
+        .add("dnsOverProxyDisabled", dnsOverProxyDisabled)
+        .add("udpDisabled", udpDisabled)
         .setUserData(hostIp)
         .bind(root)
         .go(setDeviceProxy)

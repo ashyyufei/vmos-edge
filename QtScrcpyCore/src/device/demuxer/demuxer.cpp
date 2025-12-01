@@ -111,6 +111,7 @@ bool Demuxer::startDecode()
 
 void Demuxer::stopDecode()
 {
+    requestInterruption();
     wait();
 }
 

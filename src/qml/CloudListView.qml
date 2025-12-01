@@ -7,7 +7,7 @@ import Utils
 Item{
     id: root
     property alias model : deviceListView.model
-    readonly property var itemWidth: [150.00, 120.00, 140.00, 90.00, 70.00, 140.00, 120.00]
+    readonly property var itemWidth: [150.00, 120.00, 140.00, 90.00, 70.00, 140.00, 200.00]
     readonly property int itemTotalWidth: itemWidth.reduce((acc, cur) => acc + cur, 0)
     // 分页配置
     // property int pageSize: 10
@@ -18,67 +18,6 @@ Item{
     // readonly property int pageEndIndex: Math.min(pageStartIndex + pageSize, totalCount)
     signal clickMenuItem(var model)
     
-    // 启动 scrcpy_server（TCP直连模式需要先启动服务）
-    function startScrcpyServerForDevice(hostIp, dbId, tcpVideoPort, tcpAudioPort, tcpControlPort, onSuccess, onError) {
-        if (!hostIp || !dbId) {
-            if (onError) onError("hostIp 或 dbId 为空")
-            return
-        }
-        
-        const url = `http://${hostIp}:18182/container_api/v1/scrcpy`
-        console.log("启动 scrcpy_server:", url, "dbId:", dbId, "videoPort:", tcpVideoPort, "audioPort:", tcpAudioPort, "controlPort:", tcpControlPort)
-        
-        // 根据端口判断是否需要启动对应的流
-        const bool_video = tcpVideoPort > 0
-        const bool_audio = tcpAudioPort > 0
-        const bool_control = tcpControlPort > 0
-        
-        Network.postJson(url)
-        .bind(root)
-        .setTimeout(5000)
-        .add("db_id", dbId)
-        .add("bool_video", bool_video)
-        .add("bool_audio", bool_audio)
-        .add("bool_control", bool_control)
-        .go(startScrcpyServerCallable)
-        
-        // 保存回调函数
-        startScrcpyServerCallable._onSuccess = onSuccess
-        startScrcpyServerCallable._onError = onError
-        startScrcpyServerCallable._hostIp = hostIp
-        startScrcpyServerCallable._dbId = dbId
-    }
-    
-    NetworkCallable {
-        id: startScrcpyServerCallable
-        property var _onSuccess: null
-        property var _onError: null
-        property string _hostIp: ""
-        property string _dbId: ""
-        
-        onError: (status, errorString, result, userData) => {
-            console.error("启动 scrcpy_server 失败:", status, errorString, result)
-            if (_onError) {
-                _onError(errorString || "启动 scrcpy_server 失败")
-            }
-        }
-        
-        onSuccess: (result, userData) => {
-            var res = JSON.parse(result)
-            if (res.code === 200) {
-                console.log("启动 scrcpy_server 成功:", result)
-                if (_onSuccess) {
-                    _onSuccess(_hostIp, _dbId)
-                }
-            } else {
-                console.error("启动 scrcpy_server 失败:", res.msg)
-                if (_onError) {
-                    _onError(res.msg || "启动 scrcpy_server 失败")
-                }
-            }
-        }
-    }
-
     ColumnLayout{
         anchors.fill: parent
         spacing: 0
@@ -325,13 +264,15 @@ Item{
 
                             FluText{
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: (model?.hostIp ?? "") + ":" + (model?.adb ?? "")
+                                // todo 优化显示格式
+                                text: model?.networkMode === "macvlan" ? `${model?.ip ?? ""}:5555` : `${model?.hostIp ?? ""}:${model?.adb ?? ""}`
 
                                 MouseArea{
                                     anchors.fill: parent
 
                                     onClicked: {
-                                        FluTools.clipText((model?.hostIp ?? "") + ":" + (model?.adb ?? ""))
+                                        // todo 优化显示格式
+                                        FluTools.clipText(model?.networkMode === "macvlan" ? `${model?.ip ?? ""}:5555` : `${model?.hostIp ?? ""}:${modelData?.adb ?? ""}`)
                                         showSuccess(qsTr("复制成功"))
                                     }
                                 }
@@ -430,41 +371,55 @@ Item{
                                         const hostIp = model.hostIp || ""
                                         const adb = model.adb || 0
                                         const dbId = model.dbId || model.db_id || model.id || model.name || ""
-                                        
-                                    if (AppConfig.useDirectTcp) {
-                                        // TCP直接连接模式：先启动 scrcpy_server，再连接
-                                        const tcpVideoPort = model.tcpVideoPort || 0
-                                        const tcpAudioPort = model.tcpAudioPort || 0
-                                        const tcpControlPort = model.tcpControlPort || 0
-                                        
-                                        console.log("使用TCP直接连接模式:", hostIp, dbId, "ports:", tcpVideoPort, tcpAudioPort, tcpControlPort)
-                                        
-                                        // 先启动 scrcpy_server
-                                        // startScrcpyServerForDevice(hostIp, dbId, tcpVideoPort, tcpAudioPort, tcpControlPort,
-                                        //     // 启动成功后的回调
-                                        //     (hostIp, dbId) => {
-                                                console.log("scrcpy_server 启动成功，开始连接设备")
-                                                deviceManager.connectDeviceDirectTcp(
-                                                    dbId,           // serial
-                                                    hostIp || "localhost",  // host
-                                                    tcpVideoPort,   // videoPort
-                                                    tcpAudioPort,   // audioPort
-                                                    tcpControlPort  // controlPort
-                                                )
-                                        //     },
-                                        //     // 启动失败的回调
-                                        //     (error) => {
-                                        //         console.error("启动 scrcpy_server 失败，无法连接设备:", error)
-                                        //     }
-                                        // )
-                                    } else {
-                                        // ADB连接模式
-                                        const deviceAddress = `${hostIp}:${adb}`
-                                        console.log("使用ADB连接模式:", deviceAddress)
-                                        deviceManager.connectDevice(deviceAddress)
-                                    }
+                                        const ip = model.ip || ""
+                                        const useDirectTcp = model.networkMode === "macvlan"
+                                        const realIP = useDirectTcp ? ip : hostIp;
+
+                                        if (AppConfig.useDirectTcp) {
+                                            // TCP直接连接模式：先启动 scrcpy_server，再连接
+                                            const tcpVideoPort = useDirectTcp ? 9999 : (model.tcpVideoPort || 0)
+                                            const tcpAudioPort = useDirectTcp ? 9998 : (model.tcpAudioPort || 0)
+                                            const tcpControlPort = useDirectTcp ? 9997 : (model.tcpControlPort || 0)
+
+                                            console.log("使用TCP直接连接模式:", hostIp, dbId, "ports:", tcpVideoPort, tcpAudioPort, tcpControlPort)
+
+                                            console.log("scrcpy_server 启动成功，开始连接设备")
+                                            deviceManager.connectDeviceDirectTcp(
+                                                        dbId,           // serial
+                                                        realIP || "localhost",  // host
+                                                        tcpVideoPort,   // videoPort
+                                                        tcpAudioPort,   // audioPort
+                                                        tcpControlPort  // controlPort
+                                                        )
+                                        } else {
+                                            // ADB连接模式
+                                            const deviceAddress = `${realIP}:${adb}`
+                                            console.log("使用ADB连接模式:", deviceAddress)
+                                            deviceManager.connectDevice(deviceAddress)
+                                        }
                                         
                                         FluRouter.navigate("/pad", model, undefined, model.id)
+                                    }
+                                }
+
+                                TextButton {
+                                    text: qsTr("克隆")
+                                    visible: model.state === "exited" || model.state ===  "stopped"
+                                    Layout.preferredHeight: 32
+                                    Layout.preferredWidth: 72
+                                    borderRadius: 4
+                                    backgroundColor: ThemeUI.primaryColor
+                                    Layout.alignment: Qt.AlignHCenter
+                                    onClicked: {
+                                        var modelData = {
+                                            phoneName: model.name,
+                                            imgVersion: model.image,
+                                            androidVersion: "Android " + (model?.aospVersion ?? ""),
+                                            hostIp: model.hostIp,
+                                            dbId: model.dbId || model.db_id || model.id || model.name || ""
+                                        }
+                                        clonePhonePopup.modelData = modelData
+                                        clonePhonePopup.open()
                                     }
                                 }
 
@@ -581,6 +536,10 @@ Item{
         //         }
         //     }
         // }
+    }
+
+    CloneCloudPhonePopup {
+        id: clonePhonePopup
     }
 }
 

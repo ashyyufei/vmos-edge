@@ -7,7 +7,6 @@
             "libyuv",
             "openssl",
             "stb",
-            "ffmpeg",
             "libyuv",
             "libarchive",
             "zstd"

@@ -895,11 +895,11 @@ bool FileCopyWorker::verifySignatureWithRsaPss(const QString &signature, const Q
     BIO *bio = nullptr;
     
     try {
-    // 1. 将十六进制签名转换为字节数组
-    QByteArray signatureBytes = QByteArray::fromHex(signature.toUtf8());
-    if (signatureBytes.isEmpty()) {
-        qDebug() << "Invalid signature format";
-            return false;
+        // 1. 将十六进制签名转换为字节数组
+        QByteArray signatureBytes = QByteArray::fromHex(signature.toUtf8());
+        if (signatureBytes.isEmpty()) {
+            qDebug() << "Invalid signature format";
+            goto cleanup;
         }
         
         // 2. 使用 OpenSSL 加载 PEM 格式的公钥
@@ -907,14 +907,14 @@ bool FileCopyWorker::verifySignatureWithRsaPss(const QString &signature, const Q
         bio = BIO_new_mem_buf(pemData.constData(), pemData.size());
         if (!bio) {
             qDebug() << "Failed to create BIO";
-            return false;
+            goto cleanup;
         }
         
         pkey = PEM_read_bio_PUBKEY(bio, nullptr, nullptr, nullptr);
         if (!pkey) {
             qDebug() << "Failed to read public key from PEM";
             ERR_print_errors_fp(stderr);
-            return false;
+            goto cleanup;
         }
         
         qDebug() << "Public key loaded successfully";
@@ -923,54 +923,68 @@ bool FileCopyWorker::verifySignatureWithRsaPss(const QString &signature, const Q
         md_ctx = EVP_MD_CTX_new();
         if (!md_ctx) {
             qDebug() << "Failed to create MD context";
-            return false;
+            goto cleanup;
         }
         
-        // 4. 创建PKEY上下文
-        pkey_ctx = EVP_PKEY_CTX_new(pkey, nullptr);
-        if (!pkey_ctx) {
-            qDebug() << "Failed to create PKEY context";
-            return false;
-        }
-        
-        // 5. 初始化验证上下文，使用RSA-PSS-SHA256
+        // 4. 初始化验证上下文，使用RSA-PSS-SHA256
+        // 注意：EVP_DigestVerifyInit会自动创建pkey_ctx，不需要手动创建
+        // 传入NULL让函数自动管理pkey_ctx的生命周期
         if (EVP_DigestVerifyInit(md_ctx, &pkey_ctx, EVP_sha256(), nullptr, pkey) != 1) {
             qDebug() << "Failed to initialize digest verify";
             ERR_print_errors_fp(stderr);
-            return false;
+            goto cleanup;
         }
         
-        // 6. 设置RSA-PSS填充参数
+        // 检查pkey_ctx是否有效
+        if (!pkey_ctx) {
+            qDebug() << "Failed to get PKEY context from digest verify init";
+            goto cleanup;
+        }
+        
+        // 5. 设置RSA-PSS填充参数
         if (EVP_PKEY_CTX_set_rsa_padding(pkey_ctx, RSA_PKCS1_PSS_PADDING) != 1) {
             qDebug() << "Failed to set RSA PSS padding";
             ERR_print_errors_fp(stderr);
-            return false;
+            goto cleanup;
         }
         
         // salt_length = -2 对应 Python cryptography 的 padding.PSS.MAX_LENGTH
         if (EVP_PKEY_CTX_set_rsa_pss_saltlen(pkey_ctx, -2) != 1) {
             qDebug() << "Failed to set RSA PSS salt length";
             ERR_print_errors_fp(stderr);
-            return false;
+            goto cleanup;
         }
         
         if (EVP_PKEY_CTX_set_rsa_mgf1_md(pkey_ctx, EVP_sha256()) != 1) {
             qDebug() << "Failed to set RSA MGF1 digest";
             ERR_print_errors_fp(stderr);
-            return false;
+            goto cleanup;
         }
         
-        // 7. 验证签名
+        // 6. 验证签名
         QByteArray messageBytes = message.toUtf8();
         qDebug() << "Verifying signature for message:" << message;
         qDebug() << "Message bytes length:" << messageBytes.size();
         qDebug() << "Signature bytes length:" << signatureBytes.size();
+        
+        // 检查输入参数有效性
+        if (signatureBytes.isEmpty() || messageBytes.isEmpty()) {
+            qDebug() << "Invalid signature or message bytes";
+            goto cleanup;
+        }
         
         int verifyResult = EVP_DigestVerify(md_ctx, 
                                            reinterpret_cast<const unsigned char*>(signatureBytes.constData()), 
                                            signatureBytes.size(),
                                            reinterpret_cast<const unsigned char*>(messageBytes.constData()), 
                                            messageBytes.size());
+        
+        // verifyResult: 1表示成功，0表示失败，<0表示错误
+        if (verifyResult < 0) {
+            qDebug() << "Error during signature verification";
+            ERR_print_errors_fp(stderr);
+            goto cleanup;
+        }
         
         result = (verifyResult == 1);
         
@@ -987,21 +1001,26 @@ bool FileCopyWorker::verifySignatureWithRsaPss(const QString &signature, const Q
         result = false;
     }
     
+cleanup:
     // 清理资源
-    /*
-    if (pkey_ctx) {
-        EVP_PKEY_CTX_free(pkey_ctx);
-    }
+    // 注意：pkey_ctx由EVP_MD_CTX管理，不需要单独释放
+    // 但为了安全，如果它被单独创建了，也需要释放
+    // 由于我们使用EVP_DigestVerifyInit自动创建，它会被md_ctx管理
+    // 但为了兼容性，如果pkey_ctx存在且不是由md_ctx管理的，需要释放
+    // 实际上，当md_ctx被释放时，pkey_ctx也会被自动释放，所以这里不需要单独释放pkey_ctx
+    
     if (md_ctx) {
         EVP_MD_CTX_free(md_ctx);
+        // md_ctx释放后，pkey_ctx也会被自动释放，所以将pkey_ctx设为nullptr避免重复释放
+        pkey_ctx = nullptr;
     }
+    
     if (pkey) {
         EVP_PKEY_free(pkey);
     }
     if (bio) {
         BIO_free(bio);
     }
-    */
     
     return result;
 }

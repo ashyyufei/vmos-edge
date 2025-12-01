@@ -244,6 +244,7 @@ void DeviceManager::pushFile(const QString &serial, const QString &file, const Q
         
         // 使用绝对路径，避免路径问题
         QString absoluteFilePath = fileInfo.absoluteFilePath();
+        QString originalFileName = fileInfo.fileName();
         
         // Windows上处理中文路径：转换为短路径名（8.3格式）以避免编码问题
 #ifdef Q_OS_WIN
@@ -261,8 +262,24 @@ void DeviceManager::pushFile(const QString &serial, const QString &file, const Q
         absoluteFilePath = shortPath;
 #endif
         
+        QString finalDevicePath = devicePath;
+        if (finalDevicePath.isEmpty()) {
+            finalDevicePath = "/sdcard/Download";
+        }
+
+        // 修复文件名称改变的问题：
+        // 当源文件路径被转换为短路径时，如果目标路径是目录，ADB会使用短文件名作为目标文件名。
+        // 因此我们需要明确指定目标文件名。
+        // 如果路径以/结尾，或者没有后缀（认为是目录），则追加原始文件名。
+        if (finalDevicePath.endsWith("/") || QFileInfo(finalDevicePath).suffix().isEmpty()) {
+            if (!finalDevicePath.endsWith("/")) {
+                finalDevicePath += "/";
+            }
+            finalDevicePath += originalFileName;
+        }
+
         // 使用重试机制连接ADB
-        connectAdbForPushFileWithRetry(serial, adbDeviceAddress, absoluteFilePath, devicePath, 0);
+        connectAdbForPushFileWithRetry(serial, adbDeviceAddress, absoluteFilePath, finalDevicePath, 0);
     } else {
         // adbDeviceAddress为空，检查设备对象是否存在
         qDebug() << "DeviceManager::pushFile - adbDeviceAddress is empty, checking device object for serial:" << serial;

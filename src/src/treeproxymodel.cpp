@@ -144,7 +144,11 @@ bool TreeProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_
     // 根据项目类型进行过滤
     switch (itemType) {
     case TreeModel::TypeGroup:
-        // 组节点：如果组内有匹配的设备，则显示组
+        // 组节点：如果选中"所有云机"，始终显示分组（即使分组下没有主机）
+        // 否则，只有当组内有匹配的设备时才显示组
+        if (m_showAllDevices) {
+            return true;
+        }
         return hasMatchingChildren(sourceIndex);
         
     case TreeModel::TypeHost: {

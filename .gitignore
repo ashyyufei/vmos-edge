@@ -3,16 +3,17 @@
 /bin/
 /dist/
 .vs/
-/adi/
-/cbs/
 /out/
 /NSIS_SetupSkin/
 __pycache__/
 vcpkg_installed/
+Output/
 # Ignore CMake user-specific files
 CMakeLists.txt.user
 src/*.qm
 *.pdb
+app.7z
+skin.zip
 
 # Ignore .DS_Store
 .DS_Store

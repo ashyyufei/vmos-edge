@@ -1,0 +1,32 @@
+{
+    "cbsConfig": {
+        "version": "1.0.11.30.4",
+        "fileName": "cbs_go_edge_1.0.11.30.4.cbs",
+        "fileSize": 1024000,
+        "checksum": "sha256:abcd1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+        "description": "CBS自动升级配置文件",
+        "lastUpdate": "2024-01-01T00:00:00Z",
+        "minSupportedVersion": "1.0.0",
+        "updateUrl": "https://api.example.com/cbs/update",
+        "changelog": [
+            "1.0.21 - 初始版本，支持基础功能",
+            "1.0.20 - 修复已知问题",
+            "1.0.19 - 性能优化"
+        ],
+        "compatibility": {
+            "minHostVersion": "1.0.0",
+            "maxHostVersion": "2.0.0",
+            "supportedArchitectures": ["arm64", "x86_64"]
+        },
+        "installInstructions": {
+            "preInstall": [
+                "确保主机有足够的存储空间",
+                "备份当前CBS配置"
+            ],
+            "postInstall": [
+                "重启CBS服务",
+                "验证安装是否成功"
+            ]
+        }
+    }
+}

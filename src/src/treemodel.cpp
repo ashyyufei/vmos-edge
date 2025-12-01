@@ -112,6 +112,8 @@ QByteArray TreeModel::toJson() const
                         deviceObject["tcpAudioPort"] = deviceData.tcpAudioPort;
                         deviceObject["tcpControlPort"] = deviceData.tcpControlPort;
                         deviceObject["macvlanIp"] = deviceData.macvlanIp;
+                        deviceObject["timezone"] = deviceData.timezone;
+                        deviceObject["locale"] = deviceData.locale;
                         devicesArray.append(deviceObject);
                     }
                 }
@@ -470,6 +472,10 @@ void TreeModel::addDevice(const QString& hostIp, const QVariantMap &deviceDataMa
     deviceData.checked = false;
     deviceData.selected = false;
     deviceData.refresh = false;
+    deviceData.networkMode = deviceDataMap["network_mode"].toString();
+    deviceData.timezone = deviceDataMap["timezone"].toString();
+    deviceData.locale = deviceDataMap["locale"].toString();
+
     deviceData.macvlanIp = deviceDataMap.contains("macvlan_ip") ? deviceDataMap["macvlan_ip"].toString() : (deviceDataMap.contains("macvlanIp") ? deviceDataMap["macvlanIp"].toString() : "");
 
     qDebug() << "add device" << deviceData.groupId << deviceData.hostId << deviceData.name;
@@ -507,8 +513,10 @@ void TreeModel::addDevice(const QString& hostIp, const QVariantMap &deviceDataMa
                 if (deviceDataMap.contains("host_ip")) existingDevice.hostIp = deviceDataMap["host_ip"].toString();
                 if (deviceDataMap.contains("hostIp")) existingDevice.hostIp = deviceDataMap["hostIp"].toString();
                 if (deviceDataMap.contains("macvlan_ip")) existingDevice.macvlanIp = deviceDataMap["macvlan_ip"].toString();
+                if (deviceDataMap.contains("network_mode")) existingDevice.networkMode = deviceDataMap["network_mode"].toString();
                 if (deviceDataMap.contains("macvlanIp")) existingDevice.macvlanIp = deviceDataMap["macvlanIp"].toString();
-
+                if (deviceDataMap.contains("timezone")) existingDevice.timezone = deviceDataMap["timezone"].toString();
+                if (deviceDataMap.contains("locale")) existingDevice.locale = deviceDataMap["locale"].toString();
                 existingDevice.checked = checked;
                 existingDevice.selected = selected;
 
@@ -859,7 +867,10 @@ void TreeModel::modifyDevice(const QString& name, const QVariantMap& newData)
         else if (key == "aospVersion" && devicePtr->aospVersion != value.toString()) { devicePtr->aospVersion = value.toString(); changedRoles.append(AospVersionRole); }
         else if (key == "hostIp" && devicePtr->hostIp != value.toString()) { devicePtr->hostIp = value.toString(); changedRoles.append(HostIpRole); }
         else if (key == "macvlanIp" && devicePtr->macvlanIp != value.toString()) { devicePtr->macvlanIp = value.toString(); changedRoles.append(MacvlanIpRole); }
+        else if (key == "network_mode" && devicePtr->networkMode != value.toString()) { devicePtr->networkMode = value.toString(); changedRoles.append(NetworkModeRole); }
         else if (key == "macvlan_ip" && devicePtr->macvlanIp != value.toString()) { devicePtr->macvlanIp = value.toString(); changedRoles.append(MacvlanIpRole); }
+        else if (key == "timezone" && devicePtr->timezone != value.toString()) { devicePtr->timezone = value.toString(); changedRoles.append(TimeZoneRole); }
+        else if (key == "locale" && devicePtr->locale != value.toString()) { devicePtr->locale = value.toString(); changedRoles.append(LocaleRole); }
     }
 
     if (!changedRoles.isEmpty()) {
@@ -923,6 +934,8 @@ void TreeModel::modifyDeviceEx(const QString &shortId, const QVariantMap &newDat
         else if (key == "hostIp" && devicePtr->hostIp != value.toString()) { devicePtr->hostIp = value.toString(); changedRoles.append(HostIpRole); }
         else if (key == "macvlanIp" && devicePtr->macvlanIp != value.toString()) { devicePtr->macvlanIp = value.toString(); changedRoles.append(MacvlanIpRole); }
         else if (key == "macvlan_ip" && devicePtr->macvlanIp != value.toString()) { devicePtr->macvlanIp = value.toString(); changedRoles.append(MacvlanIpRole); }
+        else if (key == "timezone" && devicePtr->timezone != value.toString()) { devicePtr->timezone = value.toString(); changedRoles.append(TimeZoneRole); }
+        else if (key == "locale" && devicePtr->locale != value.toString()) { devicePtr->locale = value.toString(); changedRoles.append(LocaleRole); }
     }
 
     if (!changedRoles.isEmpty()) {
@@ -1017,6 +1030,8 @@ void TreeModel::updateDevice(const QString& dbId, const QVariantMap& device)
         else if (key == "hostIp" && devicePtr->hostIp != value.toString()) { devicePtr->hostIp = value.toString(); changedRoles.append(HostIpRole); }
         else if (key == "macvlanIp" && devicePtr->macvlanIp != value.toString()) { devicePtr->macvlanIp = value.toString(); changedRoles.append(MacvlanIpRole); }
         else if (key == "macvlan_ip" && devicePtr->macvlanIp != value.toString()) { devicePtr->macvlanIp = value.toString(); changedRoles.append(MacvlanIpRole); }
+        else if (key == "timezone" && devicePtr->timezone != value.toString()) { devicePtr->timezone = value.toString(); changedRoles.append(TimeZoneRole); }
+        else if (key == "locale" && devicePtr->locale != value.toString()) { devicePtr->locale = value.toString(); changedRoles.append(LocaleRole); }
     }
 
     // 恢复勾选/选中状态
@@ -1340,6 +1355,9 @@ void TreeModel::parseDevice(const QJsonObject& padObject, DeviceData& device)
     device.memory = padObject["memory"].toInt();
     device.created = padObject["created"].toString();
     device.width = padObject["width"].toString();
+    device.timezone = padObject["timezone"].toString();
+    device.locale = padObject["locale"].toString();
+
     device.aospVersion = aospVersion.isEmpty() ? padObject["aosp_version"].toString() : aospVersion;
     device.hostIp = hostIp.isEmpty() ? padObject["host_ip"].toString() : hostIp;
     // Macvlan IP字段
@@ -1379,6 +1397,16 @@ void TreeModel::parseDevice(const QJsonObject& padObject, DeviceData& device)
     device.tcpAudioPort = tcpAudioPortValue.isDouble() ? tcpAudioPortValue.toInt() : (tcpAudioPortValue.isString() ? tcpAudioPortValue.toString().toInt() : 0);
     device.tcpControlPort = tcpControlPortValue.isDouble() ? tcpControlPortValue.toInt() : (tcpControlPortValue.isString() ? tcpControlPortValue.toString().toInt() : 0);
     
+    // 网络模式字段
+    // 接口返回的字段名为 network_mode
+    // 配置文件保存的字段名为 networkMode
+    // 优先使用接口字段名（下划线），如果不存在则使用配置文件字段名（驼峰）
+    if (padObject.contains("network_mode")) {
+        device.networkMode = padObject["network_mode"].toString();
+    } else {
+        device.networkMode = "bridge"; // 默认值为空，若不指定则使用配置的连接方式
+    }
+
     device.checked = false;
     device.selected = false;
     device.refresh = false;
@@ -1570,6 +1598,12 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const
                     return device.tcpControlPort;
                 }
                 case MacvlanIpRole: return device.macvlanIp;
+                case NetworkModeRole: 
+                {
+                    return device.networkMode;
+                }
+                case TimeZoneRole: return device.timezone;
+                case LocaleRole: return device.locale;
                 default: return QVariant();
             }
         }
@@ -1712,6 +1746,18 @@ bool TreeModel::setData(const QModelIndex &index, const QVariant &value, int rol
                     device.macvlanIp = value.toString();
                     success = true;
                     break;
+                case NetworkModeRole:
+                    device.networkMode = value.toString();
+                    success = true;
+                    break;
+                case LocaleRole:
+                    device.locale = value.toString();
+                    success = true;
+                    break;
+                case TimeZoneRole:
+                    device.timezone = value.toString();
+                    success = true;
+                    break;
                 default:
                     return false;
             }
@@ -1774,6 +1820,10 @@ QHash<int, QByteArray> TreeModel::roleNames() const
     roles[TcpAudioPortRole] = "tcpAudioPort";
     roles[TcpControlPortRole] = "tcpControlPort";
     roles[MacvlanIpRole] = "macvlanIp";
+    roles[NetworkModeRole] = "networkMode";
+    roles[TimeZoneRole] = "timezone";
+    roles[LocaleRole] = "locale";
+
     return roles;
 }
 
@@ -2132,6 +2182,9 @@ void TreeModel::updateDeviceList(const QString &hostIp, const QVariantList &newD
             if (oldDevice.tcpAudioPort != newDeviceFromServer.tcpAudioPort) { oldDevice.tcpAudioPort = newDeviceFromServer.tcpAudioPort; changedRoles.append(TcpAudioPortRole); }
             if (oldDevice.tcpControlPort != newDeviceFromServer.tcpControlPort) { oldDevice.tcpControlPort = newDeviceFromServer.tcpControlPort; changedRoles.append(TcpControlPortRole); }
             if (oldDevice.macvlanIp != newDeviceFromServer.macvlanIp) { oldDevice.macvlanIp = newDeviceFromServer.macvlanIp; changedRoles.append(MacvlanIpRole); }
+            if (oldDevice.networkMode != newDeviceFromServer.networkMode) { oldDevice.networkMode = newDeviceFromServer.networkMode; changedRoles.append(NetworkModeRole); }
+            if (oldDevice.timezone != newDeviceFromServer.timezone) { oldDevice.timezone = newDeviceFromServer.timezone; changedRoles.append(TimeZoneRole); }
+            if (oldDevice.locale != newDeviceFromServer.locale) { oldDevice.locale = newDeviceFromServer.locale; changedRoles.append(LocaleRole); }
 
             if (!changedRoles.isEmpty()) {
                 // 同步更新 backingDeviceList（m_devicesByHost 的引用），这样 toJson() 才能正确序列化
@@ -2349,6 +2402,9 @@ void TreeModel::updateDeviceListV3(const QString &hostIp, const QVariantList &pa
         if (m.contains("host_ip")) updateIf("host_ip", m.value("host_ip"), dev.hostIp, HostIpRole);
         if (m.contains("macvlan_ip")) updateIf("macvlan_ip", m.value("macvlan_ip"), dev.macvlanIp, MacvlanIpRole);
         if (m.contains("macvlanIp")) updateIf("macvlanIp", m.value("macvlanIp"), dev.macvlanIp, MacvlanIpRole);
+        if (m.contains("network_mode")) updateIf("network_mode", m.value("network_mode"), dev.networkMode, NetworkModeRole);
+        if (m.contains("locale")) updateIf("locale", m.value("locale"), dev.locale, LocaleRole);
+        if (m.contains("timezone")) updateIf("timezone", m.value("timezone"), dev.timezone, TimeZoneRole);
         if (m.contains("created")) updateIf("created", m.value("created"), dev.created, CreatedRole);
         if (m.contains("id")) updateIf("id", m.value("id"), dev.id, IdRole);
 

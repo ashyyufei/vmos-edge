@@ -12,17 +12,29 @@ FluPopup {
     property var modelData: null  // 可以是单个云机对象，也可以是云机对象数组
     property var downloadedAdiList: []  // 当前主机的 ADI 列表
     property var brandModel: []
-    property var brandModelData: {}
+    property var brandModelData: ({})
     property string currentDeviceBrand: ""  // 当前云机的品牌
     property string currentDeviceModel: ""  // 当前云机的机型
     property var pendingHosts: []  // 待处理的主机列表，每个元素包含 {hostIp, dbIds, adiName, adiPass, adiPath, needUpload}
     property int currentHostIndex: -1  // 当前正在处理的主机索引
     property bool isProcessing: false  // 是否正在处理中
+    property real lon: 0.0  // 经度
+    property real lat: 0.0  // 纬度
+    property string deviceLocale: "en-US"  // 语言
+    property string timezone: "UTC"  // 时区
+    property string country: "CN"  // 国家
+
 
     signal oneKeyNewDeviceResult(string hostIp, var list)
-    signal oneKeyNewDeviceRequest(string hostIp, var dbIds, string adiName, string adiPass)
+    signal oneKeyNewDeviceRequest(string hostIp, var dbIds, string adiName, string adiPass, bool wipeData)
 
     onOpened: {
+        // 重置清除数据选项为默认开启（直接操作开关）
+        if (typeof wipeDataSwitch !== 'undefined') {
+            wipeDataSwitch.checked = true
+            console.log("[一键新机] onOpened: 设置 wipeDataSwitch.checked =", wipeDataSwitch.checked)
+        }
+        
         // 清空品牌和机型列表，等待选择
         root.brandModel = []
         root.brandModelData = {}
@@ -37,15 +49,17 @@ FluPopup {
             modelComboBox.currentIndex = -1
         }
         
-        // 获取主机 ADI 列表
-        var hostIp = getHostIp()
-        if (hostIp) {
-            reqAdiList(hostIp)
-        }
+        // 从本地存储加载位置信息（不再调用接口，由 MainWindow 统一更新）
+        loadIpInfoFromStorage()
         
         // 判断是单云机还是批量
         var deviceList = getDeviceList()
         if (deviceList.length === 1) {
+            // 单云机：获取主机 ADI 列表
+            var hostIp = getHostIp()
+            if (hostIp) {
+                reqAdiList(hostIp)
+            }
             // 单云机：根据镜像的 Android 版本过滤品牌和机型，并获取当前品牌和机型
             var device = deviceList[0]
             if (device.hostIp && device.dbId) {
@@ -148,12 +162,14 @@ FluPopup {
                     font.pixelSize: 12
                     wrapMode: Text.WordWrap
                     verticalAlignment: Text.AlignVCenter
-                    text: qsTr("一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！")
+                    text: qsTr("一键新机后云手机参数会重新生成，请谨慎操作！")
                     color: "#1976D2"
                 }
             }
 
+            // 品牌和机型选择（仅单云机时显示）
             RowLayout{
+                visible: getDeviceList().length === 1
                 FluText {
                     text: qsTr("指定机型");
                     font.bold: true
@@ -166,6 +182,7 @@ FluPopup {
 
             RowLayout{
                 Layout.topMargin: 8
+                visible: getDeviceList().length === 1
                 
                 FluText { 
                     text: qsTr("品牌"); 
@@ -208,6 +225,26 @@ FluPopup {
                     id: modelComboBox
                     Layout.fillWidth: true
                     model: []
+                }
+            }
+
+            RowLayout {
+                FluText {
+                    text: qsTr("清理数据")
+                    font.bold: true
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                }
+
+                FluToggleSwitch {
+                    id: wipeDataSwitch
+                    checked: true  // 默认开启
+                    checkColor: ThemeUI.primaryColor
+                    onCheckedChanged: {
+                        console.log("[一键新机] wipeDataSwitch.checked 改变为:", checked)
+                    }
                 }
             }
 
@@ -313,7 +350,8 @@ FluPopup {
                         for (var k = 0; k < hostIps.length; k++) {
                             var ip = hostIps[k]
                             var dbIds = groups[ip]
-                            root.oneKeyNewDeviceRequest(ip, dbIds, "", "")
+                            var wipeDataValue = typeof wipeDataSwitch !== 'undefined' ? wipeDataSwitch.checked : true
+                            root.oneKeyNewDeviceRequest(ip, dbIds, "", "", wipeDataValue)
                         }
                         root.close()
                         btnOk.enabled = true
@@ -653,7 +691,8 @@ FluPopup {
         } else {
             console.log("[一键新机] 主机", hostIp, "已存在 ADI", hostInfo.adiName, "，跳过上传")
             // 直接执行一键新机
-            root.oneKeyNewDeviceRequest(hostInfo.hostIp, hostInfo.dbIds, hostInfo.adiName, hostInfo.adiPass)
+            var wipeDataValue = typeof wipeDataSwitch !== 'undefined' ? wipeDataSwitch.checked : true
+            root.oneKeyNewDeviceRequest(hostInfo.hostIp, hostInfo.dbIds, hostInfo.adiName, hostInfo.adiPass, wipeDataValue)
             // 处理下一个主机
             root.currentHostIndex++
             processNextHost()
@@ -865,11 +904,18 @@ FluPopup {
     }
 
     function reqOneKeyNewDevice(ip, dbIds, adiName, adiPass){
-        console.log("[一键新机] 请求一键新机", "ip=", ip, "dbIds=", dbIds, "adiName=", adiName, "adiPass=", adiPass ? "***" : "")
+        var wipeDataValue = typeof wipeDataSwitch !== 'undefined' ? wipeDataSwitch.checked : true
+        console.log("[一键新机] 请求一键新机", "ip=", ip, "dbIds=", dbIds, "adiName=", adiName, "adiPass=", adiPass ? "***" : "", "wipeData=", wipeDataValue, "wipeDataSwitch.checked=", typeof wipeDataSwitch !== 'undefined' ? wipeDataSwitch.checked : "undefined")
         Network.postJson(`http://${ip}:18182/container_api/v1` + "/replace_devinfo")
         .addList("db_ids", dbIds)
         .add("adiName", adiName || "")
         .add("adiPass", adiPass || "")
+        .add("lon", root.lon)
+        .add("lat", root.lat)
+        .add("locale", "")
+        .add("timezone", "")
+        .add("country", "")
+        .add("wipeData", wipeDataValue)
         .setUserData(ip)
         .bind(root)
         .go(oneKeyNewDevice)
@@ -902,7 +948,8 @@ FluPopup {
                 if (root.currentHostIndex < root.pendingHosts.length) {
                     var hostInfo = root.pendingHosts[root.currentHostIndex]
                     console.log("[一键新机] ADI 上传成功，执行一键新机", "ip=", hostInfo.hostIp)
-                    root.oneKeyNewDeviceRequest(hostInfo.hostIp, hostInfo.dbIds, hostInfo.adiName, hostInfo.adiPass)
+                    var wipeDataValue = typeof wipeDataSwitch !== 'undefined' ? wipeDataSwitch.checked : true
+                    root.oneKeyNewDeviceRequest(hostInfo.hostIp, hostInfo.dbIds, hostInfo.adiName, hostInfo.adiPass, wipeDataValue)
                     // 处理下一个主机
                     root.currentHostIndex++
                     processNextHost()
@@ -918,6 +965,28 @@ FluPopup {
         .setUserData(ip)
         .bind(root)
         .go(importAdi)
+    }
+
+
+    // 从本地存储加载位置信息
+    function loadIpInfoFromStorage() {
+        var saved = SettingsHelper.get("ipInfo_called", false)
+        if (saved) {
+            root.lon = SettingsHelper.get("ipInfo_lon", 0.0)
+            root.lat = SettingsHelper.get("ipInfo_lat", 0.0)
+            root.deviceLocale = SettingsHelper.get("ipInfo_deviceLocale", "en-US")
+            root.timezone = SettingsHelper.get("ipInfo_timezone", "UTC")
+            root.country = SettingsHelper.get("ipInfo_country", "CN")
+            console.log("[一键新机] 从本地存储加载IP信息 - lon:", root.lon, "lat:", root.lat, "locale:", root.deviceLocale, "timezone:", root.timezone, "country:", root.country)
+        } else {
+            // 如果没有保存的数据，使用默认值
+            root.lon = 0.0
+            root.lat = 0.0
+            root.deviceLocale = "en-US"
+            root.timezone = "UTC"
+            root.country = "CN"
+            console.log("[一键新机] 本地存储中没有IP信息，使用默认值")
+        }
     }
 }
 

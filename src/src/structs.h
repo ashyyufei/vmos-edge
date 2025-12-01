@@ -45,7 +45,10 @@ enum DeviceRoles {
     TcpVideoPortRole,
     TcpAudioPortRole,
     TcpControlPortRole,
-    MacvlanIpRole
+    MacvlanIpRole,
+    NetworkModeRole,
+    TimeZoneRole,
+    LocaleRole
 };
 
 // 设备数据结构体
@@ -78,6 +81,9 @@ struct DeviceData {
     int tcpAudioPort;                 // TCP音频流端口
     int tcpControlPort;               // TCP控制流端口
     QString macvlanIp;               // Macvlan IP地址
+    QString networkMode;              // 网络模式: "macvlan" (直连) 或 "bridge" (桥接)
+    QString timezone;                 // 时区
+    QString locale;                 // 语言
 };
 
 inline bool operator==(const DeviceData& a, const DeviceData& b) {
@@ -107,7 +113,10 @@ inline bool operator==(const DeviceData& a, const DeviceData& b) {
            a.tcpVideoPort == b.tcpVideoPort &&
            a.tcpAudioPort == b.tcpAudioPort &&
            a.tcpControlPort == b.tcpControlPort &&
-           a.macvlanIp == b.macvlanIp;
+           a.macvlanIp == b.macvlanIp &&
+           a.networkMode == b.networkMode &&
+           a.timezone == b.timezone &&
+           a.locale == b.locale;
 }
 
 Q_DECLARE_METATYPE(DeviceData)

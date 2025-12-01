@@ -406,36 +406,29 @@ Item {
                                     const hostIp = model.hostIp || ""
                                     const adb = model.adb || 0
                                     const dbId = model.dbId || model.db_id || model.name || ""
-                                    
+                                    const ip = model.ip || ""
+                                    const useDirectTcp = model.networkMode === "macvlan"
+                                    const realIP = useDirectTcp ? ip : hostIp;
+                                
                                     if (AppConfig.useDirectTcp) {
                                         // TCP直接连接模式：先启动 scrcpy_server，再连接
-                                        const tcpVideoPort = model.tcpVideoPort || 0
-                                        const tcpAudioPort = 0//model.tcpAudioPort || 0
-                                        const tcpControlPort = model.tcpControlPort || 0
+                                        const tcpVideoPort = useDirectTcp ? 9999 : (model.tcpVideoPort || 0)
+                                        const tcpAudioPort = useDirectTcp ? 9998 : (model.tcpAudioPort || 0)
+                                        const tcpControlPort = useDirectTcp ? 9997 : (model.tcpControlPort || 0)
                                         
                                         console.log("使用TCP直接连接模式:", hostIp, dbId, "ports:", tcpVideoPort, tcpAudioPort, tcpControlPort)
                                         
-                                        // 先启动 scrcpy_server
-                                        // startScrcpyServerForDevice(hostIp, dbId, tcpVideoPort, tcpAudioPort, tcpControlPort,
-                                        //     // 启动成功后的回调
-                                        //     (hostIp, dbId) => {
-                                                console.log("scrcpy_server 启动成功，开始连接设备")
-                                                deviceManager.connectDeviceDirectTcp(
-                                                    dbId,           // serial
-                                                    hostIp,         // host
-                                                    tcpVideoPort,   // videoPort
-                                                    tcpAudioPort,   // audioPort
-                                                    tcpControlPort  // controlPort
-                                                )
-                                        //     },
-                                        //     // 启动失败的回调
-                                        //     (error) => {
-                                        //         console.error("启动 scrcpy_server 失败，无法连接设备:", error)
-                                        //     }
-                                        // )
+                                        console.log("scrcpy_server 启动成功，开始连接设备")
+                                        deviceManager.connectDeviceDirectTcp(
+                                            dbId,           // serial
+                                            realIP,         // host
+                                            tcpVideoPort,   // videoPort
+                                            tcpAudioPort,   // audioPort
+                                            tcpControlPort  // controlPort
+                                        )
                                     } else {
                                         // ADB连接模式
-                                        const deviceAddress = `${hostIp}:${adb}`
+                                        const deviceAddress = `${realIP}:${adb}`
                                         console.log("使用ADB连接模式:", deviceAddress)
                                         deviceManager.connectDevice(deviceAddress)
                                     }

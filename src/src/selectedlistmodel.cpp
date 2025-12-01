@@ -68,6 +68,7 @@ QVariant SelectedListModel::data(const QModelIndex &index, int role) const
         case DeviceRoles::TcpAudioPortRole: return device.tcpAudioPort;
         case DeviceRoles::TcpControlPortRole: return device.tcpControlPort;
         case DeviceRoles::MacvlanIpRole: return device.macvlanIp;
+        case DeviceRoles::NetworkModeRole: return device.networkMode;
         default: return QVariant();
     }
 }

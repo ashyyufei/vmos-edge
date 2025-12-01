@@ -24,15 +24,15 @@ find_package(LibArchive REQUIRED)
 find_package(zstd CONFIG REQUIRED)
 find_path(STB_INCLUDE_DIRS "stb.h")
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET
-    libavcodec
-    libavdevice
-    libavfilter
-    libavformat
-    libavutil
-    libswresample
-    libswscale
-)
+# pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET
+#     libavcodec
+#     libavdevice
+#     libavfilter
+#     libavformat
+#     libavutil
+#     libswresample
+#     libswscale
+# )
 
 find_program(QT_LUPDATE NAMES lupdate)
 find_program(QT_LRELEASE NAMES lrelease)
@@ -160,7 +160,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt${QT_VERSION_MAJOR}::ShaderToolsPrivate
     fluentuiplugin
     yuv
-    PkgConfig::FFMPEG
+    # PkgConfig::FFMPEG
     ${LibArchive_LIBRARIES}
     zstd::libzstd_shared
     OpenSSL::SSL

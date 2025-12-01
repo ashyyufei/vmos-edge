@@ -53,6 +53,37 @@ QtObject {
         })
     }
 
+    // 检查指定 fingerprint 的窗口是否存在
+    function hasWindowByFingerprint(fingerprint) {
+        if (fingerprint === undefined || fingerprint === null || fingerprint === "") {
+            return false
+        }
+        for(var i = 0; i < windows.length; i++) {
+            if(windows[i]._fingerprint === fingerprint) {
+                return true
+            }
+        }
+        return false
+    }
+
+    // 关闭指定 fingerprint 的窗口
+    function closeWindowByFingerprint(fingerprint) {
+        if (fingerprint === undefined || fingerprint === null || fingerprint === "") {
+            return false
+        }
+        var found = false
+        windows = windows.filter(function(win) {
+            if(win._fingerprint === fingerprint) {
+                win.close()
+                win.deleteLater()
+                found = true
+                return false
+            }
+            return true
+        })
+        return found
+    }
+
     // 排列窗口
     function arrangeWindows(route, screenInfo) {
         if (!screenInfo) {

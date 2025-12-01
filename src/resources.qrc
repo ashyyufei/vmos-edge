@@ -1012,6 +1012,7 @@
         <file>res/main/color_disable@2x.png</file>
         <file>qml/AddBoxPopup.qml</file>
         <file>qml/CreateCloudPhonePopup.qml</file>
+        <file>qml/CloneCloudPhonePopup.qml</file>
         <file>qml/AddProxyPopup.qml</file>
         <file>qml/BoxListView.qml</file>
         <file>qml/BoxDetailPopup.qml</file>
@@ -1036,6 +1037,7 @@
         <file>res/public.pem</file>
         <file>qml/UpgradeCloudPhonePopup.qml</file>
         <file>qml/ProxySettingsPopup.qml</file>
+        <file>qml/TimeZoneCloudPhonePopup.qml</file>
         <file>res/main/btn_restore.png</file>
         <file>res/main/btn_restore@1.5x.png</file>
         <file>res/main/btn_restore@1.25x.png</file>
@@ -1046,6 +1048,7 @@
         <file>qml/MainWindow.qml</file>
         <file>res/main/host_link.svg</file>
         <file>res/pad/help.svg</file>
+        <file>res/pad/yunji_edit.svg</file>
         <file>res/pad/pad_apk.png</file>
         <file>res/pad/pad_apk@1.5x.png</file>
         <file>res/pad/pad_apk@1.25x.png</file>
@@ -1059,5 +1062,7 @@
         <file>res/pad/logo-head@2x.png</file>
         <file>qml/OneKeyNewDevicePopup.qml</file>
         <file>qml/DeviceDetailPopup.qml</file>
+        <file>qml/CameraStreamPopup.qml</file>
+        <file>qml/CountryListModel.qml</file>
     </qresource>
 </RCC>

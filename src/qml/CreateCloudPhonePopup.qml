@@ -24,6 +24,12 @@ FluPopup {
     property bool isApplyingTemplateResolution: false  // 标记是否正在程序自动应用模板分辨率
     property bool boolStart: false  // 是否立即启动云机
     property int runningDeviceCount: 0  // 当前主机运行中的云机数量
+    property real lon: 0.0  // 经度
+    property real lat: 0.0  // 纬度
+    property string deviceLocale: "en-US"  // 语言
+    property string timezone: "UTC"  // 时区
+    property string country: "CN"  // 国家
+    property string macvlan_start_ip: ""  // 时区
 
     ListModel {
         id: localImagesModel
@@ -106,6 +112,8 @@ FluPopup {
                                         root.createDeviceParams.num,
                                         root.createDeviceParams.adiName || "",
                                         root.createDeviceParams.adiPass || "",
+                                        root.createDeviceParams.adiPass || "",
+                                        root.createDeviceParams.macvlan_start_ip || "",
                                         root.createDeviceParams.boolMacvlan || false
                                     );
                                     root.createDeviceParams = null;
@@ -141,6 +149,7 @@ FluPopup {
                                         root.createDeviceParams.num,
                                         root.createDeviceParams.adiName || "",
                                         root.createDeviceParams.adiPass || "",
+                                        root.createDeviceParams.macvlan_start_ip || "",
                                         root.createDeviceParams.boolMacvlan || false
                                     );
                                     root.createDeviceParams = null;
@@ -594,6 +603,9 @@ FluPopup {
         
         reqDeviceImageList(modelData.ip)
         reqAdiList(modelData.ip)
+        
+        // 从本地存储加载位置信息（不再调用接口，由 MainWindow 统一更新）
+        loadIpInfoFromStorage()
     }
 
     ColumnLayout {
@@ -889,8 +901,6 @@ FluPopup {
 
             RowLayout{
                 Layout.topMargin: 5
-
-
                 RowLayout {
                     spacing: 5
 
@@ -923,9 +933,147 @@ FluPopup {
                     FluToggleSwitch{
                         id: macvlanToggle
                         checkColor: ThemeUI.primaryColor
+                        onCheckedChanged:{
+                             if (checked) 
+                             {
+                                reqNetServiceInfo(modelData.ip)
+                             } else {
+                                startIpInput.text = ""
+                                gatewayInput.text = ""
+                                subnetMaskInput.text = ""
+                                subnetCidrInput.text = ""
+                             }
+                        }
                     }
                 }
             }
+
+            ColumnLayout {
+                id: networkConfigArea
+                Layout.fillWidth: true
+                Layout.topMargin: 10
+                spacing: 15
+                visible: macvlanToggle.checked
+
+                // 使用两个并行的列布局，确保垂直对齐
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: 20
+
+                    // 左侧列：起始IP和默认网关
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        spacing: 15
+
+                        // 起始IP
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: 10
+
+                            FluText {
+                                text: "起始IP"
+                                font.pixelSize: 12
+                                color: "#666"
+                                Layout.preferredWidth: 60
+                                Layout.alignment: Qt.AlignVCenter
+                            }
+
+                            FluTextBox {
+                                id: startIpInput
+                                Layout.fillWidth: true
+                                font.pixelSize: 12
+                                placeholderText: "192.168.10.20"
+                                property bool isValid: false
+                                onEditingFinished: {
+                                    isValid = isValidIp(text.trim())
+                                    if (text.length > 0 && !isValid) {
+                                        showError(qsTr("请输入正确的IP地址"))
+                                        text = macvlan_start_ip
+                                    } 
+                                }
+                            }
+                        }
+
+                        // 默认网关
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: 10
+
+                            FluText {
+                                text: "默认网关"
+                                font.pixelSize: 12
+                                color: "#666"
+                               
+                                Layout.preferredWidth: 60  // 与起始IP标签相同宽度
+                                Layout.alignment: Qt.AlignVCenter
+                            }
+
+                            FluTextBox {
+                                id: gatewayInput
+                                font.pixelSize: 12
+                                Layout.fillWidth: true
+                                readOnly: true
+                                placeholderText: "192.168.0.1"
+                            }
+                        }
+                    }
+
+                    // 右侧列：子网掩码和Subnet
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        spacing: 15
+
+                        // 子网掩码
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: 10
+
+                            FluText {
+                                text: "子网掩码"
+                                font.pixelSize: 12
+                                color: "#666"
+                                Layout.preferredWidth: 60
+                                Layout.alignment: Qt.AlignVCenter
+                            }
+
+                            FluTextBox {
+                                id: subnetMaskInput
+                                font.pixelSize: 12
+                                Layout.fillWidth: true
+                                readOnly: true
+                                placeholderText: "255.255.254.5"
+                            }
+                        }
+
+                        // Subnet
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: 10
+
+                            FluText {
+                                text: "Subnet"
+                                font.pixelSize: 12
+                                color: "#666"
+                                Layout.preferredWidth: 60  // 与子网掩码标签相同宽度
+                                Layout.alignment: Qt.AlignVCenter
+                            }
+
+                            FluTextBox {
+                                id: subnetCidrInput
+                                Layout.fillWidth: true
+                                font.pixelSize: 12
+                                readOnly: true
+                                placeholderText: "192.168.10.0/23"
+                                validator: IntValidator {
+                                    bottom: 0
+                                    top: 32
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
 
             RowLayout{
                 
@@ -1131,6 +1279,7 @@ FluPopup {
                     var adiName = defaultTpl ? defaultTpl.name : ""
                     var defaultAdiPath = defaultTpl ? defaultTpl.filePath : ""
                     var adiPass = ""  // 初始化密码
+                    var start_ip = startIpInput.text
                     console.log("[创建云机] 解析版本:", androidVersion, "默认模板:", JSON.stringify(defaultTpl), "初始adiName:", adiName)
                     
                     // 使用镜像版本与主机已存在的镜像列表比较
@@ -1237,6 +1386,7 @@ FluPopup {
                                 "num": num,
                                 "adiName": adiName,
                                 "adiPass": adiPass || "",
+                                "macvlan_start_ip" : start_ip,
                                 "boolMacvlan": macvlanToggle.checked
                             }
                             // 保存待创建参数，供 ADI 列表可见后触发创建
@@ -1246,7 +1396,7 @@ FluPopup {
                             reqImportAdi(root.modelData.ip, adiPath);
                         } else {
                             console.log("[创建云机] 直接创建云机(主机镜像)")
-                            reqCreateDevice(root.modelData.ip, name, imageName, resolution, true, dnsList, num, adiName, adiPass || "", macvlanToggle.checked);
+                            reqCreateDevice(root.modelData.ip, name, imageName, resolution, true, dnsList, num, adiName, adiPass || "", start_ip, macvlanToggle.checked);
                         }
                         return;
                     }
@@ -1281,6 +1431,7 @@ FluPopup {
                                 "num": num,
                                 "adiName": adiName,
                                 "adiPass": adiPass || "",
+                                "macvlan_start_ip" : start_ip,
                                 "boolMacvlan": macvlanToggle.checked
                             }
                             // 保存待创建参数，供 ADI 列表可见后触发创建
@@ -1290,7 +1441,7 @@ FluPopup {
                             reqImportAdi(root.modelData.ip, adiPath);
                         } else {
                             console.log("[创建云机] 直接创建云机(主机已有镜像)")
-                            reqCreateDevice(root.modelData.ip, name, imageName, resolution, true, dnsList, num, adiName, adiPass || "", macvlanToggle.checked);
+                            reqCreateDevice(root.modelData.ip, name, imageName, resolution, true, dnsList, num, adiName, adiPass || "", start_ip, macvlanToggle.checked);
                         }
                     } else {
                         console.log("[创建云机] 主机不存在该镜像，将上传:", path, "needUploadAdi=", needUploadAdi)
@@ -1307,6 +1458,7 @@ FluPopup {
                             "adiPath": adiPath,
                             "adiName": adiName,
                             "adiPass": adiPass || "",
+                            "macvlan_start_ip" : start_ip,
                             "boolMacvlan": macvlanToggle.checked
                         }
                         reqUploadImage(root.modelData.ip, path);
@@ -1515,7 +1667,7 @@ FluPopup {
                                 // 可见了，发起创建
                                 var p = root.pendingCreate
                                 root.pendingCreate = null
-                                reqCreateDevice(p.ip, p.name, p.repoName, p.resolution, p.selinux, p.dns, p.num, p.adiName, p.adiPass, p.boolMacvlan || false)
+                                reqCreateDevice(p.ip, p.name, p.repoName, p.resolution, p.selinux, p.dns, p.num, p.adiName, p.adiPass, p.macvlan_start_ip, p.boolMacvlan || false)
                             } else if (root.adiPollLeft > 0) {
                                 root.adiPollLeft -= 1
                                 adiPollTimer.start()
@@ -1523,7 +1675,7 @@ FluPopup {
                                 // 超时也尝试创建一次（有些后端不暴露列表，但已可用）
                                 var p2 = root.pendingCreate
                                 root.pendingCreate = null
-                                reqCreateDevice(p2.ip, p2.name, p2.repoName, p2.resolution, p2.selinux, p2.dns, p2.num, p2.adiName, p2.adiPass, p2.boolMacvlan || false)
+                                reqCreateDevice(p2.ip, p2.name, p2.repoName, p2.resolution, p2.selinux, p2.dns, p2.num, p2.adiName, p2.adiPass, p.macvlan_start_ip, p2.boolMacvlan || false)
                             }
                         }
                         // 如果有结构化数据（brand/model），则更新品牌机型；本次接口只提供文件名则跳过
@@ -1611,7 +1763,7 @@ FluPopup {
     }
 
     // 创建云机
-    function reqCreateDevice(ip, padName, image_url, resolution, selinux, dns, count, adiName, adiPass, boolMacvlan){
+    function reqCreateDevice(ip, padName, image_url, resolution, selinux, dns, count, adiName, adiPass, start_ip, boolMacvlan){
         if (!guardStorageOrWarn()) return
         console.log("create with adiName:", adiName, "boolMacvlan:", boolMacvlan)
         
@@ -1626,6 +1778,12 @@ FluPopup {
         .add("adiPass", adiPass || "")
         .add("bool_start", root.boolStart)
         .add("bool_macvlan", boolMacvlan || false)
+        .add("lon", root.lon)
+        .add("lat", root.lat)
+        .add("locale", root.deviceLocale)
+        .add("macvlan_start_ip", start_ip || "")
+        .add("timezone", root.timezone)
+        .add("country", root.country)
         .setUserData(ip)
         .bind(root)
         .go(createDevice)
@@ -1768,5 +1926,57 @@ FluPopup {
         Network.get(`http://${ip}:18182/v1` + "/get_hardware_cfg")
         .bind(root)
         .go(hardwareCfg)
+    }
+
+
+    // 从本地存储加载位置信息
+    function loadIpInfoFromStorage() {
+        var saved = SettingsHelper.get("ipInfo_called", false)
+        if (saved) {
+            root.lon = SettingsHelper.get("ipInfo_lon", 0.0)
+            root.lat = SettingsHelper.get("ipInfo_lat", 0.0)
+            root.deviceLocale = SettingsHelper.get("ipInfo_deviceLocale", "en-US")
+            root.timezone = SettingsHelper.get("ipInfo_timezone", "UTC")
+            root.country = SettingsHelper.get("ipInfo_country", "CN")
+            console.log("从本地存储加载IP信息 - lon:", root.lon, "lat:", root.lat, "locale:", root.deviceLocale, "timezone:", root.timezone, "country:", root.country)
+        } else {
+            // 如果没有保存的数据，使用默认值
+            root.lon = 0.0
+            root.lat = 0.0
+            root.deviceLocale = "en-US"
+            root.timezone = "UTC"
+            root.country = "CN"
+            console.log("本地存储中没有IP信息，使用默认值")
+        }
+    }
+
+    // 获取主机网络配置
+    function reqNetServiceInfo(ip){
+        Network.get(`http://${ip}:18182/v1` + "/net_info")
+        .bind(root)
+        .go(net_info)
+    }
+
+    NetworkCallable {
+        id: net_info
+        onError:
+            (status, errorString, result, userData) => {
+                console.debug(status + ";" + errorString + ";" + result)
+                // showError(errorString)
+            }
+        onSuccess:
+            (result, userData) => {
+                var res = JSON.parse(result)
+                //todo 解析数据
+                if(res.code === 200) {
+                    startIpInput.text = res.data.host_ip
+                    gatewayInput.text = res.data.gateway
+                    subnetMaskInput.text = res.data.netmask
+                    subnetCidrInput.text = res.data.subnet
+                    macvlan_start_ip = res.data.host_ip
+                }else{
+                    showError(res.msg)
+                }
+            }
     }
 }

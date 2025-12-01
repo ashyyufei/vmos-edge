@@ -23,7 +23,16 @@ T.ComboBox {
     enabled: !disabled
     delegate: FluItemDelegate {
         width: ListView.view.width
-        text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
+        text: {
+            if (!control.textRole) {
+                return modelData
+            }
+            if (Array.isArray(control.model)) {
+                return modelData && modelData[control.textRole] ? modelData[control.textRole] : ""
+            }
+            // For ListModel or other model types
+            return model && model[control.textRole] ? model[control.textRole] : ""
+        }
         palette.text: control.palette.text
         font: control.font
         palette.highlightedText: control.palette.highlightedText
@@ -64,16 +73,16 @@ T.ComboBox {
         validator: control.validator
         selectByMouse: true
         verticalAlignment: Text.AlignVCenter
-        // background: FluTextBoxBackground{
-        //     border.width: 1
-        //     bottomMargin: {
-        //         if(!control.editable){
-        //             return 1
-        //         }
-        //         return contentItem && contentItem.activeFocus ? 2 : 1
-        //     }
-        //     inputItem: contentItem
-        // }
+        background: FluTextBoxBackground{
+            border.width: 1
+            bottomMargin: {
+                if(!control.editable){
+                    return 1
+                }
+                return contentItem && contentItem.activeFocus ? 2 : 1
+            }
+            inputItem: contentItem
+        }
         Component.onCompleted: {
             forceActiveFocus()
         }
@@ -106,8 +115,16 @@ T.ComboBox {
     popup: T.Popup {
         y: control.height
         width: control.width
-        height: Math.min(contentItem.implicitHeight, control.Window.height - topMargin - bottomMargin)
-        topMargin: 32
+        height: {
+            // 限制最大高度，避免向上延伸到标题栏
+            var maxPopupHeight = 300 // 最大 300px
+            var windowMaxHeight = control.Window ? (control.Window.height - bottomMargin) : maxPopupHeight
+            // 计算从 ComboBox 底部开始的最大可用高度
+            var availableHeight = windowMaxHeight
+            // 限制在合理范围内，确保不会向上延伸
+            return Math.min(contentItem.implicitHeight, Math.min(maxPopupHeight, availableHeight))
+        }
+        topMargin: 0
         bottomMargin: 6
         modal: true
         contentItem: ListView {

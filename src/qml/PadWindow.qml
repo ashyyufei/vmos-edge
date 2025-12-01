@@ -48,6 +48,12 @@ FluWindow {
     property var joystickStatus: []
     property var joystickState: ({ active: false, x: 0.0, y: 0.0, keys: [] })
     property real joystickUpdateInterval: 50 // ms
+    property real lon: 0.0  // 经度
+    property real lat: 0.0  // 纬度
+    property string deviceLocale: "en-US"  // 语言
+    property string timezone: "UTC"  // 时区
+    property string country: "CN"  // 国家
+    property bool wipeData: true  // 是否清理数据
     // 根据配置动态计算设备标识（已废弃，改为根据配置动态获取）
     // property string deviceAddress: `${root.argument.hostIp}:${root.argument.adb}`
 
@@ -65,6 +71,16 @@ FluWindow {
         } else {
             return `${(size / GB).toFixed(2)} GB`;
         }
+    }
+
+    // 生成8位随机字符串（字母和数字）
+    function generateRandomStreamName() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+        let result = ''
+        for (let i = 0; i < 8; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length))
+        }
+        return result
     }
 
     function getVideoFile(fileName){
@@ -398,6 +414,9 @@ FluWindow {
 
         console.log("屏幕比例", aspectRatio)
         // reqStsToken(root.argument.supplierType, root.argument.equipmentId)
+        
+        // 从本地存储加载位置信息（不再调用接口，由 MainWindow 统一更新）
+        loadIpInfoFromStorage()
 
         // 注意：在Component.onCompleted时设备可能还没连接
         // 所以先尝试注册observer，如果失败则在onDeviceConnected信号中再注册
@@ -415,6 +434,26 @@ FluWindow {
         } else {
             console.warn("设备序列号为空，无法设置userData和注册observer")
         }
+        
+        // 恢复视频注入开关状态
+        Qt.callLater(function() {
+            const savedVideoInject = windowSizeHelper.get(root.argument.dbId, "videoInject", 0)
+            console.log("恢复视频注入开关状态，保存的状态:", savedVideoInject, "推流状态:", cameraStreamManager ? cameraStreamManager.isStreaming : false, "RTSP URL:", cameraStreamManager ? cameraStreamManager.rtspUrl : "")
+            if(savedVideoInject === 1){
+                // 如果之前是开启状态，恢复开关状态（但不自动注入，因为可能已经在注入了）
+                if(cameraStreamManager && cameraStreamManager.isStreaming && cameraStreamManager.rtspUrl){
+                    videoInjectSwitch.checked = true
+                    console.log("恢复视频注入开关状态：开启（推流正在进行）")
+                } else {
+                    // 即使推流还没开始，也先恢复开关状态，等推流开始后再同步
+                    videoInjectSwitch.checked = true
+                    console.log("恢复视频注入开关状态：开启（等待推流开始）")
+                }
+            } else {
+                videoInjectSwitch.checked = false
+                console.log("恢复视频注入开关状态：关闭")
+            }
+        })
     }
 
     Component.onDestruction: {
@@ -426,6 +465,14 @@ FluWindow {
         if (root.deviceSerial && root.deviceObserver) {
             deviceManager.deRegisterObserver(root.deviceSerial)
         }
+        
+        // 保存视频注入开关状态
+        if(videoInjectSwitch){
+            windowSizeHelper.save(root.argument.dbId, "videoInject", videoInjectSwitch.checked ? 1 : 0)
+            console.log("保存视频注入开关状态:", videoInjectSwitch.checked ? "开启" : "关闭")
+        }
+        
+        // 窗口关闭时不再自动取消视频注入，保持注入状态以便继续直播任务
         
         stop()
     }
@@ -448,16 +495,6 @@ FluWindow {
         onAccepted: {
             console.log("onAccepted", fileDialog.files, "actionType:", actionType)
             
-            // 检查设备是否连接
-            // if (!deviceManager.hasDevice(deviceAddress)) {
-            //     if (actionType === "apk") {
-            //         showError(qsTr("设备未连接，无法安装APK"))
-            //     } else {
-            //         showError(qsTr("设备未连接，无法导入文件"))
-            //     }
-            //     return
-            // }
-            
             fileDialog.files.forEach(
                         item => {
                             const localPath = FluTools.toLocalPath(item)
@@ -470,8 +507,14 @@ FluWindow {
                                     if(root.deviceSerial){
                                         // 根据连接模式确定ADB设备地址
                                         let adbDeviceAddress = ""
-                                        if (AppConfig.useDirectTcp) {
-                                            // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
+                                        const networkMode = root.argument.networkMode || ""
+                                        if (networkMode === "macvlan") {
+                                            // Macvlan模式：使用 ip:5555 作为ADB设备地址
+                                            const ip = root.argument.ip || ""
+                                            if (ip) {
+                                                adbDeviceAddress = `${ip}:5555`
+                                            }
+                                        } else {
                                             const hostIp = root.argument.hostIp || ""
                                             const adb = root.argument.adb || 0
                                             if (hostIp && adb > 0) {
@@ -485,8 +528,14 @@ FluWindow {
                                     if(root.deviceSerial){
                                         // 根据连接模式确定ADB设备地址
                                         let adbDeviceAddress = ""
-                                        if (AppConfig.useDirectTcp) {
-                                            // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
+                                        const networkMode = root.argument.networkMode || ""
+                                        if (networkMode === "macvlan") {
+                                            // Macvlan模式：使用 ip:5555 作为ADB设备地址
+                                            const ip = root.argument.ip || ""
+                                            if (ip) {
+                                                adbDeviceAddress = `${ip}:5555`
+                                            }
+                                        } else {
                                             const hostIp = root.argument.hostIp || ""
                                             const adb = root.argument.adb || 0
                                             if (hostIp && adb > 0) {
@@ -505,8 +554,14 @@ FluWindow {
                                 if(root.deviceSerial){
                                     // 根据连接模式确定ADB设备地址
                                     let adbDeviceAddress = ""
-                                    if (AppConfig.useDirectTcp) {
-                                        // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
+                                    const networkMode = root.argument.networkMode || ""
+                                    if (networkMode === "macvlan") {
+                                        // Macvlan模式：使用 ip:5555 作为ADB设备地址
+                                        const ip = root.argument.ip || ""
+                                        if (ip) {
+                                            adbDeviceAddress = `${ip}:5555`
+                                        }
+                                    } else {
                                         const hostIp = root.argument.hostIp || ""
                                         const adb = root.argument.adb || 0
                                         if (hostIp && adb > 0) {
@@ -529,6 +584,18 @@ FluWindow {
     GenericDialog {
         id:dialog
         title: qsTr("系统提示")
+    }
+
+    OneKeyNewDevicePopup{
+        id: oneKeyNewDevicePopup
+
+        modal: true
+        z: 999
+        width: parent ? Math.max(360, parent.width - 80) : implicitWidth
+        //width:400
+        onOneKeyNewDeviceRequest: (hostIp, dbIds, adiName, adiPass, wipeData) => {
+            reqOneKeyNewDevice(hostIp, dbIds, adiName, adiPass, wipeData)
+        }
     }
 
     // SharePopup{
@@ -925,7 +992,14 @@ FluWindow {
                                                      if(root.deviceSerial){
                                                          // 根据连接模式确定ADB设备地址
                                                          let adbDeviceAddress = ""
-                                                         if (AppConfig.useDirectTcp) {
+                                                         const networkMode = root.argument.networkMode || ""
+                                                         if (networkMode === "macvlan") {
+                                                             // Macvlan模式：使用 ip:5555 作为ADB设备地址
+                                                             const ip = root.argument.ip || ""
+                                                             if (ip) {
+                                                                 adbDeviceAddress = `${ip}:5555`
+                                                             }
+                                                         } else if (AppConfig.useDirectTcp) {
                                                              // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
                                                              const hostIp = root.argument.hostIp || ""
                                                              const adb = root.argument.adb || 0
@@ -940,7 +1014,14 @@ FluWindow {
                                                      if(root.deviceSerial){
                                                          // 根据连接模式确定ADB设备地址
                                                          let adbDeviceAddress = ""
-                                                         if (AppConfig.useDirectTcp) {
+                                                         const networkMode = root.argument.networkMode || ""
+                                                         if (networkMode === "macvlan") {
+                                                             // Macvlan模式：使用 ip:5555 作为ADB设备地址
+                                                             const ip = root.argument.ip || ""
+                                                             if (ip) {
+                                                                 adbDeviceAddress = `${ip}:5555`
+                                                             }
+                                                         } else if (AppConfig.useDirectTcp) {
                                                              // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
                                                              const hostIp = root.argument.hostIp || ""
                                                              const adb = root.argument.adb || 0
@@ -955,7 +1036,14 @@ FluWindow {
                                                      if(root.deviceSerial){
                                                          // 根据连接模式确定ADB设备地址
                                                          let adbDeviceAddress = ""
-                                                         if (AppConfig.useDirectTcp) {
+                                                         const networkMode = root.argument.networkMode || ""
+                                                         if (networkMode === "macvlan") {
+                                                             // Macvlan模式：使用 ip:5555 作为ADB设备地址
+                                                             const ip = root.argument.ip || ""
+                                                             if (ip) {
+                                                                 adbDeviceAddress = `${ip}:5555`
+                                                             }
+                                                         } else if (AppConfig.useDirectTcp) {
                                                              // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
                                                              const hostIp = root.argument.hostIp || ""
                                                              const adb = root.argument.adb || 0
@@ -1102,14 +1190,15 @@ FluWindow {
                             }
                             FluText{
                                 id: textHostIp
-                                text: root.argument.hostIp + ":" + root.argument.adb
+                                // todo 优化显示格式
+                                text: root.argument.networkMode === "macvlan" ? `${root.argument.ip ?? ""}:5555` : `${root.argument.hostIp ?? ""}:${root.argument.adb ?? ""}`
                                 textColor: "#FFB7BCCC"
                                 font.pixelSize: 10
 
                                 MouseArea{
                                     anchors.fill: parent
                                     onClicked: {
-                                        FluTools.clipText(root.argument.hostIp + ":" + root.argument.adb)
+                                        FluTools.clipText(root.argument.networkMode === "macvlan" ? `${root.argument.ip ?? ""}:5555` : `${root.argument.hostIp ?? ""}:${root.argument.adb ?? ""}`)
                                         showSuccess(qsTr("复制成功"))
                                     }
                                 }
@@ -1202,6 +1291,11 @@ FluWindow {
                                     windowSizeHelper.save(root.argument.dbId, "w", direction == 0 ? realWidth : realHeigth)
                                     windowSizeHelper.save(root.argument.dbId, "h", direction == 0 ? realHeigth : realWidth)
                                     windowSizeHelper.save(root.argument.dbId, "direction", direction)  // 保存方向
+                                }
+                                
+                                // 保存视频注入开关状态
+                                if(videoInjectSwitch){
+                                    windowSizeHelper.save(root.argument.dbId, "videoInject", videoInjectSwitch.checked ? 1 : 0)
                                 }
 
                                 root.close()
@@ -1611,6 +1705,60 @@ FluWindow {
                         }
                     }
 
+                    // 视频注入开关
+                    Item{
+                        Layout.preferredWidth: 40
+                        Layout.preferredHeight: 50
+                        ColumnLayout{
+                            anchors.fill: parent
+                            spacing: 4
+                            
+                            FluText{
+                                text: qsTr("直播")
+                                color: "white"
+                                font.pixelSize: 9
+                                Layout.alignment: Qt.AlignHCenter
+                                Layout.maximumWidth: 40
+                                wrapMode: Text.WordWrap
+                                horizontalAlignment: Text.AlignHCenter
+                            }
+                            
+                            FluToggleSwitch{
+                                id: videoInjectSwitch
+                                Layout.alignment: Qt.AlignHCenter
+                                checkColor: ThemeUI.primaryColor
+                                checked: false
+                                scale: 0.8
+                                // enabled: cameraStreamManager && cameraStreamManager.isStreaming && cameraStreamManager.rtspUrl
+                                onClicked: {
+                                    if(checked){
+                                        // 开启视频注入
+                                        if(cameraStreamManager && cameraStreamManager.isStreaming && cameraStreamManager.rtspUrl){
+                                            console.log("手动开启视频注入，RTSP URL:", cameraStreamManager.rtspUrl)
+                                            // 先关闭注入（如果已注入），然后再开启，避免重复注入错误
+                                            reqVideoInjectOffAndThenInject(cameraStreamManager.rtspUrl)
+                                            // 注意：状态会在注入成功时保存，这里不提前保存
+                                        } else {
+                                            console.warn("无法开启视频注入：推流未开始或RTSP URL为空")
+                                            checked = false
+                                            windowSizeHelper.save(root.argument.dbId, "videoInject", 0)
+                                            showError(qsTr("请先开启推流后再开启直播"))
+                                        }
+                                    } else {
+                                        // 关闭视频注入
+                                        console.log("手动关闭视频注入")
+                                        reqVideoInjectOff()
+                                        // 注意：状态会在关闭成功时保存，这里不提前保存
+                                    }
+                                }
+                            }
+                            
+                            Item{
+                                Layout.fillHeight: true
+                            }
+                        }
+                    }
+
                     // Item{
                     //     Layout.preferredWidth: 40
                     //     Layout.preferredHeight: 50
@@ -1719,17 +1867,6 @@ FluWindow {
                                         videoItem.rotation = 270
                                     }
                                     ReportHelper.reportLog("phone_play_action", root.argument.padCode, {label: "rotation"})
-                                }else if(modelData.name == "live"){
-                                    const realWidth = root.width - spaceWidth
-                                    spaceWidth = 240
-                                    root.width = realWidth + spaceWidth
-                                    layoutTool.visible = false
-                                    layoutExtra.visible = true
-                                    stackLayoutExtra.currentIndex = 0
-                                    videoList = ArmcloudEngine.getVideoDeviceList()
-                                    audioList = ArmcloudEngine.getAudioDeviceList()
-
-                                    ReportHelper.reportLog("phone_play_action", root.argument.padCode, {label: "live"})
                                 }else if(modelData.name === "reboot"){
                                     dialog.title = qsTr("操作确认")
                                     dialog.message = qsTr("确定要重启云机？")
@@ -1745,21 +1882,24 @@ FluWindow {
                                     }
                                     dialog.open()
                                 }else if(modelData.name === "onekey"){
+                                    const padDisplayName = root.argument.displayName || root.argument.name
+                                    const padDbId = root.argument.dbId || root.argument.db_id || root.argument.name
+                                    const padHostIp = root.argument.hostIp || root.argument.ip
+                                    if(!padHostIp || !padDbId){
+                                        showError(qsTr("缺少云机必要信息，无法执行一键新机"))
+                                        return
+                                    }
 
-                                    dialog.title = qsTr("操作确认")
-                                    dialog.message = qsTr("一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！")
-                                    dialog.negativeText = qsTr("取消")
-                                    dialog.onNegativeClickListener = function(){
-                                        dialog.close()
+                                    oneKeyNewDevicePopup.modelData = {
+                                        name: root.argument.name || padDbId,
+                                        displayName: padDisplayName,
+                                        hostIp: padHostIp,
+                                        hostId: root.argument.hostId || root.argument.host_id || "",
+                                        dbId: padDbId,
+                                        image: (root.argument.image || "").split(":")[0],
+                                        aospVersion: root.argument.aospVersion || ""
                                     }
-                                    dialog.positiveText = qsTr("确定")
-                                    dialog.onPositiveClickListener = function(){
-                                        const padName = root.argument.name || root.argument.displayName
-                                        reqOneKeyNewDevice(root.argument.hostIp, [padName])
-                                        dialog.close()
-                                        FluRouter.removeWindow(root)
-                                    }
-                                    dialog.open()
+                                    oneKeyNewDevicePopup.open()
                                 }else if(modelData.name === "change_machine"){
 
                                     dialog.title = qsTr("操作确认")
@@ -1910,379 +2050,6 @@ FluWindow {
                         Layout.fillHeight: true
                         currentIndex: 0
 
-                        // 直播
-                        Item{
-
-                            ColumnLayout{
-                                anchors.fill: parent
-                                anchors.bottomMargin: 10
-                                spacing: 20
-
-                                TabListView{
-                                    Layout.fillWidth: true
-                                    Layout.preferredHeight: 40
-                                    color: "#f5f6fa"
-                                    radius: 4
-                                    model: [qsTr("摄像头推流"), qsTr("无人直播推流")]
-                                    onMenuSelected:
-                                        (index)=> {
-                                            stackLayoutVideo.currentIndex = index
-                                            if(index == 0){
-
-                                            }else if(index == 1){
-                                                reqVideoFileList()
-
-                                                if(client){
-                                                    client.injectVideoStats()
-                                                }
-                                            }
-                                        }
-                                }
-
-                                StackLayout{
-                                    id: stackLayoutVideo
-                                    Layout.fillWidth: true
-                                    Layout.fillHeight: true
-
-                                    ColumnLayout{
-
-                                        RowLayout{
-                                            Layout.preferredHeight: 30
-                                            Layout.fillWidth: true
-
-                                            Image {
-                                                source: "qrc:/res/pad/btn_live_camera1.png"
-                                            }
-                                            FluText{
-                                                text: qsTr("摄像头")
-                                                color: "white"
-                                            }
-
-                                            Item{
-                                                Layout.fillWidth: true
-                                            }
-
-                                            FluToggleSwitch{
-                                                enabled: videoList.length > 0
-                                                visible: false
-                                                onClicked: {
-                                                    if(checked){
-                                                        client.startVideoCapture(videoComboBox.currentIndex)
-                                                        client.publishStream(0)
-                                                    }else{
-                                                        client.stopVideoCapture()
-                                                        client.unPublishStream(0)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        ComboBox{
-                                            id: videoComboBox
-                                            Layout.fillWidth: true
-                                            Layout.preferredHeight: 32
-                                            visible: videoList.length > 0
-                                            editable: false
-                                            textRole: "deviceName"
-                                            model: videoList
-                                            onActivated: {
-                                                SettingsHelper.save("cameraId", currentIndex)
-                                            }
-                                            onModelChanged: {
-                                                if(videoList.length <= 0){
-                                                    return
-                                                }
-
-                                                const cameraId = SettingsHelper.get("cameraId", 0)
-                                                if(cameraId > videoList.length){
-                                                    cameraId = 0
-                                                }
-                                                currentIndex = cameraId
-                                            }
-                                        }
-
-
-                                        Item{
-                                            Layout.fillWidth: true
-                                            Layout.preferredHeight: 130
-                                            visible: videoList.length <= 0
-                                            Image {
-                                                anchors.fill: parent
-                                                source: "qrc:/res/pad/bk_mic.png"
-                                            }
-                                            ColumnLayout{
-                                                anchors.centerIn: parent
-                                                spacing: 10
-
-                                                Image{
-                                                    source: "qrc:/res/pad/btn_live_camera2.png"
-                                                    Layout.alignment: Qt.AlignHCenter
-                                                }
-
-                                                FluText{
-                                                    text: qsTr("未发现摄像头，无法开启")
-                                                    Layout.alignment: Qt.AlignHCenter
-                                                }
-                                            }
-                                        }
-
-                                        RowLayout{
-                                            Layout.preferredHeight: 30
-                                            Layout.fillWidth: true
-
-                                            Image {
-                                                source: "qrc:/res/pad/btn_live_mic.png"
-                                            }
-                                            FluText{
-                                                text: qsTr("麦克风")
-                                                color: "white"
-                                            }
-                                            Item{
-                                                Layout.fillWidth: true
-                                            }
-                                            FluToggleSwitch{
-                                                enabled: audioList.length > 0
-                                                visible: false
-                                                onClicked: {
-                                                    if(checked){
-                                                        client.startAudioCapture(audioComboBox.currentIndex)
-                                                        client.publishStream(1)
-                                                    }else{
-                                                        client.stopAudioCapture()
-                                                        client.unPublishStream(1)
-                                                    }
-                                                }
-                                            }
-                                        }
-
-                                        ComboBox{
-                                            id: audioComboBox
-                                            Layout.fillWidth: true
-                                            Layout.preferredHeight: 32
-                                            visible: audioList.length > 0
-                                            editable: false
-                                            model: audioList
-                                            textRole: "deviceName"
-                                            onActivated: {
-                                                SettingsHelper.save("microphoneId", currentIndex)
-                                            }
-                                            onModelChanged: {
-                                                if(audioList.length <= 0){
-                                                    return
-                                                }
-
-                                                const microphoneId = SettingsHelper.get("microphoneId", 0)
-                                                if(microphoneId > audioList.length){
-                                                    microphoneId = 0
-                                                }
-                                                currentIndex = microphoneId
-                                            }
-                                        }
-
-                                        Item{
-                                            Layout.fillWidth: true
-                                            Layout.preferredHeight: 130
-                                            visible: audioList.length <= 0
-
-                                            Image {
-                                                anchors.fill: parent
-                                                source: "qrc:/res/pad/bk_mic.png"
-                                            }
-
-                                            ColumnLayout{
-                                                anchors.centerIn: parent
-                                                spacing: 10
-
-                                                Image{
-                                                    source: "qrc:/res/pad/btn_live_camera2.png"
-                                                    Layout.alignment: Qt.AlignHCenter
-                                                }
-
-                                                FluText{
-                                                    text: qsTr("未发现麦克风，无法开启")
-                                                    Layout.alignment: Qt.AlignHCenter
-                                                }
-                                            }
-                                        }
-
-                                        Item{
-                                            Layout.fillHeight: true
-                                        }
-                                    }
-
-                                    ColumnLayout{
-                                        Rectangle{
-                                            Layout.fillWidth: true
-                                            Layout.preferredHeight: 62
-                                            visible: !root.currentInjectFile
-                                            radius: 8
-                                            color: "#FFF5F6FA"
-
-                                            FluText{
-                                                anchors.centerIn: parent
-                                                width: parent.width - 20
-                                                // elide: Text.ElideRight
-                                                wrapMode: Text.WrapAnywhere
-                                                text: qsTr("请在列表中选择要推流的视频文件")
-                                            }
-                                        }
-
-                                        Rectangle{
-                                            Layout.fillWidth: true
-                                            Layout.preferredHeight: 62
-                                            visible: root.currentInjectFile
-                                            radius: 8
-                                            color: "white"
-
-                                            RowLayout{
-                                                anchors.fill: parent
-
-                                                Image{
-                                                    source: "qrc:/res/pad/pad_file.png"
-                                                }
-
-                                                ColumnLayout{
-                                                    Layout.preferredWidth: 90
-                                                    Layout.fillHeight: true
-
-                                                    FluText{
-                                                        font.pixelSize: 12
-                                                        Layout.fillWidth: true
-                                                        elide: Text.ElideRight
-                                                        text: currentInjectFile ? getVideoFile(currentInjectFile).fileName : ""
-                                                    }
-                                                    FluText{
-                                                        font.pixelSize: 12
-                                                        text: getFileSize(currentInjectFile ? getVideoFile(currentInjectFile).fileSize : 0)
-                                                    }
-                                                }
-
-                                                IconButton {
-                                                    id: btnStartPush
-                                                    Layout.preferredHeight: 32
-                                                    backgroundColor: "transparent"
-                                                    textColor: "red"
-                                                    iconSource: "qrc:/res/pad/btn_stop_push.png"
-                                                    text: qsTr("结束")
-                                                    onClicked: {
-                                                        if(client){
-                                                            client.stopInjectVideoStream()
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-
-                                        RowLayout{
-                                            Layout.preferredHeight: 30
-                                            Layout.fillWidth: true
-
-                                            FluText{
-                                                text: qsTr("全部视频(") + videoFileListModel.length + ")"
-                                                color: "white"
-                                            }
-
-                                            Item{
-                                                Layout.fillWidth: true
-                                            }
-
-                                            IconButton {
-                                                id: btnUpload
-                                                Layout.preferredHeight: 32
-                                                borderRadius: 8
-                                                textColor: "white"
-                                                iconSource: "qrc:/res/pad/btn_upload_video.png"
-                                                text: qsTr("上传视频")
-                                                onClicked: {
-                                                    fileDialog.title = qsTr("选择上传视频")
-                                                    fileDialog.folder = StandardPaths.writableLocation(StandardPaths.HomeLocation)
-                                                    fileDialog.open()
-                                                }
-                                            }
-                                        }
-
-                                        ListView{
-                                            Layout.fillWidth: true
-                                            Layout.fillHeight: true
-                                            spacing: 4
-                                            boundsBehavior: Flickable.StopAtBounds
-                                            clip: true
-                                            model: videoFileListModel
-                                            delegate: Rectangle{
-                                                width: parent.width
-                                                height: 62
-                                                radius: 8
-                                                color: "white"
-
-                                                RowLayout{
-                                                    anchors.fill: parent
-
-                                                    Image{
-                                                        source: "qrc:/res/pad/pad_file.png"
-                                                    }
-
-                                                    ColumnLayout{
-                                                        Layout.preferredWidth: 90
-                                                        Layout.fillHeight: true
-
-                                                        FluText{
-                                                            font.pixelSize: 12
-                                                            Layout.fillWidth: true
-                                                            elide: Text.ElideRight
-                                                            text: modelData.fileName
-                                                        }
-                                                        FluText{
-                                                            font.pixelSize: 12
-                                                            text: getFileSize(modelData.fileSize)
-                                                        }
-                                                    }
-
-                                                    ColumnLayout{
-                                                        Layout.preferredWidth: 90
-                                                        Layout.fillHeight: true
-
-                                                        IconButton {
-                                                            id: btnStopPush
-                                                            Layout.preferredHeight: 22
-                                                            backgroundColor: "transparent"
-                                                            textColor: "blue"
-                                                            iconSource: "qrc:/res/pad/blue.png"
-                                                            text: qsTr("开启推流")
-                                                            visible: !currentInjectFile || !modelData.downloadUrl.includes(currentInjectFile)
-                                                            onClicked: {
-                                                                if(client){
-                                                                    client.startInjectVideoStream(modelData.downloadUrl, true)
-                                                                }
-                                                            }
-                                                        }
-                                                        FluText{
-                                                            text: qsTr("推流中")
-                                                            color: "blue"
-                                                            Layout.leftMargin: 20
-                                                            visible: currentInjectFile && modelData.downloadUrl.includes(currentInjectFile)
-                                                        }
-
-                                                        IconButton {
-                                                            id: btnDelete
-                                                            Layout.preferredHeight: 22
-                                                            backgroundColor: "transparent"
-                                                            textColor: "red"
-                                                            iconSource: "qrc:/res/pad/btn_delete_video.png"
-                                                            text: qsTr("删除")
-                                                            visible: !currentInjectFile || !modelData.downloadUrl.includes(currentInjectFile)
-                                                            onClicked: {
-                                                                reqDeleteVideoFile(modelData.fileId)
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-
-                            }
-                        }
                         // adb
                         Item{
 
@@ -2825,11 +2592,305 @@ FluWindow {
     }
 
     // 一键新机
-    function reqOneKeyNewDevice(ip, padNames){
+    function reqOneKeyNewDevice(ip, padNames, adiName, adiPass, wipeData){
+        if(!ip){
+            showError(qsTr("缺少主机IP，无法执行一键新机"))
+            return
+        }
+        if(!padNames){
+            showError(qsTr("未指定云机，无法执行一键新机"))
+            return
+        }
+        const dbIdList = Array.isArray(padNames) ? padNames : [padNames]
         Network.postJson(`http://${ip}:18182/container_api/v1` + "/replace_devinfo")
-        .addList("db_ids", padNames)
+        .addList("db_ids", dbIdList)
+        .add("adiName", adiName || "")
+        .add("adiPass", adiPass || "")
+        .add("lon", root.lon)
+        .add("lat", root.lat)
+        .add("locale", "")
+        .add("timezone", "")
+        .add("country", "")
+        .add("wipeData", wipeData !== undefined ? wipeData : root.wipeData)
         .bind(root)
         .setUserData(ip)
         .go(oneKeyNewDevice)
     }
+
+
+    // 从本地存储加载位置信息
+    function loadIpInfoFromStorage() {
+        var saved = SettingsHelper.get("ipInfo_called", false)
+        if (saved) {
+            root.lon = SettingsHelper.get("ipInfo_lon", 0.0)
+            root.lat = SettingsHelper.get("ipInfo_lat", 0.0)
+            root.deviceLocale = SettingsHelper.get("ipInfo_deviceLocale", "en-US")
+            root.timezone = SettingsHelper.get("ipInfo_timezone", "UTC")
+            console.log("从本地存储加载IP信息 - lon:", root.lon, "lat:", root.lat, "locale:", root.deviceLocale, "timezone:", root.timezone)
+        } else {
+            // 如果没有保存的数据，使用默认值
+            root.lon = 0.0
+            root.lat = 0.0
+            root.deviceLocale = "en-US"
+            root.timezone = "UTC"
+            console.log("本地存储中没有IP信息，使用默认值")
+        }
+    }
+    
+    NetworkCallable {
+        id: videoInject
+        property string pendingRtspUrl: ""  // 保存待注入的RTSP URL
+        onError:
+            (status, errorString, result) => {
+                console.debug("视频注入错误: " + status + ";" + errorString + ";" + result)
+                // 检查是否是"视频注入中"的错误
+                try {
+                    var res = JSON.parse(result)
+                    console.log("视频注入错误响应:", res)
+                    if(res.message && res.message.indexOf("视频注入中") >= 0){
+                        // 如果返回"视频注入中"的错误，先关闭注入，然后再开启
+                        const urlToRetry = pendingRtspUrl
+                        pendingRtspUrl = ""
+                        console.log("检测到视频注入中，先关闭注入，然后再开启，URL:", urlToRetry)
+                        if(urlToRetry && urlToRetry.length > 0){
+                            reqVideoInjectOffAndThenInject(urlToRetry)
+                        }
+                        return
+                    }
+                } catch(e) {
+                    // 解析失败，忽略
+                    console.warn("解析错误响应失败:", e)
+                }
+                console.warn("发送RTSP地址到CBS失败:", errorString)
+                pendingRtspUrl = ""
+            }
+        onSuccess:
+            (result) => {
+                console.log("RTSP地址已成功发送到CBS:", result)
+                try {
+                    var res = JSON.parse(result)
+                    console.log("视频注入响应:", res)
+                    if(res.code === 200 || res.code === 0){
+                        console.log("视频注入成功，code:", res.code)
+                        // 注入成功，保存状态并更新开关
+                        if(videoInjectSwitch){
+                            videoInjectSwitch.checked = true
+                            windowSizeHelper.save(root.argument.dbId, "videoInject", 1)
+                            console.log("视频注入成功，已保存状态并更新开关")
+                        }
+                    } else {
+                        // 检查是否是"视频注入中"的错误
+                        if(res.message && res.message.indexOf("视频注入中") >= 0){
+                            const urlToRetry = pendingRtspUrl
+                            pendingRtspUrl = ""
+                            console.log("检测到视频注入中，先关闭注入，然后再开启，URL:", urlToRetry)
+                            if(urlToRetry && urlToRetry.length > 0){
+                                reqVideoInjectOffAndThenInject(urlToRetry)
+                            }
+                            return
+                        }
+                        console.warn("视频注入返回非成功状态，code:", res.code, "message:", res.msg || res.message)
+                        // 注入失败，更新开关状态
+                        if(videoInjectSwitch){
+                            videoInjectSwitch.checked = false
+                            windowSizeHelper.save(root.argument.dbId, "videoInject", 0)
+                        }
+                    }
+                } catch(e) {
+                    // 如果返回的不是JSON，也认为成功（某些API可能返回空或纯文本）
+                    console.log("视频注入请求完成（非JSON响应）")
+                    // 假设成功，保存状态并更新开关
+                    if(videoInjectSwitch){
+                        videoInjectSwitch.checked = true
+                        windowSizeHelper.save(root.argument.dbId, "videoInject", 1)
+                    }
+                }
+                // 清空待注入的URL
+                pendingRtspUrl = ""
+            }
+    }
+
+    // 发送RTSP地址到CBS进行视频注入
+    function reqVideoInject(rtspUrl){
+        console.log("reqVideoInject 被调用，rtspUrl:", rtspUrl)
+        if(!rtspUrl || rtspUrl.length === 0){
+            console.warn("RTSP URL为空，无法发送到CBS")
+            return
+        }
+        
+        const hostIp = root.argument.hostIp
+        if(!hostIp){
+            console.warn("hostIp为空，无法发送RTSP地址到CBS")
+            return
+        }
+        
+        // 保存待注入的URL，以便在错误处理中使用
+        videoInject.pendingRtspUrl = rtspUrl
+        
+        const apiUrl = `http://${hostIp}:18182/android_api/v1/video_inject/${root.argument.dbId}`
+        console.log("发送RTSP地址到CBS:", apiUrl, "URL:", rtspUrl)
+        
+        Network.postJson(apiUrl)
+        .add("url", rtspUrl)
+        .bind(root)
+        .go(videoInject)
+    }
+    
+    // 用于先关闭注入再开启注入的 NetworkCallable
+    NetworkCallable {
+        id: videoInjectOffAndThenInject
+        property string pendingRtspUrl: ""  // 保存待注入的RTSP URL
+        
+        onError:
+            (status, errorString, result) => {
+                console.warn("关闭注入失败，但仍尝试开启注入:", errorString)
+                // 即使关闭失败，也尝试开启注入
+                const urlToInject = pendingRtspUrl  // 保存到局部变量，避免闭包问题
+                pendingRtspUrl = ""  // 先清空
+                if(urlToInject && urlToInject.length > 0){
+                    console.log("关闭注入失败后，尝试开启注入，URL:", urlToInject)
+                    Qt.callLater(function() {
+                        reqVideoInject(urlToInject)
+                    })
+                } else {
+                    console.warn("待注入的RTSP URL为空")
+                }
+            }
+        onSuccess:
+            (result) => {
+                console.log("关闭注入成功，现在开启注入")
+                try {
+                    var res = JSON.parse(result)
+                    console.log("关闭注入接口返回:", res)
+                } catch(e) {
+                    console.log("关闭注入接口返回（非JSON）:", result)
+                }
+                // 延迟一小段时间，确保关闭操作完成
+                const urlToInject = pendingRtspUrl  // 保存到局部变量，避免闭包问题
+                pendingRtspUrl = ""  // 先清空
+                if(urlToInject && urlToInject.length > 0){
+                    console.log("关闭注入成功后，开启注入，URL:", urlToInject)
+                    // 延迟一下，确保关闭操作完全完成
+                    Qt.callLater(function() {
+                        Qt.callLater(function() {
+                            reqVideoInject(urlToInject)
+                        })
+                    })
+                } else {
+                    console.warn("待注入的RTSP URL为空")
+                }
+            }
+    }
+    
+    // 先关闭注入，然后再开启注入（用于处理"视频注入中"的情况）
+    function reqVideoInjectOffAndThenInject(rtspUrl){
+        if(!rtspUrl || rtspUrl.length === 0){
+            console.warn("RTSP URL为空，无法发送到CBS")
+            return
+        }
+        
+        const hostIp = root.argument.hostIp
+        if(!hostIp){
+            console.warn("hostIp为空，无法发送RTSP地址到CBS")
+            return
+        }
+        
+        console.log("先关闭注入，然后再开启注入")
+        
+        // 保存待注入的URL
+        videoInjectOffAndThenInject.pendingRtspUrl = rtspUrl
+        
+        // 先关闭注入
+        const apiUrlOff = `http://${hostIp}:18182/android_api/v1/video_inject_off/${root.argument.dbId}`
+        Network.get(apiUrlOff)
+        .bind(root)
+        .go(videoInjectOffAndThenInject)
+    }
+    
+    NetworkCallable {
+        id: videoInjectOff
+        onError:
+            (status, errorString, result) => {
+                console.debug("取消视频注入错误: " + status + ";" + errorString + ";" + result)
+                // 不显示错误提示，避免干扰用户体验
+                console.warn("取消视频注入失败:", errorString)
+            }
+        onSuccess:
+            (result) => {
+                console.log("取消视频注入成功:", result)
+                try {
+                    var res = JSON.parse(result)
+                    if(res.code === 200 || res.code === 0){
+                        console.log("取消视频注入成功")
+                        // 取消注入成功，保存状态并更新开关
+                        if(videoInjectSwitch){
+                            videoInjectSwitch.checked = false
+                            windowSizeHelper.save(root.argument.dbId, "videoInject", 0)
+                            console.log("取消视频注入成功，已保存状态并更新开关")
+                        }
+                    } else {
+                        console.warn("取消视频注入返回非成功状态:", res.msg || res.message)
+                    }
+                } catch(e) {
+                    // 如果返回的不是JSON，也认为成功（某些API可能返回空或纯文本）
+                    console.log("取消视频注入请求完成")
+                    // 假设成功，保存状态并更新开关
+                    if(videoInjectSwitch){
+                        videoInjectSwitch.checked = false
+                        windowSizeHelper.save(root.argument.dbId, "videoInject", 0)
+                    }
+                }
+            }
+    }
+
+    // 取消视频注入
+    function reqVideoInjectOff(){
+        const hostIp = root.argument.hostIp
+        if(!hostIp){
+            console.warn("hostIp为空，无法取消视频注入")
+            return
+        }
+        
+        const apiUrl = `http://${hostIp}:18182/android_api/v1/video_inject_off/${root.argument.dbId}`
+        console.log("取消视频注入:", apiUrl)
+        
+        Network.get(apiUrl)
+        .bind(root)
+        .go(videoInjectOff)
+    }
+    
+    // 监听推流状态变化，恢复视频注入开关状态
+    Connections {
+        target: cameraStreamManager
+        function onStreamingStarted() {
+            console.log("摄像头推流已开始，RTSP URL:", cameraStreamManager.rtspUrl)
+            // 推流开始时，如果之前保存的状态是开启的，恢复开关状态（但不自动注入，因为可能已经在注入了）
+            if(videoInjectSwitch && cameraStreamManager.rtspUrl){
+                const savedVideoInject = windowSizeHelper.get(root.argument.dbId, "videoInject", 0)
+                if(savedVideoInject === 1){
+                    videoInjectSwitch.checked = true
+                    console.log("推流开始，恢复视频注入开关状态：开启")
+                }
+            }
+        }
+        function onStreamingStopped() {
+            console.log("摄像头推流已停止")
+            // 推流停止时，关闭开关
+            if(videoInjectSwitch){
+                videoInjectSwitch.checked = false
+                // 保存状态
+                windowSizeHelper.save(root.argument.dbId, "videoInject", 0)
+            }
+        }
+        function onErrorOccurred(error) {
+            console.error("摄像头推流错误:", error)
+            // 推流错误时，关闭开关
+            if(videoInjectSwitch){
+                videoInjectSwitch.checked = false
+                // 保存状态
+                windowSizeHelper.save(root.argument.dbId, "videoInject", 0)
+            }
+        }
+    }
+    
 }

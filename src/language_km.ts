@@ -586,9 +586,102 @@
     </message>
 </context>
 <context>
+    <name>CameraStreamPopup</name>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="35"/>
+        <source>摄像头推流设置</source>
+        <translation>ការកំណត់ផ្សាយវីដេអូជាមួយកាមេរ៉ា</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="46"/>
+        <source>选择摄像头:</source>
+        <translation>ជ្រើសរើសកាមេរ៉ា៖</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="66"/>
+        <source>刷新设备列表</source>
+        <translation>ធ្វើអាប់ដេតបញ្ជីឧបករណ៍</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="84"/>
+        <source>推流参数</source>
+        <translation>ការ​ប៉ារ៉ាម៉ែត្រ​ស្ទ្រីម</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="93"/>
+        <source>分辨率:</source>
+        <translation>ដំណោះស្រាយ៖</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="107"/>
+        <source>帧率:</source>
+        <translation>អត្រាសែល៖</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="120"/>
+        <source>流名称:</source>
+        <translation>ឈ្មោះលំហូរ៖</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="129"/>
+        <source>输入流名称</source>
+        <translation>បញ្ចូលឈ្មោះស្ទ្រីម</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="137"/>
+        <source>RTSP地址</source>
+        <translation>អាសយដ្ឋាន RTSP</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="148"/>
+        <source>推流开始后显示RTSP地址</source>
+        <translation>បន្ទាប់ពីចាក់ស្ទ្រីមចាប់ផ្ដើម បង្ហាញអាសយដ្ឋាន RTSP</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="153"/>
+        <source>复制地址</source>
+        <translation>ចម្លងអាសយដ្ឋាន</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="191"/>
+        <source>未初始化</source>
+        <translation>មិនត្រូវបានចាប់ផ្ដើម</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="194"/>
+        <source>推流中...</source>
+        <translation>កំពុងផ្សាយ...</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="197"/>
+        <source>错误: </source>
+        <translation>កំហុស៖</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="199"/>
+        <source>已停止</source>
+        <translation>បានបញ្ឈប់</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="215"/>
+        <source>停止推流</source>
+        <translation>បញ្ឈប់ការផ្សាយតាមស្ទ្រីម</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="215"/>
+        <source>开始推流</source>
+        <translation>ចាប់ផ្ដើមស្ទ្រីម</translation>
+    </message>
+    <message>
+        <location filename="qml/CameraStreamPopup.qml" line="256"/>
+        <source>关闭</source>
+        <translation>បិទ</translation>
+    </message>
+</context>
+<context>
     <name>ChangeGroupPopup</name>
     <message>
-        <location filename="qml/ChangeGroupPopup.qml" line="51"/>
+        <location filename="qml/ChangeGroupPopup.qml" line="52"/>
         <source>设置分组 (%1)</source>
         <oldsource>设置分组</oldsource>
         <translation>កំណត់ក្រុម (%1)</translation>
@@ -606,28 +699,28 @@
         <translation type="vanished">ជ្រើសរើសក្រុម</translation>
     </message>
     <message>
-        <location filename="qml/ChangeGroupPopup.qml" line="83"/>
+        <location filename="qml/ChangeGroupPopup.qml" line="84"/>
         <source>选择主机</source>
         <translation>ជ្រើសរើសម៉ាស៊ីនបម្រើ</translation>
     </message>
     <message>
-        <location filename="qml/ChangeGroupPopup.qml" line="109"/>
+        <location filename="qml/ChangeGroupPopup.qml" line="110"/>
         <source>输入主机IP或ID搜索</source>
         <oldsource>输入魔盒编号/IP/名称/备注搜索</oldsource>
         <translation>បញ្ចូល IP ឬ ID របស់ម៉ាស៊ីនមេសម្រាប់ស្វែងរក</translation>
     </message>
     <message>
-        <location filename="qml/ChangeGroupPopup.qml" line="121"/>
+        <location filename="qml/ChangeGroupPopup.qml" line="122"/>
         <source>全选</source>
         <translation>ជ្រើសរើសទាំងអស់</translation>
     </message>
     <message>
-        <location filename="qml/ChangeGroupPopup.qml" line="203"/>
+        <location filename="qml/ChangeGroupPopup.qml" line="208"/>
         <source>取消</source>
         <translation>បោះបង់</translation>
     </message>
     <message>
-        <location filename="qml/ChangeGroupPopup.qml" line="207"/>
+        <location filename="qml/ChangeGroupPopup.qml" line="212"/>
         <source>确定</source>
         <translation>ប្រាកដ</translation>
     </message>
@@ -669,9 +762,173 @@
     </message>
 </context>
 <context>
+    <name>CloneCloudPhonePopup</name>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="65"/>
+        <source>长度限制：2-11字符</source>
+        <translation>ការកំណត់ប្រវែង៖ ២-១១តួអក្សរ</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="69"/>
+        <source>支持字符：[a-zA-Z0-9_.-]</source>
+        <translation>ជួយគាំទ្រតួអក្សរ៖ [a-zA-Z0-9_.-]</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="73"/>
+        <source>首字符和尾字符必须为[a-zA-Z0-9]</source>
+        <translation>តួអក្សរដំបូង និងតួអក្សរចុងក្រោយត្រូវតែជា[a-zA-Z0-9]</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="89"/>
+        <source>当前主机可同时运行的云机上限为 %1 台，已有 %2 台正在运行。</source>
+        <translation>ម៉ាស៊ីនពពកដែលអាចដំណើរការបានក្នុងពេលតែមួយនៅលើម៉ាស៊ីនចម្បងបច្ចុប្បន្នគឺ %1 គ្រឿង ហើយមាន %2 គ្រឿងកំពុងដំណើរការ។</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="91"/>
+        <source>系统将自动启动其中 %1 台，其余 %2 台将创建完成后保持关机状态。</source>
+        <translation>ប្រព័ន្ធនឹងចាប់ផ្ដើមម៉ាស៊ីន %1 ដោយស្វ័យប្រវត្តិ និងទុកម៉ាស៊ីន %2 ដែលនៅសល់ក្នុងស្ថានភាពបិទបន្ទាប់ពីបង្កើតរួច។</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="93"/>
+        <source>系统将自动启动所有 %1 台。</source>
+        <translation>ប្រព័ន្ធនឹងចាប់ផ្តើមដោយស្វ័យប្រវត្តិទាំងអស់ %1 គ្រឿង។</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="95"/>
+        <source>所有 %1 台将创建完成后保持关机状态。</source>
+        <translation>គ្រប់ម៉ាស៊ីន %1 នឹងបិទក្រោយពេលបង្កើតរួច។</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="130"/>
+        <source>克隆云机（不限创建总数）</source>
+        <translation>ចម្លងម៉ាស៊ីនពពក (មិនកំណត់ចំនួនសរុបបង្កើត)</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="155"/>
+        <source>主机地址：%1 （同时运行上限 %2 台）</source>
+        <translation>អាសយដ្ឋានម៉ាស៊ីន៖ %1 (កំណត់ចំនួនម៉ាស៊ីនដែលអាចដំណើរការបានក្នុងពេលតែមួយ %2 គ្រឿង)</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="163"/>
+        <source>云机名称：%1</source>
+        <translation>ឈ្មោះម៉ាស៊ីនពពក៖ %1</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="167"/>
+        <source>镜像版本：%1</source>
+        <translation>កំណែរូបភាព៖ %1</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="171"/>
+        <source>Android版本：%1</source>
+        <translation>កំណែ Android៖ %1</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="180"/>
+        <source>克隆名称前缀</source>
+        <translation>ពាក្យបពា្ចក់ឈ្មោះចម្លង</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="180"/>
+        <source>克隆名称</source>
+        <translation>ឈ្មោះចម្លង</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="187"/>
+        <source>请输入克隆名称</source>
+        <translation>សូមបញ្ចូលឈ្មោះចម្លង</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="196"/>
+        <source>云机数量</source>
+        <translation>ចំនួនម៉ាស៊ីនពពក</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="218"/>
+        <source>单次可克隆云机数量不超过 12 台</source>
+        <translation>តម្លៃអតិបរមានៃការចម្លងម៉ាស៊ីនពពកក្នុងពេលតែមួយគឺ ១២ ម៉ាស៊ីន</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="225"/>
+        <source>自动启动</source>
+        <translation>ស្វ័យប្រវត្តិចាប់ផ្ដើម</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="240"/>
+        <source>将按前缀自动编号生成%1个云机：</source>
+        <translation>នឹងបង្កើត%1ម៉ាស៊ីនពពកដោយស្វ័យប្រវត្តិតាមលេខសម្គាល់៖</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="240"/>
+        <source>将创建%1台云机：</source>
+        <translation>នឹងបង្កើតម៉ាស៊ីនពពកចំនួន %1 គ្រឿង៖</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="261"/>
+        <source>修改云机参数</source>
+        <oldsource>自动更新安卓属性</oldsource>
+        <translation>ផ្លាស់ប្តូរប៉ារ៉ាមែត្រម៉ាស៊ីនពពក</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="290"/>
+        <source>取消</source>
+        <translation>បោះបង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="296"/>
+        <source>确定</source>
+        <translation>ប្រាកដ</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="303"/>
+        <source>创建云机数量必须大于0</source>
+        <translation>ត្រូវបង្កើតចំនួនម៉ាស៊ីនពពកច្រើនជាង ០</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="324"/>
+        <source>克隆中...</source>
+        <translation>កំពុងចម្លង</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="337"/>
+        <source>克隆云机任务执行成功</source>
+        <translation>ភារកិច្ចចម្លងម៉ាស៊ីនពពកបានដំណើរការដោយជោគជ័យ</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="344"/>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="351"/>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="383"/>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="422"/>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="430"/>
+        <source>克隆失败，请重试!</source>
+        <translation>ចម្លងដោយជោគជ័យ សូមព្យាយាមម្តងទៀត</translation>
+    </message>
+    <message>
+        <location filename="qml/CloneCloudPhonePopup.qml" line="398"/>
+        <source>云机克隆成功！</source>
+        <translation>គ្លូនម៉ាស៊ីនពពកជោគជ័យ</translation>
+    </message>
+    <message>
+        <source>找不到对应的 ADI 文件路径</source>
+        <translation type="obsolete">រកមិនឃើញផ្លូវឯកសារ ADI ដែលត្រូវគ្នាទេ</translation>
+    </message>
+    <message>
+        <source>找不到默认模板的 ADI 文件路径</source>
+        <translation type="obsolete">រកមិនឃើញផ្លូវឯកសារ ADI នៃទំព័រគំរូលំនាំដើមទេ</translation>
+    </message>
+    <message>
+        <source>自定义DNS不能为空</source>
+        <translation type="obsolete">អាសយដ្ឋាន DNS ដែលបានកំណត់ផ្ទាល់ខ្លួនមិនអាចទទេបានទេ</translation>
+    </message>
+    <message>
+        <source>无效的DNS地址: </source>
+        <translation type="obsolete">អាសយដ្ឋាន DNS មិនត្រឹមត្រូវ៖</translation>
+    </message>
+</context>
+<context>
     <name>CloudListView</name>
     <message>
-        <location filename="qml/CloudListView.qml" line="151"/>
+        <location filename="qml/CloudListView.qml" line="90"/>
         <source>云机名称</source>
         <oldsource>云机ID</oldsource>
         <translation>ឈ្មោះឧបករណ៍ពពក</translation>
@@ -681,7 +938,7 @@
         <translation type="vanished">IP</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="162"/>
+        <location filename="qml/CloudListView.qml" line="101"/>
         <source>ADB地址</source>
         <translation>ADB អាសយដ្ឋាន</translation>
     </message>
@@ -691,47 +948,52 @@
         <translation type="obsolete">កំណែរូបភាព</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="140"/>
+        <location filename="qml/CloudListView.qml" line="79"/>
         <source>云机ID</source>
-        <translation type="unfinished">អត្តសញ្ញាណម៉ាស៊ីនពពក</translation>
+        <translation>អត្តសញ្ញាណម៉ាស៊ីនពពក</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="173"/>
+        <location filename="qml/CloudListView.qml" line="112"/>
         <source>Android版本</source>
         <oldsource>系统版本</oldsource>
         <translation>ជំនាន់ Android</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="182"/>
+        <location filename="qml/CloudListView.qml" line="121"/>
         <source>状态</source>
         <translation>ស្ថានភាព</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="192"/>
+        <location filename="qml/CloudListView.qml" line="131"/>
         <source>创建时间</source>
         <translation>បានបង្កើតពេលវេលា</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="201"/>
+        <location filename="qml/CloudListView.qml" line="140"/>
         <source>操作</source>
         <translation>ប្រតិបត្តិការ</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="296"/>
-        <location filename="qml/CloudListView.qml" line="316"/>
-        <location filename="qml/CloudListView.qml" line="335"/>
+        <location filename="qml/CloudListView.qml" line="235"/>
+        <location filename="qml/CloudListView.qml" line="255"/>
+        <location filename="qml/CloudListView.qml" line="276"/>
         <source>复制成功</source>
         <translation>ចម្លង​ដោយ​ជោគជ័យ</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="401"/>
+        <location filename="qml/CloudListView.qml" line="342"/>
         <source>开机</source>
         <translation>ការបើក</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="417"/>
+        <location filename="qml/CloudListView.qml" line="358"/>
         <source>打开窗口</source>
         <translation>បើក​បង្អួច</translation>
+    </message>
+    <message>
+        <location filename="qml/CloudListView.qml" line="406"/>
+        <source>克隆</source>
+        <translation>ចម្លង</translation>
     </message>
 </context>
 <context>
@@ -758,102 +1020,1170 @@
     </message>
 </context>
 <context>
+    <name>CountryListModel</name>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="4"/>
+        <source>安道尔</source>
+        <translation>អង់ដរ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="5"/>
+        <source>阿拉伯联合酋长国</source>
+        <translation>អារ៉ាប់រួម</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="6"/>
+        <source>阿富汗</source>
+        <translation>អាហ្វហ្គានីស្ថាន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="7"/>
+        <source>安提瓜和巴布达</source>
+        <translation>អង់ទីហ្គានិងបាបុយដា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="8"/>
+        <source>安圭拉</source>
+        <translation>អង់ហ្គីឡា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="9"/>
+        <source>阿尔巴尼亚</source>
+        <translation>អាល់បានី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="10"/>
+        <source>亚美尼亚</source>
+        <translation>&apos;អាមេនី&apos;</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="11"/>
+        <source>安哥拉</source>
+        <translation>អង់ហ្គោឡា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="12"/>
+        <source>阿根廷</source>
+        <translation>អាហ្សង់ទីន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="13"/>
+        <source>美属萨摩亚</source>
+        <translation>American Samoa</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="14"/>
+        <source>奥地利</source>
+        <translation>អូទ្រីស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="15"/>
+        <source>阿鲁巴</source>
+        <translation>អារូបា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="16"/>
+        <source>阿塞拜疆</source>
+        <translation>Ադրբեջան</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="17"/>
+        <source>波斯尼亚和黑塞哥维那</source>
+        <translation>បូស្នៀ និង ហឺហ្សេហ្គោវីណា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="18"/>
+        <source>巴巴多斯</source>
+        <translation>បាបាដូស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="19"/>
+        <source>孟加拉国</source>
+        <translation>បង់ក្លាដែស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="20"/>
+        <source>比利时</source>
+        <translation>បែលហ្ស៊ិក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="21"/>
+        <source>布基纳法索</source>
+        <translation>ប៊ូគីណាហ្វាសូ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="22"/>
+        <source>保加利亚</source>
+        <translation>ប៊ុលហ្គារី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="23"/>
+        <source>巴林</source>
+        <translation>បារ៉ែន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="24"/>
+        <source>布隆迪</source>
+        <translation>ប៊ូរុនឌី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="25"/>
+        <source>贝宁</source>
+        <translation>បេណាំង</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="26"/>
+        <source>百慕大</source>
+        <translation>ប៊ឺមុយដា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="27"/>
+        <source>文莱</source>
+        <translation>ប្រ៊ុយណេ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="28"/>
+        <source>玻利维亚</source>
+        <translation>បូលីវី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="29"/>
+        <source>巴西</source>
+        <translation>ប្រេស៊ីល</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="30"/>
+        <source>巴哈马</source>
+        <translation>បាហាម៉ាស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="31"/>
+        <source>不丹</source>
+        <translation>ប៊ូតង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="32"/>
+        <source>博茨瓦纳</source>
+        <translation>បូតស្វាណា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="33"/>
+        <source>白俄罗斯</source>
+        <translation>បេឡារុស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="34"/>
+        <source>伯利兹</source>
+        <translation>បេលីហ្ស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="35"/>
+        <source>加拿大</source>
+        <translation>កាណាដា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="36"/>
+        <source>中非共和国</source>
+        <translation>សាធារណរដ្ឋអាហ្វ្រិកកណ្ដាល</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="37"/>
+        <source>刚果共和国</source>
+        <translation>សាធារណរដ្ឋកុងហ្គោ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="38"/>
+        <source>瑞士</source>
+        <translation>ប្រទេសស្វីស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="39"/>
+        <source>科特迪瓦</source>
+        <translation>កូតដីវ័រ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="40"/>
+        <source>库克群岛</source>
+        <translation>កោះខូក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="41"/>
+        <source>智利</source>
+        <translation>ឈីលី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="42"/>
+        <source>喀麦隆</source>
+        <translation>កាមេរូន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="43"/>
+        <source>中国</source>
+        <translation>ចិន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="44"/>
+        <source>哥伦比亚</source>
+        <translation>កូឡុំប៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="45"/>
+        <source>哥斯达黎加</source>
+        <translation>កូស្តារីកា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="46"/>
+        <source>古巴</source>
+        <translation>គុយបា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="47"/>
+        <source>佛得角</source>
+        <translation>កាប់វែរ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="48"/>
+        <source>塞浦路斯</source>
+        <translation>ស៊ីប</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="49"/>
+        <source>捷克</source>
+        <translation>ឆេក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="50"/>
+        <source>德国</source>
+        <translation>អាល្លឺម៉ង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="51"/>
+        <source>吉布提</source>
+        <translation>ជីប៊ូទី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="52"/>
+        <source>丹麦</source>
+        <translation>ដាណឺម៉ាក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="53"/>
+        <source>多米尼克</source>
+        <translation>ដូមីនីក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="54"/>
+        <source>多米尼加共和国</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="55"/>
+        <source>阿尔及利亚</source>
+        <translation>អាល់ហ្សេរី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="56"/>
+        <source>厄瓜多尔</source>
+        <translation>អេក្វាឌ័រ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="57"/>
+        <source>爱沙尼亚</source>
+        <translation>អេស្តូនី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="58"/>
+        <source>埃及</source>
+        <translation>អេហ្ស៊ីប</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="59"/>
+        <source>厄立特里亚</source>
+        <translation>ኤርትራ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="60"/>
+        <source>西班牙</source>
+        <translation>អេស្ប៉ាញ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="61"/>
+        <source>埃塞俄比亚</source>
+        <translation>អេត្យូពី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="62"/>
+        <source>芬兰</source>
+        <translation>ហ្វាំងឡង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="63"/>
+        <source>斐济</source>
+        <translation>ហ្វីជី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="64"/>
+        <source>福克兰群岛</source>
+        <translation>កោះ​ហ្វកលែន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="65"/>
+        <source>法罗群岛</source>
+        <translation>法罗群岛</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="66"/>
+        <source>法国</source>
+        <translation>បារាំង</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="67"/>
+        <source>加蓬</source>
+        <translation>가봉</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="68"/>
+        <source>英国</source>
+        <translation>សហរាជាណាចក្រ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="69"/>
+        <source>格林纳达</source>
+        <translation>&apos;ហ្រ្គេណាដ&apos;</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="70"/>
+        <source>格鲁吉亚</source>
+        <translation>ქართული</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="71"/>
+        <source>法属圭亚那</source>
+        <translation>បារាំងហ្ស៊ីយ៉ាណា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="72"/>
+        <source>加纳</source>
+        <translation>ហ្កាណា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="73"/>
+        <source>直布罗陀</source>
+        <translation>ហ្ស៊ីប្រាល់តា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="74"/>
+        <source>格陵兰</source>
+        <translation>Greenland</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="75"/>
+        <source>冈比亚</source>
+        <translation>ហ្គាំប៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="76"/>
+        <source>几内亚</source>
+        <translation>ហ្គីណេ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="77"/>
+        <source>赤道几内亚</source>
+        <translation>赤道几内亚</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="78"/>
+        <source>希腊</source>
+        <translation>ក្រិក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="79"/>
+        <source>危地马拉</source>
+        <translation>ហ្គាតេម៉ាឡា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="80"/>
+        <source>关岛</source>
+        <translation>ហ្គាម</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="81"/>
+        <source>几内亚比绍</source>
+        <translation>几内亚比绍</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="82"/>
+        <source>圭亚那</source>
+        <translation>ហ្គីយ៉ាណា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="83"/>
+        <source>香港</source>
+        <translation>ហុងកុង</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="84"/>
+        <source>洪都拉斯</source>
+        <translation>ហុងឌូរ៉ាស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="85"/>
+        <source>克罗地亚</source>
+        <translation>ក្រូអាស៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="86"/>
+        <source>海地</source>
+        <translation>ហៃទី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="87"/>
+        <source>匈牙利</source>
+        <translation>헝가리</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="88"/>
+        <source>印度尼西亚</source>
+        <translation>ឥណ្ឌូនេស៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="89"/>
+        <source>爱尔兰</source>
+        <translation>អៀរឡង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="90"/>
+        <source>以色列</source>
+        <translation>អ៊ីស្រាអែល</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="91"/>
+        <source>印度</source>
+        <translation>ឥណ្ឌា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="92"/>
+        <source>伊拉克</source>
+        <translation>អ៊ីរ៉ាក់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="93"/>
+        <source>伊朗</source>
+        <translation>&apos;អ៊ីរ៉ង់&apos;</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="94"/>
+        <source>冰岛</source>
+        <translation>អ៊ីស្លង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="95"/>
+        <source>意大利</source>
+        <translation>អ៊ីតាលី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="96"/>
+        <source>牙买加</source>
+        <translation>ហ្សាម៉ាអ៊ីក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="97"/>
+        <source>约旦</source>
+        <translation>ជ័រដាន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="98"/>
+        <source>日本</source>
+        <translation>ជប៉ុន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="99"/>
+        <source>肯尼亚</source>
+        <translation>កេ냉់យ៉ា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="100"/>
+        <source>吉尔吉斯斯坦</source>
+        <translation>Кыргызстан</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="101"/>
+        <source>柬埔寨</source>
+        <translation>កម្ពុជា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="102"/>
+        <source>基里巴斯</source>
+        <translation>គិរីបាតេ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="103"/>
+        <source>科摩罗</source>
+        <translation>កុំម៉ូរ៉ូស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="104"/>
+        <source>朝鲜</source>
+        <translation>កូរ៉េខាងជើង</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="105"/>
+        <source>韩国</source>
+        <translation>កូរ៉េខាងត្បូង</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="106"/>
+        <source>科威特</source>
+        <translation>គុយវ៉េត</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="107"/>
+        <source>开曼群岛</source>
+        <translation>កៃម៉ែន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="108"/>
+        <source>哈萨克斯坦</source>
+        <translation>Қазақстан</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="109"/>
+        <source>老挝</source>
+        <translation>ឡាវ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="110"/>
+        <source>黎巴嫩</source>
+        <translation>លីបង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="111"/>
+        <source>圣卢西亚</source>
+        <translation>សੇនវីនសេន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="112"/>
+        <source>列支敦士登</source>
+        <translation>លីចតិនស្តែន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="113"/>
+        <source>斯里兰卡</source>
+        <translation>ශ්‍රී ලංකාව</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="114"/>
+        <source>利比里亚</source>
+        <translation>លីបេរីយ៉ា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="115"/>
+        <source>莱索托</source>
+        <translation>លេសូតូ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="116"/>
+        <source>立陶宛</source>
+        <translation>លីទុយអានី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="117"/>
+        <source>卢森堡</source>
+        <translation>លុចសំបើ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="118"/>
+        <source>拉脱维亚</source>
+        <translation>ལཱ་ཐོ་ཝི་ཡ།</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="119"/>
+        <source>利比亚</source>
+        <translation>លីប៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="120"/>
+        <source>摩洛哥</source>
+        <translation>ម៉ារ៉ុក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="121"/>
+        <source>摩纳哥</source>
+        <translation>ម៉ូណាកូ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="122"/>
+        <source>摩尔多瓦</source>
+        <translation>ម៉ុលដូវ៉ា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="123"/>
+        <source>黑山</source>
+        <translation>Черна гора</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="124"/>
+        <source>马达加斯加</source>
+        <translation>Madagascar</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="125"/>
+        <source>北马其顿</source>
+        <translation>Хойд Македони</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="126"/>
+        <source>马里</source>
+        <translation>ម៉ាលី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="127"/>
+        <source>缅甸</source>
+        <translation>မြန်မာ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="128"/>
+        <source>蒙古</source>
+        <translation>Монгол</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="129"/>
+        <source>澳门</source>
+        <translation>ម៉ាកាវ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="130"/>
+        <source>毛里塔尼亚</source>
+        <translation>ម៉ូរីតានី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="131"/>
+        <source>蒙特塞拉特</source>
+        <translation>ម៉ុងតេសេរ៉ាត</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="132"/>
+        <source>马耳他</source>
+        <translation>ម៉ាល់តា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="133"/>
+        <source>毛里求斯</source>
+        <translation>ម៉ូរីស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="134"/>
+        <source>马尔代夫</source>
+        <translation>ម៉ាល់ឌីវ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="135"/>
+        <source>马拉维</source>
+        <translation>ម៉ាឡាវី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="136"/>
+        <source>墨西哥</source>
+        <translation>ម៉ិកស៊ិក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="137"/>
+        <source>马来西亚</source>
+        <translation>ម៉ាឡេស៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="138"/>
+        <source>莫桑比克</source>
+        <translation>ម៉ូសំប៊ិក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="139"/>
+        <source>纳米比亚</source>
+        <translation>ណាមីប៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="140"/>
+        <source>新喀里多尼亚</source>
+        <translation>នូវកាលេដូនីថ្មី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="141"/>
+        <source>尼日尔</source>
+        <translation>នីហ្សេ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="142"/>
+        <source>诺福克岛</source>
+        <translation>នរហ្វក៍ កោះ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="143"/>
+        <source>尼日利亚</source>
+        <translation>នីហ្សេរីយ៉ា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="144"/>
+        <source>尼加拉瓜</source>
+        <translation>នីការ៉ាហ្គា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="145"/>
+        <source>荷兰</source>
+        <translation>ហុល្លង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="146"/>
+        <source>挪威</source>
+        <translation>ន័រវែស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="147"/>
+        <source>尼泊尔</source>
+        <translation>नेपाल</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="148"/>
+        <source>瑙鲁</source>
+        <translation>នូរូ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="149"/>
+        <source>纽埃</source>
+        <translation>នីអ៊ូអេ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="150"/>
+        <source>新西兰</source>
+        <translation>នូវែលសេឡង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="151"/>
+        <source>阿曼</source>
+        <translation>អូមែន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="152"/>
+        <source>巴拿马</source>
+        <translation>ប៉ាណាម៉ា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="153"/>
+        <source>秘鲁</source>
+        <translation>ប៉េរូ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="154"/>
+        <source>法属波利尼西亚</source>
+        <translation>ពហុទ្វីបបារាំង</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="155"/>
+        <source>巴布亚新几内亚</source>
+        <translation>ប៉ាពូអានៀវហ្គីណេ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="156"/>
+        <source>菲律宾</source>
+        <translation>菲律宾</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="157"/>
+        <source>巴基斯坦</source>
+        <translation>ប៉ាគីស្ថាន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="158"/>
+        <source>波兰</source>
+        <translation>ប្រទេសប៉ូឡូញ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="159"/>
+        <source>圣皮埃尔和密克隆</source>
+        <translation>សង់-ពីរ៉ែ និង មីគីឡុង</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="160"/>
+        <source>波多黎各</source>
+        <translation>ប៉ូរ៉្តូរីកូ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="161"/>
+        <source>葡萄牙</source>
+        <translation>ព័រទុយហ្គាល់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="162"/>
+        <source>帕劳</source>
+        <translation>ប៉ាឡូ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="163"/>
+        <source>巴拉圭</source>
+        <translation>ប៉ារ៉ាហ្គាយ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="164"/>
+        <source>卡塔尔</source>
+        <translation>កាតារ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="165"/>
+        <source>罗马尼亚</source>
+        <translation>&apos;រូម៉ានី&apos;</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="166"/>
+        <source>塞尔维亚</source>
+        <translation>សើប៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="167"/>
+        <source>俄罗斯</source>
+        <translation>រុស្ស៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="168"/>
+        <source>卢旺达</source>
+        <translation>រវ៉ាន់ដា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="169"/>
+        <source>沙特阿拉伯</source>
+        <translation>អារ៉ាប៊ីសាអូឌីត</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="170"/>
+        <source>所罗门群岛</source>
+        <translation>សូឡូម៉ុន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="171"/>
+        <source>塞舌尔</source>
+        <translation>សីសែល</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="172"/>
+        <source>苏丹</source>
+        <translation>ស៊ូដង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="173"/>
+        <source>瑞典</source>
+        <translation>ស៊ុយអែត</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="174"/>
+        <source>新加坡</source>
+        <translation>សិង្ហបុរី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="175"/>
+        <source>圣赫勒拿</source>
+        <translation>សាំងហេឡេណា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="176"/>
+        <source>斯洛文尼亚</source>
+        <translation>ស្លូវេនី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="177"/>
+        <source>斯洛伐克</source>
+        <translation>ស្លូវ៉ាគី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="178"/>
+        <source>塞拉利昂</source>
+        <translation>សៀរ៉ាឡេអូន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="179"/>
+        <source>圣马力诺</source>
+        <translation>សាន់ម៉ារីណូ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="180"/>
+        <source>塞内加尔</source>
+        <translation>សេណេហ្គាល់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="181"/>
+        <source>索马里</source>
+        <translation>សូម៉ាលី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="182"/>
+        <source>苏里南</source>
+        <translation>សូរីណាម</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="183"/>
+        <source>圣多美和普林西比</source>
+        <translation>សាវ់តូមី និងព្រីនស៊ីពី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="184"/>
+        <source>萨尔瓦多</source>
+        <translation>សាល់វ៉ាឌ័រ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="185"/>
+        <source>叙利亚</source>
+        <translation>ស៊ីរី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="186"/>
+        <source>斯威士兰</source>
+        <translation>ស្វាស៊ីឡង់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="187"/>
+        <source>特克斯和凯科斯群岛</source>
+        <translation>តឺកស៍ និងកៃកូស៍</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="188"/>
+        <source>乍得</source>
+        <translation>ឆាដ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="189"/>
+        <source>多哥</source>
+        <translation>តូហ្គោ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="190"/>
+        <source>泰国</source>
+        <translation>ថៃ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="191"/>
+        <source>塔吉克斯坦</source>
+        <translation>តើអ្នកនឹងទៅប្រទេសតាហ្ស៊ីគីស្ថានយ៉ាងដូចម្តេច?</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="192"/>
+        <source>东帝汶</source>
+        <translation>ទីម័រខាងកើត</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="193"/>
+        <source>土库曼斯坦</source>
+        <translation>Түркменистан</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="194"/>
+        <source>突尼斯</source>
+        <translation>តុនីស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="195"/>
+        <source>汤加</source>
+        <translation>តុងហ្គា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="196"/>
+        <source>土耳其</source>
+        <translation>តួកគី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="197"/>
+        <source>特立尼达和多巴哥</source>
+        <translation>ទ្រីនីដាដនិងតូបាហ្គោ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="198"/>
+        <source>台湾</source>
+        <translation>តៃវ៉ាន់</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="199"/>
+        <source>坦桑尼亚</source>
+        <translation>តង់សានី</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="200"/>
+        <source>乌克兰</source>
+        <translation>អ៊ុយក្រែន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="201"/>
+        <source>乌干达</source>
+        <translation>អ៊ូហ្គង់ដា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="202"/>
+        <source>美国</source>
+        <translation>អាមេរិក</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="203"/>
+        <source>乌拉圭</source>
+        <translation>អ៊ុយហ្គាយ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="204"/>
+        <source>乌兹别克斯坦</source>
+        <translation>Өзбекстан</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="205"/>
+        <source>圣文森特和格林纳丁斯</source>
+        <translation>សាំងវ៉ាំងសង់ និងហ្គ្រីណាឌីន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="206"/>
+        <source>委内瑞拉</source>
+        <translation>វ៉េណេស៊ុយអេឡា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="207"/>
+        <source>英属维尔京群岛</source>
+        <translation>ប្រទេស​វើជីន​ចក្រភព​អង់គ្លេស</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="208"/>
+        <source>越南</source>
+        <translation>វៀតណាម</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="209"/>
+        <source>瓦努阿图</source>
+        <translation>តង់ហ្វា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="210"/>
+        <source>萨摩亚</source>
+        <translation>សាមូអា</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="211"/>
+        <source>也门</source>
+        <translation>យេមិន</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="212"/>
+        <source>南非</source>
+        <translation>តំបន់អាហ្វ្រិកខាងត្បូង</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="213"/>
+        <source>赞比亚</source>
+        <translation>زامبیا</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="214"/>
+        <source>津巴布韦</source>
+        <translation>ហ្ស៊ីមបាវ៉េ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="215"/>
+        <source>刚果民主共和国</source>
+        <translation>សាធារណរដ្ឋប្រជាធិបតេយ្យកុងហ្គោ</translation>
+    </message>
+    <message>
+        <location filename="qml/CountryListModel.qml" line="216"/>
+        <source>澳大利亚</source>
+        <translation>អូស្ត្រាលី</translation>
+    </message>
+</context>
+<context>
     <name>CreateCloudPhonePopup</name>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="59"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="65"/>
         <source>Google DNS(8.8.8.8)</source>
         <translation>Google DNS(៨.៨.៨.៨)</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="59"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="65"/>
         <source>自定义 DNS</source>
         <translation>DNS ផ្ទាល់ខ្លួន</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="79"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1640"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1682"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="85"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1798"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1840"/>
         <source>镜像上传中...</source>
         <oldsource>下载中...</oldsource>
         <translation>រូបភាពកំពុងផ្ទុកឡើង...</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="86"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="92"/>
         <source>镜像加载中...</source>
         <oldsource>加载中...</oldsource>
         <translation>រូបភាពកំពុងផ្ទុក...</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="116"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="124"/>
         <source>创建中...</source>
         <translation>កំពុងបង្កើត...</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="118"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="126"/>
         <source>创建失败...</source>
         <translation>បង្កើតបានជោគជ័យ...</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="123"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="131"/>
         <source>镜像加载成功</source>
         <oldsource>创建成功</oldsource>
         <translation>រូបភាពត្រូវបានផ្ទុកដោយជោគជ័យ</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="494"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="503"/>
         <source>长度限制：2-11字符</source>
         <translation>ប្រវែងដែលអាចអនុញ្ញាតបាន៖ ២-១១តួអក្សរ</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="498"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="507"/>
         <source>支持字符：[a-zA-Z0-9_.-]</source>
         <translation>អក្សរដែលគាំទ្រ៖ [a-zA-Z0-9_.-]</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="502"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="511"/>
         <source>首字符和尾字符必须为[a-zA-Z0-9]</source>
         <translation>តួអក្សរដំបូង និងតួអក្សរចុងក្រោយត្រូវតែជា [a-zA-Z0-9]</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="536"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="545"/>
         <source>存储空间不足，请插入SSD固态盘之后进行操作！</source>
         <oldsource>存储空间不足：MMC 与 SSD 都小于 32G，无法执行该操作</oldsource>
         <translation>ផ្ទុកអង្កាញ់មិនគ្រប់គ្រាន់ សូមបញ្ចូលថាស SSD បន្ទាប់មកអនុវត្តប្រតិបត្តិការ!</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="556"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="565"/>
         <source>当前主机可同时运行的云机上限为 %1 台，已有 %2 台正在运行。</source>
-        <translation type="unfinished"></translation>
+        <translation>បច្ចុប្បន្ន ម៉ាស៊ីនហូស្តអាចដំណើរការម៉ាស៊ីនពពកក្នុងពេលតែមួយបានច្រើនបំផុត %1 គ្រឿង ហើយមាន %2 គ្រឿងកំពុងដំណើរការ។</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="558"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="567"/>
         <source>系统将自动启动其中 %1 台，其余 %2 台将创建完成后保持关机状态。</source>
-        <translation type="unfinished"></translation>
+        <translation>ប្រព័ន្ធនឹងចាប់ផ្ដើមស្វ័យប្រវត្តិ %1 កុំព្យូទ័រ និងទុក %2 កុំព្យូទ័រដែលនៅសល់ក្នុងស្ថានភាពបិទបន្ទាប់ពីបង្កើតរួច។</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="560"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="569"/>
         <source>系统将自动启动所有 %1 台。</source>
-        <translation type="unfinished"></translation>
+        <translation>ប្រព័ន្ធនឹងចាប់ផ្ដើមដោយស្វ័យប្រវត្តិទាំងអស់ %1 គ្រឿង។</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="562"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="571"/>
         <source>所有 %1 台将创建完成后保持关机状态。</source>
-        <translation type="unfinished"></translation>
+        <translation>ទាំងអស់ %1 គ្រឿងនឹងនៅក្នុងស្ថានភាពបិទបន្ទាប់ពីបានបង្កើតរួច។</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="611"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="623"/>
         <source>创建云机（不限创建总数）</source>
         <oldsource>创建云机</oldsource>
-        <translation type="unfinished">បង្កើតឧបករណ៍ពពក</translation>
+        <translation>បង្កើតម៉ាស៊ីនពពក (មិនកំណត់ចំនួនសរុបនៃការបង្កើត)</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="636"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="648"/>
         <source>主机地址：%1 （同时运行上限 %2 台）</source>
         <oldsource>主机地址：%1 （可创建上限%2台, 当前可创建%3台）</oldsource>
-        <translation type="unfinished">អាសយដ្ឋានម៉ាស៊ីនបម្រើ៖ %1 (អាចបង្កើតបានអតិបរមា %2 គ្រឿង, បច្ចុប្បន្នអាចបង្កើតបាន %3 គ្រឿង)</translation>
+        <translation>អាសយដ្ឋានម៉ាស៊ីនបម្រើ៖ %1 （ដំណើរការក្នុងពេលតែមួយច្រើនបំផុត %2 គ្រឿង）</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="651"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="663"/>
         <source>前往镜像管理</source>
         <oldsource>更多镜像</oldsource>
         <translation>ទៅកាន់​ការ​គ្រប់គ្រង​រូបភាព</translation>
@@ -868,33 +2198,38 @@
         <translation type="vanished">ប្រភេទម៉ាស៊ីនលំនាំដើម សូមប្រើប្រាស់ក្នុង &quot;ការកំណត់&quot; - &quot;ការកំណត់ប្រភេទម៉ាស៊ីន&quot;</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="898"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="908"/>
         <source>局域网IP</source>
-        <translation type="unfinished"></translation>
+        <translation>IP ក្នុងបណ្តាញ</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="911"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="921"/>
         <source>拥有局域网内的独立IP</source>
-        <translation type="unfinished"></translation>
+        <translation>មាន IP ដាច់ដោយឡែកក្នុងបណ្តាញ LAN</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1014"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="990"/>
+        <source>请输入正确的IP地址</source>
+        <translation>សូមបញ្ចូលអាសយដ្ឋាន IP ត្រឹមត្រូវ</translation>
+    </message>
+    <message>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1162"/>
         <source>自动启动</source>
         <oldsource>创建后立即启动云机</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>ស្វ័យប្រវត្តិចាប់ផ្ដើម</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1187"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1336"/>
         <source>找不到对应的 ADI 文件路径</source>
         <translation>រកមិនឃើញផ្លូវឯកសារ ADI ដែលត្រូវគ្នាទេ</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1215"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1364"/>
         <source>找不到默认模板的 ADI 文件路径</source>
         <translation>រកមិនឃើញផ្លូវឯកសារ ADI នៃទំព័រគំរូលំនាំដើមទេ</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1704"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1862"/>
         <source>ADI 导入中...</source>
         <translation>ADI នាំចូល...</translation>
     </message>
@@ -903,37 +2238,37 @@
         <translation type="vanished">ជ្រើសរើសកំណែ Android</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="642"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="654"/>
         <source>选择镜像</source>
         <translation>ជ្រើសរើសរូបភាព</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="956"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1104"/>
         <source>云机名称</source>
         <translation>ឈ្មោះម៉ាស៊ីនពពក</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="956"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1104"/>
         <source>云机名称前缀</source>
         <translation>ពាក្យដើមឈ្មោះម៉ាស៊ីនពពក</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="963"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1111"/>
         <source>请输入云机名称</source>
         <translation>សូមបញ្ចូលឈ្មោះឧបករណ៍ពពក</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="933"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1081"/>
         <source>分辨率</source>
         <translation>គុណភាពរូបភាព</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="719"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="731"/>
         <source>DNS类型</source>
         <translation>ប្រភេទ DNS</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="733"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="745"/>
         <source>DNS地址</source>
         <translation>អាសយដ្ឋាន DNS</translation>
     </message>
@@ -942,33 +2277,33 @@
         <translation type="vanished">លំដាប់ដើម</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="827"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="839"/>
         <source>指定机型</source>
         <translation>បញ្ជាក់ម៉ូដែល</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="840"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="852"/>
         <source>品牌</source>
         <translation>ម៉ាក</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="871"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="883"/>
         <source>机型</source>
         <translation>ម៉ូដែល</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1031"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1179"/>
         <source>将按前缀自动编号生成%1个云机：</source>
         <oldsource> 台云机：</oldsource>
         <translation>តាមលេខសម្គាល់ដោយស្វ័យប្រវត្តិ នឹងបង្កើតម៉ាស៊ីនពពកចំនួន %1 គ្រឿង៖</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1031"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1179"/>
         <source>将创建%1台云机：</source>
         <translation>%1ទៅឧបករណ៍ពពកបានបង្កើតហើយ៖</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1110"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1258"/>
         <source>创建云机数量必须大于0</source>
         <translation>បង្កើតចំនួនម៉ាស៊ីនពពកត្រូវតែធំជាង 0</translation>
     </message>
@@ -987,12 +2322,12 @@
         <translation type="vanished">លើសពីចំនួនអតិបរមាដែលអាចបង្កើតបាន</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1256"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1406"/>
         <source>自定义DNS不能为空</source>
         <translation>អាសយដ្ឋាន DNS ដែលបានកំណត់ផ្ទាល់ខ្លួនមិនអាចទទេបានទេ</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1262"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1412"/>
         <source>无效的DNS地址: </source>
         <translation>អាសយដ្ឋាន DNS មិនត្រឹមត្រូវ៖</translation>
     </message>
@@ -1001,46 +2336,46 @@
         <translation type="vanished">(ទាញយករួចហើយ)</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1412"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1444"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1564"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1596"/>
         <source> (已上传)</source>
         <translation>(បានបង្ហោះ)</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1576"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1728"/>
         <source>正在创建云机...</source>
         <translation>កំពុងបង្កើតម៉ាស៊ីនពពក...</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="167"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="737"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="176"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="749"/>
         <source>请输入DNS地址</source>
         <translation>សូមបញ្ចូលអាសយដ្ឋាន DNS</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="986"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1134"/>
         <source>云机数量</source>
         <translation>ចំនួនម៉ាស៊ីនបន្ទះស្ថានីយ</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1008"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1156"/>
         <source>单次可创建云机数量不超过 12 台</source>
         <oldsource>单次可创建云机数量不超过 %1 台</oldsource>
-        <translation type="unfinished">នឹកចាំអាចបង្កើតចំនួនគ្រាប់ពពក៖ %1</translation>
+        <translation>តម្លៃអតិបរមានៃឧបករណ៍ពហុភាសាដែលអាចបង្កើតបានក្នុងពេលតែមួយគឺមិនលើសពី ១២</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1061"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1209"/>
         <source>镜像上传中..</source>
         <oldsource>镜像下载中..</oldsource>
         <translation>រូបភាពកំពុងផ្ទុកឡើង..</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1092"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1240"/>
         <source>取消</source>
         <translation>បោះបង់</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1098"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1246"/>
         <source>确定</source>
         <translation>ប្រាកដ</translation>
     </message>
@@ -1048,72 +2383,157 @@
 <context>
     <name>DeviceDetailPopup</name>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="172"/>
-        <source>云机详情</source>
-        <translation type="unfinished"></translation>
+        <location filename="qml/DeviceDetailPopup.qml" line="135"/>
+        <source>缺少必要参数</source>
+        <translation>បាត់ប៉ារ៉ាម៉ែត្រចាំបាច់</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="199"/>
-        <source>云机ID：</source>
-        <translation type="unfinished"></translation>
+        <location filename="qml/DeviceDetailPopup.qml" line="140"/>
+        <source>请输入局域网络IP地址</source>
+        <translation>សូមបញ្ចូលអាសយដ្ឋានIPបណ្ដាញក្នុងតំបន់</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="215"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="147"/>
+        <source>请输入有效的IP地址格式</source>
+        <translation>សូមបញ្ចូលទម្រង់អាសយដ្ឋាន IP ត្រឹមត្រូវ</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="213"/>
+        <source>正在修改IP</source>
+        <translation>IP កំពុងត្រូវបានកែប្រែ</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="221"/>
+        <source>修改局域网络失败: </source>
+        <translation>ខុសប្រព័ន្ធបណ្ដាញមូលដ្ឋាន:</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="229"/>
+        <source>修改局域网络成功</source>
+        <translation>បានកែប្រែបណ្ដាញតំបន់ស្នើសុំដោយជោគជ័យ</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="241"/>
+        <source>修改局域网络失败: 实例不存在</source>
+        <translation>ការកែប្រែបណ្ដាញក្នុងតំបន់បរាជ័យ៖ ឧទាហរណ៍មិនមានទេ</translation>
+    </message>
+    <message>
         <location filename="qml/DeviceDetailPopup.qml" line="243"/>
-        <location filename="qml/DeviceDetailPopup.qml" line="271"/>
-        <location filename="qml/DeviceDetailPopup.qml" line="299"/>
-        <location filename="qml/DeviceDetailPopup.qml" line="326"/>
-        <location filename="qml/DeviceDetailPopup.qml" line="353"/>
-        <location filename="qml/DeviceDetailPopup.qml" line="381"/>
-        <location filename="qml/DeviceDetailPopup.qml" line="409"/>
-        <location filename="qml/DeviceDetailPopup.qml" line="437"/>
+        <source>修改局域网络失败: IP被占用</source>
+        <translation>ការកែប្រែបណ្តាញក្នុងតំបន់បរាជ័យ៖ IP ត្រូវបានកាន់កាប់</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="245"/>
+        <source>修改局域网络失败: 未知错误</source>
+        <translation>ការកែប្រែបណ្ដាញមូលដ្ឋានបានបរាជ័យ៖ កំហុសមិនស្គាល់</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="250"/>
+        <source>解析返回数据失败</source>
+        <translation>ញែកវិភាគទិន្នន័យត្រឡប់មកវិញមិនបានសម្រេច</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="262"/>
+        <source>云机详情</source>
+        <translation>ព័ត៌មានលម្អិតម៉ាស៊ីនពពក</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="289"/>
+        <source>云机ID：</source>
+        <translation>អត្តសញ្ញាណម៉ាស៊ីនពពក៖</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="305"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="333"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="361"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="389"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="416"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="443"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="471"/>
         <source>复制成功</source>
-        <translation type="unfinished"></translation>
+        <translation>ចម្លងដោយជោគជ័យ</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="227"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="317"/>
         <source>云机名称：</source>
-        <translation type="unfinished"></translation>
+        <translation>ឈ្មោះម៉ាស៊ីនពពក៖</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="255"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="345"/>
         <source>镜像版本：</source>
-        <translation type="unfinished"></translation>
+        <translation>កំណែរូបភាព៖</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="283"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="373"/>
         <source>Android版本：</source>
-        <translation type="unfinished"></translation>
+        <translation>កំណែ Android៖</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="311"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="401"/>
         <source>品牌：</source>
-        <translation type="unfinished"></translation>
+        <translation>ម៉ាក：</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="338"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="428"/>
         <source>机型：</source>
-        <translation type="unfinished"></translation>
+        <translation>ម៉ូដែល៖</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="365"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="455"/>
         <source>ADB：</source>
-        <translation type="unfinished"></translation>
+        <translation>ADB:</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="393"/>
-        <source>容器网络：</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="421"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="511"/>
         <source>局域网络：</source>
-        <translation type="unfinished"></translation>
+        <translation>Local network:</translation>
     </message>
     <message>
-        <location filename="qml/DeviceDetailPopup.qml" line="452"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="544"/>
+        <source>当前云机正在投屏，修改网络 IP 会导致投屏中断并退出。是否继续？</source>
+        <translation>បច្ចុប្បន្ន ម៉ាស៊ីនពពកកំពុងបញ្ចាំងអេក្រង់ ការកែប្រែ IP បណ្ដាញនឹងបណ្ដាលឱ្យការបញ្ចាំងអេក្រង់ត្រូវផ្ដាច់ និងចាកចេញ។ តើបន្តទៀតឬទេ?</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="580"/>
+        <source>请输入局域网络IP</source>
+        <translation>សូមបញ្ចូល IP បណ្តាញតំបន់</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="545"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="588"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="593"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="630"/>
+        <source>确定</source>
+        <translation>យល់ព្រម</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="592"/>
+        <source>修改IP需要重启云机，是否继续操作</source>
+        <translation>ផ្លាស់ប្តូរ IP តម្រូវឱ្យចាប់ផ្តើមឡើងវិញនូវម៉ាស៊ីនពពួក តើបន្តប្រតិបត្តិការឬទេ</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="619"/>
         <source>关闭</source>
-        <translation type="unfinished">បិទ</translation>
+        <translation>បិទ</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="543"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="591"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="628"/>
+        <source>操作确认</source>
+        <translation>ប្រតិបត្តិការបញ្ជាក់</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="629"/>
+        <source>检测到该设备的窗口已打开，编辑IP前需要先关闭窗口。是否继续？</source>
+        <translation>បានរកឃើញថាបង្អួចឧបករណ៍នេះបានបើក។ ត្រូវបិទបង្អួចមុនពេលកែសម្រួល IP។ តើបន្តទេ?</translation>
+    </message>
+    <message>
+        <location filename="qml/DeviceDetailPopup.qml" line="546"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="594"/>
+        <location filename="qml/DeviceDetailPopup.qml" line="631"/>
+        <source>取消</source>
+        <translation>បោះបង់</translation>
     </message>
 </context>
 <context>
@@ -1156,7 +2576,7 @@
     <message>
         <location filename="qml/ExpandableToolBar.qml" line="8"/>
         <source>安装</source>
-        <translation type="unfinished"></translation>
+        <translation>តំឡើង</translation>
     </message>
     <message>
         <location filename="qml/ExpandableToolBar.qml" line="9"/>
@@ -1181,7 +2601,7 @@
     <message>
         <location filename="qml/ExpandableToolBar.qml" line="16"/>
         <source>关机</source>
-        <translation type="unfinished">បិទ</translation>
+        <translation>បិទ</translation>
     </message>
     <message>
         <source>重置</source>
@@ -1190,7 +2610,7 @@
     <message>
         <location filename="qml/ExpandableToolBar.qml" line="21"/>
         <source>截图</source>
-        <translation type="unfinished"></translation>
+        <translation>រូបថតអេក្រង់</translation>
     </message>
     <message>
         <source>直播</source>
@@ -2065,14 +3485,14 @@
         <translation type="vanished">យ៉ាងហោចណាស់ជ្រើសរើសម៉ាស៊ីនពពកមួយ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="259"/>
+        <location filename="qml/MainWindow.qml" line="195"/>
         <source>不能包含关机设备，请重新选择</source>
         <translation>មិនអាចរួមបញ្ចូលឧបករណ៍បិទភ្នាក់ងារ សូមជ្រើសរើសម្ដងទៀត</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="263"/>
-        <location filename="qml/MainWindow.qml" line="276"/>
-        <location filename="qml/MainWindow.qml" line="285"/>
+        <location filename="qml/MainWindow.qml" line="199"/>
+        <location filename="qml/MainWindow.qml" line="212"/>
+        <location filename="qml/MainWindow.qml" line="221"/>
         <source>不能包含异常设备，请重新选择</source>
         <translation>មិនអាចបញ្ចូលឧបករណ៍មានកំហុស សូមជ្រើសរើសម្តងទៀត</translation>
     </message>
@@ -2081,46 +3501,46 @@
         <translation type="vanished">មិនអាចរួមបញ្ចូលឧបករណ៍ជាវខែ សូមជ្រើសរើសឡើងវិញ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="272"/>
+        <location filename="qml/MainWindow.qml" line="208"/>
         <source>不能包含已开机设备，请重新选择</source>
         <translation>មិនអាចមានឧបករណ៍ដែលបានបើករួចហើយនោះទេ សូមជ្រើសរើសម្តងទៀត</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="338"/>
-        <location filename="qml/MainWindow.qml" line="368"/>
+        <location filename="qml/MainWindow.qml" line="274"/>
+        <location filename="qml/MainWindow.qml" line="304"/>
         <source>天</source>
         <translation>ស្ថានសួគ៌</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="339"/>
-        <location filename="qml/MainWindow.qml" line="369"/>
+        <location filename="qml/MainWindow.qml" line="275"/>
+        <location filename="qml/MainWindow.qml" line="305"/>
         <source>时</source>
         <translation>ម៉ោង</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="340"/>
-        <location filename="qml/MainWindow.qml" line="370"/>
+        <location filename="qml/MainWindow.qml" line="276"/>
+        <location filename="qml/MainWindow.qml" line="306"/>
         <source>分</source>
         <translation>នាទី</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="341"/>
-        <location filename="qml/MainWindow.qml" line="371"/>
+        <location filename="qml/MainWindow.qml" line="277"/>
+        <location filename="qml/MainWindow.qml" line="307"/>
         <source>秒</source>
         <translation>វិនាទី</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="445"/>
+        <location filename="qml/MainWindow.qml" line="381"/>
         <source>开始扫描主机...</source>
         <translation>កំពុងចាប់ផ្ដើមស្កេនម៉ាស៊ីន...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="468"/>
+        <location filename="qml/MainWindow.qml" line="404"/>
         <source>主机 %1 已存在</source>
         <translation>យន្តមេ %1 មានរួចហើយ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="588"/>
+        <location filename="qml/MainWindow.qml" line="531"/>
         <source>重命名</source>
         <translation>ឈ្មោះឡើងវិញ</translation>
     </message>
@@ -2129,61 +3549,59 @@
         <translation type="vanished">សូមបញ្ចូលឈ្មោះ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="597"/>
-        <location filename="qml/MainWindow.qml" line="711"/>
-        <location filename="qml/MainWindow.qml" line="748"/>
-        <location filename="qml/MainWindow.qml" line="784"/>
-        <location filename="qml/MainWindow.qml" line="866"/>
-        <location filename="qml/MainWindow.qml" line="902"/>
-        <location filename="qml/MainWindow.qml" line="1303"/>
-        <location filename="qml/MainWindow.qml" line="1418"/>
-        <location filename="qml/MainWindow.qml" line="1627"/>
-        <location filename="qml/MainWindow.qml" line="1648"/>
-        <location filename="qml/MainWindow.qml" line="1669"/>
-        <location filename="qml/MainWindow.qml" line="1774"/>
-        <location filename="qml/MainWindow.qml" line="1838"/>
-        <location filename="qml/MainWindow.qml" line="1861"/>
-        <location filename="qml/MainWindow.qml" line="1884"/>
-        <location filename="qml/MainWindow.qml" line="1999"/>
-        <location filename="qml/MainWindow.qml" line="2127"/>
-        <location filename="qml/MainWindow.qml" line="2486"/>
-        <location filename="qml/MainWindow.qml" line="2540"/>
-        <location filename="qml/MainWindow.qml" line="2790"/>
-        <location filename="qml/MainWindow.qml" line="2808"/>
-        <location filename="qml/MainWindow.qml" line="2826"/>
-        <location filename="qml/MainWindow.qml" line="2844"/>
-        <location filename="qml/MainWindow.qml" line="2876"/>
-        <location filename="qml/MainWindow.qml" line="2895"/>
-        <location filename="qml/MainWindow.qml" line="2941"/>
-        <location filename="qml/MainWindow.qml" line="2960"/>
+        <location filename="qml/MainWindow.qml" line="540"/>
+        <location filename="qml/MainWindow.qml" line="654"/>
+        <location filename="qml/MainWindow.qml" line="691"/>
+        <location filename="qml/MainWindow.qml" line="727"/>
+        <location filename="qml/MainWindow.qml" line="835"/>
+        <location filename="qml/MainWindow.qml" line="1236"/>
+        <location filename="qml/MainWindow.qml" line="1351"/>
+        <location filename="qml/MainWindow.qml" line="1561"/>
+        <location filename="qml/MainWindow.qml" line="1582"/>
+        <location filename="qml/MainWindow.qml" line="1603"/>
+        <location filename="qml/MainWindow.qml" line="1729"/>
+        <location filename="qml/MainWindow.qml" line="1793"/>
+        <location filename="qml/MainWindow.qml" line="1816"/>
+        <location filename="qml/MainWindow.qml" line="1839"/>
+        <location filename="qml/MainWindow.qml" line="1954"/>
+        <location filename="qml/MainWindow.qml" line="2082"/>
+        <location filename="qml/MainWindow.qml" line="2441"/>
+        <location filename="qml/MainWindow.qml" line="2495"/>
+        <location filename="qml/MainWindow.qml" line="2745"/>
+        <location filename="qml/MainWindow.qml" line="2763"/>
+        <location filename="qml/MainWindow.qml" line="2781"/>
+        <location filename="qml/MainWindow.qml" line="2799"/>
+        <location filename="qml/MainWindow.qml" line="2831"/>
+        <location filename="qml/MainWindow.qml" line="2850"/>
+        <location filename="qml/MainWindow.qml" line="2896"/>
+        <location filename="qml/MainWindow.qml" line="2915"/>
         <source>取消</source>
         <translation>បោះបង់</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="598"/>
-        <location filename="qml/MainWindow.qml" line="710"/>
-        <location filename="qml/MainWindow.qml" line="747"/>
-        <location filename="qml/MainWindow.qml" line="783"/>
-        <location filename="qml/MainWindow.qml" line="865"/>
-        <location filename="qml/MainWindow.qml" line="901"/>
-        <location filename="qml/MainWindow.qml" line="1302"/>
-        <location filename="qml/MainWindow.qml" line="1417"/>
-        <location filename="qml/MainWindow.qml" line="1626"/>
-        <location filename="qml/MainWindow.qml" line="1647"/>
-        <location filename="qml/MainWindow.qml" line="1668"/>
-        <location filename="qml/MainWindow.qml" line="1773"/>
-        <location filename="qml/MainWindow.qml" line="1837"/>
-        <location filename="qml/MainWindow.qml" line="1860"/>
-        <location filename="qml/MainWindow.qml" line="1883"/>
-        <location filename="qml/MainWindow.qml" line="2003"/>
-        <location filename="qml/MainWindow.qml" line="2491"/>
-        <location filename="qml/MainWindow.qml" line="2546"/>
-        <location filename="qml/MainWindow.qml" line="2789"/>
-        <location filename="qml/MainWindow.qml" line="2807"/>
-        <location filename="qml/MainWindow.qml" line="2825"/>
-        <location filename="qml/MainWindow.qml" line="2843"/>
-        <location filename="qml/MainWindow.qml" line="2894"/>
-        <location filename="qml/MainWindow.qml" line="2959"/>
+        <location filename="qml/MainWindow.qml" line="541"/>
+        <location filename="qml/MainWindow.qml" line="653"/>
+        <location filename="qml/MainWindow.qml" line="690"/>
+        <location filename="qml/MainWindow.qml" line="726"/>
+        <location filename="qml/MainWindow.qml" line="834"/>
+        <location filename="qml/MainWindow.qml" line="1235"/>
+        <location filename="qml/MainWindow.qml" line="1350"/>
+        <location filename="qml/MainWindow.qml" line="1560"/>
+        <location filename="qml/MainWindow.qml" line="1581"/>
+        <location filename="qml/MainWindow.qml" line="1602"/>
+        <location filename="qml/MainWindow.qml" line="1728"/>
+        <location filename="qml/MainWindow.qml" line="1792"/>
+        <location filename="qml/MainWindow.qml" line="1815"/>
+        <location filename="qml/MainWindow.qml" line="1838"/>
+        <location filename="qml/MainWindow.qml" line="1958"/>
+        <location filename="qml/MainWindow.qml" line="2446"/>
+        <location filename="qml/MainWindow.qml" line="2501"/>
+        <location filename="qml/MainWindow.qml" line="2744"/>
+        <location filename="qml/MainWindow.qml" line="2762"/>
+        <location filename="qml/MainWindow.qml" line="2780"/>
+        <location filename="qml/MainWindow.qml" line="2798"/>
+        <location filename="qml/MainWindow.qml" line="2849"/>
+        <location filename="qml/MainWindow.qml" line="2914"/>
         <source>确定</source>
         <translation>ប្រាកដ</translation>
     </message>
@@ -2212,14 +3630,14 @@
         <translation type="vanished">លុបចោលជាបាច់</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1707"/>
+        <location filename="qml/MainWindow.qml" line="1641"/>
         <source>修改镜像</source>
         <oldsource>升级镜像</oldsource>
         <translation>កែសម្រួលរូបភាព</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="856"/>
-        <location filename="qml/MainWindow.qml" line="1744"/>
+        <location filename="qml/MainWindow.qml" line="799"/>
+        <location filename="qml/MainWindow.qml" line="1699"/>
         <source>一键新机</source>
         <translation>ម៉ាស៊ីនថ្មីមួយចុច</translation>
     </message>
@@ -2244,8 +3662,8 @@
         <translation type="vanished">បោះបង់ការអនុញ្ញាត</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="892"/>
-        <location filename="qml/MainWindow.qml" line="1768"/>
+        <location filename="qml/MainWindow.qml" line="825"/>
+        <location filename="qml/MainWindow.qml" line="1723"/>
         <source>重启云机</source>
         <oldsource>批量重启</oldsource>
         <translation>បើកឡានពពកឡើងវិញ</translation>
@@ -2295,8 +3713,8 @@
         <translation type="vanished">បង្ហាញឧបករណ៍បិទ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2875"/>
-        <location filename="qml/MainWindow.qml" line="2940"/>
+        <location filename="qml/MainWindow.qml" line="2830"/>
+        <location filename="qml/MainWindow.qml" line="2895"/>
         <source>删除</source>
         <translation>លុប</translation>
     </message>
@@ -2305,7 +3723,7 @@
         <translation type="vanished">ឧបានផ្ទេរឧបករណ៍</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="621"/>
+        <location filename="qml/MainWindow.qml" line="564"/>
         <source>下次不再提示</source>
         <translation>ប្រាប់នៅពេលក្រោយ</translation>
     </message>
@@ -2334,27 +3752,27 @@
         <translation type="vanished">អនុញ្ញាតឧបករណ៍</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="973"/>
+        <location filename="qml/MainWindow.qml" line="906"/>
         <source>默认排序</source>
         <translation>តម្រៀបលំនាំដើម</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="979"/>
+        <location filename="qml/MainWindow.qml" line="912"/>
         <source>按创建时间降序</source>
         <translation>តាមពេលវេលាបង្កើតចុះ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="985"/>
+        <location filename="qml/MainWindow.qml" line="918"/>
         <source>按创建时间升序</source>
         <translation>តាមលំដាប់ពេលវេលាបង្កើតឡើង</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="992"/>
+        <location filename="qml/MainWindow.qml" line="925"/>
         <source>按剩余时长降序</source>
         <translation>តាមរយៈពេលដែលនៅសល់ចុះ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="999"/>
+        <location filename="qml/MainWindow.qml" line="932"/>
         <source>按剩余时长升序</source>
         <translation>តាមរយៈពេលដែលនៅសល់ឡើង</translation>
     </message>
@@ -2371,58 +3789,57 @@
         <translation type="vanished">របៀបបង្ហាញ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1094"/>
+        <location filename="qml/MainWindow.qml" line="1027"/>
         <source>大视图</source>
         <translation>ទិដ្ឋភាពធំ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1113"/>
+        <location filename="qml/MainWindow.qml" line="1046"/>
         <source>中视图</source>
         <translation>ទិដ្ឋភាពកណ្តាល</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1132"/>
+        <location filename="qml/MainWindow.qml" line="1065"/>
         <source>小视图</source>
         <translation>ទម្រង់តូច</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2021"/>
+        <location filename="qml/MainWindow.qml" line="1976"/>
         <source>设置</source>
         <translation>កំណត់</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2030"/>
+        <location filename="qml/MainWindow.qml" line="1985"/>
         <source>v%1</source>
-        <oldsource>版本 v%1</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>វី។%1</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2042"/>
+        <location filename="qml/MainWindow.qml" line="1997"/>
         <source>帮助中心</source>
         <translation>ជំនួយកណ្តាល</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2048"/>
+        <location filename="qml/MainWindow.qml" line="2003"/>
         <source>通用设置</source>
-        <translation type="unfinished"></translation>
+        <translation>ការកំណត់ទូទៅ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2321"/>
+        <location filename="qml/MainWindow.qml" line="2276"/>
         <source>运行中云机</source>
-        <translation type="unfinished"></translation>
+        <translation>ការប្រតិបត្តិយន្តក្នុងពពក</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2332"/>
+        <location filename="qml/MainWindow.qml" line="2287"/>
         <source>所有云机</source>
-        <translation type="unfinished"></translation>
+        <translation>គ្រប់ម៉ាស៊ីនពពក</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2600"/>
+        <location filename="qml/MainWindow.qml" line="2555"/>
         <source>刷新过于频繁，请稍后再试</source>
         <translation>ធ្វើឲ្យភាពលឿនញឹកញាប់ពេក សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2842"/>
+        <location filename="qml/MainWindow.qml" line="2797"/>
         <source>删除主机仅适用于永久离线或IP已变更的主机。若主机恢复在线，系统的自动发现功能会重新将其添加至列表。</source>
         <translation>លុបម៉ាស៊ីនតែពេលដែលម៉ាស៊ីននោះអសកម្មជាអចិន្ត្រៃយ៍ ឬអាសយដ្ឋាន IP បានផ្លាស់ប្តូរ។ ប្រសិនបើម៉ាស៊ីនត្រឡប់មកអនឡាញវិញ ប្រព័ន្ធនឹងបន្ថែមវាត្រឡប់ទៅបញ្ជីដោយស្វ័យប្រវត្តិតាមរយៈលក្ខណៈពិសេសរកឃើញដោយខ្លួនឯង។</translation>
     </message>
@@ -2435,28 +3852,27 @@
         <translation type="vanished">ផ្លាស់ប្តូរការកំណត់រចនាសម្ព័ន្ធ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="708"/>
-        <location filename="qml/MainWindow.qml" line="745"/>
-        <location filename="qml/MainWindow.qml" line="781"/>
-        <location filename="qml/MainWindow.qml" line="863"/>
-        <location filename="qml/MainWindow.qml" line="899"/>
-        <location filename="qml/MainWindow.qml" line="1300"/>
-        <location filename="qml/MainWindow.qml" line="1415"/>
-        <location filename="qml/MainWindow.qml" line="1624"/>
-        <location filename="qml/MainWindow.qml" line="1645"/>
-        <location filename="qml/MainWindow.qml" line="1666"/>
-        <location filename="qml/MainWindow.qml" line="1771"/>
-        <location filename="qml/MainWindow.qml" line="1835"/>
-        <location filename="qml/MainWindow.qml" line="1858"/>
-        <location filename="qml/MainWindow.qml" line="1881"/>
-        <location filename="qml/MainWindow.qml" line="1997"/>
-        <location filename="qml/MainWindow.qml" line="2123"/>
-        <location filename="qml/MainWindow.qml" line="2482"/>
-        <location filename="qml/MainWindow.qml" line="2536"/>
-        <location filename="qml/MainWindow.qml" line="2787"/>
-        <location filename="qml/MainWindow.qml" line="2805"/>
-        <location filename="qml/MainWindow.qml" line="2823"/>
-        <location filename="qml/MainWindow.qml" line="2841"/>
+        <location filename="qml/MainWindow.qml" line="651"/>
+        <location filename="qml/MainWindow.qml" line="688"/>
+        <location filename="qml/MainWindow.qml" line="724"/>
+        <location filename="qml/MainWindow.qml" line="832"/>
+        <location filename="qml/MainWindow.qml" line="1233"/>
+        <location filename="qml/MainWindow.qml" line="1348"/>
+        <location filename="qml/MainWindow.qml" line="1558"/>
+        <location filename="qml/MainWindow.qml" line="1579"/>
+        <location filename="qml/MainWindow.qml" line="1600"/>
+        <location filename="qml/MainWindow.qml" line="1726"/>
+        <location filename="qml/MainWindow.qml" line="1790"/>
+        <location filename="qml/MainWindow.qml" line="1813"/>
+        <location filename="qml/MainWindow.qml" line="1836"/>
+        <location filename="qml/MainWindow.qml" line="1952"/>
+        <location filename="qml/MainWindow.qml" line="2078"/>
+        <location filename="qml/MainWindow.qml" line="2437"/>
+        <location filename="qml/MainWindow.qml" line="2491"/>
+        <location filename="qml/MainWindow.qml" line="2742"/>
+        <location filename="qml/MainWindow.qml" line="2760"/>
+        <location filename="qml/MainWindow.qml" line="2778"/>
+        <location filename="qml/MainWindow.qml" line="2796"/>
         <source>操作确认</source>
         <oldsource>系统提示</oldsource>
         <translation>ប្រតិបត្តិការបញ្ជាក់</translation>
@@ -2470,8 +3886,8 @@
         <translation type="vanished">មិនអាចមានឧបករណ៍វាស់ពេលទេ សូមជ្រើសរើសម្តងទៀត</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="709"/>
-        <location filename="qml/MainWindow.qml" line="1625"/>
+        <location filename="qml/MainWindow.qml" line="652"/>
+        <location filename="qml/MainWindow.qml" line="1559"/>
         <source>重置云机将清除云手机上的所有数据，云手机参数不会改变，请谨慎操作！</source>
         <oldsource>确定要重置云机？云机数据将被清空，请谨慎选择！</oldsource>
         <translation>ការកំណត់ឡើងវិញនៃម៉ាស៊ីនពពកនឹងលុបទិន្នន័យទាំងអស់នៅលើទូរស័ព្ទពពក ប៉ារ៉ាម៉ែត្រទូរស័ព្ទពពកនឹងមិនផ្លាស់ប្តូរទេ សូមប្រយ័ត្នក្នុងការប្រតិបត្តិ!</translation>
@@ -2481,8 +3897,8 @@
         <translation type="vanished">តើអ្នកប្រាកដថាចង់ប្រើម៉ាស៊ីនថ្មីដោយចុចតែមួយឬ? ម៉ាស៊ីនពពកនឹងលុបទិន្នន័យ ផ្លាស់ប្តូរ ID ឧបករណ៍ និងអត្តសញ្ញាណតែមួយគត់ទាំងអស់នៃឧបករណ៍ (ម៉ាស៊ីនពពកស្តង់ដារនឹងផ្លាស់ប្តូរម៉ូដែលឧបករណ៍ដោយចៃដន្យ ម៉ាស៊ីនពពកជាន់ខ្ពស់នឹងផ្លាស់ប្តូរ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="782"/>
-        <location filename="qml/MainWindow.qml" line="1667"/>
+        <location filename="qml/MainWindow.qml" line="725"/>
+        <location filename="qml/MainWindow.qml" line="1601"/>
         <source>删除云机将清除云手机及其所有数据，操作后无法恢复，请谨慎操作！</source>
         <oldsource>删除设备云机数据将被清空，请谨慎删除！</oldsource>
         <translation>ជម្រះម៉ាស៊ីនពពកនឹងសម្អាតទូរស័ព្ទពពក និងទិន្នន័យទាំងអស់របស់វា បន្ទាប់ពីប្រតិបត្តិការមិនអាចទាញយកវិញបានទេ សូមប្រយ័ត្ន!</translation>
@@ -2545,12 +3961,12 @@
         <translation type="vanished">តើ​ប្ដូរ​គណនី​ឬ​ទេ?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2136"/>
+        <location filename="qml/MainWindow.qml" line="2091"/>
         <source>最小化到托盘</source>
         <translation>បង្រួមទៅកាន់ត្រេ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2203"/>
+        <location filename="qml/MainWindow.qml" line="2158"/>
         <source>请输入云机名称、IP</source>
         <oldsource>请输入ID、名称、IP</oldsource>
         <translation>សូមបញ្ចូលឈ្មោះម៉ាស៊ីនពពក និង IP</translation>
@@ -2576,8 +3992,8 @@
         <translation type="vanished">បានអនុញ្ញាត</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2226"/>
-        <location filename="qml/MainWindow.qml" line="2232"/>
+        <location filename="qml/MainWindow.qml" line="2181"/>
+        <location filename="qml/MainWindow.qml" line="2187"/>
         <source>添加分组</source>
         <oldsource>新建分组</oldsource>
         <translation>បន្ថែមក្រុម</translation>
@@ -2591,12 +4007,12 @@
         <translation type="vanished">សូមបញ្ចូលលេខពី 1 ដល់ 500</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2509"/>
+        <location filename="qml/MainWindow.qml" line="2464"/>
         <source>云机播放窗口已打开，请先关闭后同步操作</source>
         <translation>បង្អួចចាក់សំឡេងពីម៉ាស៊ីនពពកបានបើករួច សូមបិទវាជាមុនសិនមុនពេលធ្វើសមកាលកម្ម</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2530"/>
+        <location filename="qml/MainWindow.qml" line="2485"/>
         <source>魔盒设备不能和云机设备一起同步操作，请分开进行同步操作</source>
         <translation>ប្រអប់អាប់ដ្ឋិតមិនអាចធ្វើសមកាលកម្មជាមួយឧបករណ៍ពពកបានទេ សូមធ្វើសមកាលកម្មដាច់ដោយឡែក</translation>
     </message>
@@ -2681,27 +4097,26 @@
         <translation type="vanished">ការបិទផ្ទាំងដើមនៅពេល</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3245"/>
+        <location filename="qml/MainWindow.qml" line="3200"/>
         <source>正在更新中...</source>
         <translation>កំពុងបន្ទាន់សម័យ...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3957"/>
+        <location filename="qml/MainWindow.qml" line="3953"/>
         <source>正在更新CBS程序，请稍候...</source>
         <translation>កំពុងធ្វើបច្ចុប្បន្នភាពកម្មវិធី CBS សូមរង់ចាំ...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3967"/>
         <source>CBS自动升级完成</source>
-        <translation>CBS បានបញ្ចប់ការធ្វើអាប់ដេតដោយស្វ័យប្រវត្តិ</translation>
+        <translation type="vanished">CBS បានបញ្ចប់ការធ្វើអាប់ដេតដោយស្វ័យប្រវត្តិ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2128"/>
+        <location filename="qml/MainWindow.qml" line="2083"/>
         <source>退出程序</source>
         <translation>ចាកចេញពីកម្មវិធី</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="481"/>
+        <location filename="qml/MainWindow.qml" line="420"/>
         <source>IP地址访问异常！</source>
         <translation>IPអាសយដ្ឋានបានចូលប្រើដោយមិនប្រក្រតី!</translation>
     </message>
@@ -2710,8 +4125,8 @@
         <translation type="vanished">ចម្លង ID</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="680"/>
-        <location filename="qml/MainWindow.qml" line="1613"/>
+        <location filename="qml/MainWindow.qml" line="623"/>
+        <location filename="qml/MainWindow.qml" line="1547"/>
         <source>启动云机</source>
         <oldsource>开机</oldsource>
         <translation>ការចាប់ផ្ដើមម៉ាស៊ីនពពក</translation>
@@ -2721,47 +4136,47 @@
         <translation type="vanished">បិទ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="774"/>
-        <location filename="qml/MainWindow.qml" line="1663"/>
+        <location filename="qml/MainWindow.qml" line="717"/>
+        <location filename="qml/MainWindow.qml" line="1597"/>
         <source>删除云机</source>
         <translation>លុបម៉ាស៊ីនពពក</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1023"/>
+        <location filename="qml/MainWindow.qml" line="956"/>
         <source>列表模式</source>
         <translation>របៀបបញ្ជី</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1039"/>
+        <location filename="qml/MainWindow.qml" line="972"/>
         <source>窗口模式</source>
         <oldsource>预览模式</oldsource>
         <translation>ប្រអប់របៀប</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1301"/>
+        <location filename="qml/MainWindow.qml" line="1234"/>
         <source>确定要删除分组吗？</source>
         <translation>តើពិតជាចង់លុបក្រុមនេះមែនទេ?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2824"/>
+        <location filename="qml/MainWindow.qml" line="2779"/>
         <source>重置主机会将该主机上所有的云机和数据清除，确认重置吗？</source>
         <translation>ការ​កំណត់​ម៉ាស៊ីន​មេ​ឡើង​វិញ​នឹង​លុប​ម៉ាស៊ីន​ពពក​និង​ទិន្នន័យ​ទាំងអស់​នៅ​លើ​ម៉ាស៊ីន​មេ​នេះ តើ​អ្នក​ពិត​ជា​ចង់​កំណត់​ឡើង​វិញ​ទេ?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1416"/>
+        <location filename="qml/MainWindow.qml" line="1349"/>
         <source>重启主机会将该主机上所有的云机重启，确认重启吗？</source>
         <translation>ត្រូវចាប់ផ្ដើមឡើងវិញម៉ាស៊ីនមេនឹងចាប់ផ្ដើមឡើងវិញម៉ាស៊ីនពពកទាំងអស់នៅលើម៉ាស៊ីននេះ តើអ្នកប្រាកដថាចង់ចាប់ផ្ដើមឡើងវិញទេ?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="900"/>
-        <location filename="qml/MainWindow.qml" line="1772"/>
+        <location filename="qml/MainWindow.qml" line="833"/>
+        <location filename="qml/MainWindow.qml" line="1727"/>
         <source>重启云机将重新启动云手机系统，运行中的任务可能会中断，请谨慎操作！</source>
         <oldsource>确定要进行重启操作吗？重启指令下发成功后，被重启的云机将在1-3分钟之内完成重启！</oldsource>
         <translation>បើកឡានពពកឡើងវិញនឹងចាប់ផ្ដើមប្រព័ន្ធទូរស័ព្ទពពកឡើងវិញ ភារកិច្ចដែលកំពុងដំណើរការអាចត្រូវបានរំខាន សូមប្រើប្រាស់ដោយប្រុងប្រយ័ត្ន!</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="746"/>
-        <location filename="qml/MainWindow.qml" line="1646"/>
+        <location filename="qml/MainWindow.qml" line="689"/>
+        <location filename="qml/MainWindow.qml" line="1580"/>
         <source>确定要关闭云手机吗？</source>
         <translation>តើអ្នកប្រាកដថាចង់បិទ Cloud Phone ទេ?</translation>
     </message>
@@ -2770,123 +4185,121 @@
         <translation type="vanished">ព័ត៌មានលំអិតអំពីម៉ាស៊ីនត្រួតពិនិត្យ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1836"/>
-        <location filename="qml/MainWindow.qml" line="2806"/>
+        <location filename="qml/MainWindow.qml" line="1791"/>
+        <location filename="qml/MainWindow.qml" line="2761"/>
         <source>确定要重启主机吗？</source>
         <translation>តើអ្នកប្រាកដថាចង់ចាប់ផ្ដើមម៉ាស៊ីនម្ដងទៀតឬទេ?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1874"/>
+        <location filename="qml/MainWindow.qml" line="1829"/>
         <source>清理镜像</source>
         <translation>សម្អាតកញ្ចក់</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2788"/>
+        <location filename="qml/MainWindow.qml" line="2743"/>
         <source>确定要清理未使用的镜像获取更多的存储空间吗？</source>
         <translation>តើអ្នកប្រាកដឬទេថាចង់សម្អាតរូបភាពដែលមិនបានប្រើ ដើម្បីទទួលបានទំហំផ្ទុកបន្ថែមទៀត?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1936"/>
+        <location filename="qml/MainWindow.qml" line="1891"/>
         <source>VMOS Edge</source>
         <translation>&apos;VMOS Edge&apos;</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="139"/>
-        <location filename="qml/MainWindow.qml" line="196"/>
-        <source>启动 scrcpy_server 失败: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/MainWindow.qml" line="155"/>
-        <source>启动 scrcpy_server 失败</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/MainWindow.qml" line="249"/>
-        <location filename="qml/MainWindow.qml" line="255"/>
-        <location filename="qml/MainWindow.qml" line="268"/>
-        <location filename="qml/MainWindow.qml" line="281"/>
+        <location filename="qml/MainWindow.qml" line="185"/>
+        <location filename="qml/MainWindow.qml" line="191"/>
+        <location filename="qml/MainWindow.qml" line="204"/>
+        <location filename="qml/MainWindow.qml" line="217"/>
         <source>不能包含离线设备，请重新选择</source>
         <translation>ពុំអាចរួមបញ្ចូលឧបករណ៍ដែលគ្មានអ៊ីនធឺណិត សូមជ្រើសរើសម្តងទៀត</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="290"/>
+        <location filename="qml/MainWindow.qml" line="226"/>
         <source>不能包含创建中设备，请重新选择</source>
         <translation>គ្មានឧបករណ៍ក្នុងការបង្កើត សូមជ្រើសរើសម្តងទៀត</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="818"/>
-        <location filename="qml/MainWindow.qml" line="1690"/>
+        <location filename="qml/MainWindow.qml" line="411"/>
+        <source>正在检查CBS版本...</source>
+        <translation>កំពុងពិនិត្យកំណែ CBS...</translation>
+    </message>
+    <message>
+        <location filename="qml/MainWindow.qml" line="761"/>
+        <location filename="qml/MainWindow.qml" line="1624"/>
         <source>长度限制 2–11 个字符，仅允许使用 [a–zA–Z0–9_.-]，且首尾字符不得为[._-]</source>
         <translation>ប្រវែងកំណត់ពី២–១១តួអក្សរ អនុញ្ញាតត្រឹមតែ [a–zA–Z0–9_.-] ហើយតួអក្សរដំបូងនិងចុងក្រោយមិនត្រូវជា [._-]</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="864"/>
         <source>一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！</source>
-        <translation>ចុចម៉ាស៊ីនថ្មីមួយគឺនឹងលុបទិន្នន័យទាំងអស់នៅលើទូរស័ព្ទពពក ប៉ារ៉ាម៉ែត្រទូរស័ព្ទពពកនឹងត្រូវបង្កើតឡើងវិញ សូមប្រយ័ត្នក្នុងការប្រតិបត្តិ!</translation>
+        <translation type="vanished">ចុចម៉ាស៊ីនថ្មីមួយគឺនឹងលុបទិន្នន័យទាំងអស់នៅលើទូរស័ព្ទពពក ប៉ារ៉ាម៉ែត្រទូរស័ព្ទពពកនឹងត្រូវបង្កើតឡើងវិញ សូមប្រយ័ត្នក្នុងការប្រតិបត្តិ!</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="930"/>
+        <location filename="qml/MainWindow.qml" line="863"/>
         <source>一键投屏</source>
-        <translation type="unfinished"></translation>
+        <translation>ច្បាប់ដាក់អេក្រង់</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="949"/>
+        <location filename="qml/MainWindow.qml" line="882"/>
         <source>一键排序</source>
-        <translation type="unfinished"></translation>
+        <translation>តម្រៀបដោយចុចតែម្តង</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="953"/>
+        <location filename="qml/MainWindow.qml" line="886"/>
         <source>已按默认排序</source>
-        <translation type="unfinished"></translation>
+        <translation>ត្រូវបានតម្រៀបតាមលំនាំដើម</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="958"/>
+        <location filename="qml/MainWindow.qml" line="891"/>
         <source>一键关闭</source>
-        <translation type="unfinished"></translation>
+        <translation>គ្រាប់ចុចតែមួយដើម្បីបិទ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="962"/>
+        <location filename="qml/MainWindow.qml" line="895"/>
         <source>已关闭所有云机窗口</source>
-        <translation type="unfinished"></translation>
+        <translation>ទ្វារបង្អួចម៉ាស៊ីនពពកទាំងអស់ត្រូវបានបិទ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1271"/>
+        <location filename="qml/MainWindow.qml" line="1204"/>
         <source>修改分组名称</source>
         <translation>កែសម្រួលឈ្មោះក្រុម</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1556"/>
+        <location filename="qml/MainWindow.qml" line="1490"/>
         <source>复制成功</source>
-        <translation type="unfinished"></translation>
+        <translation>ចម្លងដោយជោគជ័យ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1805"/>
+        <location filename="qml/MainWindow.qml" line="1660"/>
+        <source>语言时区</source>
+        <translation>ភាសា តំបន់ពេលវេលា</translation>
+    </message>
+    <message>
+        <location filename="qml/MainWindow.qml" line="1760"/>
         <source>API接口</source>
         <translation>APIចំណុចប្រទាក់</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1807"/>
+        <location filename="qml/MainWindow.qml" line="1762"/>
         <source>http://%1:18182/docs</source>
         <translation>http://%1:18182/docs</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1812"/>
+        <location filename="qml/MainWindow.qml" line="1767"/>
         <source>云机详情</source>
-        <translation type="unfinished"></translation>
+        <translation>ព័ត៌មានលម្អិតម៉ាស៊ីនពពក</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1859"/>
+        <location filename="qml/MainWindow.qml" line="1814"/>
         <source>重置主机将删除该主机上的全部云机及相关数据，确认执行此操作吗？</source>
         <translation>ដំឡើងកុំព្យូទ័រមេឡើងវិញនឹងលុបម៉ាស៊ីនពពកទាំងអស់និងទិន្នន័យដែលពាក់ព័ន្ធនៅលើម៉ាស៊ីននេះ តើអ្នកប្រាកដថាចង់បន្តទេ?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1882"/>
+        <location filename="qml/MainWindow.qml" line="1837"/>
         <source>清理未使用的镜像将释放存储空间，确认执行此操作吗？</source>
         <translation>តើការសម្អាតរូបភាពដែលមិនបានប្រើប្រាស់នឹងបញ្ចេញទំហំផ្ទុក តើអ្នកពិតជាចង់បន្តទេ?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1948"/>
+        <location filename="qml/MainWindow.qml" line="1903"/>
         <source>主机</source>
         <translation>ម៉ាស៊ីនផ្ទុក</translation>
     </message>
@@ -2899,12 +4312,12 @@
         <translation type="vanished">VMOSCloudទូរស័ព្ទពពក</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1998"/>
+        <location filename="qml/MainWindow.qml" line="1953"/>
         <source>修改语言需要重启程序，是否立即重启？</source>
         <translation>ត្រូវការចាប់ផ្តើមកម្មវិធីឡើងវិញ ដើម្បីកែប្រែភាសា តើចង់ចាប់ផ្តើមឡើងវិញភ្លាមៗទេ?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2057"/>
+        <location filename="qml/MainWindow.qml" line="2012"/>
         <source>机型设置</source>
         <translation>រចនាសម្ព័ន្ធគំរូ</translation>
     </message>
@@ -2913,7 +4326,7 @@
         <translation type="vanished">កំណែ៖ v%1</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2258"/>
+        <location filename="qml/MainWindow.qml" line="2213"/>
         <source>添加主机</source>
         <translation>បន្ថែមម៉ាស៊ីនមេ</translation>
     </message>
@@ -2959,17 +4372,17 @@
         <translation type="vanished">«បង្រួមទៅជាថាស»</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="399"/>
+        <location filename="qml/MainWindow.qml" line="335"/>
         <source>长度限制：2-11字符</source>
         <translation>ប្រវែង​កំណត់៖ ២-១១តួ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="403"/>
+        <location filename="qml/MainWindow.qml" line="339"/>
         <source>支持字符：[a-zA-Z0-9_.-]</source>
         <translation>អក្សរដែលត្រូវបានគាំទ្រ៖ [a-zA-Z0-9_.-]</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="407"/>
+        <location filename="qml/MainWindow.qml" line="343"/>
         <source>首字符和尾字符必须为[a-zA-Z0-9]</source>
         <translation>តួអក្សរដំបូង និងតួអក្សរចុងក្រោយត្រូវតែជា [a-zA-Z0-9]</translation>
     </message>
@@ -2978,33 +4391,33 @@
         <translation type="vanished">អាចប្រើបានតែលេខ/អក្សរ/សញ្ញាគូសពីក្រោម អតិបរមាមិនអាចលើសពី១០តួ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="702"/>
-        <location filename="qml/MainWindow.qml" line="1621"/>
+        <location filename="qml/MainWindow.qml" line="645"/>
+        <location filename="qml/MainWindow.qml" line="1555"/>
         <source>重置云机</source>
         <translation>កំណត់ឡានពពកឡើងវិញ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="738"/>
-        <location filename="qml/MainWindow.qml" line="1642"/>
+        <location filename="qml/MainWindow.qml" line="681"/>
+        <location filename="qml/MainWindow.qml" line="1576"/>
         <source>关闭云机</source>
         <oldsource>关机云机</oldsource>
         <translation>បិទម៉ាស៊ីនពពក</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="811"/>
-        <location filename="qml/MainWindow.qml" line="817"/>
-        <location filename="qml/MainWindow.qml" line="1685"/>
-        <location filename="qml/MainWindow.qml" line="1688"/>
+        <location filename="qml/MainWindow.qml" line="754"/>
+        <location filename="qml/MainWindow.qml" line="760"/>
+        <location filename="qml/MainWindow.qml" line="1619"/>
+        <location filename="qml/MainWindow.qml" line="1622"/>
         <source>修改名称</source>
         <translation>ផ្លាស់ប្តូរឈ្មោះ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1726"/>
+        <location filename="qml/MainWindow.qml" line="1681"/>
         <source>设置代理</source>
         <translation>កំណត់ប្រូកស៊ី</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1057"/>
+        <location filename="qml/MainWindow.qml" line="990"/>
         <source>横屏</source>
         <translation>横屏</translation>
     </message>
@@ -3013,29 +4426,29 @@
         <translation type="vanished">សកម្មភាពនេះនឹងកែប្រែជាអចិន្ត្រៃយ៍នូវព័ត៌មានសម្គាល់តែមួយគត់របស់ឧបករណ៍ (រួមទាំង ប៉ុន្តែមិនកំណត់ចំពោះ លេខសម្គាល់ឧបករណ៍ IMEI លេខសម្គាល់ Android ជាដើម) និងទិន្នន័យបរិស្ថានកម្មវិធី។ វានឹងធ្វើការក្លែងត្រាប់តាមឧបករណ៍ថ្មីដែលមិនធ្លាប់បានប្រើសោះ។</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1075"/>
+        <location filename="qml/MainWindow.qml" line="1008"/>
         <source>竖屏</source>
         <translation>បញ្ឈរ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1277"/>
-        <location filename="qml/MainWindow.qml" line="2238"/>
+        <location filename="qml/MainWindow.qml" line="1210"/>
+        <location filename="qml/MainWindow.qml" line="2193"/>
         <source>名称长度为2-15字符</source>
         <oldsource>长度限制： 不超过 15 个字符</oldsource>
         <translation>ឈ្មោះមានប្រវែង ២-១៥ តួអក្សរ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1828"/>
+        <location filename="qml/MainWindow.qml" line="1783"/>
         <source>重启主机</source>
         <translation>ចាប់ផ្ដើមម៉ាស៊ីនបម្រុងឡើងវិញ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1851"/>
+        <location filename="qml/MainWindow.qml" line="1806"/>
         <source>重置主机</source>
         <translation>ដាក់ឡើងវិញម៉ាស៊ីនភ្លើង</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1949"/>
+        <location filename="qml/MainWindow.qml" line="1904"/>
         <source>镜像</source>
         <translation>រូបភាព</translation>
     </message>
@@ -3044,14 +4457,14 @@
         <translation type="vanished">បច្ចុប្បន្ន​ជំពូក៖</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2873"/>
-        <location filename="qml/MainWindow.qml" line="2938"/>
+        <location filename="qml/MainWindow.qml" line="2828"/>
+        <location filename="qml/MainWindow.qml" line="2893"/>
         <source>确认删除</source>
         <translation>បញ្ជាក់ការលុប</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2874"/>
-        <location filename="qml/MainWindow.qml" line="2939"/>
+        <location filename="qml/MainWindow.qml" line="2829"/>
+        <location filename="qml/MainWindow.qml" line="2894"/>
         <source>确定要删除镜像 &quot;%1&quot; 吗？此操作将永久删除镜像文件，无法恢复。</source>
         <oldsource>确定要删除镜像 &quot;%1&quot; 吗？
 
@@ -3059,14 +4472,14 @@
         <translation>តើអ្នកពិតជាចង់លុបរូបភាព &quot;%1&quot; មែនទេ? សកម្មភាពនេះនឹងលុបឯកសាររូបភាពជាអចិន្ត្រៃយ៍ ហើយមិនអាចទាញយកមកវិញបានទេ។</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2892"/>
-        <location filename="qml/MainWindow.qml" line="2957"/>
+        <location filename="qml/MainWindow.qml" line="2847"/>
+        <location filename="qml/MainWindow.qml" line="2912"/>
         <source>确认更改路径</source>
         <translation>បញ្ជាក់ការផ្លាស់ប្តូរផ្លូវ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2893"/>
-        <location filename="qml/MainWindow.qml" line="2958"/>
+        <location filename="qml/MainWindow.qml" line="2848"/>
+        <location filename="qml/MainWindow.qml" line="2913"/>
         <source>确定要将镜像存储路径更改为：%1 更改后，新导入的镜像将存储在新路径中。</source>
         <oldsource>确定要将镜像存储路径更改为：
 
@@ -3112,17 +4525,17 @@
         <translation type="vanished">ពិនិត្យបច្ចុប្បន្នភាព</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3083"/>
+        <location filename="qml/MainWindow.qml" line="3038"/>
         <source>当前已经是最新版本</source>
         <translation>បច្ចុប្បន្នជាកំណែថ្មីបំផុតហើយ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3127"/>
+        <location filename="qml/MainWindow.qml" line="3082"/>
         <source>正在重启主机...</source>
         <translation>កំពុងចាប់ផ្ដើមម៉ាស៊ីនឡើងវិញ...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3160"/>
+        <location filename="qml/MainWindow.qml" line="3115"/>
         <source>正在重置主机...</source>
         <translation>កំពុងកំណត់ម៉ាស៊ីនដឹកជញ្ជូនឡើងវិញ...</translation>
     </message>
@@ -3131,27 +4544,27 @@
         <translation type="vanished">កំពុងបង្កើតម៉ាស៊ីនពពក...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3305"/>
+        <location filename="qml/MainWindow.qml" line="3262"/>
         <source>正在删除云机...</source>
         <translation>កំពុងលុបម៉ាស៊ីនពពក...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3339"/>
+        <location filename="qml/MainWindow.qml" line="3296"/>
         <source>正在重启云机...</source>
         <translation>កំពុងចាប់ផ្ដើមឡើងវិញម៉ាស៊ីនពពក...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3372"/>
+        <location filename="qml/MainWindow.qml" line="3329"/>
         <source>正在重置云机...</source>
         <translation>កំពុងកំណត់ឡើងវិញម៉ាស៊ីនពពក...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3405"/>
+        <location filename="qml/MainWindow.qml" line="3362"/>
         <source>正在启动云机...</source>
         <translation>កំពុងចាប់ផ្ដើមម៉ាស៊ីនពពក...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3438"/>
+        <location filename="qml/MainWindow.qml" line="3395"/>
         <source>正在停止云机...</source>
         <translation>កំពុងបញ្ឈប់ម៉ាស៊ីនពពក...</translation>
     </message>
@@ -3164,22 +4577,22 @@
         <translation type="vanished">កំពុងធ្វើសកម្មភាពសមស្រប សូមបិទសកម្មភាពសមស្របជាមុនសិន</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="213"/>
+        <location filename="qml/MainWindow.qml" line="149"/>
         <source>至少选择1台云机</source>
         <translation>យ៉ាងហោចណាស់ត្រូវជ្រើសរើសម៉ាស៊ីនមេពពកចំនួន ១</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="215"/>
+        <location filename="qml/MainWindow.qml" line="151"/>
         <source>至少选择2台云机</source>
         <translation>សូមជ្រើសរើសម៉ាស៊ីនពពកយ៉ាងតិច %1</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="495"/>
+        <location filename="qml/MainWindow.qml" line="434"/>
         <source>显示主面板</source>
         <translation>បង្ហាញផ្ទៃដែលចម្បង</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="501"/>
+        <location filename="qml/MainWindow.qml" line="440"/>
         <source>退出</source>
         <translation>ចាកចេញ</translation>
     </message>
@@ -3188,7 +4601,7 @@
         <translation type="vanished">បិទ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2126"/>
+        <location filename="qml/MainWindow.qml" line="2081"/>
         <source>是否退出</source>
         <translation>តើចង់ចាកចេញឬទេ</translation>
     </message>
@@ -3205,7 +4618,7 @@
         <translation type="vanished">បានបិទ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1947"/>
+        <location filename="qml/MainWindow.qml" line="1902"/>
         <source>云机</source>
         <translation>ឧបករណ៍បណ្ដាញពពក</translation>
     </message>
@@ -3214,32 +4627,32 @@
         <translation type="obsolete">ហាង​ Magic Box</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2370"/>
+        <location filename="qml/MainWindow.qml" line="2325"/>
         <source>全选</source>
         <translation>ជ្រើសរើសទាំងអស់</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2387"/>
+        <location filename="qml/MainWindow.qml" line="2342"/>
         <source>反选</source>
         <translation>ជ្រើសរើសច្រាស</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2397"/>
+        <location filename="qml/MainWindow.qml" line="2352"/>
         <source>您还未勾选云手机</source>
         <translation>អ្នកមិនទាន់បានជ្រើសរើស Cloud Phone ទេ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2402"/>
+        <location filename="qml/MainWindow.qml" line="2357"/>
         <source>没有可以反选的云手机</source>
         <translation>គ្មានម៉ាស៊ីនបម្រើក្លោដដែលអាចជ្រើសរើសបានទេ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2420"/>
+        <location filename="qml/MainWindow.qml" line="2375"/>
         <source>已选</source>
         <translation>បានជ្រើសរើស</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2430"/>
+        <location filename="qml/MainWindow.qml" line="2385"/>
         <source>取消选择</source>
         <translation>មិនបានជ្រើសរើស</translation>
     </message>
@@ -3248,22 +4661,22 @@
         <translation type="vanished">ច្រោះរហ័ស</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2476"/>
+        <location filename="qml/MainWindow.qml" line="2431"/>
         <source>同步操作</source>
         <translation>ការធ្វើសមកាលកម្ម</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2485"/>
+        <location filename="qml/MainWindow.qml" line="2440"/>
         <source>是否要关闭同步操作模式</source>
         <translation>តើលោកអ្នកចង់បិទរបៀបសកម្មភាពសមកាលកម្មទេ?</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2539"/>
+        <location filename="qml/MainWindow.qml" line="2494"/>
         <source>开启同步操作，则操作任意一台云手机的同时可同步操作至其它勾选的云手机</source>
         <translation>បើកសកម្មភាពសមស្រប នោះការប្រតិបត្តិការលើម៉ាស៊ីនមេកុំព្យូទ័រពពកណាមួយក៏អាចសមស្របទៅនឹងម៉ាស៊ីនមេកុំព្យូទ័រពពកដទៃទៀតដែលបានជ្រើសរើសផងដែរ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2450"/>
+        <location filename="qml/MainWindow.qml" line="2405"/>
         <source>批量操作</source>
         <translation>ប្រតិបត្តិការជាក្រុម</translation>
     </message>
@@ -3272,12 +4685,12 @@
         <translation type="vanished">គ្រប់គ្រងឧបករណ៍</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2588"/>
+        <location filename="qml/MainWindow.qml" line="2543"/>
         <source>刷新</source>
         <translation>ផ្ទុកឡើងវិញ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2617"/>
+        <location filename="qml/MainWindow.qml" line="2572"/>
         <source>视图模式</source>
         <translation>ទិដ្ឋភាព</translation>
     </message>
@@ -3387,104 +4800,110 @@
 <context>
     <name>OneKeyNewDevicePopup</name>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="114"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="128"/>
         <source>一键新机</source>
-        <translation type="unfinished"></translation>
+        <translation>ម៉ាស៊ីនថ្មីមួយចុច</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="158"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="174"/>
         <source>指定机型</source>
-        <translation type="unfinished">បញ្ជាក់ម៉ូដែល</translation>
+        <translation>បញ្ជាក់ម៉ូដែល</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="171"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="188"/>
         <source>品牌</source>
-        <translation type="unfinished">ម៉ាក</translation>
+        <translation>ម៉ាក</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="203"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="220"/>
         <source>机型</source>
-        <translation type="unfinished">ម៉ូដែល</translation>
+        <translation>គំរូយន្តហោះ</translation>
     </message>
     <message>
         <source>注意事项: </source>
         <translation type="obsolete">ការពិនិត្យខ្លឹមសា្រ:</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="151"/>
-        <source>一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！</source>
-        <translation type="unfinished"></translation>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="165"/>
+        <source>一键新机后云手机参数会重新生成，请谨慎操作！</source>
+        <oldsource>一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！</oldsource>
+        <translation>ការចុចម៉ាស៊ីនថ្មីម្តង ប៉ារ៉ាម៉ែត្រទូរស័ព្ទពពកនឹងត្រូវបង្កើតឡើងវិញ សូមប្រយ័ត្នក្នុងការប្រតិបត្តិ!</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="182"/>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="247"/>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="542"/>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="543"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="199"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="284"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="580"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="581"/>
         <source>未选定</source>
-        <translation type="unfinished"></translation>
+        <translation>មិនបានជ្រើសរើស</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="228"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="233"/>
+        <source>清理数据</source>
+        <translation>សម្អាតទិន្នន័យ</translation>
+    </message>
+    <message>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="265"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation>បោះបង់</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="234"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="271"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation>ពិតប្រាកដ</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="261"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="298"/>
         <source>找不到对应的 ADI 配置</source>
-        <translation type="unfinished"></translation>
+        <translation>រកមិនឃើញការកំណត់ ADI ដែលត្រូវគ្នា</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="283"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="320"/>
         <source>未找到有效的云机</source>
-        <translation type="unfinished"></translation>
+        <translation>រកមិនឃើញម៉ាស៊ីនពពកដែលត្រឹមត្រូវ</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="272"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="309"/>
         <source>找不到对应的 ADI 文件路径</source>
-        <translation type="unfinished">រកមិនឃើញផ្លូវឯកសារ ADI ដែលត្រូវគ្នាទេ</translation>
+        <translation>រកមិនឃើញផ្លូវឯកសារ ADI ដែលត្រូវគ្នាទេ</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="305"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="342"/>
         <source>未找到有效的主机 IP</source>
-        <translation type="unfinished"></translation>
+        <translation>រកមិនឃើញ IP ម៉ាស៊ីនដែលត្រឹមត្រូវ</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="884"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="930"/>
         <source>正在为主机 %1 导入 ADI...</source>
-        <translation type="unfinished"></translation>
+        <translation>កំពុងនាំចូល ADI សម្រាប់ម៉ាស៊ីនដំណើរការ %1...</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="886"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="932"/>
         <source>ADI 导入中...</source>
-        <translation type="unfinished"></translation>
+        <translation>ADI នាំចូល...</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="839"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="878"/>
         <source>正在执行一键新机...</source>
-        <translation type="unfinished"></translation>
+        <translation>កំពុងប្រតិបត្តិម៉ាស៊ីនថ្មីមួយចុច...</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="858"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="897"/>
         <source>一键新机失败</source>
-        <translation type="unfinished"></translation>
+        <translation>មួយគ្រាប់បដិសេធថ្មីបរាជ័យ</translation>
     </message>
     <message>
-        <location filename="qml/OneKeyNewDevicePopup.qml" line="862"/>
+        <location filename="qml/OneKeyNewDevicePopup.qml" line="901"/>
         <source>解析响应失败</source>
-        <translation type="unfinished"></translation>
+        <translation>បរាជ័យក្នុងការញែកការឆ្លើយតប</translation>
     </message>
 </context>
 <context>
     <name>PadWindow</name>
     <message>
-        <location filename="qml/PadWindow.qml" line="305"/>
-        <location filename="qml/PadWindow.qml" line="531"/>
-        <location filename="qml/PadWindow.qml" line="2711"/>
+        <location filename="qml/PadWindow.qml" line="321"/>
+        <location filename="qml/PadWindow.qml" line="586"/>
+        <location filename="qml/PadWindow.qml" line="2478"/>
         <source>系统提示</source>
         <translation>ប្រព័ន្ធបង្ហាញ</translation>
     </message>
@@ -3493,7 +4912,7 @@
         <translation type="vanished">ពេលវេលាយូរមិនបានប្រើប្រាស់ឧបករណ៍ពពក ត្រូវបានដាក់អោយដំណើរការដោយស្វ័យប្រវត្តិនៅលើពពក (កម្មវិធីនៅក្នុងឧបករណ៍ពពកនៅតែដំណើរការ)</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="307"/>
+        <location filename="qml/PadWindow.qml" line="323"/>
         <source>退出</source>
         <translation>ចាកចេញ</translation>
     </message>
@@ -3502,12 +4921,11 @@
         <translation type="vanished">ភ្ជាប់ឡើងវិញ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="311"/>
-        <location filename="qml/PadWindow.qml" line="1740"/>
-        <location filename="qml/PadWindow.qml" line="1755"/>
-        <location filename="qml/PadWindow.qml" line="1769"/>
-        <location filename="qml/PadWindow.qml" line="1783"/>
-        <location filename="qml/PadWindow.qml" line="2714"/>
+        <location filename="qml/PadWindow.qml" line="327"/>
+        <location filename="qml/PadWindow.qml" line="1877"/>
+        <location filename="qml/PadWindow.qml" line="1909"/>
+        <location filename="qml/PadWindow.qml" line="1923"/>
+        <location filename="qml/PadWindow.qml" line="2481"/>
         <source>确定</source>
         <translation>បញ្ជាក់</translation>
     </message>
@@ -3524,8 +4942,9 @@
         <translation type="vanished">បង្វិល</translation>
     </message>
     <message>
+        <location filename="qml/PadWindow.qml" line="1717"/>
         <source>直播</source>
-        <translation type="vanished">ការផ្សាយតាមផ្ទាល់</translation>
+        <translation>ការផ្សាយតាមផ្ទាល់</translation>
     </message>
     <message>
         <source>重启</source>
@@ -3576,139 +4995,158 @@
         <translation type="vanished">អរូបី</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1735"/>
+        <location filename="qml/PadWindow.qml" line="1872"/>
         <source>确定要重启云机？</source>
         <translation>តើអ្នកពិតជាចង់ចាប់ផ្តើមឡើងវិញនូវម៉ាស៊ីនពពកនេះមែនទេ?</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1736"/>
-        <location filename="qml/PadWindow.qml" line="1751"/>
-        <location filename="qml/PadWindow.qml" line="1768"/>
-        <location filename="qml/PadWindow.qml" line="1782"/>
+        <location filename="qml/PadWindow.qml" line="1873"/>
+        <location filename="qml/PadWindow.qml" line="1908"/>
+        <location filename="qml/PadWindow.qml" line="1922"/>
         <source>取消</source>
         <translation>បោះបង់</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1750"/>
         <source>一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！</source>
         <oldsource>确定要一键新机？云机将清空数据，变更设备ID及设备所有唯一标识(标准云机将随机更换机型，高端云机将更换相同机型)</oldsource>
-        <translation type="unfinished">តើអ្នកប្រាកដថាចង់ធ្វើការផ្លាស់ប្តូរឧបករណ៍ដោយស្វ័យប្រវត្តិមែនទេ? ឧបករណ៍ពពកនឹងលុបទិន្នន័យ ផ្លាស់ប្តូរ ID ឧបករណ៍ និងគ្រប់សញ្ញាសម្គាល់តែមួយគត់នៃឧបករណ៍(ឧបករណ៍ពពកស្តង់ដារនឹងផ្លាស់ប្តូរម៉ូដែលដោយចៃដន្យ ចំណែកឧបករណ៍ពពកខ្ពស់នឹងផ្លាស់ប្តូរម៉ូដែលដូចគ្នា)</translation>
+        <translation type="obsolete">តើអ្នកប្រាកដថាចង់ធ្វើការផ្លាស់ប្តូរឧបករណ៍ដោយស្វ័យប្រវត្តិមែនទេ? ឧបករណ៍ពពកនឹងលុបទិន្នន័យ ផ្លាស់ប្តូរ ID ឧបករណ៍ និងគ្រប់សញ្ញាសម្គាល់តែមួយគត់នៃឧបករណ៍(ឧបករណ៍ពពកស្តង់ដារនឹងផ្លាស់ប្តូរម៉ូដែលដោយចៃដន្យ ចំណែកឧបករណ៍ពពកខ្ពស់នឹងផ្លាស់ប្តូរម៉ូដែលដូចគ្នា)</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1766"/>
+        <location filename="qml/PadWindow.qml" line="1906"/>
         <source>当前云机换机后，将会清空云机全部数据，无法恢复，确定进行换机？</source>
         <translation>ម៉ាស៊ីនពពកបច្ចុប្បន្នបន្ទាប់ពីផ្លាស់ប្តូរម៉ាស៊ីន ទិន្នន័យទាំងអស់នៅក្នុងម៉ាស៊ីនពពកនឹងត្រូវបានជម្រះ ហើយមិនអាចទាញយកមកវិញបានទេ តើអ្នកប្រាកដក្នុងការផ្លាស់ប្តូរម៉ាស៊ីនឬ?</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1780"/>
+        <location filename="qml/PadWindow.qml" line="1920"/>
         <source>确定要关闭云手机吗？</source>
         <oldsource>确定要重置云机？云机数据将被清空，请谨慎选择！</oldsource>
-        <translation type="unfinished">តើអ្នកពិតជាចង់កំណត់ឡើងវិញម៉ាស៊ីនពពក? ទិន្នន័យម៉ាស៊ីនពពកនឹងត្រូវបានលុបចោល សូមពិចារណាដោយប្រុងប្រយ័ត្ន!</translation>
+        <translation>តើអ្នកពិតជាចង់បិទ Cloud Phone ឬ?</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1879"/>
+        <location filename="qml/PadWindow.qml" line="2019"/>
         <source>返回</source>
         <translation>ត្រឡប់មកវិញ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1926"/>
         <source>摄像头推流</source>
-        <translation>កាមេរ៉ាបញ្ជូនស្ទ្រីម</translation>
+        <translation type="vanished">កាមេរ៉ាបញ្ជូនស្ទ្រីម</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1957"/>
         <source>摄像头</source>
-        <translation>កាមេរ៉ា</translation>
+        <translation type="vanished">កាមេរ៉ា</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2196"/>
+        <source>刷新</source>
+        <oldsource>刷新设备</oldsource>
+        <translation type="obsolete">ផ្ទុកឡើងវិញ</translation>
+    </message>
+    <message>
         <source>选择上传视频</source>
-        <translation>ជ្រើសរើសវីដេអូដើម្បីផ្ទុកឡើង</translation>
+        <translation type="vanished">ជ្រើសរើសវីដេអូដើម្បីផ្ទុកឡើង</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2448"/>
+        <location filename="qml/PadWindow.qml" line="1745"/>
+        <source>请先开启推流后再开启直播</source>
+        <translation>សូមបើកលេខផ្សព្វផ្សាយមុនពេលចាប់ផ្ដើមផ្សាយតាមពេលវេលាជាក់ស្តែង</translation>
+    </message>
+    <message>
+        <location filename="qml/PadWindow.qml" line="1889"/>
+        <source>缺少云机必要信息，无法执行一键新机</source>
+        <translation>ខ្វះព័ត៌មានចាំបាច់សម្រាប់ម៉ាស៊ីនពពក មិនអាចអនុវត្តម៉ាស៊ីនថ្មីមួយចុចបាន</translation>
+    </message>
+    <message>
+        <location filename="qml/PadWindow.qml" line="2215"/>
         <source>新增按键</source>
         <translation>ប៊ូតុុនបន្ថែមថ្មី</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2452"/>
+        <location filename="qml/PadWindow.qml" line="2219"/>
         <source>使用“鼠标左键”新增按键</source>
         <translation>ប្រើប្រាស់ &quot;ប៊ូតុងកណ្ដុរឆ្វេង&quot; ដើម្បីបន្ថែមគ្រាប់ចុច</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2487"/>
+        <location filename="qml/PadWindow.qml" line="2254"/>
         <source>方向摇杆</source>
         <translation>ចំណុចទិសដៅចល័ត</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2491"/>
+        <location filename="qml/PadWindow.qml" line="2258"/>
         <source>使用“AWSD”控制人物移动</source>
         <translation>ប្រើ &quot;AWSD&quot; ដើម្បីបញ្ជាទិញចលនារបស់តួអង្គ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2512"/>
+        <location filename="qml/PadWindow.qml" line="2279"/>
         <source>键盘映射开关</source>
         <translation>ការផ្លាស់ប្តូរគ្រាប់ចុចគ្រាប់ចាប់</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2542"/>
+        <location filename="qml/PadWindow.qml" line="2309"/>
         <source>还原</source>
         <translation>ស្ដារ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2554"/>
+        <location filename="qml/PadWindow.qml" line="2321"/>
         <source>保存</source>
         <translation>រក្សាទុក</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2734"/>
+        <location filename="qml/PadWindow.qml" line="2501"/>
         <source>正在重启云机...</source>
-        <translation type="unfinished">កំពុងចាប់ផ្ដើមឡើងវិញម៉ាស៊ីនពពក...</translation>
+        <translation>កំពុងចាប់ផ្ដើមឡើងវិញនូវម៉ាស៊ីនពពក...</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2748"/>
+        <location filename="qml/PadWindow.qml" line="2515"/>
         <source>重启云机成功</source>
-        <translation type="unfinished"></translation>
+        <translation>ចាប់ផ្ដើមឡើងវិញដោយជោគជ័យ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2769"/>
+        <location filename="qml/PadWindow.qml" line="2536"/>
         <source>正在停止云机...</source>
         <oldsource>正在重置云机...</oldsource>
-        <translation type="unfinished">កំពុងកំណត់ឡើងវិញម៉ាស៊ីនពពក...</translation>
+        <translation>កំពុងបញ្ឈប់ម៉ាស៊ីនពពក...</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2783"/>
+        <location filename="qml/PadWindow.qml" line="2550"/>
         <source>关闭云机成功</source>
         <oldsource>重置云机成功</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>បិទម៉ាស៊ីនពពកដោយជោគជ័យ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2804"/>
+        <location filename="qml/PadWindow.qml" line="2571"/>
         <source>正在一键新机...</source>
-        <translation type="unfinished"></translation>
+        <translation>កំពុងបង្កើតឧបករណ៍ថ្មីដោយចុចតែម្តង...</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2818"/>
+        <location filename="qml/PadWindow.qml" line="2585"/>
         <source>一键新机成功</source>
-        <translation type="unfinished"></translation>
+        <translation>មួយគ្រាប់ផ្លាស់ប្តូរម៉ាស៊ីនថ្មីបានសម្រេច</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1926"/>
+        <location filename="qml/PadWindow.qml" line="2597"/>
+        <source>缺少主机IP，无法执行一键新机</source>
+        <translation>ខ្វះ IP ម៉ាស៊ីនមេ មិនអាចប្រតិបត្តិការផ្លាស់ប្តូរម៉ាស៊ីនថ្មីដោយចុចតែម្តងបានទេ</translation>
+    </message>
+    <message>
+        <location filename="qml/PadWindow.qml" line="2601"/>
+        <source>未指定云机，无法执行一键新机</source>
+        <translation>មិនបានបញ្ជាក់ម៉ាស៊ីនពពក មិនអាចប្រតិបត្តិម៉ាស៊ីនថ្មីដោយចុចតែមួយបានទេ</translation>
+    </message>
+    <message>
         <source>无人直播推流</source>
-        <translation>ផ្សព្វផ្សាយផ្ទាល់ដោយគ្មានមនុស្ស</translation>
+        <translation type="vanished">ផ្សព្វផ្សាយផ្ទាល់ដោយគ្មានមនុស្ស</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="306"/>
+        <location filename="qml/PadWindow.qml" line="322"/>
         <source>连接已断开，请稍后重连</source>
         <translation>ត្រូវបានផ្តាច់ភ្ជាប់ សូមភ្ជាប់ឡើងវិញនៅពេលក្រោយ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="501"/>
+        <location filename="qml/PadWindow.qml" line="550"/>
         <source>只能选择APK或XAPK文件</source>
-        <translation type="unfinished"></translation>
+        <translation>ត្រូវជ្រើសរើសតែឯកសារ APK ឬ XAPK ប៉ុណ្ណោះ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1113"/>
+        <location filename="qml/PadWindow.qml" line="1202"/>
         <source>复制成功</source>
         <translation>ចម្លងដោយជោគជ័យ</translation>
     </message>
@@ -3721,110 +5159,99 @@
         <translation type="vanished">កំពុងធ្វើសមកាលកម្ម</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1664"/>
+        <location filename="qml/PadWindow.qml" line="1812"/>
         <source>选择上传文件</source>
         <translation>ជ្រើសរើសឯកសារដើម្បីផ្ទុកឡើង</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1734"/>
-        <location filename="qml/PadWindow.qml" line="1749"/>
-        <location filename="qml/PadWindow.qml" line="1765"/>
-        <location filename="qml/PadWindow.qml" line="1779"/>
+        <location filename="qml/PadWindow.qml" line="1871"/>
+        <location filename="qml/PadWindow.qml" line="1905"/>
+        <location filename="qml/PadWindow.qml" line="1919"/>
         <source>操作确认</source>
-        <translation type="unfinished">ប្រតិបត្តិការបញ្ជាក់</translation>
+        <translation>ប្រតិបត្តិការបញ្ជាក់</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2022"/>
         <source>未发现摄像头，无法开启</source>
-        <translation>រកមិនឃើញកាមេរ៉ា មិនអាចបើកបាន</translation>
+        <translation type="vanished">រកមិនឃើញកាមេរ៉ា មិនអាចបើកបាន</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2036"/>
         <source>麦克风</source>
-        <translation>ម៉ាយក្រូហ្វោន</translation>
+        <translation type="vanished">ម៉ាយក្រូហ្វោន</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2101"/>
         <source>未发现麦克风，无法开启</source>
-        <translation>មិនអាចបើកបានទេ ព្រោះរកមិនឃើញមីក្រូហ្វូន</translation>
+        <translation type="vanished">មិនអាចបើកបានទេ ព្រោះរកមិនឃើញមីក្រូហ្វូន</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2125"/>
         <source>请在列表中选择要推流的视频文件</source>
-        <translation>សូមជ្រើសរើសឯកសារវីដេអូដែលចង់ផ្សព្វផ្សាយនៅក្នុងបញ្ជី</translation>
+        <translation type="vanished">សូមជ្រើសរើសឯកសារវីដេអូដែលចង់ផ្សព្វផ្សាយនៅក្នុងបញ្ជី</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2165"/>
         <source>结束</source>
-        <translation>បញ្ចប់</translation>
+        <translation type="vanished">បញ្ចប់</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2180"/>
         <source>全部视频(</source>
         <oldsource>全部视频</oldsource>
-        <translation>វីដេអូទាំងអស់(</translation>
+        <translation type="vanished">វីដេអូទាំងអស់(</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2249"/>
         <source>开启推流</source>
-        <translation>បើកការផ្សាយផ្ទាល់</translation>
+        <translation type="vanished">បើកការផ្សាយផ្ទាល់</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2258"/>
         <source>推流中</source>
-        <translation>កំពុងផ្សព្វផ្សាយ</translation>
+        <translation type="vanished">កំពុងផ្សព្វផ្សាយ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2270"/>
         <source>删除</source>
-        <translation>លុប</translation>
+        <translation type="vanished">លុប</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2194"/>
         <source>上传视频</source>
-        <translation>ផ្ទុកឡើងវីដេអូ</translation>
+        <translation type="vanished">ផ្ទុកឡើងវីដេអូ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1657"/>
+        <location filename="qml/PadWindow.qml" line="1805"/>
         <source>选择安装文件</source>
-        <translation type="unfinished"></translation>
+        <translation>ជ្រើសរើសឯកសារដំឡើង</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2297"/>
+        <location filename="qml/PadWindow.qml" line="2064"/>
         <source>连接命令</source>
         <translation>ពាក្យបញ្ជាតភ្ជាប់</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2308"/>
-        <location filename="qml/PadWindow.qml" line="2338"/>
-        <location filename="qml/PadWindow.qml" line="2370"/>
+        <location filename="qml/PadWindow.qml" line="2075"/>
+        <location filename="qml/PadWindow.qml" line="2105"/>
+        <location filename="qml/PadWindow.qml" line="2137"/>
         <source>复制</source>
         <translation>ចម្លង</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2312"/>
-        <location filename="qml/PadWindow.qml" line="2342"/>
-        <location filename="qml/PadWindow.qml" line="2374"/>
+        <location filename="qml/PadWindow.qml" line="2079"/>
+        <location filename="qml/PadWindow.qml" line="2109"/>
+        <location filename="qml/PadWindow.qml" line="2141"/>
         <source>已复制到剪贴板</source>
         <translation>បានចម្លងទៅក្តារតម្បៀត</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2327"/>
+        <location filename="qml/PadWindow.qml" line="2094"/>
         <source>连接密钥</source>
         <translation>គន្លឹះតភ្ជាប់</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2359"/>
+        <location filename="qml/PadWindow.qml" line="2126"/>
         <source>ADB地址</source>
         <translation>អាសយដ្ឋាន ADB</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2387"/>
+        <location filename="qml/PadWindow.qml" line="2154"/>
         <source>ADB过期时间</source>
         <translation>ពេលវេលាផុតកំណត់ ADB</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2402"/>
+        <location filename="qml/PadWindow.qml" line="2169"/>
         <source>开启ADB</source>
         <translation>បើក ADB</translation>
     </message>
@@ -3833,10 +5260,10 @@
         <translation type="obsolete">ការបញ្ចូលពាក្យសម្ងាត់ពីរដងមិនត្រូវគ្នា</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2600"/>
-        <location filename="qml/PadWindow.qml" line="2601"/>
-        <location filename="qml/PadWindow.qml" line="2602"/>
-        <location filename="qml/PadWindow.qml" line="2603"/>
+        <location filename="qml/PadWindow.qml" line="2367"/>
+        <location filename="qml/PadWindow.qml" line="2368"/>
+        <location filename="qml/PadWindow.qml" line="2369"/>
+        <location filename="qml/PadWindow.qml" line="2370"/>
         <source>未开启</source>
         <translation>មិនបានបើក</translation>
     </message>
@@ -3940,54 +5367,85 @@
         <translation>កំពុងរកមើលការតភ្ជាប់ភ្ជាប់...</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="138"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="142"/>
         <source>设置代理（云机名称：%1）</source>
         <oldsource>设置代理</oldsource>
         <translation>កំណត់ប្រូកស៊ី (ឈ្មោះម៉ាស៊ីនពពក៖ %1)</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="173"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="177"/>
         <source>代理协议</source>
         <translation>ពិធីការ​ភ័យខ្លាច</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="191"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="195"/>
         <source>服务器地址</source>
         <translation>សាវ័រអាសយដ្ឋាន</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="198"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="202"/>
         <source>请输入服务器地址</source>
         <translation>សូមបញ្ចូលអាសយដ្ឋានម៉ាស៊ីនបម្រើ</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="208"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="212"/>
         <source>服务端口</source>
         <translation>សេវាកម្មព័ត៌មាន</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="215"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="219"/>
         <source>请输入正确的端口</source>
         <translation>សូមបញ្ចូលច្រកត្រឹមត្រូវ</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="229"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="233"/>
         <source>账号</source>
         <translation>គណនី</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="236"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="240"/>
         <source>请输入账号</source>
         <translation>សូមបញ្ចូលគណនី</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="286"/>
-        <location filename="qml/ProxySettingsPopup.qml" line="431"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="316"/>
+        <source>开启UDP</source>
+        <oldsource>是否禁用UDP</oldsource>
+        <translation>បើក UDP</translation>
+    </message>
+    <message>
+        <location filename="qml/ProxySettingsPopup.qml" line="272"/>
+        <source>代理DNS</source>
+        <oldsource>是否禁用DNS走代理</oldsource>
+        <translation>ភ្នាក់ងារ DNS</translation>
+    </message>
+    <message>
+        <location filename="qml/ProxySettingsPopup.qml" line="284"/>
+        <source>开启代理DNS需要确保您的代理IP支持DNS解析，
+否则云手机将无法联网；关闭代理DNS可能会导致DNS泄露。</source>
+        <oldsource>开启代理DNS需要确保您的代理IP支持DNS解析，否则云手机将无法联网；关闭代理DNS可能会导致DNS泄露。</oldsource>
+        <translation>បើក DNS តំណាងរាយត្រូវតែប្រាកដថា IP តំណាងរាយរបស់អ្នកគាំទ្រដោះស្រាយ DNS បើមិនដូច្នេះទេទូរស័ព្ទពពកនឹងមិនអាចតភ្ជាប់អ៊ីនធឺណិតបានទេ។ ការបិទ DNS តំណាងរាយអាចបណ្តាលឱ្យមានការលេចចេញនៃ DNS។</translation>
+    </message>
+    <message>
+        <location filename="qml/ProxySettingsPopup.qml" line="302"/>
+        <source>注意：如果开启后云手机无网络，请关闭代理DNS。</source>
+        <oldsource>注意：开启后云手机无网络，请关闭代理DNS。</oldsource>
+        <translation>សម្គាល់៖ ប្រសិនបើឧបករណ៍ទូរស័ព្ទពពកគ្មានបណ្តាញបន្ទាប់ពីបើក សូមបិទ DNS ប្រូកស៊ី។</translation>
+    </message>
+    <message>
+        <location filename="qml/ProxySettingsPopup.qml" line="328"/>
+        <source>启用 UDP 通道传输</source>
+        <oldsource>是否启用 UDP 通道传输</oldsource>
+        <translation>បើកដំណើរការបញ្ជូនឆានែល UDP</translation>
+    </message>
+    <message>
+        <location filename="qml/ProxySettingsPopup.qml" line="374"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="521"/>
         <source>取消</source>
         <translation>បោះបង់</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="291"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="379"/>
         <source>确定</source>
         <translation>បញ្ជាក់</translation>
     </message>
@@ -3997,13 +5455,13 @@
         <translation type="obsolete">កំណត់ប្រូកស៊ី</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="353"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="443"/>
         <source>代理地址</source>
         <oldsource>s5地址</oldsource>
         <translation>អាសយដ្ឋាន​ប្រូកស៊ី</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="377"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="467"/>
         <source>代理IP</source>
         <translation>ភ្នាក់ងារ IP</translation>
     </message>
@@ -4012,7 +5470,7 @@
         <translation type="vanished">ទីតាំងប្រូកស៊ី</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="401"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="491"/>
         <source>状态</source>
         <translation>ស្ថានភាព</translation>
     </message>
@@ -4021,43 +5479,43 @@
         <translation type="vanished">របៀបដោះស្រាយដែន</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="436"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="526"/>
         <source>关闭代理</source>
         <oldsource>关闭S5代理</oldsource>
         <translation>បិទប្រូកស៊ី</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="470"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="560"/>
         <source>查询代理信息...</source>
         <translation>ស្វែងរយ៖​ ព័ត៌មាន​ភ្នាក់ងារ...</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="529"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="633"/>
         <source>正在设置代理...</source>
         <translation>កំពុងកំណត់ប្រូកស៊ី...</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="547"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="651"/>
         <source>代理设置成功</source>
         <translation>ភ្នាក់ងារកំណត់ដោយជោគជ័យ</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="579"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="684"/>
         <source>正在关闭代理...</source>
         <translation>កំពុងបិទប្រូកស៊ី...</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="595"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="700"/>
         <source>关闭代理成功</source>
         <translation>បិទប្រូកស៊ីជោគជ័យ</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="492"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="582"/>
         <source>已启动</source>
         <translation>បានចាប់ផ្ដើម</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="493"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="583"/>
         <source>服务端域名解析 (默认)</source>
         <translation>ដោះស្រាយឈ្មោះដែនម៉ាស៊ីនបម្រើ (លំនាំដើម)</translation>
     </message>
@@ -4066,17 +5524,17 @@
         <translation type="obsolete">កំពុងបង្កើតម៉ាស៊ីនពពក...</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="246"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="250"/>
         <source>密码</source>
         <translation>ពាក្យសម្ងាត់</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="253"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="257"/>
         <source>请输入密码</source>
         <translation>សូមបញ្ចូលពាក្យសម្ងាត់</translation>
     </message>
     <message>
-        <location filename="qml/ProxySettingsPopup.qml" line="262"/>
+        <location filename="qml/ProxySettingsPopup.qml" line="350"/>
         <source>检查代理</source>
         <oldsource>网络检测</oldsource>
         <translation>ត្រួតពិនិត្យភ្នាក់ងារ</translation>
@@ -4177,72 +5635,136 @@
     <message>
         <location filename="qml/SettingsView.qml" line="26"/>
         <source>返回</source>
-        <translation type="unfinished"></translation>
+        <translation>ត្រឡប់</translation>
     </message>
     <message>
         <location filename="qml/SettingsView.qml" line="57"/>
-        <source>云机窗口初始化大小设置（设备按9:16比例自适应调整大小）</source>
-        <translation type="unfinished">ការកំណត់ទំហំដំបូងនៃវីនដូពព្យាបាលពីព្រឹក (ឧបករណ៍នឹងប្ដូរទំហំដោយសមាមាត្រ ៩:១៦ ដោយស្វ័យប្រវត្តិ)</translation>
+        <source>推流设置</source>
+        <translation>សេចក្ដីកំណត់ព្រីហ្សូ</translation>
     </message>
     <message>
-        <location filename="qml/SettingsView.qml" line="78"/>
-        <source>大窗口（宽480）</source>
-        <translation type="unfinished">វីនដូធំ (ទទឹង 480)</translation>
-    </message>
-    <message>
-        <location filename="qml/SettingsView.qml" line="86"/>
-        <source>中窗口（宽320）</source>
-        <translation type="unfinished">បង្អួចកណ្តាល (ទទឹង 320)</translation>
-    </message>
-    <message>
-        <location filename="qml/SettingsView.qml" line="94"/>
-        <source>小窗口（宽160）</source>
-        <translation type="unfinished">បង្អួចតូច (ទទឹង 160)</translation>
+        <location filename="qml/SettingsView.qml" line="69"/>
+        <source>推流类型</source>
+        <translation>ជំរើសស្ទ្រីម</translation>
     </message>
     <message>
         <location filename="qml/SettingsView.qml" line="102"/>
+        <source>仅视频</source>
+        <translation>បទវីដេអូតែប៉ុណ្ណោះ</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="113"/>
+        <source>仅音频</source>
+        <translation>តែ​មាន​សម្លេង</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="91"/>
+        <source>音视频</source>
+        <translation>សំឡេង និងវីដេអូ</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="342"/>
+        <source>RTSP地址:</source>
+        <translation>អាសយដ្ឋាន RTSP៖</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="393"/>
+        <source>开启推流</source>
+        <translation>បើកស្ទ្រីម</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="511"/>
+        <source>云机窗口初始化大小设置（设备按9:16比例自适应调整大小）</source>
+        <translation>ជម្រើសកំណត់ទំហំដំបូងសម្រាប់បង្អួចគ្រឿងម៉ាស៊ីនពពក (ឧបករណ៍នឹងកំណត់ទំហំដោយស្វ័យប្រវត្តិតាមសមាមាត្រ ៩:១៦)</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="532"/>
+        <source>大窗口（宽480）</source>
+        <translation>បង្អួចធំ (ទទឹង 480)</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="540"/>
+        <source>中窗口（宽320）</source>
+        <translation>បង្អួចកណ្តាល (ទទឹង 320)</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="548"/>
+        <source>小窗口（宽160）</source>
+        <translation>បង្អួចតូច (ទទឹង 160)</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="556"/>
         <source>自定义</source>
-        <translation type="unfinished">ផ្ទាល់ខ្លួន</translation>
+        <translation>ផ្ទាល់ខ្លួន</translation>
     </message>
     <message>
-        <location filename="qml/SettingsView.qml" line="112"/>
+        <location filename="qml/SettingsView.qml" line="566"/>
         <source>宽</source>
-        <translation type="unfinished">ទទឹង</translation>
+        <translation>ទទឹង</translation>
     </message>
     <message>
-        <location filename="qml/SettingsView.qml" line="146"/>
+        <location filename="qml/SettingsView.qml" line="600"/>
         <source>高</source>
-        <translation type="unfinished">ខ្ពស់</translation>
+        <translation>ខ្ពស់</translation>
     </message>
     <message>
-        <location filename="qml/SettingsView.qml" line="186"/>
+        <location filename="qml/SettingsView.qml" line="640"/>
         <source>云机窗口修改大小设置</source>
-        <translation type="unfinished">បង្អួត​បង្អស់​អំពី​ការ​កំណត់​ទំហំ​បង្អួច​ឧបករណ៍​ពពក</translation>
+        <translation>ផ្ទាំងពពកកែសម្រួលការកំណត់ទំហំបង្អួច</translation>
     </message>
     <message>
-        <location filename="qml/SettingsView.qml" line="202"/>
+        <location filename="qml/SettingsView.qml" line="656"/>
         <source>记录上次</source>
-        <translation type="unfinished">កំណត់ត្រាចុងក្រោយ</translation>
+        <translation>កត់ត្រាលើកមុន</translation>
     </message>
     <message>
-        <location filename="qml/SettingsView.qml" line="210"/>
+        <location filename="qml/SettingsView.qml" line="664"/>
         <source>保持不变</source>
-        <translation type="unfinished">នៅដដែល</translation>
+        <translation>នៅតែដដែល</translation>
     </message>
     <message>
-        <location filename="qml/SettingsView.qml" line="226"/>
+        <location filename="qml/SettingsView.qml" line="680"/>
         <source>关闭主面板时</source>
-        <translation type="unfinished">ការបិទផ្ទាំងដើមនៅពេល</translation>
+        <translation>ពេលបិទផ្ទាំងដើម</translation>
     </message>
     <message>
-        <location filename="qml/SettingsView.qml" line="242"/>
+        <location filename="qml/SettingsView.qml" line="696"/>
         <source>退出程序</source>
-        <translation type="unfinished">ចាកចេញពីកម្មវិធី</translation>
+        <translation>ចាកចេញពីកម្មវិធី</translation>
     </message>
     <message>
-        <location filename="qml/SettingsView.qml" line="250"/>
+        <location filename="qml/SettingsView.qml" line="704"/>
         <source>最小化托盘</source>
-        <translation type="unfinished">«បង្រួមទៅជាថាស»</translation>
+        <translation>ត្រូវបានបង្រួមចូលទៅក្នុងតារាង</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="143"/>
+        <source>摄像头</source>
+        <translation>កាមេរ៉ា</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="152"/>
+        <location filename="qml/SettingsView.qml" line="255"/>
+        <source>刷新</source>
+        <translation>ផ្ទុកឡើងវិញ</translation>
+    </message>
+    <message>
+        <source>未发现摄像头，无法开启</source>
+        <translation type="obsolete">រកមិនឃើញកាមេរ៉ា មិនអាចបើកបាន</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="247"/>
+        <source>麦克风</source>
+        <translation>ម៉ៃក្រូ</translation>
+    </message>
+    <message>
+        <source>未发现麦克风，无法开启</source>
+        <translation type="obsolete">មិនអាចបើកបានទេ ព្រោះរកមិនឃើញមីក្រូហ្វូន</translation>
+    </message>
+    <message>
+        <location filename="qml/SettingsView.qml" line="371"/>
+        <source>复制</source>
+        <translation>ចម្លង</translation>
     </message>
 </context>
 <context>
@@ -4487,6 +6009,606 @@
     </message>
 </context>
 <context>
+    <name>TimeZoneCloudPhonePopup</name>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="46"/>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="436"/>
+        <source>修改语言时区</source>
+        <translation>កែសម្រួលតំបន់ពេលវេលាភាសា</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="111"/>
+        <source>选择时区</source>
+        <translation>ជ្រើសរើសតំបន់ពេល</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="120"/>
+        <source>格林尼治标准时间 GMT+0（伦敦）</source>
+        <translation>ពេលវេលាស្តង់ដារហ្គ្រីនវិច GMT+0 (ឡុងដ៍)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="122"/>
+        <source>中欧时间 GMT+1（巴黎）</source>
+        <translation>ពេលវេលាអឺរ៉ុបកណ្ដាល GMT+1 (ប៉ារីស)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="121"/>
+        <source>格林尼治标准时间 GMT+0（里斯本）</source>
+        <translation>ពេលវេលាស្តង់ដារហ្គ្រីនវិច GMT+0 (លីសបោន)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="123"/>
+        <source>中欧标准时间 GMT+1（柏林）</source>
+        <translation>ពេលវេលាស្តង់ដារអឺរ៉ុបកណ្តាល GMT+1 (ប៊ែរឡីន)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="124"/>
+        <source>东欧时间 GMT+2（赫尔辛基）</source>
+        <translation>ពេលវេលាអឺរ៉ុបខាងកើត GMT+2 (ហេលស៊ីនគី)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="125"/>
+        <source>美国东部时间 GMT-5（纽约）</source>
+        <translation>ពេលវេលាស្តង់ដារភាគខាងកើតសហរដ្ឋអាមេរិក GMT-5 (ញូវយ៉ក)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="126"/>
+        <source>美国中部时间 GMT-6（芝加哥）</source>
+        <translation>ពេលវេលាស្តង់ដាក្នុងតំបន់កណ្តាលសហរដ្ឋអាមេរិក GMT-6 (ឈីកាហ្គោ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="127"/>
+        <source>美国山地时间 GMT-7（丹佛）</source>
+        <translation>ពេលវេលាភ្នំអាមេរិក GMT-7 (ដេនវើរ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="128"/>
+        <source>美国太平洋时间 GMT-8（洛杉矶）</source>
+        <translation>ពេលវេលាប៉ាស៊ីហ្វិកសហរដ្ឋអាមេរិក GMT-8 (ឡូសអេនជឺឡេស)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="129"/>
+        <source>阿拉斯加时间 GMT-9（安克雷奇）</source>
+        <translation>ពេលវេលាអាឡាស្កា GMT-9 (អង់កូរេជ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="130"/>
+        <source>夏威夷时间 GMT-10（檀香山）</source>
+        <translation>ត្រូវនឹងម៉ោងហាវ៉ៃ GMT-10 (ហូនូឡូឡូ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="131"/>
+        <source>日本标准时间 GMT+9（东京）</source>
+        <translation>តាម​ម៉ោង​ស្តង់ដារ​ជប៉ុន GMT+9 (តូក្យូ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="132"/>
+        <source>中国标准时间 GMT+8（上海）</source>
+        <translation>តាម​ម៉ោង​ស្តង់ដារ​ចិន GMT+8 (សៀងហៃ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="133"/>
+        <source>香港时间 GMT+8（香港）</source>
+        <translation>ហុងកុង ម៉ោង GMT+8 (ហុងកុង)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="134"/>
+        <source>台北时间 GMT+8（台北）</source>
+        <translation>តៃប៉ិ ម៉ោង GMT+8（តៃប៉ិ）</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="135"/>
+        <source>韩国标准时间 GMT+9（首尔）</source>
+        <translation>កូរ៉េស្តង់ដាកតូនីយ៉ុងស្តង់ដា GMT+9 (សេអ៊ូល)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="136"/>
+        <source>印度标准时间 GMT+5:30（孟买）</source>
+        <translation>ពេលវេលាស្តង់ដារឥណ្ឌា GMT+5:30 (មូមបៃ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="137"/>
+        <source>澳大利亚东部时间 GMT+11（悉尼）</source>
+        <translation>ពេលវេលាមេត្តាំងភាគខាងកើតអូស្ត្រាលី GMT+11 (ស៊ីដនី)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="138"/>
+        <source>澳大利亚中部时间 GMT+10:30（阿德莱德）</source>
+        <translation>ពេលវេលាស្តង់ដាកណ្តាលអូស្ត្រាលី GMT+10:30 (អាដឡេដ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="139"/>
+        <source>澳大利亚西部时间 GMT+8（珀斯）</source>
+        <translation>&apos;ពេលវេលាខាងលិចអូស្ត្រាលី GMT+8 (ពែដ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="140"/>
+        <source>新西兰时间 GMT+13（奥克兰）</source>
+        <translation>ពេលវេលានៃញូវស៊ីលែន GMT+13 (អូក្លែន)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="141"/>
+        <source>巴西利亚时间 GMT-3（巴西利亚）</source>
+        <translation>ពេលវេលារាជធានីប្រាស៊ីលីយ៉ា GMT-3 (រាជធានីប្រាស៊ីលីយ៉ា)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="142"/>
+        <source>阿根廷时间 GMT-3（布宜诺斯艾利斯）</source>
+        <translation>ពេលវេលាអាហ្សង់ទីន GMT-3 (ប៊ូអេណុសអាយរីស)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="143"/>
+        <source>加拿大东部时间 GMT-5（多伦多）</source>
+        <translation>ហ្គាណាដាខាងកើត GMT-5 (តូរ៉ុនតូ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="144"/>
+        <source>加拿大大西洋时间 GMT-4（哈利法克斯）</source>
+        <translation>ពេលវេលាអាត្លង់ទិកកាណាដា GMT-4 (ហាលីហ្វ៊ាក់)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="145"/>
+        <source>莫斯科时间 GMT+3（莫斯科）</source>
+        <translation>ពេលវេលាម៉ូស្គូ GMT+3 (ម៉ូស្គូ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="146"/>
+        <source>土耳其时间 GMT+3（伊斯坦布尔）</source>
+        <translation>តួកគី ម៉ោង GMT+3 (អ៊ីស្តង់ប៊ុល)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="147"/>
+        <source>以色列时间 GMT+2（耶路撒冷）</source>
+        <translation>ពេលវេលាអ៊ីស្រាអែល GMT+2 (យេរូសាឡឹម)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="148"/>
+        <source>阿联酋时间 GMT+4（迪拜）</source>
+        <translation>ពេលវេលាអេមីរ៉ាត់អារ៉ាប់រួម GMT+4 (ឌូបៃ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="149"/>
+        <source>南非时间 GMT+2（约翰内斯堡）</source>
+        <translation>ពេលវេលានៅអាហ្វ្រិកខាងត្បូង GMT+2 (ចូហាន់ស្ពឺហ្គ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="150"/>
+        <source>埃及时间 GMT+2（开罗）</source>
+        <translation>ពេលវេលាអេហ្ស៊ីប GMT+2 (កាយរ៉ូ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="151"/>
+        <source>西非时间 GMT+1（拉各斯）</source>
+        <translation>ពេលវេលាអាហ្រ្វិកខាងលិច GMT+1 (ឡាហ្គោស)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="152"/>
+        <source>蒙古时间 GMT+8（乌兰巴托）</source>
+        <translation>ពេលវេលាម៉ុងហ្គោលី GMT+8 (អ៊ូឡង់បាទ័រ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="153"/>
+        <source>印度尼西亚西部时间 GMT+7（雅加达）</source>
+        <translation>&apos;ពេលវេលាតាមម៉ោងនៅឥណ្ឌូនេស៊ីភាគខាងលិច GMT+7 (ហ្សាកាតា)&apos;</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="154"/>
+        <source>菲律宾时间 GMT+8（马尼拉）</source>
+        <translation>ពេលវេលាហ្វីលីពីន GMT+8 (ម៉ានីឡា)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="155"/>
+        <source>越南时间 GMT+7（胡志明市）</source>
+        <translation>ពេលវេលាវៀតណាម GMT+7 (ទីក្រុងហូជីមិញ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="156"/>
+        <source>新加坡时间 GMT+8（新加坡）</source>
+        <translation>ពេលវេលាសិង្ហបុរី GMT+8 (សិង្ហបុរី)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="157"/>
+        <source>马来西亚时间 GMT+8（吉隆坡）</source>
+        <translation>ពេលវេលាម៉ាឡេស៊ី GMT+8 (កូឡាឡាំពួរ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="158"/>
+        <source>泰国时间 GMT+7（曼谷）</source>
+        <translation>ពេលវេលាថៃ GMT+7 (បាងកក)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="159"/>
+        <source>缅甸时间 GMT+6:30（仰光）</source>
+        <translation>ពេលវេលាភូមា GMT+6:30 (យ៉ាន់ហ្គោន)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="160"/>
+        <source>孟加拉时间 GMT+6（达卡）</source>
+        <translation>បង់ក្លាដេស GMT+6 (ដាក់កា)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="161"/>
+        <source>乌兹别克斯坦时间 GMT+5（塔什干）</source>
+        <translation>Өзбекстан уақыты GMT+5 (Ташкент)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="162"/>
+        <source>伊朗时间 GMT+3:30（德黑兰）</source>
+        <translation>&apos;GMT+3:30 អ៊ីរ៉ង់ (តេហេរ៉ង់)&apos;</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="163"/>
+        <source>伊拉克时间 GMT+3（巴格达）</source>
+        <translation>ពេលវេលាអ៊ីរ៉ាក GMT+3 (បាកដាដ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="164"/>
+        <source>委内瑞拉时间 GMT-4（加拉加斯）</source>
+        <translation>ពេលវេលាវ៉េណេស៊ុយអេឡា GMT-4 (ការ៉ាកាស)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="165"/>
+        <source>墨西哥时间 GMT-6（墨西哥城）</source>
+        <translation>ពេលវេលាម៉ិកស៊ិក GMT-6 (ទីក្រុងម៉ិកស៊ិក)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="166"/>
+        <source>秘鲁时间 GMT-5（利马）</source>
+        <translation>ពេលវេលាប្រទេសប៉េរូ ម៉ោងគំរូសកល GMT-5 (លីម៉ា)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="167"/>
+        <source>哥伦比亚时间 GMT-5（波哥大）</source>
+        <translation>ពេលវេលាកូឡុំប៊ី GMT-5 (បូហ្គោតា)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="168"/>
+        <source>智利时间 GMT-3（圣地亚哥）</source>
+        <translation>ពេលវេលាឈីលី GMT-3 (សង់ទីយ៉ាហ្គោ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="169"/>
+        <source>玻利维亚时间 GMT-4（拉巴斯）</source>
+        <translation>ពេលវេលាបូលីវី GMT-4 (ឡាប៊ាស)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="170"/>
+        <source>哥斯达黎加时间 GMT-6（圣何塞）</source>
+        <translation>ពេលវេលាកូស្តារីកា GMT-6 (សានហូសេ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="171"/>
+        <source>古巴时间 GMT-5（哈瓦那）</source>
+        <translation>ពេលវេលាគុយបា GMT-5 (ហាវ៉ាណា)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="172"/>
+        <source>乌拉圭时间 GMT-3（蒙得维的亚）</source>
+        <translation>&apos;ពេលវេលានៅអ៊ុយរូហ្គាយ GMT-3 (ម៉ុងតេវីដេអូ)&apos;</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="173"/>
+        <source>萨尔瓦多时间 GMT-6（圣萨尔瓦多）</source>
+        <translation>ពេលវេលានៅអែលសាល់វ៉ាឌ័រ GMT-6 (សាន់សាល់វ៉ាឌ័រ)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="180"/>
+        <source>选择语言</source>
+        <translation>ជ្រើសរើសភាសា</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="189"/>
+        <source>英语</source>
+        <translation>ភាសាអង់គ្លេស</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="190"/>
+        <source>西班牙语</source>
+        <translation>ភាសាអេស្ប៉ាញ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="191"/>
+        <source>菲律宾语</source>
+        <translation>&apos;បាឡាហ្គោ&apos;</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="192"/>
+        <source>法语</source>
+        <translation>បារាំង</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="193"/>
+        <source>柬埔寨语</source>
+        <translation>ភាសាខ្មែរ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="194"/>
+        <source>德语</source>
+        <translation>ភាសាអាល្លឺម៉ង់</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="195"/>
+        <source>意大利语</source>
+        <translation>ភាសាអ៊ីតាលី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="196"/>
+        <source>葡萄牙语（巴西）</source>
+        <translation>ភាសាព័រទុយហ្កាល់ (ប្រេស៊ីល)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="197"/>
+        <source>葡萄牙语</source>
+        <translation>ព័រទុយហ្គាល់</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="198"/>
+        <source>俄语</source>
+        <translation>ភាសារុស្ស៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="199"/>
+        <source>日语</source>
+        <translation>ជប៉ុន</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="200"/>
+        <source>中文简体</source>
+        <translation>ចិនកាត់បន្ថយ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="201"/>
+        <source>中文繁体（香港）</source>
+        <oldsource>中文繁体</oldsource>
+        <translation>ចិនបុរាណ (ហុងកុង)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="202"/>
+        <source>中文繁体（台湾）</source>
+        <translation>ចិនបុរាណ (តៃវ៉ាន់)</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="203"/>
+        <source>韩语</source>
+        <translation>ភាសាកូរ៉េ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="204"/>
+        <source>阿拉伯语</source>
+        <translation>ភាសាអារ៉ាប់</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="205"/>
+        <source>印地语</source>
+        <translation>ហិណ្ឌី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="206"/>
+        <source>孟加拉语</source>
+        <translation>បេងហ្គាលី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="207"/>
+        <source>乌尔都语</source>
+        <translation>اردو</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="208"/>
+        <source>印尼语</source>
+        <translation>ភាសាឥណ្ឌូនេស៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="209"/>
+        <source>马来语</source>
+        <translation>ភាសាម៉ាឡេ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="210"/>
+        <source>土耳其语</source>
+        <translation>តួកគី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="211"/>
+        <source>越南语</source>
+        <translation>ភាសាវៀតណាម</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="212"/>
+        <source>泰语</source>
+        <translation>ភាសាថៃ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="213"/>
+        <source>波兰语</source>
+        <translation>ភាសាប៉ូឡូញ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="214"/>
+        <source>荷兰语</source>
+        <translation>ហុល្លង់</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="215"/>
+        <source>瑞典语</source>
+        <translation>ស៊ុយអែត</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="216"/>
+        <source>芬兰语</source>
+        <translation>ភាសាហ្វាំង</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="217"/>
+        <source>丹麦语</source>
+        <translation>ភាសាដាណឺម៉ាក</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="218"/>
+        <source>挪威语</source>
+        <translation>ន័រវេស</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="219"/>
+        <source>捷克语</source>
+        <translation>ភាសាឆែក</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="220"/>
+        <source>匈牙利语</source>
+        <translation>ភាសាហុងគ្រី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="221"/>
+        <source>罗马尼亚语</source>
+        <translation>ភាសារូម៉ានី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="222"/>
+        <source>斯洛伐克语</source>
+        <translation>ស្លូវ៉ាគី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="223"/>
+        <source>保加利亚语</source>
+        <translation>ប៊ុលហ្គារី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="224"/>
+        <source>斯洛文尼亚语</source>
+        <translation>ស្លូវេនី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="225"/>
+        <source>爱沙尼亚语</source>
+        <translation>ភាសាអេស្តូនី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="226"/>
+        <source>拉脱维亚语</source>
+        <translation>ឡាតវីយ៉ា</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="227"/>
+        <source>立陶宛语</source>
+        <translation>លីទុយអានី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="228"/>
+        <source>塞尔维亚语</source>
+        <translation>ស៊ែប៊ី</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="229"/>
+        <source>亚美尼亚语</source>
+        <translation>Արեւմտահայերէն</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="230"/>
+        <source>阿塞拜疆语</source>
+        <translation>Ադրբեջաներեն</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="231"/>
+        <source>蒙古语</source>
+        <translation>ᠮᠣᠩᠭᠣᠯ ᠬᠡᠯᠡ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="232"/>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="233"/>
+        <source>斯瓦希里语</source>
+        <translation>Kiswahili</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="234"/>
+        <source>祖鲁语</source>
+        <translation>isiZulu</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="235"/>
+        <source>爪哇语</source>
+        <translation>ជ្វា</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="236"/>
+        <source>意第绪语</source>
+        <translation>ייִדיש</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="237"/>
+        <source>旁遮普语</source>
+        <translation>ਪੰਜਾਬੀ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="238"/>
+        <source>古吉拉特语</source>
+        <translation>ગુજરાતી</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="239"/>
+        <source>泰卢固语</source>
+        <translation>తెలుగు</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="240"/>
+        <source>泰米尔语</source>
+        <translation>តាមិល</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="241"/>
+        <source>马拉雅拉姆语</source>
+        <translation>മലയാളം</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="242"/>
+        <source>卡纳达语</source>
+        <translation>ಕನ್ನಡ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="570"/>
+        <source>更新国家成功</source>
+        <translation>បានអាប់ដេតប្រទេសដោយជោគជ័យ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="70"/>
+        <source>选择国家/地区</source>
+        <oldsource>选择国家</oldsource>
+        <translation>ជ្រើសរើសប្រទេស/តំបន់</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="254"/>
+        <source>语言时区IP不同,可能存在风控风险，请谨慎选择。</source>
+        <translation>ភាសា ពេលវេលាតំបន់ IP ខុសគ្នា អាចមានហានិភ័យគ្រប់គ្រង សូមប្រយ័ត្នក្នុងការជ្រើសរើស។</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="270"/>
+        <source>取消</source>
+        <translation>បោះបង់</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="276"/>
+        <source>确定</source>
+        <translation>ប្រាកដ</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="446"/>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="463"/>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="479"/>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="497"/>
+        <source>缺少必要参数</source>
+        <translation>បាត់ប៉ារ៉ាម៉ែត្រចាំបាច់</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="520"/>
+        <source>更新时区成功</source>
+        <translation>អាប់ដេតតំបន់ពេលវេលាបានសម្រេច</translation>
+    </message>
+    <message>
+        <location filename="qml/TimeZoneCloudPhonePopup.qml" line="545"/>
+        <source>更新语言成功</source>
+        <translation>អាប្តេតភាសាបានជោគជ័យ</translation>
+    </message>
+</context>
+<context>
     <name>TreeModel</name>
     <message>
         <source>Default Group</source>
@@ -4568,17 +6690,17 @@
     <message>
         <location filename="qml/UpgradeCloudPhonePopup.qml" line="312"/>
         <source>指定机型</source>
-        <translation type="unfinished">បញ្ជាក់ម៉ូដែល</translation>
+        <translation>បញ្ជាក់គំរូ</translation>
     </message>
     <message>
         <location filename="qml/UpgradeCloudPhonePopup.qml" line="325"/>
         <source>品牌</source>
-        <translation type="unfinished">ម៉ាក</translation>
+        <translation>商标</translation>
     </message>
     <message>
         <location filename="qml/UpgradeCloudPhonePopup.qml" line="356"/>
         <source>机型</source>
-        <translation type="unfinished">ម៉ូដែល</translation>
+        <translation>ម៉ូដែល</translation>
     </message>
     <message>
         <location filename="qml/UpgradeCloudPhonePopup.qml" line="491"/>
@@ -4600,7 +6722,7 @@
     <message>
         <location filename="qml/UpgradeCloudPhonePopup.qml" line="618"/>
         <source>找不到对应的 ADI 文件路径</source>
-        <translation type="unfinished">រកមិនឃើញផ្លូវឯកសារ ADI ដែលត្រូវគ្នាទេ</translation>
+        <translation>រកមិនឃើញផ្លូវឯកសារ ADI ដែលត្រូវគ្នា</translation>
     </message>
     <message>
         <location filename="qml/UpgradeCloudPhonePopup.qml" line="910"/>

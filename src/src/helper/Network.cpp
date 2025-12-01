@@ -667,9 +667,34 @@ void Network::sendRequest(QNetworkAccessManager *manager, QNetworkRequest reques
             for (const auto &each : params->_fileMap.toStdMap()) {
                 QString filePath = each.second.toString();
                 QString name = each.first;
+                
+                // 检查文件是否存在
+                QFileInfo fileInfo(filePath);
+                if (!fileInfo.exists() || !fileInfo.isFile()) {
+                    qWarning() << "Network: File does not exist or is not a file:" << filePath;
+                    if (!callable.isNull()) {
+                        callable->error(-1, QString("File does not exist: %1").arg(filePath), "", params->userData());
+                        callable->finish();
+                    }
+                    delete multiPart;
+                    return;
+                }
+                
                 auto *file = new QFile(filePath);
-                QString fileName = QFileInfo(filePath).fileName();
-                file->open(QIODevice::ReadOnly);
+                QString fileName = fileInfo.fileName();
+                
+                // 检查文件是否成功打开
+                if (!file->open(QIODevice::ReadOnly)) {
+                    qWarning() << "Network: Failed to open file:" << filePath << "Error:" << file->errorString();
+                    delete file;
+                    if (!callable.isNull()) {
+                        callable->error(-1, QString("Failed to open file: %1").arg(file->errorString()), "", params->userData());
+                        callable->finish();
+                    }
+                    delete multiPart;
+                    return;
+                }
+                
                 file->setParent(multiPart);
                 QHttpPart part;
                 part.setHeader(

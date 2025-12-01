@@ -1,0 +1,1642 @@
+[
+	{
+		"id": 36,
+		"brand": "google",
+		"model": "Pixel 7 Pro(12G)",
+		"asopVersion": "13",
+		"layout": "1440x3120x560",
+		"name": "0498ec4d0db686d3dfaf6007e09ba08a.zip",
+		"pwd": "",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 64,
+		"brand": "POCO",
+		"model": "2201116PG(12G)",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "1f7ff28c6d47da3bfe71113ed3861d64.zip",
+		"pwd": "bNLNhpuSVzdTYydefgkr",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 68,
+		"brand": "google",
+		"model": "Pixel 9(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2424x420",
+		"name": "google-pixel9.zip",
+		"pwd": "",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 87,
+		"brand": "samsung",
+		"model": "SM-S9010(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2340x480",
+		"name": "samsung-sm-9010.zip",
+		"pwd": "IjtsBzUrHBFnxzcZfGFs",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 90,
+		"brand": "vivo",
+		"model": "V2185A(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x480",
+		"name": "871ee244f6cd286c780de10b4b9d94c2.zip",
+		"pwd": "gTyfVIlzmYjEGaVHSEAK",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 103,
+		"brand": "Redmi",
+		"model": "22011211C(12G)",
+		"asopVersion": "14",
+		"layout": "1440x3200x560",
+		"name": "b8bb237eb6d8dde27721d402711bbef6.zip",
+		"pwd": "gobtXYetkBtkSCLrdxhW",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 181,
+		"brand": "OnePlus(FIX)",
+		"model": "PHK110(12G)",
+		"asopVersion": "14",
+		"layout": "1240x2772x560",
+		"name": "oneplus-phk110_fix.zip",
+		"pwd": "yMdRMwSnTYJEtcptJLAI",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 182,
+		"brand": "OnePlus(FIX)",
+		"model": "PHK110(8G)",
+		"asopVersion": "14",
+		"layout": "1240x2772x560",
+		"name": "oneplus-phk110_fix.zip",
+		"pwd": "yMdRMwSnTYJEtcptJLAI",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 183,
+		"brand": "samsung(FIX)",
+		"model": "SM-A5260(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x420",
+		"name": "d832fc8d4b3e166b2b7fc28e9008a5db_fix.zip",
+		"pwd": "jlctLfxIlOHzcNuKQRfH",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 184,
+		"brand": "samsung(FIX)",
+		"model": "SM-A5260(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x420",
+		"name": "d832fc8d4b3e166b2b7fc28e9008a5db_fix.zip",
+		"pwd": "jlctLfxIlOHzcNuKQRfH",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 241,
+		"brand": "vivo",
+		"model": "V2239A(12G)",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "599d2b7528c778904f108997737312d6_03.zip",
+		"pwd": "UgcKsLWkXzBDvFcIeULv",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 243,
+		"brand": "google",
+		"model": "Pixel 4(12G)",
+		"asopVersion": "13",
+		"layout": "1080x2280x440",
+		"name": "bde97489de3ad6ac19a71396b22a1250_03.zip",
+		"pwd": "EcAWLIOioCcBSDiERrCc",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 245,
+		"brand": "google",
+		"model": "Pixel 9 Pro(12G)",
+		"asopVersion": "14",
+		"layout": "960x2142x360",
+		"name": "1f42a60bdf9f276e92f9c2c8cbd152a0_03.zip",
+		"pwd": "iTlkGjjzaUybGGphKCaQ",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 246,
+		"brand": "google",
+		"model": "Pixel 9 Pro(8G)",
+		"asopVersion": "14",
+		"layout": "960x2142x360",
+		"name": "1f42a60bdf9f276e92f9c2c8cbd152a0_03.zip",
+		"pwd": "iTlkGjjzaUybGGphKCaQ",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 247,
+		"brand": "google",
+		"model": "Pixel 5(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2340x440",
+		"name": "79b840dd115ab5cf137d3086304f73fa_03.zip",
+		"pwd": "myETyEUXRgDFvHANWUVB",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 248,
+		"brand": "google",
+		"model": "Pixel 5(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2340x440",
+		"name": "79b840dd115ab5cf137d3086304f73fa_03.zip",
+		"pwd": "myETyEUXRgDFvHANWUVB",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 250,
+		"brand": "OPPO",
+		"model": "CPH2603(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2412x480",
+		"name": "735afce2e463f5e6a74cef74abc7789e_03.zip",
+		"pwd": "RwVfXRVJaFFdmvznuwsR",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 257,
+		"brand": "samsung",
+		"model": "SM-G980F(12G)",
+		"asopVersion": "13",
+		"layout": "1440x3200x640",
+		"name": "d31ce85ccbaee83eccd8d5cd2ef44c46_03.zip",
+		"pwd": "GUkngTTUhVQbbvboVzPz",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 259,
+		"brand": "vivo",
+		"model": "V2334(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "feacab58d2a528e4774b3098bbca4ebd_03.zip",
+		"pwd": "EAHeqiPaDkOoFbpwgJAH",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 260,
+		"brand": "vivo",
+		"model": "V2334(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "feacab58d2a528e4774b3098bbca4ebd_03.zip",
+		"pwd": "EAHeqiPaDkOoFbpwgJAH",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 263,
+		"brand": "samsung",
+		"model": "SM-S911B(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2340x480",
+		"name": "680d6be5fdb0593d816f28bc609cd14e_03.zip",
+		"pwd": "TiFhZeKxehsbEPMHUiyw",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 271,
+		"brand": "google",
+		"model": "Pixel 6 Pro(12G)",
+		"asopVersion": "15",
+		"layout": "1440x3120x560",
+		"name": "087b9439ebe32252b83bcb5775117070_03.zip",
+		"pwd": "",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 272,
+		"brand": "google",
+		"model": "Pixel 6 Pro(8G)",
+		"asopVersion": "15",
+		"layout": "1440x3120x560",
+		"name": "087b9439ebe32252b83bcb5775117070_03.zip",
+		"pwd": "",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 273,
+		"brand": "google",
+		"model": "Pixel 6(12G)",
+		"asopVersion": "15",
+		"layout": "1080x2400x356",
+		"name": "560229b8a52dee4f1044e5712b0f945f_03.zip",
+		"pwd": "zsxpPZbZTmdeOHBEeEzh",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 274,
+		"brand": "google",
+		"model": "Pixel 6(8G)",
+		"asopVersion": "15",
+		"layout": "1080x2400x356",
+		"name": "560229b8a52dee4f1044e5712b0f945f_03.zip",
+		"pwd": "zsxpPZbZTmdeOHBEeEzh",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 275,
+		"brand": "HONOR",
+		"model": "AMM-AN00(12G)",
+		"asopVersion": "15",
+		"layout": "1200x2664x520",
+		"name": "377aad3700c2e767f7fd25da2fa18144_03.zip",
+		"pwd": "GttaWhWVEQGeceVjFoNl",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 277,
+		"brand": "HONOR",
+		"model": "ANP-AN00(12G)",
+		"asopVersion": "15",
+		"layout": "1224x2700x520",
+		"name": "f5b35e6988a6b86c8e571c1cc9ce8942_03.zip",
+		"pwd": "IXIKdjFWLHfnYAGemMwV",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 281,
+		"brand": "HONOR",
+		"model": "REA-AN00(12G)",
+		"asopVersion": "15",
+		"layout": "1200x2664x520",
+		"name": "6a32353caf39465fbebbc5798790e1aa_03.zip",
+		"pwd": "QNGddyLjOLQUsTDjDWvb",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 283,
+		"brand": "HONOR",
+		"model": "VER-AN00(12G)",
+		"asopVersion": "15",
+		"layout": "1060x2376x480",
+		"name": "a62277087e1babdfae4e5df9aa19044c_03.zip",
+		"pwd": "sICewkZUnmMNOWpGZNqt",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 285,
+		"brand": "OnePlus",
+		"model": "PHB110(12G)",
+		"asopVersion": "15",
+		"layout": "1080x2412x480",
+		"name": "9ffbd12ef30a94b7a6301c10a27a460f_03.zip",
+		"pwd": "xnAJGEXoIAQSktyHgxDO",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 287,
+		"brand": "OnePlus",
+		"model": "PHK110(12G)",
+		"asopVersion": "15",
+		"layout": "1240x2772x560",
+		"name": "0b6f77e8e06d9f8418d6b49003986619_03.zip",
+		"pwd": "ZITaDFKmbNXzfnjSIaBV",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 289,
+		"brand": "Redmi",
+		"model": "23113RKC6C(12G)",
+		"asopVersion": "15",
+		"layout": "1440x3200x560",
+		"name": "d17f7ac9dabdfac4cc42730813a70db9_03.zip",
+		"pwd": "emhSdJRGEPWtXPvYfVRf",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 291,
+		"brand": "vivo",
+		"model": "V2185A(12G)",
+		"asopVersion": "15",
+		"layout": "1080x2400x480",
+		"name": "e74abd9d3c02720c25ffd021357934b2_03.zip",
+		"pwd": "ubCqtlAazyjkqqiQgGMu",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 293,
+		"brand": "vivo",
+		"model": "V2217A(12G)",
+		"asopVersion": "15",
+		"layout": "1080x2400x480",
+		"name": "7da0e86a61669af414a4331b123022f4_03.zip",
+		"pwd": "vnOJyfbBBNUvyzylQAWz",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 295,
+		"brand": "vivo",
+		"model": "V2256A(12G)",
+		"asopVersion": "15",
+		"layout": "1080x2520x576",
+		"name": "aaaeb134e136aae00cd42a6d3aa2cf67_03.zip",
+		"pwd": "TlDagjKcfftBiCeCmCgb",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 297,
+		"brand": "vivo",
+		"model": "V2183A(12G)",
+		"asopVersion": "15",
+		"layout": "1080x2400x480",
+		"name": "b7594a547ce7fd7e5c156b1be41851d0_03.zip",
+		"pwd": "dFdtCWrNPfeHcPEzxmdl",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 301,
+		"brand": "OPPO",
+		"model": "PGBM10(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x480",
+		"name": "2fbb9e17bf3b8ebd62624c6fa28dacea_03.zip",
+		"pwd": "exXBakOjXNakAkcCDclU",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 307,
+		"brand": "vivo",
+		"model": "V2145A(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x480",
+		"name": "fd9cb3e611d0ebeace7380bf564fc571_03.zip",
+		"pwd": "lFOFaqYTZEkKExOApBjE",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 313,
+		"brand": "HUAWEI",
+		"model": "HMA-TL00",
+		"asopVersion": "10",
+		"layout": "1080x2244x408",
+		"name": "bf73c0cefd0ccf969028a190a890987d.zip",
+		"pwd": "nn0fmvn85xpmx51jrgzm",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 314,
+		"brand": "Redmi",
+		"model": "M2007J22C",
+		"asopVersion": "10",
+		"layout": "1080x2340x440",
+		"name": "5c9a9561b628e997c0c8dda1f9cdf899.zip",
+		"pwd": "ffgmqqx9n4jloujeodrw",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 318,
+		"brand": "Infinix",
+		"model": "Infinix X6731B(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x480",
+		"name": "35b2711746f88f9d7a58aca50eced025_03.zip",
+		"pwd": "zWJIHRfbhpFGDQtElinv",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 324,
+		"brand": "OPPO",
+		"model": "PJT110(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x480",
+		"name": "2683bbfea56d91dab282ace3a514734b_03.zip",
+		"pwd": "OAtsmCxsfqLmxnpXsrYS",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 326,
+		"brand": "POCO",
+		"model": "23049PCD8G(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "a03313ce46a58a495f19fec59207c135_03.zip",
+		"pwd": "SGaSFJBzEVddjreZoFWl",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 329,
+		"brand": "Infinix",
+		"model": "Infinix X6837(12G)",
+		"asopVersion": "13",
+		"layout": "1080x2460x480",
+		"name": "e36a84791900dc523a46befa11a01540_03.zip",
+		"pwd": "GYGmCPdJdRjUBpwwxGcf",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 360,
+		"brand": "Infinix",
+		"model": "Infinix X6850(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2436x480",
+		"name": "761b6874d7cb1997b289a7ecc8ad5a3d_03.zip",
+		"pwd": "DfzxhBgOqhBTvwbJpEmK",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 364,
+		"brand": "POCO",
+		"model": "21121210G(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "5ecf7fc639cc771e9522c00f05c04ceb_03.zip",
+		"pwd": "imcAOGLiyTHONryrYjuc",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 365,
+		"brand": "TECNO",
+		"model": "TECNO KJ7(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2460x480",
+		"name": "9f16c3b082d35036be62dd53030935ac_03.zip",
+		"pwd": "EuLbCUOOXslqycdAULNz",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 366,
+		"brand": "TECNO",
+		"model": "TECNO KJ7(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2460x480",
+		"name": "9f16c3b082d35036be62dd53030935ac_03.zip",
+		"pwd": "EuLbCUOOXslqycdAULNz",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 368,
+		"brand": "HONOR",
+		"model": "ALP-AN00(8G)",
+		"asopVersion": "14",
+		"layout": "1200x2652x520",
+		"name": "8577bb6201b9a74e4f9fa362a56c3991_03.zip",
+		"pwd": "CntSYVOSTCgRtaHgWRvT",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 375,
+		"brand": "Xiaomi",
+		"model": "M2102J2SC(12G)",
+		"asopVersion": "13",
+		"layout": "1080x2340x440",
+		"name": "646ab2444c4b999131fd540ad9dad27a_03.zip",
+		"pwd": "TBsyRTTpfTNTEJrlxKoE",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 377,
+		"brand": "Infinix",
+		"model": "Infinix X6880(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2436x480",
+		"name": "c13165dac0cab767d16773d057a09194_03.zip",
+		"pwd": "LweClgEMbFrEFUgEHyxx",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 378,
+		"brand": "Infinix",
+		"model": "Infinix X6880(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2436x480",
+		"name": "c13165dac0cab767d16773d057a09194_03.zip",
+		"pwd": "LweClgEMbFrEFUgEHyxx",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 379,
+		"brand": "Infinix",
+		"model": "Infinix X6820(12G)",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "c8431b48e617040617a632e511e54621_03.zip",
+		"pwd": "JVBOmuUEPSiVZfhNwhcM",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 381,
+		"brand": "samsung",
+		"model": "SM-A3660(12G)",
+		"asopVersion": "15",
+		"layout": "1080x2340x450",
+		"name": "23983f5117cb996524b463ff5a30906c_03.zip",
+		"pwd": "rBtADPVKYINsinLiaskP",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 390,
+		"brand": "OPPO",
+		"model": "PHS110(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x480",
+		"name": "b3ed16d8ecd7d4451b6a87a56b7a2d46_03.zip",
+		"pwd": "xLnxtTXDKxVcPUqPpPUw",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 393,
+		"brand": "Redmi",
+		"model": "23021RAAEG(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "0b4f6919dec4f2876f1ded30bc4069bb_03.zip",
+		"pwd": "jFNOJbjZgJCcStjVEoaX",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 394,
+		"brand": "Redmi",
+		"model": "23021RAAEG(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "0b4f6919dec4f2876f1ded30bc4069bb_03.zip",
+		"pwd": "jFNOJbjZgJCcStjVEoaX",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 395,
+		"brand": "Infinix",
+		"model": "Infinix X6531(12G)",
+		"asopVersion": "14",
+		"layout": "720x1600x320",
+		"name": "4a48cdd293bd86cc503ed951df4897c8_03.zip",
+		"pwd": "uVCiRaXPVWFzxPmYBiuJ",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 396,
+		"brand": "Infinix",
+		"model": "Infinix X6531(8G)",
+		"asopVersion": "14",
+		"layout": "720x1600x320",
+		"name": "4a48cdd293bd86cc503ed951df4897c8_03.zip",
+		"pwd": "uVCiRaXPVWFzxPmYBiuJ",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 401,
+		"brand": "vivo",
+		"model": "V2166BA(12G)",
+		"asopVersion": "13",
+		"layout": "1080x2408x480",
+		"name": "f41a9ae5fac06c8cfbd271f4377986cb_03.zip",
+		"pwd": "OgdSUuXcoEJJwrGOACGO",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 405,
+		"brand": "POCO",
+		"model": "22111317PG(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "6461ffdfd929eea0b40ca8369fbf1eaf_03.zip",
+		"pwd": "hArxTeZwWzGexLZPEQgB",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 406,
+		"brand": "POCO",
+		"model": "22111317PG(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "6461ffdfd929eea0b40ca8369fbf1eaf_03.zip",
+		"pwd": "hArxTeZwWzGexLZPEQgB",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 407,
+		"brand": "POCO",
+		"model": "2404APC5FG(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2460x440",
+		"name": "f1375dd658a1bfe8ccebf2f69813e85e_03.zip",
+		"pwd": "RtgAzQsqMIGjjlpCjfYi",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 409,
+		"brand": "motorola",
+		"model": "motorola edge 30 neo(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x420",
+		"name": "fdae0dfe23d81ac81074f0b99bd0c68e_03.zip",
+		"pwd": "JqITRtUojUfwVINRINEM",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 410,
+		"brand": "motorola",
+		"model": "motorola edge 30 neo(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x420",
+		"name": "fdae0dfe23d81ac81074f0b99bd0c68e_03.zip",
+		"pwd": "JqITRtUojUfwVINRINEM",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 413,
+		"brand": "Redmi",
+		"model": "2201117TG(12G)",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "bb6ba90f6cb46d93cef03186605cdbe9_03.zip",
+		"pwd": "YcbuLjtfcJywPFhnPsuW",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 414,
+		"brand": "Redmi",
+		"model": "2201117TG(8G)",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "bb6ba90f6cb46d93cef03186605cdbe9_03.zip",
+		"pwd": "YcbuLjtfcJywPFhnPsuW",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 417,
+		"brand": "samsung",
+		"model": "SM-G996U1(12G)",
+		"asopVersion": "13",
+		"layout": "1080x2400x420",
+		"name": "e057a91538f142889b3065e6d173fc10_03.zip",
+		"pwd": "yZcBujFwsnaXTczLmAvx",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 418,
+		"brand": "samsung",
+		"model": "SM-G996U1(8G)",
+		"asopVersion": "13",
+		"layout": "1080x2400x420",
+		"name": "e057a91538f142889b3065e6d173fc10_03.zip",
+		"pwd": "yZcBujFwsnaXTczLmAvx",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 423,
+		"brand": "samsung",
+		"model": "SM-A165M(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2340x314",
+		"name": "9eed4a82d5016b6800eb63e048bbff60_03.zip",
+		"pwd": "GEtpbfGwOHrzdqsZhDmK",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 435,
+		"brand": "asus",
+		"model": "ASUS_I01WD(12G)",
+		"asopVersion": "10",
+		"layout": "1081x2340x420",
+		"name": "b41e971e7a19c69d5ab137484d83f973_03.zip",
+		"pwd": "JHIGtPbuvOgYQHBeoLcl",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 437,
+		"brand": "google",
+		"model": "Pixel 3(12G)",
+		"asopVersion": "10",
+		"layout": "1080x2160x440",
+		"name": "31c4e989b084fd24dd80de13b64d67f2_03.zip",
+		"pwd": "",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 438,
+		"brand": "google",
+		"model": "Pixel 3(8G)",
+		"asopVersion": "10",
+		"layout": "1080x2160x440",
+		"name": "31c4e989b084fd24dd80de13b64d67f2_03.zip",
+		"pwd": "",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 445,
+		"brand": "HONOR",
+		"model": "HRY-LX1(12G)",
+		"asopVersion": "10",
+		"layout": "1080x2340x480",
+		"name": "ff3b8888de6bcc625b183e207d006b4d_03.zip",
+		"pwd": "uXJeZSFIhVxbgDsecfEH",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 459,
+		"brand": "blackshark",
+		"model": "SKR-A0(12G)",
+		"asopVersion": "10",
+		"layout": "1080x2160x440",
+		"name": "9a8305e65b04da63501d8786b8c70681.zip",
+		"pwd": "CKnuErdglskbnTGqYPUu",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 461,
+		"brand": "docomo",
+		"model": "SO-01L(12G)",
+		"asopVersion": "10",
+		"layout": "1440x2880x560",
+		"name": "d3a6c87e1d318162d9dffa53398180bd.zip",
+		"pwd": "iLnVQAxVRbaymjrEeBxE",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 469,
+		"brand": "HUAWEI",
+		"model": "ELE-AL00(12G)",
+		"asopVersion": "10",
+		"layout": "1080x2340x480",
+		"name": "fa5804028747fbe4a1d886c3dd7dcb43.zip",
+		"pwd": "xVVctfJduIkhVcigUOhz",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 471,
+		"brand": "HUAWEI",
+		"model": "ELS-AN00(12G)",
+		"asopVersion": "10",
+		"layout": "1200x2640x530",
+		"name": "b9749f6b0b6a7b7db1553922c18227c5.zip",
+		"pwd": "CSMPKathFdbIvBWkaPtM",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 473,
+		"brand": "Infinix",
+		"model": "Infinix X680B(12G)",
+		"asopVersion": "10",
+		"layout": "720x1640x320",
+		"name": "13e4411ee9736b51cb6762bfef91b8d9.zip",
+		"pwd": "MnBXHhXGsOESXOaxBtNF",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 475,
+		"brand": "KDDI",
+		"model": "SHV42(12G)",
+		"asopVersion": "10",
+		"layout": "1440x3040x640",
+		"name": "eb1a7b540863f1134048bdf1d608370d.zip",
+		"pwd": "EGrUXlDAhHtHyqWUVwcz",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 479,
+		"brand": "motorola",
+		"model": "moto g stylus 5G - 2024(12G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x400",
+		"name": "0ef3b3284af2ff8ff5d574a8e13371c0.zip",
+		"pwd": "CDzbithKLcbXBybGKblw",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 480,
+		"brand": "motorola",
+		"model": "moto g stylus 5G - 2024(8G)",
+		"asopVersion": "14",
+		"layout": "1080x2400x400",
+		"name": "0ef3b3284af2ff8ff5d574a8e13371c0.zip",
+		"pwd": "CDzbithKLcbXBybGKblw",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 599,
+		"brand": "samsung",
+		"model": "SM-A5560",
+		"asopVersion": "15",
+		"layout": "1080x2340x450",
+		"name": "17e458c8d2638eb23c6d8d7a80575998.zip",
+		"pwd": "B6MHWB0VlZ8j",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 600,
+		"brand": "samsung",
+		"model": "SM-S9180",
+		"asopVersion": "15",
+		"layout": "1440x3088x600",
+		"name": "8b5871f5df63c09d2e6f9e32457f77c5.zip",
+		"pwd": "NNIqyHe95t",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 601,
+		"brand": "samsung",
+		"model": "SM-S9280",
+		"asopVersion": "15",
+		"layout": "1440x3120x600",
+		"name": "a626c9058e76cc3ff2ce9ee298e38c60.zip",
+		"pwd": "lPv61rMK0",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 602,
+		"brand": "samsung",
+		"model": "SM-S9310",
+		"asopVersion": "15",
+		"layout": "1080x2340x480",
+		"name": "3a42fe31c13153dcbaf07b3e68696481.zip",
+		"pwd": "8ES1eMINWFfN",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 614,
+		"brand": "Redmi",
+		"model": "24090RA29C",
+		"asopVersion": "15",
+		"layout": "1220x2712x520",
+		"name": "639e2a086b3a004016bb9731b8929715.zip",
+		"pwd": "EkV2mLS64L",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 615,
+		"brand": "google",
+		"model": "Pixel 8",
+		"asopVersion": "14",
+		"layout": "1080x2400x420",
+		"name": "95993bd22fb8e8dca795ed18c1a42928.zip",
+		"pwd": "QIQwycPL",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 630,
+		"brand": "OnePlus",
+		"model": "PHB110",
+		"asopVersion": "13",
+		"layout": "1080x2412x480",
+		"name": "e5a7870165a4f58ef3f1a45f631df6c3.zip",
+		"pwd": "CrOMuUF4a3",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 638,
+		"brand": "vivo",
+		"model": "V2405A",
+		"asopVersion": "15",
+		"layout": "1260x2800x560",
+		"name": "96e65d97d77f9fa113268724e7804e74.zip",
+		"pwd": "gdI5uEcoRqo",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 641,
+		"brand": "OPPO",
+		"model": "PKC110",
+		"asopVersion": "15",
+		"layout": "1080x2376x480",
+		"name": "3ec8ac961a56a2766f263c9f7610f83a.zip",
+		"pwd": "czUGlqQal",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 642,
+		"brand": "Xiaomi",
+		"model": "24129PN74C",
+		"asopVersion": "15",
+		"layout": "1200x2670x520",
+		"name": "aaf446264600d3d2fb6dd8405102894d.zip",
+		"pwd": "zc7ATEZoS",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 644,
+		"brand": "Infinix",
+		"model": "Infinix X6739",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "7a13860569582d69ec26cc680683e7e5.zip",
+		"pwd": "UCcGLSY1qoY",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 703,
+		"brand": "Xiaomi",
+		"model": "2410DPN6CC",
+		"asopVersion": "15",
+		"layout": "1440x3200x600",
+		"name": "8387472dde3723d929863e363008e39d.zip",
+		"pwd": "4WaGlRBO6",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 705,
+		"brand": "Xiaomi",
+		"model": "2210132C",
+		"asopVersion": "14",
+		"layout": "1080x2400x420",
+		"name": "ed3cd0848752895796068f467688f3cb.zip",
+		"pwd": "LRtgtIu7p",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 712,
+		"brand": "Xiaomi",
+		"model": "2209129SC",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "84baf548b1c1c04d8348930c48bef5fa.zip",
+		"pwd": "z6NAcPjCeI",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 716,
+		"brand": "Xiaomi",
+		"model": "2201123C",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "4e2fdaf0d6c1109dffc0ece52112f67b.zip",
+		"pwd": "cVcjw78hdApR",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 717,
+		"brand": "Xiaomi",
+		"model": "M2102K1AC",
+		"asopVersion": "13",
+		"layout": "1440x3200x560",
+		"name": "66a18ebdfd85c6850bbb8a4b3b0e917d.zip",
+		"pwd": "4TCtRrMcKf0",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 765,
+		"brand": "Redmi",
+		"model": "22101316C",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "bf54eaa3b974ceef7f732e64d65661c1.zip",
+		"pwd": "zIfvYSIz7",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 850,
+		"brand": "OnePlus",
+		"model": "PHK110",
+		"asopVersion": "14",
+		"layout": "1240x2772x560",
+		"name": "0e1f9b6beb5250715fb75ae04ad7cd4d.zip",
+		"pwd": "OJaVltA6OxSi",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 852,
+		"brand": "OnePlus",
+		"model": "PJE110",
+		"asopVersion": "14",
+		"layout": "1080x2376x480",
+		"name": "6f82203c4538e45ab0504498d6cc4507.zip",
+		"pwd": "jCI3AdbVBJ",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 854,
+		"brand": "HONOR",
+		"model": "PGT-AN00",
+		"asopVersion": "13",
+		"layout": "1224x2688x528",
+		"name": "1c453d099460856984595c4cfc669cb3.zip",
+		"pwd": "92FlC2yY",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 904,
+		"brand": "google",
+		"model": "Pixel 9",
+		"asopVersion": "14",
+		"layout": "1080x2424x420",
+		"name": "4859ac42ac0551e25adec648afcb8dbd.zip",
+		"pwd": "rsM5OLvaN4v",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 962,
+		"brand": "Xiaomi",
+		"model": "2203121C",
+		"asopVersion": "14",
+		"layout": "1080x2400x420",
+		"name": "f37192353c042589c594ed46f37d8ee2.zip",
+		"pwd": "ATWx1402DJN",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 966,
+		"brand": "OPPO",
+		"model": "PKV110",
+		"asopVersion": "15",
+		"layout": "720x1604x320",
+		"name": "be3dbd6696e32be56217112fbcb22533.zip",
+		"pwd": "XEuVfPdgZxT",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 978,
+		"brand": "OPPO",
+		"model": "PJW110",
+		"asopVersion": "14",
+		"layout": "1080x2412x480",
+		"name": "696dbd30aa7a71aed492e1a6dc1a2fcf.zip",
+		"pwd": "DUtDCy3fi0",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 979,
+		"brand": "OPPO",
+		"model": "PHW110",
+		"asopVersion": "13",
+		"layout": "1080x2412x480",
+		"name": "026a5e16ca438cadbc38dbbb4a0da768.zip",
+		"pwd": "uEPCgfI5",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 984,
+		"brand": "OPPO",
+		"model": "PGFM10",
+		"asopVersion": "15",
+		"layout": "1240x2772x560",
+		"name": "068ade6b5bb410561b729042c152beb4.zip",
+		"pwd": "pCSfBoL0RRd",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 988,
+		"brand": "OPPO",
+		"model": "PGJM10",
+		"asopVersion": "13",
+		"layout": "1080x2412x480",
+		"name": "26233a06cb15156df905b89fd33f4f72.zip",
+		"pwd": "LcsoukylR",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 990,
+		"brand": "OPPO",
+		"model": "PEQM00",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "8e40a162c5dafd64628d0b55188defab.zip",
+		"pwd": "r4cOCqylz",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 991,
+		"brand": "Xiaomi",
+		"model": "2304FPN6DC",
+		"asopVersion": "15",
+		"layout": "1440x3200x560",
+		"name": "6f540cef4e2e026ca8e0e374fd3cf628.zip",
+		"pwd": "uch6qzUiVr3",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 994,
+		"brand": "Xiaomi",
+		"model": "23127PN0CC",
+		"asopVersion": "15",
+		"layout": "1200x2670x480",
+		"name": "d75f35f5f4857a2e77cf4825d3793030.zip",
+		"pwd": "FQAEV1ypXDx",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 995,
+		"brand": "Xiaomi",
+		"model": "23046PNC9C",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "bacc96699c9089cf6ae2aa327f8c0a64.zip",
+		"pwd": "1MvK3KboVC",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 997,
+		"brand": "Xiaomi",
+		"model": "2211133C",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "218722d81fdeaecaef9cf164a1be7549.zip",
+		"pwd": "IAUcUxWYmRDE",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 998,
+		"brand": "Xiaomi",
+		"model": "2206122SC",
+		"asopVersion": "13",
+		"layout": "1080x2400x420",
+		"name": "b0ca287a286d33bd53d8a99dce7fc120.zip",
+		"pwd": "F8XuEK0bRes",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 999,
+		"brand": "Xiaomi",
+		"model": "2206123SC",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "593afabff58f34613bad9ca86315c44b.zip",
+		"pwd": "RyhE1lraNmX",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1000,
+		"brand": "Xiaomi",
+		"model": "2109119BC",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "3ef1faf6def59d2efca939973eb462a3.zip",
+		"pwd": "NoBcQnDyzz",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1001,
+		"brand": "Xiaomi",
+		"model": "2112123AC",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "f4a3589dda6577dfa1966d9f27645ca5.zip",
+		"pwd": "xFMWNHcW1",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1002,
+		"brand": "Xiaomi",
+		"model": "2201123C",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "d313ada9ffd4f1b431f4e2e749380540.zip",
+		"pwd": "VokTd5IZvez",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1003,
+		"brand": "Xiaomi",
+		"model": "M2102K1C",
+		"asopVersion": "13",
+		"layout": "1440x3200x560",
+		"name": "e7637fb0a8b00b20b5cb7221ed971d85.zip",
+		"pwd": "EwIOq4rMcBta",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1004,
+		"brand": "Xiaomi",
+		"model": "2106118C",
+		"asopVersion": "14",
+		"layout": "1080x2400x440",
+		"name": "178a162027149bf4fcfc0bb0eeef2088.zip",
+		"pwd": "ZCq5mr0zTt",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1031,
+		"brand": "vivo",
+		"model": "V2130A",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "a1bc4b5bc798d5b40e85b7bdee6c3401.zip",
+		"pwd": "SqBI7OM6PL",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1035,
+		"brand": "HONOR",
+		"model": "PPG-AN00",
+		"asopVersion": "15",
+		"layout": "1264x2800x560",
+		"name": "1220b3637e2f91befeb23f5a3af72b3d.zip",
+		"pwd": "jgAJbDCW",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1037,
+		"brand": "HONOR",
+		"model": "MAA-AN10",
+		"asopVersion": "13",
+		"layout": "1224x2700x530",
+		"name": "1c98ab1a59c7d5d8e018d4302ea3ca90.zip",
+		"pwd": "p4yBZc993Q",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1039,
+		"brand": "OnePlus",
+		"model": "PJF110",
+		"asopVersion": "15",
+		"layout": "1080x2414x480",
+		"name": "7c96c1ab04a0a2bee51e0477c7adbe0f.zip",
+		"pwd": "qmALEZ6BmqfL",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1040,
+		"brand": "OnePlus",
+		"model": "PJD110",
+		"asopVersion": "15",
+		"layout": "1440x3168x640",
+		"name": "6e7f70130a036f9c9ca130bf2ab7c80a.zip",
+		"pwd": "IOAOHG1tVEps",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1041,
+		"brand": "OnePlus",
+		"model": "PHB110",
+		"asopVersion": "13",
+		"layout": "1080x2412x480",
+		"name": "a86f68a2c6f01624a2a802807026a679.zip",
+		"pwd": "5RdWHtXwtl",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1046,
+		"brand": "Redmi",
+		"model": "24129RT7CC",
+		"asopVersion": "15",
+		"layout": "1220x2712x520",
+		"name": "298912785a10d5f8879b275ff0c102e7.zip",
+		"pwd": "jQG8m1PskqJa",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1050,
+		"brand": "Redmi",
+		"model": "24117RK2CC",
+		"asopVersion": "15",
+		"layout": "1440x3200x600",
+		"name": "59ddfc6374723e2bea36a84792238063.zip",
+		"pwd": "FmOQlapRG0",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1051,
+		"brand": "Redmi",
+		"model": "24090RA29C",
+		"asopVersion": "15",
+		"layout": "1220x2712x520",
+		"name": "a6e3693199e2d6f8ef4372413ebd02d9.zip",
+		"pwd": "gtgHJIM5pep",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1053,
+		"brand": "Redmi",
+		"model": "22011211C",
+		"asopVersion": "13",
+		"layout": "1080x2400x420",
+		"name": "4e7234594df1b36bc966e0ae904faebd.zip",
+		"pwd": "4QdrhBB4uwlI",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1063,
+		"brand": "realme",
+		"model": "RMX3706",
+		"asopVersion": "13",
+		"layout": "1240x2772x560",
+		"name": "a0fe16df7a9c7edd96cb23e7edf1db5f.zip",
+		"pwd": "XDhvMA4rc",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1064,
+		"brand": "realme",
+		"model": "RMX3841",
+		"asopVersion": "14",
+		"layout": "1080x2412x480",
+		"name": "56683cee66a08e27de4a75df86a6acd3.zip",
+		"pwd": "njDDsyHwKJEm",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1066,
+		"brand": "HONOR",
+		"model": "ALI-NX1",
+		"asopVersion": "13",
+		"layout": "1200x2652x520",
+		"name": "de78662b0f0738157896eb047e79dff7.zip",
+		"pwd": "xreGizVs",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1068,
+		"brand": "vivo",
+		"model": "V2171A",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "cbeffb5f57ae6aba780579713acaaa08.zip",
+		"pwd": "dJaDuvhQZSM",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1081,
+		"brand": "motorola",
+		"model": "XT2343-3",
+		"asopVersion": "13",
+		"layout": "1080x2400x446",
+		"name": "0eccd4c49e47a74dda04eb6e1c097060.zip",
+		"pwd": "2cVDBSqQ",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1082,
+		"brand": "OnePlus",
+		"model": "PJX110",
+		"asopVersion": "14",
+		"layout": "1080x2376x480",
+		"name": "79dc7853b42d1bd3a193511ef709bbb4.zip",
+		"pwd": "4FgHdV77cGn",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1084,
+		"brand": "OPPO",
+		"model": "PGIM10",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "07014427aa4eabd14dbd104f333adccd.zip",
+		"pwd": "05la477r6Oj",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1085,
+		"brand": "OPPO",
+		"model": "PHS110",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "8753f0f46e63b7eef76a551a292807ee.zip",
+		"pwd": "vW4GHD2Qa",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1087,
+		"brand": "OPPO",
+		"model": "PJV110",
+		"asopVersion": "15",
+		"layout": "1080x2412x480",
+		"name": "64eb0c730027c7b0ee2b3b1aa316c9ae.zip",
+		"pwd": "BCC2hrS1",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1089,
+		"brand": "POCO",
+		"model": "23122PCD1G",
+		"asopVersion": "13",
+		"layout": "1220x2712x480",
+		"name": "1b4a27f9c88a0d705e32dfe8567541fd.zip",
+		"pwd": "xGt9bQJa9kd",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1100,
+		"brand": "HONOR",
+		"model": "DNN-AN00",
+		"asopVersion": "15",
+		"layout": "1264x2736x560",
+		"name": "a4bfb867a1971310e145d341b16d1cd7.zip",
+		"pwd": "STXYfnk9VZ",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1102,
+		"brand": "HONOR",
+		"model": "ELZ-AN10",
+		"asopVersion": "14",
+		"layout": "1344x2772x476",
+		"name": "9b75ca07d2c69c48a35c1b6b4c373865.zip",
+		"pwd": "wzbxXO1gd",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1110,
+		"brand": "Infinix",
+		"model": "Infinix X680B",
+		"asopVersion": "10",
+		"layout": "720x1640x320",
+		"name": "0d04547b40dbe44ce42ca9227d88ad21.zip",
+		"pwd": "efk9ilQYJ",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1112,
+		"brand": "OnePlus",
+		"model": "PKR110",
+		"asopVersion": "15",
+		"layout": "1080x2376x480",
+		"name": "e09f6545f860c9fca047b19db4dd2b49.zip",
+		"pwd": "OiDDCK3rIJ",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1113,
+		"brand": "OnePlus",
+		"model": "PKX110",
+		"asopVersion": "15",
+		"layout": "1080x2344x480",
+		"name": "28425128f8b92539832f2f951dea441f.zip",
+		"pwd": "AruwVfgtCHFi",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1114,
+		"brand": "OPPO",
+		"model": "CPH2237",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "939094c8a29e7669becf31061d1f335c.zip",
+		"pwd": "QTr26MTTcvA",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1116,
+		"brand": "realme",
+		"model": "RMX3151",
+		"asopVersion": "13",
+		"layout": "1080x2412x480",
+		"name": "ee044d998cf7be6cb0ededbcbe949429.zip",
+		"pwd": "D8P6Wlrjq",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1117,
+		"brand": "realme",
+		"model": "RMX3350",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "ad2148044584bffddf0f1efcbf8caca3.zip",
+		"pwd": "LS4Fj8br",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1118,
+		"brand": "realme",
+		"model": "RMX3478",
+		"asopVersion": "13",
+		"layout": "1080x2412x480",
+		"name": "36d015229b791fd431af81b09ed8acbc.zip",
+		"pwd": "xDAEprsqJog",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1119,
+		"brand": "Redmi",
+		"model": "21091116C",
+		"asopVersion": "13",
+		"layout": "1080x2400x440",
+		"name": "64e85a1474e776cfb58312c08d3d94a9.zip",
+		"pwd": "9JOkmxjJUjk",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1122,
+		"brand": "samsung",
+		"model": "SM-A037F",
+		"asopVersion": "13",
+		"layout": "720x1600x300",
+		"name": "6b48c45217c1272a47420874080b1df2.zip",
+		"pwd": "miJxh2H3",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1125,
+		"brand": "samsung",
+		"model": "SM-S9010",
+		"asopVersion": "13",
+		"layout": "1080x2340x480",
+		"name": "768d55753fbf025b73e6b9e121fa6f70.zip",
+		"pwd": "2a2sRpU0gyeh",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1128,
+		"brand": "OPPO",
+		"model": "PKK110",
+		"asopVersion": "15",
+		"layout": "1080x2374x480",
+		"name": "8aa5ce4fd7cdabfbe83182928a52a869.zip",
+		"pwd": "XohV0TCn08xI",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1130,
+		"brand": "realme",
+		"model": "RMX3920",
+		"asopVersion": "14",
+		"layout": "1080x2412x480",
+		"name": "12a15170e041d3ff283dd77ae9224fbb.zip",
+		"pwd": "EhUkoF8zS28G",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1131,
+		"brand": "realme",
+		"model": "RMX3993",
+		"asopVersion": "14",
+		"layout": "720x1604x320",
+		"name": "491b0ce5d5e99dc9984a076da0495a4a.zip",
+		"pwd": "VAQmIHjhQjP",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1132,
+		"brand": "Redmi",
+		"model": "23054RA19C",
+		"asopVersion": "13",
+		"layout": "1080x2460x440",
+		"name": "b51dfde95239b24f4ea07aa9526ade3b.zip",
+		"pwd": "JgdTSFQH85",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1133,
+		"brand": "vivo",
+		"model": "V2148A",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "7c102755dcde7bc2d7130f2d775fc810.zip",
+		"pwd": "3PuEtH0cY",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1135,
+		"brand": "vivo",
+		"model": "V2154A",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "2eb1e739e30691701d989f4e9e53ed60.zip",
+		"pwd": "PBgy0M3eUz6B",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1176,
+		"brand": "vivo",
+		"model": "V2036",
+		"asopVersion": "13",
+		"layout": "1080x2408x440",
+		"name": "524507ff8059b6d63ea62dd6eb63d8b9.zip",
+		"pwd": "f2rAVtoO1",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1181,
+		"brand": "realme",
+		"model": "RMX3366",
+		"asopVersion": "13",
+		"layout": "1080x2400x480",
+		"name": "59f67a0987cb17060e09790ef4e4a534.zip",
+		"pwd": "wcCFvCdq7V9",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1191,
+		"brand": "google",
+		"model": "Pixel 6 Pro",
+		"asopVersion": "13",
+		"layout": "1440x3120x560",
+		"name": "aa97cb8ec18d58bebb448c62164af387.zip",
+		"pwd": "MPGswrqgrHA",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1253,
+		"brand": "OnePlus",
+		"model": "PHK110",
+		"asopVersion": "14",
+		"layout": "1240x2772x560",
+		"name": "5791a31186742b109e15d237f1a7fc83.zip",
+		"pwd": "TlbTWNig9zr",
+		"updateTime": "2025-11-07 00:00:00"
+	},
+	{
+		"id": 1293,
+		"brand": "Redmi",
+		"model": "M2007J17C",
+		"asopVersion": "10",
+		"layout": "1080x2400x440",
+		"name": "c51fd409456c445d2e70ad745433f8c2.zip",
+		"pwd": "GSsv1mUo",
+		"updateTime": "2025-11-07 00:00:00"
+	}
+]

@@ -26,6 +26,10 @@
 #include "helper/DeviceScanner.h"
 #include "helper/ImagesModel.h"
 #include "helper/FileCopyManager.h"
+#include "helper/MediaMtxService.h"
+#include "helper/CameraDeviceScanner.h"
+#include "helper/CameraStreamManager.h"
+#include "helper/AudioDeviceScanner.h"
 #include "proxytester.h"
 
 #include "sdk_wrapper/screenshot_image.h"
@@ -131,6 +135,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<TreeModel>(uri, major, minor, "TreeModel");
     qmlRegisterType<DeviceScanner>(uri, major, minor, "DeviceScanner");
     qmlRegisterType<DeviceManager>(uri, major, minor, "DeviceManager");
+    qmlRegisterType<CameraDeviceScanner>(uri, major, minor, "CameraDeviceScanner");
+    qmlRegisterType<CameraStreamManager>(uri, major, minor, "CameraStreamManager");
+    qmlRegisterType<AudioDeviceScanner>(uri, major, minor, "AudioDeviceScanner");
     // qmlRegisterType<ScrcpyController>(uri, major, minor, "ScrcpyController");  // 已移除，改用DeviceManager
     qmlRegisterType<LevelProxyModel>(uri, major, minor, "LevelProxyModel");
     qmlRegisterType<ImagesModel>(uri, major, minor, "ImagesModel");
@@ -169,6 +176,32 @@ int main(int argc, char *argv[])
     DeviceManager deviceManager;
     ImagesModel imagesModel;
     TemplateModel tempLateModel;
+    CameraDeviceScanner cameraDeviceScanner;
+    CameraStreamManager cameraStreamManager;
+    AudioDeviceScanner audioDeviceScanner;
+
+    // 启动MediaMtx RTSP服务
+    MediaMtxService mediaMtxService;
+    if (!mediaMtxService.start()) {
+        qDebug() << "Failed to start MediaMtx service, RTSP streaming may not be available";
+    } else {
+        qDebug() << "MediaMtx RTSP service started successfully";
+        qDebug() << "RTSP URL:" << mediaMtxService.getRtspUrl();
+        qDebug() << "HTTP API URL:" << mediaMtxService.getHttpApiUrl();
+    }
+
+    // 连接退出信号，确保程序退出时停止MediaMtx服务
+    QObject::connect(&app, &QApplication::aboutToQuit, [&mediaMtxService, &cameraStreamManager]() {
+        qDebug() << "Application is about to quit, cleaning up resources...";
+        // 1. 先停止摄像头推流
+        if (cameraStreamManager.isStreaming()) {
+            qDebug() << "Stopping camera streaming...";
+            cameraStreamManager.stopStreaming();
+        }
+        // 2. 快速停止MediaMtx服务（不等待，避免阻塞UI）
+        qDebug() << "Stopping MediaMtx service...";
+        mediaMtxService.stopQuick();
+    });
 
 
 
@@ -197,6 +230,9 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("imagesModel", &imagesModel);
     engine.rootContext()->setContextProperty("fileCopyManager", FileCopyManager::instance());
     engine.rootContext()->setContextProperty("tempLateModel", &tempLateModel);
+    engine.rootContext()->setContextProperty("cameraDeviceScanner", &cameraDeviceScanner);
+    engine.rootContext()->setContextProperty("cameraStreamManager", &cameraStreamManager);
+    engine.rootContext()->setContextProperty("audioDeviceScanner", &audioDeviceScanner);
     engine.rootContext()->setContextProperty("appDirPath", QCoreApplication::applicationDirPath());
 
     const QUrl url(QStringLiteral("qrc:/qml/App.qml"));
@@ -249,6 +285,9 @@ int main(int argc, char *argv[])
     }
 
     const int exec = app.exec();
+    
+    // 注意：清理资源已在 aboutToQuit 信号中处理
+    
     if (exec == 931) {
         QProcess::startDetached(qApp->applicationFilePath(), qApp->arguments());
 #ifdef Q_OS_MAC

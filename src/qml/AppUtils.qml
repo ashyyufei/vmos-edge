@@ -137,4 +137,65 @@ QtObject  {
         
         return domainRegex.test(domain) || singleCharRegex.test(domain);
     }
+
+    // 根据国家代码获取 locale
+    function getLocaleFromCountry(country) {
+        if (!country) return "en-US"
+        var countryUpper = country.toUpperCase()
+        // 国家代码到 locale 的映射（基于语言-国家代码格式）
+        var localeMap = {
+            "US": "en-US",
+            "ES": "es-ES",
+            "PH": "tl-PH",
+            "FR": "fr-FR",
+            "KH": "km-KH",
+            "DE": "de-DE",
+            "IT": "it-IT",
+            "BR": "pt-BR",
+            "PT": "pt-PT",
+            "RU": "ru-RU",
+            "JP": "ja-JP",
+            "CN": "zh-CN",
+            "TW": "zh-TW",
+            "KR": "ko-KR",
+            "SA": "ar-SA",
+            "IN": "hi-IN",
+            "BD": "bn-BD",
+            "PK": "ur-PK",
+            "ID": "id-ID",
+            "MY": "ms-MY",
+            "TR": "tr-TR",
+            "VN": "vi-VN",
+            "TH": "th-TH",
+            "PL": "pl-PL",
+            "NL": "nl-NL",
+            "SE": "sv-SE",
+            "FI": "fi-FI",
+            "DK": "da-DK",
+            "NO": "no-NO",
+            "CZ": "cs-CZ",
+            "HU": "hu-HU",
+            "RO": "ro-RO",
+            "SK": "sk-SK",
+            "BG": "bg-BG",
+            "SI": "sl-SI",
+            "EE": "et-EE",
+            "LV": "lv-LV",
+            "LT": "lt-LT",
+            "RS": "sr-RS",
+            "AM": "hy-AM",
+            "AZ": "az-AZ",
+            "MN": "mn-MN",
+            "KE": "sw-KE",
+            "TZ": "sw-TZ",
+            "ZA": "zu-ZA",
+            "IL": "yi-IL",
+            "LK": "ta-LK",
+            "GB": "en-GB",
+            "AU": "en-AU",
+            "CA": "en-CA",
+            "HK": "zh-HK"
+        }
+        return localeMap[countryUpper] || "en-US"
+    }
 }

@@ -33,6 +33,7 @@ FluPopup {
 
     onAboutToShow: {
         selectAllBox.checked = false
+        search_input.text = ""  // 清空搜索条件
         var tmpModel = treeModel.hostList()
         root.hostModel = tmpModel.filter(item => item.groupId !== (root.groupModel?.groupId ?? 0))
         filterModel()
@@ -161,11 +162,15 @@ FluPopup {
                                 textColor: "black"
                                 checked: modelData?.checked ?? false
                                 onClicked: {
+                                    // 使用hostId来匹配，而不是索引，因为搜索后索引会变化
+                                    var clickedHostId = modelData?.hostId
+                                    if (clickedHostId === undefined) return
+                                    
                                     // 更新模型并触发重新渲染
                                     var newModel = []
                                     for (var i = 0; i < root.hostModel.length; i++) {
                                         var item = root.hostModel[i]
-                                        if (i === index) {
+                                        if (item.hostId === clickedHostId) {
                                             item.checked = checked
                                         }
                                         newModel.push(item)

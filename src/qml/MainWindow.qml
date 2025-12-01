@@ -33,6 +33,12 @@ FluWindow {
     property real cloudUsedPercent: 0.0
     readonly property int tokenTimestamp: 12 * 60 * 60 * 1000
     property int previousIndexBeforeTemplate: 0
+    property real lon: 0.0  // 经度
+    property real lat: 0.0  // 纬度
+    property string deviceLocale: "en-US"  // 语言
+    property string timezone: "UTC"  // 时区
+    property string country: "CN"  // 国家
+    property bool wipeData: true  // 是否清理数据
 
 
     onWindowStateChanged:
@@ -76,12 +82,16 @@ FluWindow {
         ReportHelper.reportLog("home_style", { label: "stream", str1: SettingsHelper.get("viewDirection", 0) == 0 ? "vertical" : "horizontal", str2: SettingsHelper.get("viewSize", 2) == 2 ? "big" : SettingsHelper.get("viewSize", 2) == 1 ? "middle" : "small"})
 
         // 扫描主机
-        scanner.startDiscovery(1000)
+        scanner.startDiscovery(3000)
         phoneListTimer.start()
         deviceListTimer.start()
         
         // 初始化CBS文件
         initCbsFile()
+        
+        // 查询位置信息（每次启动都调用接口更新）
+        console.log("启动时调用IP信息接口进行更新")
+        reqIpInfo()
     }
 
     Component.onDestruction: {
@@ -93,71 +103,6 @@ FluWindow {
         return false
     }
 
-    // 启动 scrcpy_server（TCP直连模式需要先启动服务）
-    function startScrcpyServer(hostIp, dbId, tcpVideoPort, tcpAudioPort, tcpControlPort, onSuccess, onError) {
-        if (!hostIp || !dbId) {
-            if (onError) onError("hostIp 或 dbId 为空")
-            return
-        }
-        
-        const url = `http://${hostIp}:18182/container_api/v1/scrcpy`
-        console.log("启动 scrcpy_server:", url, "dbId:", dbId, "videoPort:", tcpVideoPort, "audioPort:", tcpAudioPort, "controlPort:", tcpControlPort)
-        
-        // 根据端口判断是否需要启动对应的流
-        const bool_video = tcpVideoPort > 0
-        const bool_audio = tcpAudioPort > 0
-        const bool_control = tcpControlPort > 0
-        
-        Network.postJson(url)
-        .bind(root)
-        .setTimeout(5000)
-        .add("db_id", dbId)
-        .add("bool_video", bool_video)
-        .add("bool_audio", bool_audio)
-        .add("bool_control", bool_control)
-        .go(startScrcpyServerCallable)
-        
-        // 保存回调函数
-        startScrcpyServerCallable._onSuccess = onSuccess
-        startScrcpyServerCallable._onError = onError
-        startScrcpyServerCallable._hostIp = hostIp
-        startScrcpyServerCallable._dbId = dbId
-    }
-    
-    NetworkCallable {
-        id: startScrcpyServerCallable
-        property var _onSuccess: null
-        property var _onError: null
-        property string _hostIp: ""
-        property string _dbId: ""
-        
-        onError: (status, errorString, result, userData) => {
-            console.error("启动 scrcpy_server 失败:", status, errorString, result)
-            if (_onError) {
-                _onError(errorString || "启动 scrcpy_server 失败")
-            } else {
-                showError(qsTr("启动 scrcpy_server 失败: ") + errorString)
-            }
-        }
-        
-        onSuccess: (result, userData) => {
-            var res = JSON.parse(result)
-            if (res.code === 200) {
-                console.log("启动 scrcpy_server 成功:", result)
-                if (_onSuccess) {
-                    _onSuccess(_hostIp, _dbId)
-                }
-            } else {
-                console.error("启动 scrcpy_server 失败:", res.msg)
-                if (_onError) {
-                    _onError(res.msg || "启动 scrcpy_server 失败")
-                } else {
-                    showError(res.msg || qsTr("启动 scrcpy_server 失败"))
-                }
-            }
-        }
-    }
-    
     // 连接设备（根据配置选择TCP直接连接或ADB模式）
     function connectDeviceSmart(model) {
         if (!model || model.state !== "running") {
@@ -167,45 +112,36 @@ FluWindow {
         const hostIp = model.hostIp || ""
         const adb = model.adb || 0
         const dbId = model.dbId || model.db_id || model.name || ""
-        
+        const useDirectTcp = model.networkMode === "macvlan"
         // 根据配置选择连接模式
         if (AppConfig.useDirectTcp) {
             // TCP直接连接模式：先启动 scrcpy_server，再连接
-            const tcpVideoPort = model.tcpVideoPort || 0
-            const tcpAudioPort = model.tcpAudioPort || 0
-            const tcpControlPort = model.tcpControlPort || 0
+
+            const tcpVideoPort = useDirectTcp ? 9999 : (model.tcpVideoPort || 0)
+            const tcpAudioPort = useDirectTcp ? 9998 : (model.tcpAudioPort || 0)
+            const tcpControlPort = useDirectTcp ? 9997 : (model.tcpControlPort || 0)
+            const realIP = useDirectTcp ? model.ip : hostIp;
+            console.log("使用TCP直接连接模式 (networkMode=" + model.networkMode + "):", hostIp, dbId, "ports:", tcpVideoPort, tcpAudioPort, tcpControlPort)
             
-            console.log("使用TCP直接连接模式:", hostIp, dbId, "ports:", tcpVideoPort, tcpAudioPort, tcpControlPort)
-            
-            // 先启动 scrcpy_server
-            startScrcpyServer(hostIp, dbId, tcpVideoPort, tcpAudioPort, tcpControlPort,
-                // 启动成功后的回调
-                (hostIp, dbId) => {
-                    console.log("scrcpy_server 启动成功，开始连接设备")
-                    deviceManager.connectDeviceDirectTcp(
-                        dbId,           // serial
-                        hostIp || "localhost",  // host
-                        tcpVideoPort,   // videoPort
-                        tcpAudioPort,   // audioPort
-                        tcpControlPort  // controlPort
-                    )
-                },
-                // 启动失败的回调
-                (error) => {
-                    console.error("启动 scrcpy_server 失败，无法连接设备:", error)
-                    showError(qsTr("启动 scrcpy_server 失败: ") + error)
-                }
+
+            console.log("scrcpy_server 启动成功，开始连接设备")
+            deviceManager.connectDeviceDirectTcp(
+                dbId,           // serial
+                realIP,         // host
+                tcpVideoPort,   // videoPort
+                tcpAudioPort,   // audioPort
+                tcpControlPort  // controlPort
             )
+
         } else {
-            // ADB连接模式
-            const deviceAddress = `${hostIp}:${adb}`
-            console.log("使用ADB连接模式:", deviceAddress)
+            // ADB连接模式（bridge 或默认模式）
+            const deviceAddress = `${realIP}:${adb}`
+            console.log("使用ADB连接模式 (networkMode=" + networkMode + "):", deviceAddress)
             deviceManager.connectDevice(deviceAddress)
         }
         
         return true
     }
-
     function checkAtLeastOne(podList, flag, num){
         num = num || 1
         if(podList.length < num){
@@ -470,9 +406,12 @@ FluWindow {
                 scanner.specificIpsToScan = []; // Reset
             }
 
-            // 启动自动CBS升级检查
+            // 无缝衔接：扫描完成后立即开始CBS升级检查，不隐藏loading
+            // 更新loading文本，让用户知道正在进行CBS版本检查
+            showLoading(qsTr("正在检查CBS版本..."))
+            // 立即启动CBS升级检查，不延迟，让扫描和升级成为一个连续的过程
+            autoCbsUpgradeTimer.interval = 100
             autoCbsUpgradeTimer.start()
-            scannerTimer.restart()
         }
 
         onDiscoveryFailed:
@@ -526,7 +465,7 @@ FluWindow {
                     return;
                 }
                 scanner.specificIpsToScan = ipArray;
-                scanner.startDiscoveryWithIps(ips, 1000);
+                scanner.startDiscoveryWithIps(ips, 3000);
             }
     }
 
@@ -556,13 +495,17 @@ FluWindow {
         //     }
     }
 
+    TimeZoneCloudPhonePopup{
+        id: timeZoneCloudPhonePopup
+    }
+
     OneKeyNewDevicePopup{
         id: oneKeyNewDevicePopup
         onOneKeyNewDeviceResult: (hostIp, list) => {
             treeModel.updateDeviceListV3(hostIp, list)
         }
-        onOneKeyNewDeviceRequest: (hostIp, dbIds, adiName, adiPass) => {
-            reqOneKeyNewDeviceWithAdi(hostIp, dbIds, adiName, adiPass)
+        onOneKeyNewDeviceRequest: (hostIp, dbIds, adiName, adiPass, wipeData) => {
+            reqOneKeyNewDeviceWithAdi(hostIp, dbIds, adiName, adiPass, wipeData)
         }
     }
 
@@ -860,31 +803,21 @@ FluWindow {
                     return
                 }
                 
-                dialog.title = qsTr("操作确认")
-                dialog.message = qsTr("一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！")
-                dialog.positiveText = qsTr("确定")
-                dialog.negativeText = qsTr("取消")
-                dialog.showPrompt = false
-                dialog.onNegativeClickListener = function(){
-                    dialog.close()
-                }
-                dialog.buttonFlags = FluContentDialogType.PositiveButton | FluContentDialogType.NegativeButton
-                dialog.onPositiveClickListener = function(){
-                    const groups = podList.reduce(
-                                     (acc, item) => {
-                                         const key = item.hostIp;
-                                         if (!acc[key]) acc[key] = [];
-                                         acc[key].push(item.dbId);
-                                         return acc;
-                                     }, {});
-
-                    for (const key in groups) {
-                        console.log(key, groups[key]);
-                        reqOneKeyNewDevice(key,  groups[key])
+                // 统一处理逻辑：即使是单云机，也按数组处理
+                // 转换为 popup 需要的格式
+                var deviceList = podList.map(function(item) {
+                    return {
+                        name: item.name,
+                        displayName: item.displayName,
+                        hostIp: item.hostIp,
+                        hostId: item.hostId,
+                        dbId: item.dbId,
+                        image: item.image ? item.image.split(":")[0] : "",
+                        aospVersion: item.aospVersion
                     }
-                    dialog.close()
-                }
-                dialog.open()
+                })
+                oneKeyNewDevicePopup.modelData = deviceList
+                oneKeyNewDevicePopup.open()
             }
         }
 
@@ -1515,7 +1448,7 @@ FluWindow {
                             Layout.preferredHeight: 8
                             Layout.preferredWidth: 8
                             radius: 4
-                            color: modelData?.state === "running" ? "green" : "red"
+                            color: AppUtils.getStateColorBystate(modelData.state).text
                         }
 
                         ColumnLayout{
@@ -1544,7 +1477,7 @@ FluWindow {
                                 spacing: 2
 
                                 Text {
-                                    text: `${modelData?.hostIp ?? ""}:${modelData?.adb ?? ""}`
+                                    text: modelData?.networkMode === "macvlan" ? `${modelData?.ip ?? ""}:5555` : `${modelData?.hostIp ?? ""}:${modelData?.adb ?? ""}`
                                     font.pixelSize : 12
                                     color: "#888"
 
@@ -1552,7 +1485,8 @@ FluWindow {
                                         anchors.fill: parent
 
                                         onClicked: {
-                                            FluTools.clipText(`${modelData?.hostIp ?? ""}:${modelData?.adb ?? ""}`)
+                                            const copyText = modelData?.networkMode === "macvlan" ? `${modelData?.ip ?? ""}:5555` : `${modelData?.hostIp ?? ""}:${modelData?.adb ?? ""}`
+                                            FluTools.clipText(copyText)
                                             showSuccess(qsTr("复制成功"))
                                         }
                                     }
@@ -1719,6 +1653,27 @@ FluWindow {
 
                 upgradeCloudPhonePopup.modelData = modelDataCopy
                 upgradeCloudPhonePopup.open()
+            }
+        }
+
+        FluMenuItem{
+            text:qsTr("语言时区")
+            visible: deviceContextMenu.currentModel ? deviceContextMenu.currentModel.state === "running" : false
+            onClicked: {
+                var modelDataCopy = {
+                    name: deviceContextMenu.currentModel.name,
+                    displayName: deviceContextMenu.currentModel.displayName,
+                    hostIp: deviceContextMenu.currentModel.hostIp,
+                    hostId: deviceContextMenu.currentModel.hostId,
+                    dbId: deviceContextMenu.currentModel.dbId,
+                    image: deviceContextMenu.currentModel.image.split(":")[0],
+                    aospVersion: deviceContextMenu.currentModel.aospVersion,
+                    locale: deviceContextMenu.currentModel.locale,
+                    timeZone: deviceContextMenu.currentModel.timezone
+                }
+
+                timeZoneCloudPhonePopup.modelData = modelDataCopy
+                timeZoneCloudPhonePopup.open()
             }
         }
 
@@ -3266,6 +3221,7 @@ FluWindow {
     function reqDeviceList(ip){
         Network.postJson(`http://${ip}:18182/container_api/v1` + "/get_db")
         .bind(root)
+        .openLog(false)
         .setTimeout(2000)
         .setUserData(ip)
         .go(deviceList)
@@ -3294,6 +3250,7 @@ FluWindow {
     function reqDeviceListWithoutLoading(ip){
         Network.postJson(`http://${ip}:18182/container_api/v1` + "/get_db")
         .bind(root)
+        .openLog(false)
         .setTimeout(2000)
         .setUserData(ip)
         .go(deviceListWithoutLoading)
@@ -3666,6 +3623,7 @@ FluWindow {
     function reqDeviceListByDB(ip){
         Network.postJson(`http://${ip}:18182/container_api/v1` + "/get_db")
         .bind(root)
+        .openLog(false)
         .setUserData(ip)
         .go(deviceListByDB)
     }
@@ -3691,17 +3649,29 @@ FluWindow {
     function reqOneKeyNewDevice(ip, padNames){
         Network.postJson(`http://${ip}:18182/container_api/v1` + "/replace_devinfo")
         .addList("db_ids", padNames)
+        .add("lon", root.lon)
+        .add("lat", root.lat)
+        .add("locale", "")
+        .add("timezone", "")
+        .add("country", "")
+        .add("wipeData", root.wipeData)
         .bind(root)
         .setUserData(ip)
         .go(oneKeyNewDevice)
     }
 
     // 一键新机（带 ADI 参数）
-    function reqOneKeyNewDeviceWithAdi(ip, padNames, adiName, adiPass){
+    function reqOneKeyNewDeviceWithAdi(ip, padNames, adiName, adiPass, wipeData){
         Network.postJson(`http://${ip}:18182/container_api/v1` + "/replace_devinfo")
         .addList("db_ids", padNames)
         .add("adiName", adiName || "")
         .add("adiPass", adiPass || "")
+        .add("lon", root.lon)
+        .add("lat", root.lat)
+        .add("locale", "")
+        .add("timezone", "")
+        .add("country", "")
+        .add("wipeData", wipeData !== undefined ? wipeData : root.wipeData)
         .bind(root)
         .setUserData(ip)
         .go(oneKeyNewDevice)
@@ -3743,7 +3713,7 @@ FluWindow {
     Timer{
         id: autoCbsUpgradeTimer
         repeat: false
-        interval: 1000  // 程序启动10秒后开始检查
+        interval: 100  // 短暂延迟，让UI有时间更新loading文本
         onTriggered: {
             checkAndUpgradeCbs()
         }
@@ -3869,24 +3839,41 @@ FluWindow {
 
     // 检查并升级CBS
     property int checkedHostsCount: 0
+    property int onlineHostsCount: 0
     function checkAndUpgradeCbs() {
-        if (isAutoUpgrading) return
-        
-        const hostList = treeModel.hostList()
-        if (hostList.length === 0) {
-            // 如果没有主机，5秒后重试
-            autoCbsUpgradeTimer.interval = 5000
-            autoCbsUpgradeTimer.restart()
+        if (isAutoUpgrading) {
+            // 如果正在升级中，不重复检查
             return
         }
         
-        console.log("开始检查CBS版本...")
+        const hostList = treeModel.hostList()
+        if (hostList.length === 0) {
+            // 如果没有主机，隐藏loading并结束
+            hideLoading()
+            return
+        }
+        
+        // 过滤出只有在线的主机
+        const onlineHosts = hostList.filter(function(host) {
+            return host.state === "online"
+        })
+        
+        if (onlineHosts.length === 0) {
+            // 如果没有在线主机，隐藏loading并结束
+            console.log("没有在线主机，跳过CBS升级检查")
+            hideLoading()
+            return
+        }
+        
+        console.log(`开始检查CBS版本... (共 ${onlineHosts.length} 台在线主机，跳过 ${hostList.length - onlineHosts.length} 台离线主机)`)
+        // loading已经在扫描完成时显示，这里保持显示状态
         hostsToUpgrade = []
         currentUpgradeIndex = 0
         checkedHostsCount = 0
+        onlineHostsCount = onlineHosts.length
         
-        // 检查每个主机的CBS版本
-        hostList.forEach(function(host) {
+        // 只检查在线主机的CBS版本
+        onlineHosts.forEach(function(host) {
             reqHardwareCfgForUpgrade(host.ip)
         })
     }
@@ -3937,9 +3924,16 @@ FluWindow {
 
     // 检查是否所有主机都已检查完毕
     function checkAllHostsChecked() {
-        const hostList = treeModel.hostList()
-        if (checkedHostsCount >= hostList.length) {
-            startAutoUpgrade()
+        if (checkedHostsCount >= onlineHostsCount) {
+            // 所有在线主机检查完成，开始升级或隐藏loading
+            if (hostsToUpgrade.length === 0) {
+                // 没有需要升级的主机，隐藏loading
+                console.log("所有在线主机CBS版本都是最新的")
+                hideLoading()
+            } else {
+                // 有需要升级的主机，开始升级
+                startAutoUpgrade()
+            }
         }
     }
 
@@ -3947,6 +3941,7 @@ FluWindow {
     function startAutoUpgrade() {
         if (hostsToUpgrade.length === 0) {
             console.log("所有主机CBS版本都是最新的")
+            hideLoading()
             return
         }
         
@@ -3954,6 +3949,7 @@ FluWindow {
         isAutoUpgrading = true
         currentUpgradeIndex = 0
         
+        // 更新loading文本，告知用户正在进行CBS升级
         showLoading(qsTr("正在更新CBS程序，请稍候..."))
         upgradeNextHost()
     }
@@ -3963,15 +3959,31 @@ FluWindow {
         if (currentUpgradeIndex >= hostsToUpgrade.length) {
             // 所有主机升级完成
             isAutoUpgrading = false
+            console.log("CBS自动升级完成，共升级了", hostsToUpgrade.length, "台主机")
+            // 升级完成，隐藏loading
             hideLoading()
-            showSuccess(qsTr("CBS自动升级完成"))
             return
         }
         
         const host = hostsToUpgrade[currentUpgradeIndex]
         console.log(`正在升级主机 ${host.ip} 的CBS...`)
         
-        reqUpdateCbsAuto(host.ip, AppConfig.cbsFilePath)
+        // 使用定时器延迟执行，避免连续操作造成UI卡顿
+        // 给UI一些时间处理事件，让界面保持响应
+        upgradeDelayTimer.restart()
+    }
+    
+    // 升级延迟定时器，避免连续操作造成卡顿
+    Timer {
+        id: upgradeDelayTimer
+        interval: 100  // 100ms延迟，让UI有时间处理事件
+        repeat: false
+        onTriggered: {
+            if (currentUpgradeIndex < hostsToUpgrade.length) {
+                const host = hostsToUpgrade[currentUpgradeIndex]
+                reqUpdateCbsAuto(host.ip, AppConfig.cbsFilePath)
+            }
+        }
     }
 
     // 自动更新CBS
@@ -3991,12 +4003,141 @@ FluWindow {
         onError: (status, errorString, result, userData) => {
             console.log(`主机 ${userData} CBS升级失败:`, errorString)
             currentUpgradeIndex++
+            // 使用定时器延迟执行下一个升级，避免连续操作造成UI卡顿
             upgradeNextHost()
         }
         onSuccess: (result, userData) => {
             console.log(`主机 ${userData} CBS升级成功`)
             currentUpgradeIndex++
+            // 使用定时器延迟执行下一个升级，避免连续操作造成UI卡顿
             upgradeNextHost()
         }
+    }
+
+
+    NetworkCallable {
+        id: ipInfo
+        onError:
+            (status, errorString, result, userData) => {
+                console.debug("ipinfo.io error:", status + ";" + errorString + ";" + result)
+                // 失败时使用默认值
+                root.lon = 0.0
+                root.lat = 0.0
+                root.deviceLocale = "en-US"
+                root.timezone = "UTC"
+                root.country = "CN"
+                // 保存位置信息到本地存储
+                SettingsHelper.save("ipInfo_lon", root.lon)
+                SettingsHelper.save("ipInfo_lat", root.lat)
+                SettingsHelper.save("ipInfo_deviceLocale", root.deviceLocale)
+                SettingsHelper.save("ipInfo_timezone", root.timezone)
+                SettingsHelper.save("ipInfo_country", root.country)
+                SettingsHelper.save("ipInfo_called", true)
+            }
+        onSuccess:
+            (result, userData) => {
+                try {
+                    var res = JSON.parse(result)
+                    console.log("ipinfo.io response:", result)
+                    
+                    // 解析经纬度 (loc 格式: "lat,lon")
+                    if (res.loc) {
+                        var locParts = res.loc.split(",")
+                        if (locParts.length === 2) {
+                            root.lat = parseFloat(locParts[0])
+                            root.lon = parseFloat(locParts[1])
+                            // 验证范围
+                            if (root.lat < -90 || root.lat > 90) {
+                                console.warn("Invalid latitude:", root.lat, "using default 0.0")
+                                root.lat = 0.0
+                            }
+                            if (root.lon < -180 || root.lon > 180) {
+                                console.warn("Invalid longitude:", root.lon, "using default 0.0")
+                                root.lon = 0.0
+                            }
+                            console.log("Parsed location - lat:", root.lat, "lon:", root.lon, "from loc:", res.loc)
+                        } else {
+                            console.warn("Invalid loc format:", res.loc)
+                        }
+                    } else {
+                        console.warn("No loc field in response")
+                    }
+                    
+                    // 获取时区
+                    if (res.timezone && res.timezone.indexOf('/') !== -1) {
+                        var tz = res.timezone.trim()
+                        if (tz.length > 0 && tz.length <= 64) {
+                            root.timezone = tz
+                            console.log("Parsed timezone:", root.timezone)
+                        } else {
+                            console.warn("Invalid timezone length:", tz.length, "value:", tz)
+                        }
+                    } else {
+                        console.warn("Invalid timezone format or missing:", res.timezone)
+                    }
+                    
+                    // 根据国家代码获取 locale
+                    if (res.country) {
+                        root.country = res.country.toString().trim()
+                        var locale = AppUtils.getLocaleFromCountry(root.country)
+                        console.log("Country:", root.country, "mapped to locale:", locale)
+                        // 验证 locale: 1-32字符，必须包含字母，允许 a-zA-Z0-9_-
+                        if (locale && locale.length > 0 && locale.length <= 32 && /[a-zA-Z]/.test(locale) && /^[a-zA-Z0-9_-]+$/.test(locale)) {
+                            root.deviceLocale = locale
+                            console.log("Set deviceLocale:", root.deviceLocale)
+                        } else {
+                            console.warn("Invalid locale format:", locale)
+                        }
+                    } else {
+                        console.warn("No country field in response, using default: CN")
+                    }
+                    
+                    console.log("Final location info - lon:", root.lon, "lat:", root.lat, "locale:", root.deviceLocale, "timezone:", root.timezone, "country:", country)
+                    
+                    // 保存位置信息到本地存储
+                    SettingsHelper.save("ipInfo_lon", root.lon)
+                    SettingsHelper.save("ipInfo_lat", root.lat)
+                    SettingsHelper.save("ipInfo_deviceLocale", root.deviceLocale)
+                    SettingsHelper.save("ipInfo_timezone", root.timezone)
+                    SettingsHelper.save("ipInfo_country", country)
+                    SettingsHelper.save("ipInfo_called", true)
+                    console.log("IP信息已保存到本地存储")
+                } catch (e) {
+                    console.error("Error parsing ipinfo.io response:", e)
+                    // 失败时使用默认值
+                    root.lon = 0.0
+                    root.lat = 0.0
+                    root.deviceLocale = "en-US"
+                    root.timezone = "UTC"
+                    // 保存位置信息到本地存储
+                    SettingsHelper.save("ipInfo_lon", root.lon)
+                    SettingsHelper.save("ipInfo_lat", root.lat)
+                    SettingsHelper.save("ipInfo_deviceLocale", root.deviceLocale)
+                    SettingsHelper.save("ipInfo_timezone", root.timezone)
+                    SettingsHelper.save("ipInfo_country", "CN")
+                    SettingsHelper.save("ipInfo_called", true)
+                }
+            }
+    }
+
+    // 从本地存储加载位置信息
+    function loadIpInfoFromStorage() {
+        var saved = SettingsHelper.get("ipInfo_called", false)
+        if (saved) {
+            root.lon = SettingsHelper.get("ipInfo_lon", 0.0)
+            root.lat = SettingsHelper.get("ipInfo_lat", 0.0)
+            root.deviceLocale = SettingsHelper.get("ipInfo_deviceLocale", "en-US")
+            root.timezone = SettingsHelper.get("ipInfo_timezone", "UTC")
+            console.log("从本地存储加载IP信息 - lon:", root.lon, "lat:", root.lat, "locale:", root.deviceLocale, "timezone:", root.timezone)
+            return true
+        }
+        return false
+    }
+
+    // 查询位置信息
+    function reqIpInfo(){
+        Network.get("https://ipinfo.io/json?token=a41754d21f8c63")
+        .bind(root)
+        .go(ipInfo)
     }
 }
