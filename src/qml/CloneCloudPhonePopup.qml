@@ -61,8 +61,8 @@ FluPopup {
 
     function validateName(name){
         name = name.trim()
-        if (name.length < 2 || name.length > 11) {
-            showError(qsTr("长度限制：2-11字符"))
+        if (name.length < 2 || name.length > 36) {
+            showError(qsTr("长度限制：2-36字符"))
             return ""
         }
         if (/[^a-zA-Z0-9_.-]/.test(name)) {
@@ -250,7 +250,14 @@ FluPopup {
 
                         delegate: FluText{
                             font.pixelSize: 12
-                            text: nameInput.text + (phoneCountSpinBox.value > 1 ? `-${(index + 1).toString().padStart(3, '0')}` : "")
+                            // 预览显示的名称应该与实际创建后的名称一致
+                            // 服务器端会自动添加编号（如果数量>1）和"-clone"后缀
+                            text: {
+                                var baseName = nameInput.text
+                                var suffix = phoneCountSpinBox.value > 1 ? `-${(index + 1).toString().padStart(3, '0')}` : ""
+                                // 服务器端会在名称后添加 "-clone" 后缀
+                                return baseName + "-clone" + suffix 
+                            }
                         }
                     }
                 }

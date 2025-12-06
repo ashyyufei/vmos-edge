@@ -331,8 +331,8 @@ FluWindow {
 
     function validateName(name){
         name = name.trim()
-        if (name.length < 2 || name.length > 11) {
-            showError(qsTr("长度限制：2-11字符"))
+        if (name.length < 2 || name.length > 40) {
+            showError(qsTr("长度限制：2-40字符"))
             return ""
         }
         if (/[^a-zA-Z0-9_.-]/.test(name)) {
@@ -758,7 +758,7 @@ FluWindow {
                     return
                 }
                 renameDialog.title = qsTr("修改名称")
-                renameDialog.tips = qsTr("长度限制 2–11 个字符，仅允许使用 [a–zA–Z0–9_.-]，且首尾字符不得为[._-]")
+                renameDialog.tips = qsTr("长度限制 2–40 个字符，仅允许使用 [a–zA–Z0–9_.-]，且首尾字符不得为[._-]")
                 renameDialog.onPositiveClickListener = function(){
                     const name = validateName(renameDialog.inputName)
                     if(!name){
@@ -1621,7 +1621,7 @@ FluWindow {
             onClicked: {
                 renameDialog.title = qsTr("修改名称")
                 renameDialog.number = false
-                renameDialog.tips = qsTr("长度限制 2–11 个字符，仅允许使用 [a–zA–Z0–9_.-]，且首尾字符不得为[._-]")
+                renameDialog.tips = qsTr("长度限制 2–40 个字符，仅允许使用 [a–zA–Z0–9_.-]，且首尾字符不得为[._-]")
                 renameDialog.onPositiveClickListener = function(){
                     const name = validateName(renameDialog.inputName)
                     if(!name){
@@ -1691,6 +1691,7 @@ FluWindow {
                     aospVersion: deviceContextMenu.currentModel.aospVersion
                 }
                 proxySettingsPopup.modelData = modelDataCopy
+                proxySettingsPopup.selectedDeviceList = []  // 显式清空，确保单独设置时显示主机名称
                 proxySettingsPopup.open()
             }
         }

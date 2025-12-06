@@ -23,6 +23,7 @@ FluPopup {
     property bool isResolutionManuallyChanged: false  // 标记用户是否手动修改过分辨率
     property bool isApplyingTemplateResolution: false  // 标记是否正在程序自动应用模板分辨率
     property bool boolStart: false  // 是否立即启动云机
+    property bool boolGMS: false  // 是否启动GMS
     property int runningDeviceCount: 0  // 当前主机运行中的云机数量
     property real lon: 0.0  // 经度
     property real lat: 0.0  // 纬度
@@ -260,11 +261,12 @@ FluPopup {
         if (!layout) return null
         var m = ("" + layout).match(/(\d+)x(\d+)x(\d+)/)
         if (!m) return null
+        var fpsSelected = fpsComboBox.currentText;
         return {
             width: parseInt(m[1]),
             height: parseInt(m[2]),
             dpi: parseInt(m[3]),
-            fps: 60
+            fps: parseInt(fpsSelected)
         }
     }
 
@@ -499,8 +501,8 @@ FluPopup {
 
     function validateName(name){
         name = name.trim()
-        if (name.length < 2 || name.length > 11) {
-            showError(qsTr("长度限制：2-11字符"))
+        if (name.length < 2 || name.length > 40) {
+            showError(qsTr("长度限制：2-40字符"))
             return ""
         }
         if (/[^a-zA-Z0-9_.-]/.test(name)) {
@@ -1094,6 +1096,39 @@ FluPopup {
                         }
                     }
                 }
+
+                Item{
+                    Layout.preferredWidth: 20
+                }
+
+                FluText {
+                    text: qsTr("帧率(fps)");
+                    font.bold: true
+                }
+
+                FluComboBox {
+                    id: fpsComboBox
+                    implicitWidth: 65
+                    model: [30, 60]
+                    onCurrentTextChanged: {
+                        console.log("select index ", currentIndex)
+                    }
+                }
+
+                Item{
+                    Layout.preferredWidth: 20
+                }
+
+                VCheckBox{
+                    id: gmsChekcBox
+                    text: qsTr("启用GMS")
+                    textColor: ThemeUI.blackColor
+                    checked: root.boolGMS
+                    onClicked: {
+                        root.boolGMS = checked
+                    }
+                }
+
             }
 
             RowLayout{
@@ -1109,7 +1144,7 @@ FluPopup {
                     Layout.fillWidth: true
                     text: "vmos"
                     placeholderText: qsTr("请输入云机名称")
-                    maximumLength: 11
+                    maximumLength: 36
                 }
             }
 
@@ -1288,11 +1323,12 @@ FluPopup {
                     
                     // 首先从用户选择的分辨率下拉框获取分辨率
                     var resolutionParts = resolutionComboBox.currentText.split('x');
+                    var fpsSelected = fpsComboBox.currentText;
                     var resolution = {
                         width: parseInt(resolutionParts[0]),
                         height: parseInt(resolutionParts[1]),
                         dpi: parseInt(resolutionParts[2]),
-                        fps: 60
+                        fps: parseInt(fpsSelected)
                     };
 
                     var dnsList = [];
@@ -1645,9 +1681,13 @@ FluPopup {
                     console.log("ADI List response:", result);
                     var res = JSON.parse(result);
                     if(res.code === 200 && res.data){
-                        // 新返回结构：data.files 为文件名数组
-                        if (Array.isArray(res.data.files)) {
-                            root.downloadedAdiList = res.data.files.slice();
+                        if (Array.isArray(res.data.list)) {
+                            for (let i = 0; i < res.data.list.length; i++) {
+                                root.downloadedAdiList.push(res.data.list[i].adiName);
+                            }
+                            console.log("++++++2025/12/3 new protocol ADI list ", root.downloadedAdiList)
+                        } else if (Array.isArray(res.data.files)) {
+                            root.downloadedAdiList = res.data.files.slice();        // 新返回结构：data.files 为文件名数组
                         } else if (Array.isArray(res.data)) {
                             // 兼容旧结构：直接数组，元素可能是对象
                             root.downloadedAdiList = res.data.map(function(item){
@@ -1765,7 +1805,7 @@ FluPopup {
     // 创建云机
     function reqCreateDevice(ip, padName, image_url, resolution, selinux, dns, count, adiName, adiPass, start_ip, boolMacvlan){
         if (!guardStorageOrWarn()) return
-        console.log("create with adiName:", adiName, "boolMacvlan:", boolMacvlan)
+        console.log("create with adiName:", adiName, "boolMacvlan:", boolMacvlan, "fps:", resolution.fps, "bool_gms_disabled:", !root.boolGMS)
         
         Network.postJson(`http://${ip}:18182/container_api/v1` + "/create")
         .add("user_name", padName)
@@ -1784,6 +1824,7 @@ FluPopup {
         .add("macvlan_start_ip", start_ip || "")
         .add("timezone", root.timezone)
         .add("country", root.country)
+        .add("bool_gms_disabled", !root.boolGMS)
         .setUserData(ip)
         .bind(root)
         .go(createDevice)

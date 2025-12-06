@@ -12,6 +12,7 @@ FluPopup {
     
     property var modelData: null
     property string cloudMachineName: ""
+    property var selectedDeviceList: [] // 用于存储批量操作时选中的云机列表
     
     signal proxySettingsResult(bool success, var settings)
     
@@ -44,6 +45,10 @@ FluPopup {
     }
     
     function validatePort(port) {
+        if (!port || port.trim() === "") {
+            showError(qsTr("服务器端口不能为空"))
+            return false
+        }
         var portNum = parseInt(port)
         if (isNaN(portNum) || portNum < 1 || portNum > 65535) {
             showError(qsTr("请输入正确的端口号(1-65535)"))
@@ -114,15 +119,20 @@ FluPopup {
         accountInput.text = ""
         passwordInput.text = ""
         
-        // 重置开关状态
-        udpDisabledSwitch.checked = true
-        dnsOverProxyDisabledSwitch.checked = true
+        // 重置开关状态（开关已被注释，不再需要重置）
+        // udpDisabledSwitch.checked = true
+        // dnsOverProxyDisabledSwitch.checked = true
         
         // 重置到设置页面
         root.currentPage = 0
 
-        // 获取代理信息
-        reqGetDeviceProxy(modelData.hostIp, modelData.dbId)
+        // 如果是批量操作，不需要获取单个设备的代理信息
+        if (root.selectedDeviceList && root.selectedDeviceList.length > 0) {
+            console.log("批量设置代理模式，共选中" + root.selectedDeviceList.length + "台云机")
+        } else if (modelData) {
+            // 获取单个设备代理信息
+            reqGetDeviceProxy(modelData.hostIp, modelData.dbId)
+        }
     }
     
 
@@ -132,29 +142,34 @@ FluPopup {
         spacing: 0
 
         // 标题栏
-        RowLayout {
-            Layout.fillWidth: true
-            Layout.preferredHeight: 48
-            Layout.leftMargin: 20
-            Layout.rightMargin: 10
+            RowLayout {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 48
+                Layout.leftMargin: 20
+                Layout.rightMargin: 10
 
-            FluText {
-                text: qsTr("设置代理（云机名称：%1）").arg(root.modelData?.displayName ?? "")
-                font.bold: true
-                font.pixelSize: 16
+                FluText {
+                    text: root.selectedDeviceList && root.selectedDeviceList.length > 0 ? 
+                          qsTr("批量设置代理（选中云机数量：%1）").arg(root.selectedDeviceList.length) : 
+                          qsTr("设置代理（云机名称：%1）").arg(root.modelData?.displayName ?? "")
+                    font.bold: true
+                    font.pixelSize: 16
+                    elide: Text.ElideRight
+                    wrapMode: Text.NoWrap
+                    Layout.preferredWidth: 320
+                }
+
+                Item { Layout.fillWidth: true }
+
+                FluImageButton {
+                    Layout.preferredWidth: 24
+                    Layout.preferredHeight: 24
+                    normalImage: "qrc:/res/common/btn_close_normal.png"
+                    hoveredImage: "qrc:/res/common/btn_close_normal.png"
+                    pushedImage: "qrc:/res/common/btn_close_normal.png"
+                    onClicked: root.close()
+                }
             }
-
-            Item { Layout.fillWidth: true }
-
-            FluImageButton {
-                Layout.preferredWidth: 24
-                Layout.preferredHeight: 24
-                normalImage: "qrc:/res/common/btn_close_normal.png"
-                hoveredImage: "qrc:/res/common/btn_close_normal.png"
-                pushedImage: "qrc:/res/common/btn_close_normal.png"
-                onClicked: root.close()
-            }
-        }
 
         StackLayout {
             Layout.fillWidth: true
@@ -260,104 +275,135 @@ FluPopup {
                     }
 
                     // 是否禁用DNS走代理
-                    ColumnLayout {
-                        Layout.fillWidth: true
-                        spacing: 8
+                    // ColumnLayout {
+                    //     Layout.fillWidth: true
+                    //     spacing: 8
 
-                        RowLayout {
-                            Layout.fillWidth: true
-                            spacing: 8
+                    //     RowLayout {
+                    //         Layout.fillWidth: true
+                    //         spacing: 8
 
-                            FluText {
-                                text: qsTr("代理DNS")
-                                font.bold: true
-                            }
+                    //         FluText {
+                    //             text: qsTr("代理DNS")
+                    //             font.bold: true
+                    //         }
 
-                            Image {
-                                id: macvlanIcon
-                                source: "qrc:/res/pad/help.svg"
-                                scale: 0.8
+                    //         Image {
+                    //             id: macvlanIcon
+                    //             source: "qrc:/res/pad/help.svg"
+                    //             scale: 0.8
 
-                                FluTooltip {
-                                    parent: macvlanIcon
-                                    visible: macvlanMouseArea.containsMouse
-                                    text: qsTr("开启代理DNS需要确保您的代理IP支持DNS解析，\n否则云手机将无法联网；关闭代理DNS可能会导致DNS泄露。")
-                                    delay: 500
-                                    timeout: 3000
-                                }
+                    //             FluTooltip {
+                    //                 parent: macvlanIcon
+                    //                 visible: macvlanMouseArea.containsMouse
+                    //                 text: qsTr("开启代理DNS需要确保您的代理IP支持DNS解析，\n否则云手机将无法联网；关闭代理DNS可能会导致DNS泄露。")
+                    //                 delay: 500
+                    //                 timeout: 3000
+                    //             }
 
-                                MouseArea {
-                                    id: macvlanMouseArea
-                                    anchors.fill: parent
-                                    hoverEnabled: true
-                                }
-                            }
+                    //             MouseArea {
+                    //                 id: macvlanMouseArea
+                    //                 anchors.fill: parent
+                    //                 hoverEnabled: true
+                    //             }
+                    //         }
 
-                            FluToggleSwitch{
-                                id: dnsOverProxyDisabledSwitch
-                                checkColor: ThemeUI.primaryColor
-                            }
+                    //         FluToggleSwitch{
+                    //             id: dnsOverProxyDisabledSwitch
+                    //             checkColor: ThemeUI.primaryColor
+                    //         }
 
-                            FluText{
-                                text: qsTr("注意：如果开启后云手机无网络，请关闭代理DNS。")
-                                color: ThemeUI.primaryColor
-                                font.pixelSize: 10
-                            }
-                        }
+                    //         FluText{
+                    //             text: qsTr("注意：如果开启后云手机无网络，请关闭代理DNS。")
+                    //             color: ThemeUI.primaryColor
+                    //             font.pixelSize: 10
+                    //         }
+                    //     }
 
-                    }
+                    // }
 
-                    // 是否禁用UDP
-                    RowLayout {
-                        Layout.fillWidth: true
-                        spacing: 8
+                    // // 是否禁用UDP
+                    // RowLayout {
+                    //     Layout.fillWidth: true
+                    //     spacing: 8
 
-                        FluText {
-                            text: qsTr("开启UDP")
-                            font.bold: true
-                        }
+                    //     FluText {
+                    //         text: qsTr("开启UDP")
+                    //         font.bold: true
+                    //     }
 
-                        Image {
-                            id: udpIcon
-                            source: "qrc:/res/pad/help.svg"
-                            scale: 0.8
+                    //     Image {
+                    //         id: udpIcon
+                    //         source: "qrc:/res/pad/help.svg"
+                    //         scale: 0.8
 
-                            FluTooltip {
-                                parent: udpIcon
-                                visible: udpMouseArea.containsMouse
-                                text: qsTr("启用 UDP 通道传输")
-                                delay: 500
-                                timeout: 3000
-                            }
+                    //         FluTooltip {
+                    //             parent: udpIcon
+                    //             visible: udpMouseArea.containsMouse
+                    //             text: qsTr("启用 UDP 通道传输")
+                    //             delay: 500
+                    //             timeout: 3000
+                    //         }
 
-                            MouseArea {
-                                id: udpMouseArea
-                                anchors.fill: parent
-                                hoverEnabled: true
-                            }
-                        }
+                    //         MouseArea {
+                    //             id: udpMouseArea
+                    //             anchors.fill: parent
+                    //             hoverEnabled: true
+                    //         }
+                    //     }
 
-                        FluToggleSwitch{
-                            id: udpDisabledSwitch
-                            checkColor: ThemeUI.primaryColor
-                        }
-                    }
+                    //     FluToggleSwitch{
+                    //         id: udpDisabledSwitch
+                    //         checkColor: ThemeUI.primaryColor
+                    //     }
+                    // }
 
                     Item { Layout.preferredHeight: 10 }
-
+                    RowLayout {
+                        Layout.preferredHeight: 33
                     // 网络检测链接
-                    FluText {
-                        text: qsTr("检查代理")
-                        color: ThemeUI.primaryColor
-                        font.underline: true
-                        MouseArea {
-                            anchors.fill: parent
-                            cursorShape: Qt.PointingHandCursor
-                            onClicked: {
-                                testNetwork()
+                        FluText {
+                            Layout.leftMargin: 0
+                            text: qsTr("检查代理")
+                            color: ThemeUI.primaryColor
+                            font.underline: true
+                            MouseArea {
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: {
+                                    testNetwork()
+                                }
                             }
                         }
-                    }
+                        // Item { Layout.fillWidth: true }
+                        // FluButton {
+                        //     Layout.rightMargin: 0
+                        //     text: (root.selectedDeviceList && root.selectedDeviceList.length > 0) ?
+                        //           qsTr("一键关闭所有代理") : qsTr("关闭代理")
+                        //     textColor: "#FF3F42"
+                        //     normalColor: "#FFF0F1"
+                        //     onClicked: {
+                        //         // 显示二次确认弹窗
+                        //         var isBatch = root.selectedDeviceList && root.selectedDeviceList.length > 0
+                        //         dialog.title = qsTr("操作确认")
+                        //         dialog.message = isBatch ?
+                        //             qsTr("确定要清除所有选中云机的代理设置吗？") :
+                        //             qsTr("确定要清除该云机的代理设置吗？")
+                        //         dialog.positiveText = qsTr("确定")
+                        //         dialog.negativeText = qsTr("取消")
+                        //         dialog.showPrompt = false
+                        //         dialog.onNegativeClickListener = function(){
+                        //             dialog.close()
+                        //         }
+                        //         dialog.buttonFlags = FluContentDialogType.PositiveButton | FluContentDialogType.NegativeButton
+                        //         dialog.onPositiveClickListener = function(){
+                        //             clearAllProxies()
+                        //             dialog.close()
+                        //         }
+                        //         dialog.open()
+                        //     }
+                        // }
+                     } 
 
                     Item { Layout.fillHeight: true }
 
@@ -366,16 +412,22 @@ FluPopup {
                         Layout.fillWidth: true
                         Layout.preferredHeight: 60
                         Layout.rightMargin: 20
-                        spacing: 10
+                        spacing: 30
 
                         Item { Layout.fillWidth: true }
 
                         FluButton {
+                            Layout.preferredWidth: 90
+                            Layout.preferredHeight: 32
                             text: qsTr("取消")
                             onClicked: root.close()
                         }
 
+                        
+
                         FluFilledButton {
+                            Layout.preferredWidth: 90
+                            Layout.preferredHeight: 32
                             text: qsTr("确定")
                             normalColor: ThemeUI.primaryColor
                             onClicked: {
@@ -396,8 +448,6 @@ FluPopup {
                                     return
                                 }
 
-                                // // 协议
-                                // var protocol = root.proxyProtocols[protocolComboBox.currentIndex].toLowerCase()
                                 // 协议
                                 var protocol = "socks5"
                                 if("HTTP" == root.proxyProtocols[protocolComboBox.currentIndex] || "HTTPS" == root.proxyProtocols[protocolComboBox.currentIndex]){
@@ -405,19 +455,31 @@ FluPopup {
                                 }
 
                                 // 构建设置对象
+                                // 注意：udpDisabledSwitch 和 dnsOverProxyDisabledSwitch 已被注释，使用默认值
                                 var settings = {
                                     protocol: protocol,
                                     serverAddress: serverAddressInput.text.trim(),
                                     port: parseInt(portInput.text),
                                     account: accountInput.text.trim(),
                                     password: passwordInput.text.trim(),
-                                    udpDisabled: !udpDisabledSwitch.checked,
-                                    dnsOverProxyDisabled: !dnsOverProxyDisabledSwitch.checked
+                                    udpDisabled: false,  // 默认值：UDP启用
+                                    dnsOverProxyDisabled: false  // 默认值：DNS走代理启用
                                 }
 
-                                reqSetDeviceProxy(root.modelData.hostIp, root.modelData.dbId, settings.serverAddress, settings.port, settings.account, settings.password, "", settings.protocol, "", settings.dnsOverProxyDisabled, settings.udpDisabled)
+                                // 判断是批量设置还是单个设置
+                                if (root.selectedDeviceList && root.selectedDeviceList.length > 0) {
+                                    // 批量设置代理
+                                    batchSetProxies(settings)
+                                } else if (root.modelData) {
+                                    // 单个设置代理
+                                    reqSetDeviceProxy(root.modelData.hostIp, root.modelData.dbId, 
+                                                     settings.serverAddress, settings.port, 
+                                                     settings.account, settings.password, 
+                                                     settings.dnsOverProxyDisabled, settings.udpDisabled)
+                                }
                             }
                         }
+                        Item { Layout.fillWidth: true }
                     }
                 }
             }
@@ -639,8 +701,6 @@ FluPopup {
             (status, errorString, result, userData) => {
                 console.debug(status + ";" + errorString + ";" + result)
                 showError(errorString)
-                // root.createResult(false)
-                // root.close()
             }
         onSuccess:
             (result, userData) => {
@@ -648,34 +708,228 @@ FluPopup {
                     const res = JSON.parse(result)
                     if(res.code == 200){
                         // 设置代理成功，显示成功消息
-                        showSuccess(qsTr("代理设置成功"))
-                        
-                        // 调用查询代理接口获取最新信息
-                        reqGetDeviceProxy(root.modelData.hostIp, root.modelData.dbId)
+                        showSuccess(qsTr("操作成功！"))
+                        root.close()
                     }else{
                         showError(res.msg, 3000)
                     }
                 } catch (e) {
                     console.warn("无法将行解析为JSON:", result, e)
+                    showError(qsTr("设置代理失败，请重试！"))
                 }
             }
     }
 
     // 设置代理
-    function reqSetDeviceProxy(hostIp, dbId, ip, port, account, password, bypassDomainList = "", proxyName = "", proxyType = "", dnsOverProxyDisabled = false, udpDisabled = false){
+    function reqSetDeviceProxy(hostIp, dbId, ip, port, account, password, dnsOverProxyDisabled = false, udpDisabled = false){
         Network.postJson(`http://${hostIp}:18182/android_api/v1` + "/proxy_set/" + dbId)
         .add("ip", ip)
-        .add("port", port)
+        .add("port", port)  // 接口要求使用port参数
         .add("account", account)
         .add("password", password)
-        .addList("bypassDomainList", [])
-        .add("proxyName", proxyName)
-        .add("proxyType", proxyType)
+        .add("proxyName", "")  // 保留proxyName参数
         .add("dnsOverProxyDisabled", dnsOverProxyDisabled)
         .add("udpDisabled", udpDisabled)
         .setUserData(hostIp)
         .bind(root)
         .go(setDeviceProxy)
+    }
+    
+    // 批量设置代理
+    function batchSetProxies(settings) {
+        showLoading(qsTr("正在批量设置代理..."))
+        
+        var failedDevices = []
+        var completedCount = 0
+        var totalDevices = root.selectedDeviceList.length
+        
+        // 按hostIp分组
+        var devicesByHost = {}
+        root.selectedDeviceList.forEach(device => {
+            if (!devicesByHost[device.hostIp]) {
+                devicesByHost[device.hostIp] = []
+            }
+            devicesByHost[device.hostIp].push(device)
+        })
+        
+        // 对每组设备进行批量设置
+        for (var hostIp in devicesByHost) {
+            const devices = devicesByHost[hostIp]
+            
+            devices.forEach(function(device) {
+                // 使用闭包捕获 device 信息
+                var deviceName = device.displayName
+                var deviceHostIp = hostIp
+                
+                // 创建临时的 NetworkCallable 对象
+                var batchCallable = Qt.createQmlObject('
+                    import Utils
+                    NetworkCallable {}
+                ', root)
+                
+                // 设置成功回调（使用闭包捕获变量）
+                batchCallable.onSuccess.connect(function(result, userData) {
+                    completedCount++
+                    try {
+                        const res = JSON.parse(result)
+                        if (res.code !== 200) {
+                            failedDevices.push(deviceName)
+                        }
+                    } catch (e) {
+                        failedDevices.push(deviceName)
+                    }
+                    checkBatchComplete()
+                    // 延迟清理对象
+                    Qt.callLater(function() {
+                        if (batchCallable) {
+                            batchCallable.destroy()
+                        }
+                    })
+                })
+                
+                // 设置错误回调
+                batchCallable.onError.connect(function(status, errorString, result, userData) {
+                    completedCount++
+                    failedDevices.push(deviceName)
+                    checkBatchComplete()
+                    // 延迟清理对象
+                    Qt.callLater(function() {
+                        if (batchCallable) {
+                            batchCallable.destroy()
+                        }
+                    })
+                })
+                
+                Network.postJson(`http://${deviceHostIp}:18182/android_api/v1` + "/proxy_set/" + device.dbId)
+                .add("ip", settings.serverAddress)
+                .add("port", settings.port)  // 接口要求使用port参数
+                .add("account", settings.account)
+                .add("password", settings.password)
+                .add("proxyName", "")  // 保留proxyName参数
+                .add("dnsOverProxyDisabled", settings.dnsOverProxyDisabled)
+                .add("udpDisabled", settings.udpDisabled)
+                .setUserData({hostIp: deviceHostIp, deviceName: deviceName})
+                .bind(root)
+                .go(batchCallable)
+            })
+        }
+        
+        function checkBatchComplete() {
+            if (completedCount >= totalDevices) {
+                hideLoading()
+                if (failedDevices.length === 0) {
+                    showSuccess(qsTr("操作成功！"))
+                    root.close()
+                } else {
+                    showError(qsTr("云机：") + failedDevices.join(qsTr("、")) + qsTr("设置代理失败，请重试！"))
+                }
+            }
+        }
+    }
+    
+    // 清除所有代理
+    function clearAllProxies() {
+        showLoading(qsTr("正在清除代理..."))
+        
+        var failedCount = 0
+        var completedCount = 0
+        var deviceList = []
+        
+        // 判断是批量操作还是单台操作
+        if (root.selectedDeviceList && root.selectedDeviceList.length > 0) {
+            // 批量操作：使用 selectedDeviceList
+            deviceList = root.selectedDeviceList
+        } else if (root.modelData) {
+            // 单台操作：使用 modelData
+            deviceList = [root.modelData]
+        } else {
+            // 没有设备，直接结束
+            hideLoading()
+            showError(qsTr("没有可操作的设备"))
+            return
+        }
+        
+        var totalDevices = deviceList.length
+        
+        // 如果没有设备，直接结束
+        if (totalDevices === 0) {
+            hideLoading()
+            return
+        }
+        
+        // 按hostIp分组
+        var devicesByHost = {}
+        deviceList.forEach(device => {
+            if (!devicesByHost[device.hostIp]) {
+                devicesByHost[device.hostIp] = []
+            }
+            devicesByHost[device.hostIp].push(device)
+        })
+        
+        // 对每组设备进行批量清除
+        for (var hostIp in devicesByHost) {
+            const devices = devicesByHost[hostIp]
+            
+            devices.forEach(function(device) {
+                // 使用闭包捕获 hostIp
+                var deviceHostIp = hostIp
+                
+                // 创建临时的 NetworkCallable 对象
+                var clearCallable = Qt.createQmlObject('
+                    import Utils
+                    NetworkCallable {}
+                ', root)
+                
+                // 设置成功回调
+                clearCallable.onSuccess.connect(function(result, userData) {
+                    completedCount++
+                    try {
+                        const res = JSON.parse(result)
+                        if (res.code !== 200) {
+                            failedCount++
+                        }
+                    } catch (e) {
+                        failedCount++
+                    }
+                    checkClearComplete()
+                    // 延迟清理对象
+                    Qt.callLater(function() {
+                        if (clearCallable) {
+                            clearCallable.destroy()
+                        }
+                    })
+                })
+                
+                // 设置错误回调
+                clearCallable.onError.connect(function(status, errorString, result, userData) {
+                    completedCount++
+                    failedCount++
+                    checkClearComplete()
+                    // 延迟清理对象
+                    Qt.callLater(function() {
+                        if (clearCallable) {
+                            clearCallable.destroy()
+                        }
+                    })
+                })
+                
+                Network.get(`http://${deviceHostIp}:18182/android_api/v1` + "/proxy_stop/" + device.dbId)
+                .setUserData(deviceHostIp)
+                .bind(root)
+                .go(clearCallable)
+            })
+        }
+        
+        function checkClearComplete() {
+            if (completedCount >= totalDevices) {
+                hideLoading()
+                if (failedCount === 0) {
+                    showSuccess(qsTr("操作成功！"))
+                } else {
+                    showError(qsTr("操作失败，请重试！"))
+                }
+            }
+        }
     }
 
     NetworkCallable {
@@ -697,8 +951,8 @@ FluPopup {
                     const res = JSON.parse(result)
                     if(res.code == 200){
                         // 关闭代理成功，显示成功消息
-                        showSuccess(qsTr("关闭代理成功"))
-
+                        showSuccess(qsTr("操作成功！"))
+                        
                         // 调用查询代理接口获取最新状态
                         reqGetDeviceProxy(root.modelData.hostIp, root.modelData.dbId)
                     }else{

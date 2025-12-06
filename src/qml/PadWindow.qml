@@ -93,13 +93,13 @@ FluWindow {
     }
 
     function mapMouseToVideo(mouseX, mouseY, viewWidth, viewHeight, aspectRatio) {
-        console.log("=== mapMouseToVideo 开始 ===")
-        console.log("输入参数: mouseX=", mouseX, "mouseY=", mouseY, "viewWidth=", viewWidth, "viewHeight=", viewHeight, "aspectRatio=", aspectRatio)
-        console.log("方向信息: direction=", direction, "(0=竖屏,1=横屏)", "remoteDirection=", remoteDirection, "(0=竖屏,1=横屏)")
+        // console.log("=== mapMouseToVideo 开始 ===")
+        // console.log("输入参数: mouseX=", mouseX, "mouseY=", mouseY, "viewWidth=", viewWidth, "viewHeight=", viewHeight, "aspectRatio=", aspectRatio)
+        // console.log("方向信息: direction=", direction, "(0=竖屏,1=横屏)", "remoteDirection=", remoteDirection, "(0=竖屏,1=横屏)")
         
         const isPortrait = (direction === 0 || direction === 180)
         const viewRatio = isPortrait ? (viewHeight / viewWidth) : (viewWidth / viewHeight)
-        console.log("isPortrait=", isPortrait, "viewRatio=", viewRatio)
+        // console.log("isPortrait=", isPortrait, "viewRatio=", viewRatio)
 
         let contentRatio = aspectRatio
         let displayWidth, displayHeight, offsetX, offsetY
@@ -113,7 +113,7 @@ FluWindow {
                     : viewWidth / contentRatio
             offsetX = 0
             offsetY = (viewHeight - displayHeight) / 2
-            console.log("黑边在上下: displayWidth=", displayWidth, "displayHeight=", displayHeight, "offsetX=", offsetX, "offsetY=", offsetY)
+            // console.log("黑边在上下: displayWidth=", displayWidth, "displayHeight=", displayHeight, "offsetX=", offsetX, "offsetY=", offsetY)
         } else {
             // 黑边在左右
             displayHeight = viewHeight
@@ -122,26 +122,26 @@ FluWindow {
                     : viewHeight * contentRatio
             offsetX = (viewWidth - displayWidth) / 2
             offsetY = 0
-            console.log("黑边在左右: displayWidth=", displayWidth, "displayHeight=", displayHeight, "offsetX=", offsetX, "offsetY=", offsetY)
+            // console.log("黑边在左右: displayWidth=", displayWidth, "displayHeight=", displayHeight, "offsetX=", offsetX, "offsetY=", offsetY)
         }
 
         // 映射坐标（去除黑边）
         let x = mouseX - offsetX
         let y = mouseY - offsetY
-        console.log("去除黑边后: x=", x, "y=", y)
+        // console.log("去除黑边后: x=", x, "y=", y)
 
         // 当本地画布方向与云机实际方向不一致时，需要旋转坐标
         // remoteDirection: 云机的实际方向（0=竖屏，1=横屏）
         // direction: 本地画布的显示方向（0=竖屏，1=横屏）
         // 当 direction !== remoteDirection 时，说明本地画布被旋转了，需要将坐标转换回云机的坐标系
         if (direction !== remoteDirection) {
-            console.log("需要旋转坐标: direction != remoteDirection")
+            // console.log("需要旋转坐标: direction != remoteDirection")
             if(remoteDirection == 0){
                 // 情况：云机竖屏，本地横屏显示
                 // 需要将横屏坐标转换为竖屏坐标
                 // 坐标旋转：逆时针旋转90度 (x, y) -> (height - y, x)
-                console.log("情况：云机竖屏，本地横屏显示")
-                console.log("旋转前: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
+                // console.log("情况：云机竖屏，本地横屏显示")
+                // console.log("旋转前: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
                 const rotatedX = displayHeight - y
                 const rotatedY = x
                 x = rotatedX
@@ -151,13 +151,13 @@ FluWindow {
                 const tmp = displayWidth
                 displayWidth = displayHeight
                 displayHeight = tmp
-                console.log("旋转后: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
+                // console.log("旋转后: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
             }else{
                 // 情况：云机横屏，本地竖屏显示
                 // 需要将竖屏坐标转换为横屏坐标
                 // 坐标旋转：顺时针旋转90度 (x, y) -> (y, width - x)
-                console.log("情况：云机横屏，本地竖屏显示")
-                console.log("旋转前: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
+                // console.log("情况：云机横屏，本地竖屏显示")
+                // console.log("旋转前: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
                 const rotatedX = y
                 const rotatedY = displayWidth - x
                 x = rotatedX
@@ -167,15 +167,15 @@ FluWindow {
                 const tmp = displayWidth
                 displayWidth = displayHeight
                 displayHeight = tmp
-                console.log("旋转后: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
+                // console.log("旋转后: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
             }
         } else {
-            console.log("不需要旋转坐标: direction == remoteDirection")
+            // console.log("不需要旋转坐标: direction == remoteDirection")
         }
         // 当 direction === remoteDirection 时，本地和云机方向一致，不需要旋转坐标
 
-        console.log("最终结果: x=", x, "y=", y, "videoWidth=", displayWidth, "videoHeight=", displayHeight)
-        console.log("=== mapMouseToVideo 结束 ===")
+        // console.log("最终结果: x=", x, "y=", y, "videoWidth=", displayWidth, "videoHeight=", displayHeight)
+        // console.log("=== mapMouseToVideo 结束 ===")
 
         return {
             x: x,
@@ -288,6 +288,9 @@ FluWindow {
             
             console.log("========onDeviceConnected", serial, deviceName, size, new Date())
             
+            // 设置连接状态为已连接
+            root.isConnect = true
+            
             // 保存设备实际屏幕大小（从size参数获取）
             if (size && size.width > 0 && size.height > 0) {
                 root.deviceScreenWidth = size.width
@@ -309,6 +312,9 @@ FluWindow {
                         // root.deviceObserver.screenInfo.connect(...)
                     }
                     console.log("设备连接后已注册observer，serial:", root.deviceSerial)
+                    
+                    // 初始化剪贴板同步：启用从电脑到云主机的同步
+                    deviceManager.setDeviceClipboard(root.deviceSerial, false)
                 } else {
                     console.warn("设备连接后无法注册observer，serial:", root.deviceSerial)
                 }
@@ -317,6 +323,9 @@ FluWindow {
         
         function onDeviceDisconnected(serial) {
             if (serial !== root.deviceSerial) return
+            
+            // 设置连接状态为未连接
+            root.isConnect = false
             
             dialog.title = qsTr("系统提示")
             dialog.message = qsTr("连接已断开，请稍后重连")
@@ -428,6 +437,12 @@ FluWindow {
             if (deviceManager.registerObserver(root.deviceSerial)) {
                 root.deviceObserver = deviceManager.getObserver(root.deviceSerial)
                 console.log("Component.onCompleted: 已注册设备observer，serial:", root.deviceSerial)
+                
+                // 如果 observer 注册成功，说明设备已连接，设置连接状态
+                root.isConnect = true
+                
+                // 初始化剪贴板同步：启用从电脑到云主机的同步
+                deviceManager.setDeviceClipboard(root.deviceSerial, false)
             } else {
                 console.log("Component.onCompleted: 设备尚未连接，将在onDeviceConnected时注册observer，serial:", root.deviceSerial)
             }
@@ -497,79 +512,68 @@ FluWindow {
             
             fileDialog.files.forEach(
                         item => {
+                            console.log("处理文件:", item, "类型:", typeof item)
+                            // 使用FluTools转换本地路径
                             const localPath = FluTools.toLocalPath(item)
+                            console.log("转换后的本地路径:", localPath)
                             const lower = localPath.toLowerCase()
                             const fileName = localPath.split("/").pop()
+                            console.log("文件名:", fileName, "文件类型:", lower)
 
                             if (actionType === "apk") {
                                 // APK 安装按钮：安装 APK 或 XAPK 文件
                                 if (lower.endsWith(".apk")) {
-                                    if(root.deviceSerial){
-                                        // 根据连接模式确定ADB设备地址
-                                        let adbDeviceAddress = ""
-                                        const networkMode = root.argument.networkMode || ""
-                                        if (networkMode === "macvlan") {
-                                            // Macvlan模式：使用 ip:5555 作为ADB设备地址
-                                            const ip = root.argument.ip || ""
-                                            if (ip) {
-                                                adbDeviceAddress = `${ip}:5555`
-                                            }
-                                        } else {
-                                            const hostIp = root.argument.hostIp || ""
-                                            const adb = root.argument.adb || 0
-                                            if (hostIp && adb > 0) {
-                                                adbDeviceAddress = `${hostIp}:${adb}`
-                                            }
-                                        }
-                                        // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
-                                        deviceManager.installApk(root.deviceSerial, localPath, adbDeviceAddress)
-                                    }
-                                } else if (lower.endsWith(".xapk")) {
-                                    if(root.deviceSerial){
-                                        // 根据连接模式确定ADB设备地址
-                                        let adbDeviceAddress = ""
-                                        const networkMode = root.argument.networkMode || ""
-                                        if (networkMode === "macvlan") {
-                                            // Macvlan模式：使用 ip:5555 作为ADB设备地址
-                                            const ip = root.argument.ip || ""
-                                            if (ip) {
-                                                adbDeviceAddress = `${ip}:5555`
-                                            }
-                                        } else {
-                                            const hostIp = root.argument.hostIp || ""
-                                            const adb = root.argument.adb || 0
-                                            if (hostIp && adb > 0) {
-                                                adbDeviceAddress = `${hostIp}:${adb}`
-                                            }
-                                        }
-                                        // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
-                                        deviceManager.installXapk(root.deviceSerial, localPath, adbDeviceAddress)
-                                    }
-                                } else {
-                                    console.warn("APK按钮选择了非APK/XAPK文件，忽略:", localPath)
-                                    showError(qsTr("只能选择APK或XAPK文件"))
-                                }
+                        const hostIp = root.argument.hostIp || ""
+                        const dbId = root.argument.dbId || ""
+                        const serial = root.deviceSerial || ""
+                        console.log("开始安装APK，设备信息:", {hostIp, dbId, serial, fileName})
+                        if(hostIp && dbId){
+                            showLoading(qsTr("安装中..."))
+                            // 使用新的批量安装APK接口
+                            const url = `http://${hostIp}:18182/android_api/v1/upload_file_android_batch`
+                            console.log("APK安装请求URL:", url, "dbId:", dbId)
+                            Network.postForm(url)
+                            .add("db_ids", dbId)  // 实例ID列表，支持单个或多个（逗号分隔）
+                            .addFile("file", localPath)  // APK文件
+                            .bind(root)
+                            .go(installApk)
+                        }
+                    } else if (lower.endsWith(".xapk")) {
+                        const hostIp = root.argument.hostIp || ""
+                        const dbId = root.argument.dbId || ""
+                        const serial = root.deviceSerial || ""
+                        console.log("开始安装XAPK，设备信息:", {hostIp, dbId, serial, fileName})
+                        if(hostIp && dbId){
+                            showLoading(qsTr("XAPK安装中..."))
+                            const url = `http://${hostIp}:18182/container_api/v1/install_xapk/${dbId}`
+                            console.log("XAPK安装请求URL:", url)
+                            Network.postForm(url)
+                            .addFile("file", localPath)
+                            .bind(root)
+                            .go(installXapk)
+                        }
+                    } else {
+                        console.warn("APK按钮选择了非APK/XAPK文件，忽略:", localPath)
+                        showError(qsTr("只能选择APK或XAPK文件"))
+                    }
                             } else {
                                 // 导入按钮：所有文件（包括APK）都上传到云机，不执行安装
-                                if(root.deviceSerial){
-                                    // 根据连接模式确定ADB设备地址
-                                    let adbDeviceAddress = ""
-                                    const networkMode = root.argument.networkMode || ""
-                                    if (networkMode === "macvlan") {
-                                        // Macvlan模式：使用 ip:5555 作为ADB设备地址
-                                        const ip = root.argument.ip || ""
-                                        if (ip) {
-                                            adbDeviceAddress = `${ip}:5555`
-                                        }
-                                    } else {
-                                        const hostIp = root.argument.hostIp || ""
-                                        const adb = root.argument.adb || 0
-                                        if (hostIp && adb > 0) {
-                                            adbDeviceAddress = `${hostIp}:${adb}`
-                                        }
-                                    }
-                                    // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
-                                    deviceManager.pushFile(root.deviceSerial, localPath, "/sdcard/Download", adbDeviceAddress)
+                                const hostIp = root.argument.hostIp || ""
+                                const dbId = root.argument.dbId || ""
+                                const serial = root.deviceSerial || ""
+                                const targetPath = ""//"/sdcard/Download"
+                                console.log("开始上传文件，设备信息:", {hostIp, dbId, serial, fileName, targetPath})
+                                if(hostIp && dbId){
+                                    showLoading(qsTr("文件上传中..."))
+                                    // 使用新的批量上传文件接口
+                                    const url = `http://${hostIp}:18182/android_api/v1/upload_file_android_upload`
+                                    console.log("文件上传请求URL:", url, "dbId:", dbId, "targetPath:", targetPath)
+                                    Network.postForm(url)
+                                    .add("db_ids", dbId)  // 实例ID列表，支持单个或多个（逗号分隔）
+                                    .addFile("file", localPath)  // 上传的文件
+                                    // .add("path", targetPath)  // 可选，目标目录，默认 /storage/emulated/0/Download
+                                    .bind(root)
+                                    .go(uploadFile)
                                 }
                             }
                         })
@@ -985,8 +989,13 @@ FluWindow {
                        if (drop.hasUrls) {
                            console.log("拖入文件路径:", drop.urls)
                            drop.urls.forEach(item => {
+                                                 console.log("拖拽文件处理:", item, "类型:", typeof item)
+                                                 // 使用FluTools转换本地路径
                                                  const localPath = FluTools.toLocalPath(item)
+                                                 console.log("拖拽文件转换后的本地路径:", localPath)
                                                  const lower = localPath.toLowerCase()
+                                                 const fileName = localPath.split("/").pop()
+                                                 console.log("拖拽文件名:", fileName, "文件类型:", lower)
 
                                                  if (lower.endsWith(".apk")){
                                                      if(root.deviceSerial){
@@ -1007,52 +1016,41 @@ FluWindow {
                                                                  adbDeviceAddress = `${hostIp}:${adb}`
                                                              }
                                                          }
-                                                         // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
-                                                         deviceManager.installApk(root.deviceSerial, localPath, adbDeviceAddress)
+                                                         // 使用API方式安装APK
+                                                         const hostIp = root.argument.hostIp || ""
+                                                         const dbId = root.argument.dbId || ""
+                                                         if(hostIp && dbId){
+                                                             showLoading(qsTr("安装中..."))
+                                                             // 使用新的批量安装APK接口
+                                                             Network.postForm(`http://${hostIp}:18182/android_api/v1/upload_file_android_batch`)
+                                                             .add("db_ids", dbId)  // 实例ID列表，支持单个或多个（逗号分隔）
+                                                             .addFile("file", localPath)  // APK文件
+                                                             .bind(root)
+                                                             .go(installApk)
+                                                         }
                                                      }
                                                  } else if (lower.endsWith(".xapk")){
-                                                     if(root.deviceSerial){
-                                                         // 根据连接模式确定ADB设备地址
-                                                         let adbDeviceAddress = ""
-                                                         const networkMode = root.argument.networkMode || ""
-                                                         if (networkMode === "macvlan") {
-                                                             // Macvlan模式：使用 ip:5555 作为ADB设备地址
-                                                             const ip = root.argument.ip || ""
-                                                             if (ip) {
-                                                                 adbDeviceAddress = `${ip}:5555`
-                                                             }
-                                                         } else if (AppConfig.useDirectTcp) {
-                                                             // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
-                                                             const hostIp = root.argument.hostIp || ""
-                                                             const adb = root.argument.adb || 0
-                                                             if (hostIp && adb > 0) {
-                                                                 adbDeviceAddress = `${hostIp}:${adb}`
-                                                             }
-                                                         }
-                                                         // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
-                                                         deviceManager.installXapk(root.deviceSerial, localPath, adbDeviceAddress)
+                                                     const hostIp = root.argument.hostIp || ""
+                                                     const dbId = root.argument.dbId || ""
+                                                     if(hostIp && dbId){
+                                                         showLoading(qsTr("XAPK安装中..."))
+                                                         Network.postForm(`http://${hostIp}:18182/container_api/v1/install_xapk/${dbId}`)
+                                                         .addFile("file", localPath)
+                                                         .bind(root)
+                                                         .go(installXapk)
                                                      }
                                                  } else {
-                                                     if(root.deviceSerial){
-                                                         // 根据连接模式确定ADB设备地址
-                                                         let adbDeviceAddress = ""
-                                                         const networkMode = root.argument.networkMode || ""
-                                                         if (networkMode === "macvlan") {
-                                                             // Macvlan模式：使用 ip:5555 作为ADB设备地址
-                                                             const ip = root.argument.ip || ""
-                                                             if (ip) {
-                                                                 adbDeviceAddress = `${ip}:5555`
-                                                             }
-                                                         } else if (AppConfig.useDirectTcp) {
-                                                             // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
-                                                             const hostIp = root.argument.hostIp || ""
-                                                             const adb = root.argument.adb || 0
-                                                             if (hostIp && adb > 0) {
-                                                                 adbDeviceAddress = `${hostIp}:${adb}`
-                                                             }
-                                                         }
-                                                         // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
-                                                         deviceManager.pushFile(root.deviceSerial, localPath, "/sdcard/Download", adbDeviceAddress)
+                                                     const hostIp = root.argument.hostIp || ""
+                                                     const dbId = root.argument.dbId || ""
+                                                     if(hostIp && dbId){
+                                                         showLoading(qsTr("文件上传中..."))
+                                                         // 使用新的批量上传文件接口
+                                                         Network.postForm(`http://${hostIp}:18182/android_api/v1/upload_file_android_upload`)
+                                                         .add("db_ids", dbId)  // 实例ID列表，支持单个或多个（逗号分隔）
+                                                         .addFile("file", localPath)  // 上传的文件
+                                                        //  .add("path", "/sdcard/Download")  // 可选，目标目录，默认 /storage/emulated/0/Download
+                                                         .bind(root)
+                                                         .go(uploadFile)
                                                      }
                                                  }
                                              })
@@ -1066,22 +1064,12 @@ FluWindow {
         focus: true
 
         // 窗口级别的键盘事件监听：当检测到键盘输入但 inputField 没有焦点时，恢复焦点
-        // 这样当用户点击云机输入框后直接输入时，可以自动恢复焦点
-        // 注意：窗口需要有焦点才能接收键盘事件，但我们会优先让 inputField 获得焦点
         Keys.onPressed: (event) => {
-            console.log("窗口收到键盘事件:", event.key, "inputField.focus:", inputField.focus, "窗口焦点:", root.activeFocus)
-            // 如果是可打印字符，说明用户想要输入
             if (event.key >= Qt.Key_Space && event.key <= Qt.Key_ydiaeresis) {
                 if (!inputField.focus) {
-                    console.log("检测到键盘输入但 inputField 没有焦点，立即恢复焦点并重新处理输入")
-                    // 先恢复 inputField 焦点
                     inputField.forceActiveFocus()
-                    // 然后手动触发文本输入（因为当前事件可能已经错过了）
-                    // 注意：这里不能直接设置 text，因为会触发 onTextChanged
-                    // 但我们可以确保后续输入能被捕获
                 }
             }
-            // 不阻止事件传播，让其他组件（如 inputField）也能接收到
             event.accepted = false
         }
 
@@ -1100,15 +1088,9 @@ FluWindow {
                 };
             }
 
-            // 监听焦点变化（仅用于调试）
-            onFocusChanged: {
-                console.log("inputField focus changed:", focus)
-            }
 
             onTextChanged: {
-                console.log("onTextChanged:", inputField.text)
                 if(!inputField.text){
-                    // 排除空字符串
                     return
                 }
 
@@ -1118,34 +1100,27 @@ FluWindow {
                 }
             }
 
-            // 监听按键
             Keys.onPressed:
                 (event) => {
-                    console.log("Keys.onPressed:", event.text, event.text.length, event.key)
                     if (event.key >= Qt.Key_Space && event.key <= Qt.Key_ydiaeresis) {
                         // 可打印字符交给 onTextChanged 处理
                         return
                     }
 
                     const newKey = KeyMapper.getAndroidKeyCode(event.key)
-                    if(newKey !== -1){
-                        console.log("Keys.onPressed2")
-                        if(root.deviceSerial){
-                            deviceManager.sendKeyEvent(root.deviceSerial, 6, event.key, event.modifiers, event.text)
-                        }
+                    if(newKey !== -1 && root.deviceSerial){
+                        deviceManager.sendKeyEvent(root.deviceSerial, 6, event.key, event.modifiers, event.text)
                     }
-                    event.accepted = true;
+                    event.accepted = true
                 }
 
-            // 监听释放事件
             Keys.onReleased:
                 (event) => {
-                    console.log("Keys.onReleased:", event.key)
                     if (event.key >= Qt.Key_Space && event.key <= Qt.Key_ydiaeresis) {
                         return
                     }
                     const newKey = KeyMapper.getAndroidKeyCode(event.key)
-                    if(newKey !== -1){
+                    if(newKey !== -1 && root.deviceSerial){
                         deviceManager.sendKeyEvent(root.deviceSerial, 7, event.key, event.modifiers, event.text)
                     }
                 }
@@ -1352,10 +1327,10 @@ FluWindow {
 
                             onPressed:
                                 (mouse)=> {
-                                    console.log("=== 鼠标按下事件 ===")
-                                    console.log("鼠标坐标: mouse.x=", mouse.x, "mouse.y=", mouse.y)
-                                    console.log("视频区域大小: parent.width=", parent.width, "parent.height=", parent.height)
-                                    console.log("设备屏幕大小: deviceScreenWidth=", root.deviceScreenWidth, "deviceScreenHeight=", root.deviceScreenHeight)
+                                    // console.log("=== 鼠标按下事件 ===")
+                                    // console.log("鼠标坐标: mouse.x=", mouse.x, "mouse.y=", mouse.y)
+                                    // console.log("视频区域大小: parent.width=", parent.width, "parent.height=", parent.height)
+                                    // console.log("设备屏幕大小: deviceScreenWidth=", root.deviceScreenWidth, "deviceScreenHeight=", root.deviceScreenHeight)
                                     
                                     // 如果按下的是鼠标滚轮（中键），发送HOME键
                                     if (mouse.button === Qt.MiddleButton) {
@@ -1375,7 +1350,7 @@ FluWindow {
                                     
                                     videoItem.isPressed = true
                                     const result = mapMouseToVideo(mouse.x, mouse.y, parent.width, parent.height, aspectRatio)
-                                    console.log("mapMouseToVideo 返回结果: x=", result.x, "y=", result.y, "videoWidth=", result.videoWidth, "videoHeight=", result.videoHeight)
+                                    // console.log("mapMouseToVideo 返回结果: x=", result.x, "y=", result.y, "videoWidth=", result.videoWidth, "videoHeight=", result.videoHeight)
                                     
                                     var mappedEvent = mouseEventToVariant(mouse, 2, result.x, result.y)
                                     if(root.deviceSerial){
@@ -1383,23 +1358,17 @@ FluWindow {
                                         const frameWidth = root.deviceScreenWidth > 0 ? root.deviceScreenWidth : result.videoWidth
                                         const frameHeight = root.deviceScreenHeight > 0 ? root.deviceScreenHeight : result.videoHeight
                                         
-                                        // 当方向不一致时，showSize 应该使用旋转后的尺寸（与 result.videoWidth/videoHeight 对应）
+                                        // 直接使用计算后的尺寸，当方向不一致时，mapMouseToVideo内部有做宽高交换
                                         // 这样 InputConvertNormal 才能正确缩放坐标
-                                        let showWidth = parent.width
-                                        let showHeight = parent.height
-                                        if (direction !== remoteDirection) {
-                                            // 方向不一致时，showSize 需要与旋转后的坐标系统对应
-                                            showWidth = result.videoWidth
-                                            showHeight = result.videoHeight
-                                            console.log("方向不一致，使用旋转后的 showSize: showWidth=", showWidth, "showHeight=", showHeight)
-                                        }
+                                        let showWidth = result.videoWidth
+                                        let showHeight = result.videoHeight
                                         
-                                        console.log("发送鼠标事件到云机: x=", mappedEvent.x, "y=", mappedEvent.y, "frameWidth=", frameWidth, "frameHeight=", frameHeight, "showWidth=", showWidth, "showHeight=", showHeight)
+                                        // console.log("发送鼠标事件到云机: x=", mappedEvent.x, "y=", mappedEvent.y, "frameWidth=", frameWidth, "frameHeight=", frameHeight, "showWidth=", showWidth, "showHeight=", showHeight)
                                         deviceManager.sendMouseEvent(root.deviceSerial, mappedEvent.type, mappedEvent.x, mappedEvent.y,
                                                                      mappedEvent.button, mappedEvent.buttons, 0,
                                                                      frameWidth, frameHeight, showWidth, showHeight)
                                     }
-                                    console.log("=== 鼠标按下事件结束 ===")
+                                    // console.log("=== 鼠标按下事件结束 ===")
                                 }
 
                             onPositionChanged:
@@ -1416,13 +1385,9 @@ FluWindow {
                                         const frameWidth = root.deviceScreenWidth > 0 ? root.deviceScreenWidth : result.videoWidth
                                         const frameHeight = root.deviceScreenHeight > 0 ? root.deviceScreenHeight : result.videoHeight
                                         
-                                        // 当方向不一致时，showSize 应该使用旋转后的尺寸
-                                        let showWidth = parent.width
-                                        let showHeight = parent.height
-                                        if (direction !== remoteDirection) {
-                                            showWidth = result.videoWidth
-                                            showHeight = result.videoHeight
-                                        }
+                                        // 直接使用计算后的尺寸，当方向不一致时，mapMouseToVideo内部有做宽高交换
+                                        let showWidth = result.videoWidth
+                                        let showHeight = result.videoHeight
                                         
                                         deviceManager.sendMouseEvent(root.deviceSerial, mappedEvent.type, mappedEvent.x, mappedEvent.y,
                                                                      mappedEvent.button, mappedEvent.buttons, 0,
@@ -1441,13 +1406,9 @@ FluWindow {
                                         const frameWidth = root.deviceScreenWidth > 0 ? root.deviceScreenWidth : result.videoWidth
                                         const frameHeight = root.deviceScreenHeight > 0 ? root.deviceScreenHeight : result.videoHeight
                                         
-                                        // 当方向不一致时，showSize 应该使用旋转后的尺寸
-                                        let showWidth = parent.width
-                                        let showHeight = parent.height
-                                        if (direction !== remoteDirection) {
-                                            showWidth = result.videoWidth
-                                            showHeight = result.videoHeight
-                                        }
+                                        // 直接使用计算后的尺寸，当方向不一致时，mapMouseToVideo内部有做宽高交换
+                                        let showWidth = result.videoWidth
+                                        let showHeight = result.videoHeight
                                         
                                         deviceManager.sendMouseEvent(root.deviceSerial, mappedEvent.type, mappedEvent.x, mappedEvent.y,
                                                                      mappedEvent.button, mappedEvent.buttons, 0,
@@ -1512,13 +1473,9 @@ FluWindow {
                                         const frameWidth = root.deviceScreenWidth > 0 ? root.deviceScreenWidth : result.videoWidth
                                         const frameHeight = root.deviceScreenHeight > 0 ? root.deviceScreenHeight : result.videoHeight
                                         
-                                        // 当方向不一致时，showSize 应该使用旋转后的尺寸
-                                        let showWidth = parent.width
-                                        let showHeight = parent.height
-                                        if (direction !== remoteDirection) {
-                                            showWidth = result.videoWidth
-                                            showHeight = result.videoHeight
-                                        }
+                                        // 直接使用计算后的尺寸，当方向不一致时，mapMouseToVideo内部有做宽高交换
+                                        let showWidth = result.videoWidth
+                                        let showHeight = result.videoHeight
                                         
                                         deviceManager.sendWheelEvent(root.deviceSerial, wheelEventData.angleDelta.x, wheelEventData.angleDelta.y,
                                                                      wheelEventData.x, wheelEventData.y, wheelEventData.modifiers,
@@ -1949,7 +1906,7 @@ FluWindow {
                                 }else if(modelData.name === "screenshot_dir"){
                                     // 截图目录改为使用 vmosedge 目录
                                     const downloadPath = StandardPaths.writableLocation(StandardPaths.PicturesLocation) + "/vmosedge"
-                                    Qt.openUrlExternally(FluTools.toLocalPath(downloadPath))
+                                    Qt.openUrlExternally(downloadPath)
                                     ReportHelper.reportLog("phone_play_action", root.argument.padCode, {label: "screenshot_dir"})
                                 }else if(modelData.name === "keymap"){
                                     const realWidth = root.width - spaceWidth
@@ -2495,6 +2452,101 @@ FluWindow {
         .go(stsToken)
     }
 
+    NetworkCallable {
+        id: installApk
+        onStart: {
+            showLoading(qsTr("安装中..."))
+        }
+        onFinish: {
+            hideLoading()
+        }
+        onError: (status, errorString, result, userData) => {
+            console.error("APK安装失败，状态:", status, "错误信息:", errorString)
+            showError(qsTr("安装失败") + ": " + errorString)
+        }
+        onSuccess: (result, userData) => {
+            console.log("APK安装成功，返回结果:", result)
+            const res = JSON.parse(result)
+            if(res.code === 200){
+                showSuccess(qsTr("安装成功"))
+            } else {
+                showError(res.msg || qsTr("安装失败"))
+            }
+        }
+        onUploadProgress: (sent, total) => {
+            const progress = Math.round((sent / total) * 100)
+            console.log("APK安装进度:", progress + "%", sent, "/", total)
+        }
+    }
+    
+    NetworkCallable {
+        id: installXapk
+        onStart: {
+            showLoading(qsTr("XAPK安装中..."))
+        }
+        onFinish: {
+            hideLoading()
+        }
+        onError: (status, errorString, result, userData) => {
+            console.error("XAPK安装失败，状态:", status, "错误信息:", errorString)
+            showError(qsTr("XAPK安装失败") + ": " + errorString)
+        }
+        onSuccess: (result, userData) => {
+            console.log("XAPK安装成功，返回结果:", result)
+            const res = JSON.parse(result)
+            if(res.code === 200){
+                showSuccess(qsTr("XAPK安装成功"))
+            } else {
+                showError(res.msg || qsTr("XAPK安装失败"))
+            }
+        }
+        onUploadProgress: (sent, total) => {
+            const progress = Math.round((sent / total) * 100)
+            console.log("XAPK安装进度:", progress + "%", sent, "/", total)
+        }
+    }
+    
+    NetworkCallable {
+        id: uploadFile
+        onStart: {
+            showLoading(qsTr("文件上传中..."))
+        }
+        onFinish: {
+            hideLoading()
+        }
+        onError: (status, errorString, result, userData) => {
+            console.error("文件上传失败，状态:", status, "错误信息:", errorString)
+            showError(qsTr("文件上传失败") + ": " + errorString)
+        }
+        onSuccess: (result, userData) => {
+            console.log("文件上传成功，返回结果:", result)
+            // 检查返回结果是否为空或无效
+            if (!result || result.trim() === "") {
+                // 返回结果为空，通常表示上传成功（某些接口可能不返回内容）
+                console.log("文件上传成功（返回结果为空，视为成功）")
+                showSuccess(qsTr("文件上传成功"))
+                return
+            }
+            // 尝试解析 JSON
+            try {
+                const res = JSON.parse(result)
+                if(res.code === 200){
+                    showSuccess(qsTr("文件上传成功"))
+                } else {
+                    showError(res.msg || qsTr("文件上传失败"))
+                }
+            } catch(e) {
+                // JSON 解析失败，但上传进度已到 100%，通常表示上传成功
+                console.warn("文件上传返回结果无法解析为 JSON，但上传进度已到 100%，视为成功:", e)
+                showSuccess(qsTr("文件上传成功"))
+            }
+        }
+        onUploadProgress: (sent, total) => {
+            const progress = Math.round((sent / total) * 100)
+            console.log("文件上传进度:", progress + "%", sent, "/", total)
+        }
+    }
+    
     NetworkCallable {
         id: rebootDevice
         onStart: {

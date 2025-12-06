@@ -187,7 +187,7 @@ Item {
                         pressedColor: Qt.darker(normalColor, 1.1)
                         text: qsTr("官方镜像下载")
                         onClicked: {
-                            Qt.openUrlExternally("https://help.vmosedge.com/docs/productupdates/image-release-history.html")
+                            Qt.openUrlExternally("https://help.vmosedge.com/zh/productupdates/image-release-history.html")
                         }
                     }
 
@@ -206,45 +206,7 @@ Item {
                             root.openImportImagePopup()
                         }
                     }
-
-                    // IconButton {
-                    //     backgroundColor: ThemeUI.primaryColor
-                    //     borderRadius: 2
-
-                    //     textColor: "white"
-                    //     iconSource: "qrc:/res/images/icon_import.svg"
-                    //     text: qsTr("官方镜像下载")
-                    //     onClicked: {
-                    //         Qt.openUrlExternally("https://help.vmosedge.com/docs/productupdates/image-release-history.html")
-                    //     }
-                    // }
-
-                    // IconButton {
-                    //     backgroundColor: ThemeUI.primaryColor
-                    //     borderRadius: 2
-                    //     Layout.preferredHeight: 32
-                    //     textColor: "white"
-                    //     iconSource: "qrc:/res/images/icon_import.svg"
-                    //     text: qsTr("导入镜像")
-                    //     onClicked: {
-                    //         root.openImportImagePopup()
-                    //     }
-                    // }
                 }
-
-                // RowLayout{
-                //     Image {
-                //         source: "qrc:/res/images/icon_dir.svg"
-                //     }
-
-                //     FluText{
-                //         text: qsTr("镜像存储路径设置")
-                //     }
-
-                //     Item{
-                //         Layout.fillWidth: true
-                //     }
-                // }
 
                 Rectangle{
                     Layout.preferredHeight: 52

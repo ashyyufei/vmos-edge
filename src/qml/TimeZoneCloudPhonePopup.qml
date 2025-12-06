@@ -46,6 +46,9 @@ FluPopup {
                 text: qsTr("修改语言时区")
                 font.bold: true
                 font.pixelSize: 16
+                elide: Text.ElideRight
+                wrapMode: Text.NoWrap
+                Layout.preferredWidth: 320
             }
 
             Item { Layout.fillWidth: true }

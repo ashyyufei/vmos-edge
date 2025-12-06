@@ -2,6 +2,7 @@
 #include "structs.h"
 #include "treemodel.h"
 #include <QSet>
+#define ONLY_FILTER_DEV     1
 
 TreeProxyModel::TreeProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
@@ -140,7 +141,6 @@ bool TreeProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_
     
     // 获取项目类型
     int itemType = sourceModel()->data(sourceIndex, DeviceRoles::ItemTypeRole).toInt();
-    
     // 根据项目类型进行过滤
     switch (itemType) {
     case TreeModel::TypeGroup:
@@ -149,9 +149,15 @@ bool TreeProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_
         if (m_showAllDevices) {
             return true;
         }
+#if ONLY_FILTER_DEV
+        return true;
+#endif
         return hasMatchingChildren(sourceIndex);
         
     case TreeModel::TypeHost: {
+#if ONLY_FILTER_DEV
+        return true;
+#endif
         // 主机节点：只有在"运行中云机"模式下才过滤离线主机
         QString hostState = sourceModel()->data(sourceIndex, DeviceRoles::StateRole).toString();
         // 如果选中"运行中云机"，隐藏离线主机
@@ -237,6 +243,7 @@ void TreeProxyModel::setShowRunningOnly(bool show) {
         }
         emit showRunningOnlyChanged();
         invalidateFilter();
+        this->invalidate();
     }
 }
 
@@ -260,6 +267,7 @@ void TreeProxyModel::setShowAllDevices(bool show) {
         }
         emit showAllDevicesChanged();
         invalidateFilter();
+        this->invalidate();
     }
 }
 
@@ -420,12 +428,15 @@ QVariant TreeProxyModel::data(const QModelIndex &index, int role) const
             if (!hostIndex.isValid()) {
                 continue;
             }
-            
+#if ONLY_FILTER_DEV
+            visibleHostCount++;
+#else
             // 检查主机是否可见（不是离线状态）
             QString hostState = sourceModel()->data(hostIndex, DeviceRoles::StateRole).toString();
             if (hostState != "offline") {
                 visibleHostCount++;
             }
+#endif
         }
         return visibleHostCount;
     }

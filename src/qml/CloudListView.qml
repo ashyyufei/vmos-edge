@@ -246,6 +246,9 @@ Item{
                             FluText{
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: model?.displayName ?? ""
+                                elide: Text.ElideRight
+                                wrapMode: Text.NoWrap
+                                width: Math.min(implicitWidth, parent.width)        // 确保文本不会超出父容器边界
 
                                 MouseArea{
                                     anchors.fill: parent

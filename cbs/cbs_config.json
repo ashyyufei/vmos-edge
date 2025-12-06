@@ -1,7 +1,7 @@
 {
     "cbsConfig": {
-        "version": "1.0.11.30.4",
-        "fileName": "cbs_go_edge_1.0.11.30.4.cbs",
+        "version": "1.0.12.3.13",
+        "fileName": "cbs_go_edge_1.0.12.3.13.cbs",
         "fileSize": 1024000,
         "checksum": "sha256:abcd1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
         "description": "CBS自动升级配置文件",
